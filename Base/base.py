@@ -10,7 +10,7 @@ import time,os,sys
 from docx import Document
 from docx.shared import Inches
 
-logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log')
+logger = LogManager('base').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log')
 
 class Base():
     def __init__(self,driver):

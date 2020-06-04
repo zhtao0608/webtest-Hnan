@@ -76,7 +76,7 @@ class SubscriberOpen(PersonBase):
             logger.info('客户信息设置完成')
             time.sleep(2)
 
-    def valid_simId(self,simId):
+    def Input_validSim(self,simId):
         '''输入sim卡号，按Enter回车校验'''
         loc_simId = (By.ID,'ICC_ID')
         self.sendkey(loc_simId,simId)
@@ -99,7 +99,7 @@ class SubscriberOpen(PersonBase):
         offerFrame = (By.XPATH,"//iframe[contains(@src,'service=page/oc.person.cs.OfferList')]")
         self.iframe(offerFrame)
         # self.iframe('offerFrame') #先进入主套餐订购frame
-        print('进入offerFrame======：')
+        print('进入商品订购offerFrame======')
         time.sleep(5)
         self.screen_step('进入主套餐订购页面，选择主套餐')
         xpath_str = "//li[contains(@ontap,'%s')]" %offerId
@@ -153,7 +153,7 @@ class SubscriberOpen(PersonBase):
         :param passwd: 服务密码
         :return:
         '''
-        self.valid_simId(simId) #输入SIMID并校验
+        self.Input_validSim(simId) #输入SIMID并校验
         self.set_personMainOffer(offerId) #设置个人主套餐
         self.set_Acctinfo()  #设置账户信息
         self.set_personPwd() #设置用户服务新密码

@@ -49,7 +49,7 @@ class SubscriberOpenTest(unittest.TestCase):
         test.Open_subscriberOpen()  # 进入开户页面
         test.set_customerInfo(accessNum)  # 设置客户信息
         # test.set_BusiAcceptInfo(simId, offerId, acctName, password)  # 设置业务受理信息
-        validMsg = test.valid_simId(simId) #输入SIMID并校验
+        validMsg = test.Input_validSim(simId) #输入SIMID并校验
         logger.info('SIM卡校验结果:{}'.format(validMsg))
         if '业务校验失败' in validMsg:
             write_xlsBycolName_append(file = file, row=row, colName='RESULT_INFO', value=validMsg,index=0)  #向xls模板指定行列写入结果
