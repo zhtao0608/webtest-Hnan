@@ -1,9 +1,9 @@
 import time,sys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-from Common import ReadConfig
+from Base import ReadConfig
 from PageObj.oc.person.PersonBase import PersonBase
-from Common.Mylog import LogManager
+from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 
 

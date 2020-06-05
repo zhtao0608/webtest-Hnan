@@ -1,11 +1,11 @@
 from selenium.webdriver.common.action_chains import ActionChains  # 处理鼠标事件
 from selenium.webdriver.support.ui import WebDriverWait  # 用于处理元素等待
-from Common.Mylog import LogManager
+from Base.Mylog import LogManager
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import *  # 用于处理异常
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.common.keys import Keys
-from Common import ReadConfig
+from Base import ReadConfig
 import time,os,sys
 from docx import Document
 from docx.shared import Inches

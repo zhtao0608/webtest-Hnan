@@ -6,13 +6,13 @@ from PageObj.oc.person.PersonBase import PersonBase
 from PageObj.oc.group.GroupBasePage import BasePage
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from Common import HTMLTestRunnerCNNew
-from Common import ReadConfig
-from Common.Mylog import LogManager
+from Base import HTMLTestRunnerCNNew
+from Base import ReadConfig
+from Base.Mylog import LogManager
 from Common.TestDataMgnt import MainPageData
 from Common.TestDataMgnt import create_testDataFile
 from TestCases.suite import mySuitePrefixAdd
-from Common.OperExcel import write_xlsBycolName_append
+from Base.OperExcel import write_xlsBycolName_append
 
 logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

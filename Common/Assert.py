@@ -1,8 +1,8 @@
 from Base.base import Base
 from selenium.webdriver.common.by import By
-from Common import ReadConfig
-from Common.Mylog import LogManager
-from Common.OperExcel import write_excel_append,write_xlsBycolName_append
+from Base import ReadConfig
+from Base.Mylog import LogManager
+from Base.OperExcel import write_excel_append,write_xlsBycolName_append
 import time,sys
 
 # logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )

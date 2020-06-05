@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 import time,sys,io
 import requests
 import json
-from Common import ReadConfig
-from Common.Mylog import LogManager
-from Common.OperExcel import get_exceldata,write_excel_append
+from Base import ReadConfig
+from Base.Mylog import LogManager
+from Base.OperExcel import get_exceldata,write_excel_append
 from Common.function import dict_get
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')

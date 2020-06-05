@@ -4,9 +4,9 @@
 
 import os,time
 import unittest
-from Common import ReadConfig
-from Common.Mylog import LogManager
-from Common import HTMLTestRunnerCNNew
+from Base import ReadConfig
+from Base.Mylog import LogManager
+from Base import HTMLTestRunnerCNNew
 class RunTest:
     def __init__(self):
         """

@@ -2,7 +2,7 @@ from Base.base import Base
 from selenium.webdriver.common.by import By
 from Common.function import config_url
 import time
-from Common.Mylog import LogManager
+from Base.Mylog import LogManager
 
 
 class LoginPage(Base):

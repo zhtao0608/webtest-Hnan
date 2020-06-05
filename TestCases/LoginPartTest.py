@@ -4,7 +4,7 @@ from PageObj.login_page import LoginPage
 from PageObj.loginPart import LoginPart
 from selenium import webdriver
 from Common.function import project_path
-from Common import ReadConfig
+from Base import ReadConfig
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")

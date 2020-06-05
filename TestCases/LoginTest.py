@@ -1,10 +1,10 @@
 import unittest,os
 import time
-from Common import HTMLTestRunnerCNNew
+from Base import HTMLTestRunnerCNNew
 from PageObj.login_page import LoginPage
 from selenium import webdriver
 from Common.function import project_path
-from Common import ReadConfig
+from Base import ReadConfig
 
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

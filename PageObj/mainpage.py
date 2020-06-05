@@ -1,7 +1,7 @@
 import time
 from Base.base import Base
 from selenium.webdriver.common.by import By
-from Common import ReadConfig
+from Base import ReadConfig
 from selenium import webdriver
 from PageObj.login_page import LoginPage
 

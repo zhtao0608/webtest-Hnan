@@ -2,12 +2,12 @@ import unittest,ddt
 import time
 import requests
 import json
-from Common import HTMLTestRunnerCNNew
-from Common import ReadConfig
-from Common.Mylog import LogManager
+from Base import HTMLTestRunnerCNNew
+from Base import ReadConfig
+from Base.Mylog import LogManager
 from Common.function import dict_get
 from Base.OracleOper import MyOracle
-from Common.OperExcel import write_dict_xls,write_xlsBycolName_append
+from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
 from TestCases.suite import mySuitePrefixAdd
 
 logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )

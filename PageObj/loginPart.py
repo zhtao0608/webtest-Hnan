@@ -2,11 +2,11 @@ import time
 from Base.base import Base
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-from Common import ReadConfig
+from Base import ReadConfig
 from PageObj.login_page import LoginPage
-from Common.Mylog import LogManager
+from Base.Mylog import LogManager
 from Common.Assert import PageAssert
-from Common.OperExcel import write_xlsBycolName_append
+from Base.OperExcel import write_xlsBycolName_append
 
 logger = LogManager('login').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 rc = ReadConfig.ReadConfig("ngboss_config.ini")

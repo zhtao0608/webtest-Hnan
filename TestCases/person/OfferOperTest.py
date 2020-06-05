@@ -1,11 +1,11 @@
 import unittest,os
 import time,ddt
-from Common import HTMLTestRunnerCNNew
+from Base import HTMLTestRunnerCNNew
 from PageObj.oc.person.offerOpers import OfferOperPage
 from selenium import webdriver
-from Common import ReadConfig
-from Common.OperExcel import get_exceldata,write_excel_append
-from Common.Mylog import LogManager
+from Base import ReadConfig
+from Base.OperExcel import get_exceldata,write_excel_append
+from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 

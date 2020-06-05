@@ -1,8 +1,8 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from Common import ReadConfig
-from Common.Mylog import LogManager
+from Base import ReadConfig
+from Base.Mylog import LogManager
 from PageObj.oc.group.GroupBasePage import BasePage
 from Common.Assert import PageAssert
 from Base.GenTestData import GenTestData

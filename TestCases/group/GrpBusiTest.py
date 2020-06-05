@@ -1,11 +1,11 @@
 import unittest,os
-from Common import HTMLTestRunnerCNNew
+from Base import HTMLTestRunnerCNNew
 import time,ddt
 from PageObj.oc.group.GrpBusiOper import GroupBusiOper
 from selenium import webdriver
-from Common import ReadConfig
+from Base import ReadConfig
 from Base.GenTestData import GenTestData
-from Common.Mylog import LogManager
+from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import GrpTestData

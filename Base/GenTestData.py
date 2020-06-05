@@ -2,7 +2,7 @@
 import random
 from datetime import date
 from datetime import timedelta
-from Common import ReadConfig
+from Base import ReadConfig
 
 class GenTestData():
     '''

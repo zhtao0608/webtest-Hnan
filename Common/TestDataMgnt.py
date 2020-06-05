@@ -1,10 +1,10 @@
 import os,time
 import xlrd
 from Base.GenTestData import GenTestData
-from Common.OperExcel import write_dict_xls,getColumnIndex,getRowIndex
-from Common.Mylog import LogManager
+from Base.OperExcel import write_dict_xls,getColumnIndex,getRowIndex
+from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
-from Common import ReadConfig
+from Base import ReadConfig
 from Common.function import join_dictlists
 
 logger = LogManager('GroupBusiTest').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -22,7 +22,7 @@ def get_TestData(FuncCode,filename = file,index=0):
     xl = xlrd.open_workbook(filename)
     sheet = xl.sheet_by_index(index)
     row = getRowIndex(file=filename,value=FuncCode)
-    col = getColumnIndex(file=filename,columnName ='PARAMS')
+    col = getColumnIndex(file=filename,columnName ='PARAMS') #该列指定
     paras = sheet.cell_value(row,col)  #取出来是个字符串
     paras = eval(paras)
     if isinstance(paras, tuple):
@@ -34,7 +34,6 @@ def get_TestData(FuncCode,filename = file,index=0):
 def get_FuncRow(FuncCode,filename = file):
     '''根据测试函数获取对应的行数'''
     return getRowIndex(file=filename,value=FuncCode)
-
 
 def create_testDataFile(paras,filename):
     '''自动生成测试数据file，返回完整的dataFile路径'''

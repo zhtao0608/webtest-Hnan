@@ -1,13 +1,13 @@
 import unittest,os
 import ddt,time
-from Common import HTMLTestRunnerCNNew
+from Base import HTMLTestRunnerCNNew
 from PageObj.oc.person.ChangeProdStatus import ChangeProdStatus
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-from Common import ReadConfig
+from Base import ReadConfig
 from Common.function import join_dictlists
-from Common.OperExcel import write_dict_xls,write_xlsBycolName_append
-from Common.Mylog import LogManager
+from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
+from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
 from Common.Assert import PageAssert

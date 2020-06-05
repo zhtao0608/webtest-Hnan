@@ -2,10 +2,10 @@ import unittest,ddt
 import time
 import requests
 import json
-from Common import HTMLTestRunnerCNNew
-from Common import ReadConfig
-from Common.Mylog import LogManager
-from Common.OperExcel import get_exceldata,write_xlsBycolName_append,write_dict_xls
+from Base import HTMLTestRunnerCNNew
+from Base import ReadConfig
+from Base.Mylog import LogManager
+from Base.OperExcel import get_exceldata,write_xlsBycolName_append,write_dict_xls
 from Base.OracleOper import MyOracle
 from Common.function import dict_get
 from Base.GenTestData import GenTestData
@@ -75,7 +75,7 @@ class ModfiyRealChkInfo(unittest.TestCase):
             "svcName": "CustomerCentre.custmgr.IPersonOperateSV.modifyRealNameCheckInInfo",
             "IDEN_ID": IdenId,
             "CUST_ID": accessNum,
-            "CUSTINFO_CUST_NAME": custName  #先写死
+            "CUSTINFO_CUST_NAME": custName
         }
         logger.info("开始构建请求......"+"\n")
         intf_url = rc.get_interface_url("url_interface")
