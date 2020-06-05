@@ -233,25 +233,6 @@ class PageAssert(Base):
             self.screenshot_SaveAsDoc(step_str)
             return msg
 
-    def deal_resultAftersubmit(self,file,row,index=0):
-        '''
-        测试结果写入xls，按xls模板已将flowId 和errmsg列指定了
-        :param file: xls完整路径
-        :param row: xls行号
-        :param index: xls的sheet页index
-        :return:
-        '''
-        try:
-            Msg = self.assert_Submit()
-            if '业务受理成功' in Msg:
-                logger.info("业务受理成功，交互流水号写入xls中FlowId列")
-                write_excel_append(file, row, 2, Msg,index)  #向xls模板指定行列写入结果
-            elif '业务受理失败':
-                logger.info("业务受理失败，错误信息写入xls中x_result_info列")
-                write_excel_append(file, row, 3, Msg,index) #向xls模板指定行列写入结果
-        except :
-            logger.info("测试结果写入xls发生异常！")
-            write_excel_append(file, row, 3, '提交发生异常', index)  # 向xls模板指定行列写入结果
 
     def write_testResult(self,file,row,index=0):
         '''

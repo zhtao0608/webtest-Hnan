@@ -10,16 +10,20 @@ from Common.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import create_testDataFile
+from Common.TestDataMgnt import get_TestData,get_FuncRow,get_testDataFile
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('SubscriberOpenTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-file = ReadConfig.get_data_path() + 'UITest_SubscriberOpen_%s.xls' % time.strftime("%Y%m%d%H%M%S")
-paras = [{'NO':1,'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530028','OFFER_ID':'99091283','FLOWID':None,'RESULT_INFO':None},
-         {'NO':2, 'ACCESS_NUMBER': '18708727446', 'ICC_ID': '898600D0242447530038', 'OFFER_ID': '99091283','FLOWID': None, 'RESULT_INFO': None} ]
+paras = get_TestData('SubscriberOpenTest')
+ # file = ReadConfig.get_data_path() + 'UITest_SubscriberOpen_%s.xls' % time.strftime("%Y%m%d%H%M%S")
+# paras = [{'NO':1,'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530028','OFFER_ID':'99091283','FLOWID':None,'RESULT_INFO':None},
+#          {'NO':2, 'ACCESS_NUMBER': '18708727446', 'ICC_ID': '898600D0242447530038', 'OFFER_ID': '99091283','FLOWID': None, 'RESULT_INFO': None} ]
+file = get_testDataFile()
 logger.info('测试案例执行数据准备：{}'.format(paras))
-create_testDataFile(paras=paras,filename=file)
+row = get_FuncRow('SubscriberOpenTest')
+# create_testDataFile(paras=paras,filename=file)
 
 @ddt.ddt
 class SubscriberOpenTest(unittest.TestCase):
@@ -35,7 +39,7 @@ class SubscriberOpenTest(unittest.TestCase):
     def test_acceptSubscriberOpen(self,dic):
         """个人用户开户"""
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))   #标识行号，后续写入xls使用
+        # row = int(dic.get('NO'))   #标识行号，后续写入xls使用
         accessNum = str(dic.get('ACCESS_NUMBER'))
         simId = dic.get('ICC_ID')
         offerId = str(dic.get('OFFER_ID'))

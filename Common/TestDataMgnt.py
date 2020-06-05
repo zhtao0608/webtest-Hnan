@@ -1,6 +1,7 @@
 import os,time
+import xlrd
 from Base.GenTestData import GenTestData
-from Common.OperExcel import write_dict_xls
+from Common.OperExcel import write_dict_xls,getColumnIndex,getRowIndex
 from Common.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Common import ReadConfig
@@ -10,6 +11,29 @@ logger = LogManager('GroupBusiTest').get_logger_and_add_handlers(1,is_add_stream
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 ora = MyOracle()
+
+file = ReadConfig.data_path + 'UITest_TestData.xls'
+
+def get_testDataFile(filepath = file):
+    return filepath
+
+def get_TestData(FuncCode,filename = file,index=0):
+    '''根据FuncCode获取测试数据'''
+    xl = xlrd.open_workbook(filename)
+    sheet = xl.sheet_by_index(index)
+    row = getRowIndex(file=filename,value=FuncCode)
+    col = getColumnIndex(file=filename,columnName ='PARAMS')
+    paras = sheet.cell_value(row,col)  #取出来是个字符串
+    paras = eval(paras)
+    if isinstance(paras, tuple):
+        params = list(paras)
+    elif isinstance(paras,dict):
+        params = paras
+    return params # 转换成字典返回
+
+def get_FuncRow(FuncCode,filename = file):
+    '''根据测试函数获取对应的行数'''
+    return getRowIndex(file=filename,value=FuncCode)
 
 
 def create_testDataFile(paras,filename):
@@ -105,9 +129,18 @@ class MainPageData():
         paras = ora.select(conn=rc.get_oracle('param_thin'), sql=sql_menu)
         return paras
 
+
 if __name__ == '__main__':
     now = time.strftime("%Y%m%d%H%M%S")
     # file_MebDel = ReadConfig.get_data_path() + 'UITest_GrpMebBusiDelTest_%s.xls' % now
-    filename =  ReadConfig.get_data_path() + 'UITest_GrpBusiSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
-    file = create_testDataFile(paras = GrpTestData().get_GrpOfferInst(groupId= "'8712239560','8711400346'",offerId='6480',subOfferlist='100648000,100648001'),filename= filename)
-    print(file)
+    # filename =  ReadConfig.get_data_path() + 'UITest_GrpBusiSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
+    # file = create_testDataFile(paras = GrpTestData().get_GrpOfferInst(groupId= "'8712239560','8711400346'",offerId='6480',subOfferlist='100648000,100648001'),filename= filename)
+    # print(file)
+    params = get_TestData(filename=file,FuncCode='SubscriberOpenTest')
+    print('params=',params)
+    print(type(params))
+
+    rowIndex = get_FuncRow('SubscriberOpenTest')
+    print('row=',rowIndex)
+    print(len(params))
+    paras = list(params)

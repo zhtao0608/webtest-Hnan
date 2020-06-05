@@ -46,12 +46,24 @@ def getColumnIndex(file,columnName,index=0):
     xl = xlrd.open_workbook(file)
     sheet = xl.sheet_by_index(index)
     table = sheet.row_values(0)
-    # print('获取的table:',table)
     for i in range(len(table)):
         if table[i] == columnName:
             columnIndex = i
             break
     return columnIndex
+
+def getRowIndex(file,value,index=0):
+    '''根据xls表中的内容获取所在的行'''
+    xl = xlrd.open_workbook(file)
+    sheet = xl.sheet_by_index(index)
+    nrows = sheet.nrows
+    clos = sheet.ncols
+    print(nrows,clos)
+    for i in range(1,nrows):
+        for j in range(0,clos):
+            if sheet.cell_value(i,j) == value:
+                rowIndex = i
+    return rowIndex
 
 def get_xls(xls_name, sheet_name):
     """
@@ -232,9 +244,17 @@ def write_xlsBycolName_append(file,row,colName,value,index=0):
     # 将xlrd对象拷贝转化为xlwt对象
     new_workbook = copy(workbook)
     new_worksheet = new_workbook.get_sheet(index)  # 获取转化后工作簿中的第一个表格
-    columnName = colName
-    col = getColumnIndex(file,columnName,index)  #根据colName获取对应的列数
-    new_worksheet.write(row, col, value) # 像指定行列写入数据
+    colname = colName
+    col = getColumnIndex(file,colname,index)  #根据colName获取对应的列数
+    oldvalue = worksheet.cell_value(row,col)
+    if not isinstance(oldvalue, str):
+        oldvalue = str(oldvalue)
+    print('原来的单元格数据:',oldvalue)
+    if not isinstance(value, str):
+        value = str(value)
+    values = oldvalue + '\n' + value
+    print('新写入的数据:',values)
+    new_worksheet.write(row, col, values) # 像指定行列写入数据
     new_workbook.save(file)  # 保存工作簿
     print("xls格式表格【追加】写入数据成功！")
 
@@ -269,17 +289,29 @@ if __name__ == '__main__':
     # value = ['ok']
     # print(len(value))
     # write_excel_append(ReadConfig.data_path+"testdata2.xls", value)
-    # colIndex = getColumnIndex(ReadConfig.data_path+"UITest_GrpBusiOper.xls", 'subofferList', index=0)
-    # print('subofferList对应的列数：',colIndex)
+    # colIndex = getColumnIndex(ReadConfig.data_path + 'UITest_TestData.xls', 'PARAMS', index=0)
+    # print('PARAS对应的列数：',colIndex)
     # file = ReadConfig.data_path+"UITest_data_20200525005.xls"
     # print(file)
     # write_xlsBycolName_append(file, 2, 'RESULT_INFO', 'testtest-nonono')  # 向xls模板指定行列写入结果
 
-    file = ReadConfig.data_path+"UITest_ShareActive.xls"
-    value = [{'NO': 1, 'ACCESS_NUM': '18708700011', 'SUBSCRIBER_INS_ID': '7012082036480364', 'FLOW_ID': None, 'RESULT_INFO': None}, {'NO': 2, 'ACCESS_NUM': '18708700018', 'SUBSCRIBER_INS_ID': '7015102653160225', 'FLOW_ID': None, 'RESULT_INFO': None}, {'NO': 3, 'ACCESS_NUM': '18708700048', 'SUBSCRIBER_INS_ID': '7014011344200264', 'FLOW_ID': None, 'RESULT_INFO': None}]
-    # write_dict_xls(inputData =value, sheetName='testData', outPutFile=file)
-    write_xlsBycolName_append(file, 1, '检查点', '测试测试')
-    write_xlsBycolName_append(file, 1, '交互流水号', '1231231231231233')
+    # file = ReadConfig.data_path+"UITest_ShareActive.xls"
+    # value = [{'NO': 1, 'ACCESS_NUM': '18708700011', 'SUBSCRIBER_INS_ID': '7012082036480364', 'FLOW_ID': None, 'RESULT_INFO': None}, {'NO': 2, 'ACCESS_NUM': '18708700018', 'SUBSCRIBER_INS_ID': '7015102653160225', 'FLOW_ID': None, 'RESULT_INFO': None}, {'NO': 3, 'ACCESS_NUM': '18708700048', 'SUBSCRIBER_INS_ID': '7014011344200264', 'FLOW_ID': None, 'RESULT_INFO': None}]
+    # # write_dict_xls(inputData =value, sheetName='testData', outPutFile=file)
+    # write_xlsBycolName_append(file, 1, '检查点', '测试测试')
+    # write_xlsBycolName_append(file, 1, '交互流水号', '1231231231231233')
+    file = ReadConfig.data_path + 'UITest_TestData.xls'
+    rowindex = getRowIndex(file=file,value='SubscriberOpenTest')
+    print('SubscriberOpenTest所在的行:',rowindex)
+    colIndex = getColumnIndex(file, 'PARAMS', index=0)
+    print('PARAS对应的列数：',colIndex)
+    write_xlsBycolName_append(file, rowindex, 'FLOWID', '2222222')
+
+
+
+
+
+
 
 
 

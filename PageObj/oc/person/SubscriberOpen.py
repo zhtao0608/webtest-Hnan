@@ -86,9 +86,6 @@ class SubscriberOpen(PersonBase):
         #判断是否校验通过
         validMsg = PageAssert(self.driver).assert_WadeMsg() #不管校验是否通过都点击了确认按钮
         logger.info('SIM卡校验结果:' + validMsg)
-        if '校验失败' in validMsg:
-            self.screen()
-            self.quit_browse()
         return validMsg
 
     def set_personMainOffer(self,offerId):
