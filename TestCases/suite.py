@@ -1,5 +1,5 @@
 import unittest
-from Common import  HTMLTestRunnerCNNew
+from Base import HTMLTestRunnerCNNew
 import time
 from Common.function import project_path
 

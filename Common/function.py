@@ -90,9 +90,47 @@ def join_dictlists(list1,list2):
 		print('合并后的list:',newlist)
 		return newlist
 
+def convert_dicValueToList(dic):
+	'''传入字典，将字典value转换成List'''
+	if isinstance(dic,dict):
+		list_values = list(dic.values())
+		print('字典中的value列表:',list_values)
+		list_keys = list(dic.keys())
+		print('字典中的key列表:',list_keys)
+		return list_values
+	else:
+		print('传入的不是dict类型，不能转换！')
 
-# dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
-# print(get_enurl(dic_1))
+def convert_ListToDic(Keylist,Valuelist):
+	'''传入字典，将字典value转换成List'''
+	if isinstance(Keylist,list):
+		if isinstance(Valuelist,list):
+			dic = dict(zip(Keylist,Valuelist))
+	else:
+		print('传入的不是list类型，不能转换！')
+	return dic
+
+
+def convert_enurlToDic(enurl_str):
+	'''enUrl转换成Dict字典类型'''
+	print('传入的enUrl:',enurl_str)
+	enurl_str = enurl_str.replace('=', ":")
+	list_enurl = enurl_str.split('&')
+	# print('list_enurl=',list_enurl)
+	dict_key = []
+	dict_value = []
+	for i in range(len(list_enurl)):
+		value = list_enurl[i]
+		list_value = value.split(':')
+		# print(list_value)
+		# print(type(list_value))
+		for j in range(1,len(list_value)):
+			dict_key.append(list_value[0])
+			dict_value.append(list_value[1])
+	# print('dict_key=',dict_key)
+	# print('dict_value',dict_value)
+	return convert_ListToDic(dict_key,dict_value)
+
 
 # if __name__ == '__main__':
 #     print("项目路径"+project_path())
@@ -102,6 +140,51 @@ def join_dictlists(list1,list2):
 #     print("被测系统Url:"+config_url())
 
 if __name__ == '__main__':
+	dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
+	str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"
+	dict_enUrl = convert_enurlToDic(str)
+	print('=====',dict_enUrl)
+	# print(get_enurl(dic_1))
+	# enurl_str = get_enurl(dic_1).replace('=',":")
+	# list_enurl = enurl_str.split('&')
+	# print('list_enurl=',list_enurl)
+	# dict_key = []
+	# dict_value = []
+	# for i in range(len(list_enurl)):
+	# 	value = list_enurl[i]
+	# 	list_value = value.split(':')
+	# 	print(list_value)
+	# 	print(type(list_value))
+	# 	for j in range(1,len(list_value)):
+	# 		dict_key.append(list_value[0])
+	# 		dict_value.append(list_value[1])
+	# print('dict_key=',dict_key)
+	# print('dict_value',dict_value)
+	# dict = convert_ListToDic(dict_key,dict_value)
+	# print(dict)
+
+	# print(convert_ListToDic(dict_key,dict_value))
+	# print('转换后的dict====',dict)
+
+
+
+		# dict_i = eval(list_enurl[i])
+		# print(dict_i)
+
+		# print(value.split(':'))
+		# value_list = list(value)
+		# print(value_list)
+
+	# keylist = []
+		# for j in range(len(value)):
+		# 	# key = str(value).split(':')
+		# 	# keylist.append(key)
+		# 	print(keylist)
+		# for j in range(len(value)):
+		# 	dict_key = value[0]
+		# 	dict_value = value[1]
+		# 	print(dict_key,dict_value)
+
 	daten = date_n(10)
 	print('n天后的日期:' ,daten)
 	datetimen = datetime_n(30)
@@ -302,6 +385,15 @@ if __name__ == '__main__':
 	print(newlist)
 	subofferList = '800001,990013,990013445,99315 '.replace(' ','').split(',')
 	print(subofferList)
+
+	dic_1 = {'No': 1, 'CaseName': '集团商品订购，订购ADC集团管家商品', 'flowid': '7220052100507558', 'x_result_info': 'testtest', 'groupId': '8711400551', 'mainoffer': '6480', 'accessNum': '13887241120', 'subofferList': '100648000,  100648001  ', 'grp_offer_ins_id': '', 'Expect_result ': 'ok'}
+	list_values = [i for i in dic_1.values()]
+	print(list_values)
+	list_keys= [ i for i in dic_1.keys()]
+	print(list_keys)
+
+	# dic_list=dict(zip(list_keys,list_values))
+	# print('==========',dic_list)
 
 
 	# print(lista + listb)

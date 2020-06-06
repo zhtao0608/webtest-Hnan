@@ -14,10 +14,11 @@ from TestCases.suite import mySuitePrefixAdd
 logger = LogManager('test').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 ora = MyOracle()
 #取20个未实名制的测试号码客户信息：
-sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_ins_id ,to_char(a.iden_id) iden_id,a.iden_type_id,a.iden_nr,b.party_name,\
-      to_char(t.cust_id) cust_id ,'' flowid , '' result_info  \
+sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_ins_id , \
+      to_char(a.iden_id) iden_id,'' NEW_IDENID ,a.iden_type_id,a.iden_nr,b.party_name,\
+      to_char(t.cust_id) cust_id ,'' flowid , '' result_info  ,'' NEWCUSTNAME \
      FROM  uop_file4.um_subscriber T ,uop_cp.cb_identification a,uop_cp.cb_party b  \
-      where t.remove_tag = '0' and t.access_num in ('18787217872','18787234202','18760919557') and t.mgmt_district = '0872'\
+      where t.remove_tag = '0' and t.access_num LIKE '188%' and t.mgmt_district = '0872'\
      and a.party_id = t.cust_id \
      and a.party_id = b.party_id \
      and rownum <=100"
@@ -25,7 +26,7 @@ sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_i
 paras = ora.select(sql)
 logger.info('测试准备数据:{}'.format(paras))
 now = time.strftime("%Y%m%d%H%M%S")
-file = ReadConfig.get_data_path() + 'ApiTest_ModfiyRealChkInfo_%s.xlsx' % now
+file = ReadConfig.get_data_path() + 'ApiTest_ModfiyRealChkInfo_%s.xls' % now
 #生成xls表,方便后续写入测试结果
 write_dict_xls(inputData=paras, sheetName='实名制登记', outPutFile=file)
 logger.info('写入测试数据到xls.....')
@@ -61,9 +62,9 @@ class ModfiyRealChkInfo(unittest.TestCase):
         IdenId= str(dic.get('IDEN_ID'))
         custName = GenTestData().create_CustName() #随机生成姓名
         psptId = GenTestData().Create_Idcard() #随机身份证号码
-        logger.info('证件号码:{}'.format(psptId))
-        write_xlsBycolName_append(file=file,row=index,colName='PARTY_NAME',value=custName)
-        write_xlsBycolName_append(file=file,row=index,colName='IDEN_NR',value=psptId)
+        # logger.info('证件号码:{}'.format(psptId))
+        write_xlsBycolName_append(file=file,row=index,colName='NEWCUSTNAME',value=custName)
+        write_xlsBycolName_append(file=file,row=index,colName='NEW_IDENID',value=psptId)
 
         params = {
             "CUSTINFO_PSPT_ID": psptId, # 证件号先写死这个

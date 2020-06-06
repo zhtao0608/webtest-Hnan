@@ -47,8 +47,10 @@ file = ReadConfig.get_data_path() + 'UITest_ChgPayRelaTest_%s.xls' % now
 write_dict_xls(inputData=paras, sheetName='普通付费关系变更', outPutFile=file)
 logger.info('写入测试数据到xls.....')
 
+@ddt.ddt
 class ChgPayRelaTest(unittest.TestCase):
     '''普通普通关系变更'''
+    @classmethod
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.get(rc.get_ngboss('url'))     #这里可以切换环境，去ngboss_config.ini配置
@@ -83,6 +85,7 @@ class ChgPayRelaTest(unittest.TestCase):
             test.find_element_click(loc_separater)
         elif operCode == '2': #合账
             logger.info('选择的是合帐操作')
+            SerialNum = str(dic.get('SERIAL_NUM'))
             test.set_mergeSerialNum(SerialNum)
             vaildMsg = PageAssert(self.driver).assert_error()
             logger.info('付费号码校验结果：{}'.format(vaildMsg))

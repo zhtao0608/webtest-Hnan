@@ -9,14 +9,18 @@ from Base.OperExcel import get_exceldata,write_xlsBycolName_append
 from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
+from Common.TestDataMgnt import get_testDataFile,get_FuncRow,get_TestData
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('OfferOperTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-file = ReadConfig.data_path + 'UITest_ShareActive.xls'
-paras = get_exceldata(file,0)
-logger.info('测试案例执行数据准备：{}'.format(paras))
+# file = ReadConfig.data_path + 'UITest_ShareActive.xls'
+# paras = get_exceldata(file,0)
+# logger.info('测试案例执行数据准备：{}'.format(paras))
+file = get_testDataFile()
+paras = get_TestData('ShareActiveTest')
+row = get_FuncRow('ShareActiveTest')
 
 @ddt.ddt
 class ShareActiveTest(unittest.TestCase):
@@ -27,11 +31,11 @@ class ShareActiveTest(unittest.TestCase):
         self.driver.maximize_window()
         # self.driver.implicitly_wait(20)    #暂时设置40s，隐式等待
 
-    @ddt.data(*paras)
+    @ddt.data(paras)
     def test_acceptShareActive(self,dic):
         """家庭畅享活动办理"""
         logger.info("开始参数化......")
-        row = int(dic.get('No'))   #标识行号，后续写入xls使用
+        # row = int(dic.get('No'))   #标识行号，后续写入xls使用
         accessNum = str(dic.get('主号'))
         logger.info("主号:{}".format(accessNum))
         offerId = str(dic.get('活动ID'))
@@ -71,10 +75,10 @@ class ShareActiveTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         if '业务受理成功' in submitMsg :
             logger.info('写入受理成功结果到xls.....')
-            write_xlsBycolName_append(file=file ,row=row,colName='交互流水号',value=submitMsg)
+            write_xlsBycolName_append(file=file ,row=row,colName='FLOWID',value=submitMsg)
         else:
             logger.info('写入受理失败结果到xls....')
-            write_xlsBycolName_append(file=file ,row=row,colName='检查点',value=submitMsg)
+            write_xlsBycolName_append(file=file ,row=row,colName='RESULT_INFO',value=submitMsg)
         test.save_docreport(title)
         time.sleep(3)
         test.driver.close()

@@ -17,9 +17,6 @@ rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('SubscriberOpenTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
 paras = get_TestData('SubscriberOpenTest')
- # file = ReadConfig.get_data_path() + 'UITest_SubscriberOpen_%s.xls' % time.strftime("%Y%m%d%H%M%S")
-# paras = [{'NO':1,'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530028','OFFER_ID':'99091283','FLOWID':None,'RESULT_INFO':None},
-#          {'NO':2, 'ACCESS_NUMBER': '18708727446', 'ICC_ID': '898600D0242447530038', 'OFFER_ID': '99091283','FLOWID': None, 'RESULT_INFO': None} ]
 file = get_testDataFile()
 logger.info('测试案例执行数据准备：{}'.format(paras))
 row = get_FuncRow('SubscriberOpenTest')
@@ -71,6 +68,7 @@ class SubscriberOpenTest(unittest.TestCase):
             time.sleep(5)
         submitMsg = PageAssert(self.driver).assert_Submit()  # 提交后返回信息，flowId或者报错
         print('===提交后页面返回信息：', submitMsg)
+        test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         # 点击确认支付后，页面返回的信息写入xls
         PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
         logger.info('写入测试结果到xls成功.....')

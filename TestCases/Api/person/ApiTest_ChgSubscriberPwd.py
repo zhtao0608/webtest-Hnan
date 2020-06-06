@@ -16,8 +16,8 @@ ora = MyOracle()
 sql = "select rownum No ,'' flowid , '' result_info ,t.access_num , \
     t.password Old_pwd,uop_file4.f_csb_encrypt('108109',t.subscriber_ins_id) new_pwd ,t.subscriber_ins_id \
     from  uop_file4.um_subscriber t \
-    where t.access_num in ('13908816675') \
-    and t.remove_tag = '0' and rownum <=10"
+    where t.access_num like '139%' \
+    and t.remove_tag = '0' and rownum <=3"
 
 paras = ora.select(sql)
 logger.info('测试准备数据:{}'.format(paras))

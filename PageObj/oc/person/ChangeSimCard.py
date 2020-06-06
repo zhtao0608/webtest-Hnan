@@ -43,7 +43,7 @@ class ChangeSimCard(PersonBase):
         :return:
         '''
         sel_loc = (By.ID,'LEVEL_TYPE_CODE_span') #点击
-        li_pwd = (By.CSS_SELECTOR,'#LEVEL_TYPE_CODE_float > div.content > div > div > ul > li:nth-child(3)') #选择服务密码
+        li_pwd = (By.XPATH,'//ul[@id="LEVEL_TYPE_CODE_list_ul"]/li[contains(@title,"服务密码")]') #选择服务密码
         # li_iden = (By.XPATH,'//*[@id="LEVEL_TYPE_CODE_list_ul"]/li[2]')
         # li_iden = (By.CSS_SELECTOR, '#LEVEL_TYPE_CODE_float > div.content > div > div > ul > li:nth-child(2)') #选择证件
         text_custName = (By.ID,'LOGIN_NAME') #客户姓名
@@ -60,7 +60,7 @@ class ChangeSimCard(PersonBase):
         self.find_element_click(Btn_confirm) #点击确定
         time.sleep(2)
 
-    def check_CustInfoByIdcard(self):
+    def check_CustInfoByIdcard(self,custName,IdenNr):
         '''选择服务密码验证，输入客户名称和服务密码，点击确定
         :param custName:客户名称
         :param userPwd:服务密码
@@ -68,7 +68,7 @@ class ChangeSimCard(PersonBase):
         '''
         sel_loc = (By.ID,'LEVEL_TYPE_CODE_span') #点击
         # li_pwd = (By.CSS_SELECTOR,'#LEVEL_TYPE_CODE_float > div.content > div > div > ul > li:nth-child(3)') #选择服务密码
-        li_iden = (By.CSS_SELECTOR, '#LEVEL_TYPE_CODE_float > div.content > div > div > ul > li:nth-child(2)') #选择证件
+        li_iden = (By.XPATH,'//ul[@id="LEVEL_TYPE_CODE_list_ul"]/li[contains(@title,"二代身份证（换卡手输）")]') #选择证件
         text_custName = (By.ID,'LOGIN_NAME') #客户姓名
         text_pwd = (By.ID,'LOGIN_VAL') #服务密码
         Btn_confirm = (By.ID,'BSL_SUBMIT_BTN') #确定按钮
@@ -76,38 +76,38 @@ class ChangeSimCard(PersonBase):
         time.sleep(2)
         self.find_element_click(li_iden)
         time.sleep(1)
-        custName = GenTestData().create_CustName()
-        idCard = GenTestData().Create_Idcard()
+        # custName = GenTestData().create_CustName()
+        # idCard = GenTestData().Create_Idcard()
         self.sendkey(text_custName,custName) #输入客户姓名
-        self.sendkey(text_pwd,idCard) #输入密码
+        self.sendkey(text_pwd,IdenNr) #输入密码
         self.screen_step('输入客户名称和服务密码，点击提交')
         self.find_element_click(Btn_confirm) #点击确定
         time.sleep(2)
 
 
-    def vaild_Customer(self):
-        '''校验客户信息'''
-        Loc_msg = (By.XPATH,"//div[@class='c_msg c_msg-h c_msg-phone-v c_msg-full' and not(contains(@style,'display: none'))]/div/div[2]/div[1]/div[2]")
-        try :
-            Vaildmsg = self.isElementDisplay(Loc_msg, 'text')
-            time.sleep(3)
-            logger.info('提示信息：' + Vaildmsg)
-            print('提示信息：' + Vaildmsg)
-            self.screen_step('验证信息：{}'.format(Vaildmsg))
-            self.sendEnter()   #按回车键（继续办理）
-            return Vaildmsg
-        except Exception as e:
-            print(e)
-            logger.info('出现异常:{}'.format(e))
+    # def vaild_Customer(self):
+    #     '''校验客户信息'''
+    #     Vaildmsg = PageAssert(self.driver).assert_WarnPage() #告警信息
+    #     try :
+    #         Vaildmsg = self.isElementDisplay(Loc_msg, 'text')
+    #         time.sleep(3)
+    #         logger.info('提示信息：' + Vaildmsg)
+    #         print('提示信息：' + Vaildmsg)
+    #         self.screen_step('验证信息：{}'.format(Vaildmsg))
+    #         self.sendEnter()   #按回车键（继续办理）
+    #         return Vaildmsg
+    #     except Exception as e:
+    #         print(e)
+    #         logger.info('出现异常:{}'.format(e))
 
-    def accept_ChangeSimCard(self,AccessNum,simId,userPwd,password='123123'):
+    def accept_ChangeSimCard(self,AccessNum,simId,custName,IdenNr,password='123123'):
         '''
         受理换卡业务
         :param accessNum: 手机号码
         :param simId: 新SIM卡号
         :param custName: 客户姓名
         :param userPwd: 服务密码
-        :param password: 用户登录密码
+        :param IdenNr: 要校验证件
         '''
         title = '换卡业务受理测试记录'
         self.add_dochead(title)
@@ -122,8 +122,8 @@ class ChangeSimCard(PersonBase):
         if '业务校验失败' in RuleMsg:
             self.quit_browse() #业务规则校验失败，直接终止程序
         self.screen_step('进入换卡菜单')
-        self.check_CustInfoBypwd(userPwd)
-        Vaild_custMsg = self.vaild_Customer()
+        self.check_CustInfoByIdcard(custName,IdenNr)
+        Vaild_custMsg = PageAssert(self.driver).assert_WarnPage()
         print('客户验证信息:{}'.format(Vaild_custMsg))
         logger.info('客户验证信息:{}'.format(Vaild_custMsg))
         time.sleep(2)

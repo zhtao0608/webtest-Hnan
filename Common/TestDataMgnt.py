@@ -129,17 +129,18 @@ class MainPageData():
         return paras
 
 
+
 if __name__ == '__main__':
     now = time.strftime("%Y%m%d%H%M%S")
     # file_MebDel = ReadConfig.get_data_path() + 'UITest_GrpMebBusiDelTest_%s.xls' % now
     # filename =  ReadConfig.get_data_path() + 'UITest_GrpBusiSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
     # file = create_testDataFile(paras = GrpTestData().get_GrpOfferInst(groupId= "'8712239560','8711400346'",offerId='6480',subOfferlist='100648000,100648001'),filename= filename)
     # print(file)
-    params = get_TestData(filename=file,FuncCode='SubscriberOpenTest')
+    params = get_TestData(filename=file,FuncCode='ChangeSimCardTest')
     print('params=',params)
     print(type(params))
 
-    rowIndex = get_FuncRow('SubscriberOpenTest')
+    rowIndex = get_FuncRow('ChangeSimCardTest')
     print('row=',rowIndex)
     print(len(params))
     paras = list(params)

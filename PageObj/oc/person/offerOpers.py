@@ -39,7 +39,7 @@ class OfferOperPage(PersonBase):
         self.driver.switch_to.frame(loc_frame)
         logger.info("OfferDetail:" + str(loc_frame))
         print("OfferDetail:" + str(loc_frame))
-        time.sleep(10)
+        time.sleep(10)  #进入商品订购页面非常慢
         self.screen_step('进入商品订购页面')
         return self.driver
 
