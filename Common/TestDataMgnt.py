@@ -6,6 +6,7 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import join_dictlists
+from Common.function import convertParatoList
 
 logger = LogManager('GroupBusiTest').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -18,18 +19,24 @@ def get_testDataFile(filepath = file):
     return filepath
 
 def get_TestData(FuncCode,filename = file,index=0):
-    '''根据FuncCode获取测试数据'''
+    '''
+    根据FuncCode获取测试数据，并统一转换成List数据结构，方便DDT数据驱动
+    :param FuncCode:案例编码
+    :param filename:测试数据管理文件
+    :param index:xls模板的sheet索引，默认第一个sheet页
+    :return:返回一个字典，数据文件Filename和对应的参数Params（List类型）
+    '''
     xl = xlrd.open_workbook(filename)
     sheet = xl.sheet_by_index(index)
     row = getRowIndex(file=filename,value=FuncCode)
     col = getColumnIndex(file=filename,columnName ='PARAMS') #该列指定
     paras = sheet.cell_value(row,col)  #取出来是个字符串
-    paras = eval(paras)
-    if isinstance(paras, tuple):
-        params = list(paras)
-    elif isinstance(paras,dict):
-        params = paras
-    return params # 转换成字典返回
+    print('测试案例编码:{},读取出来的原始参数:{},数据类型:{}'.format(FuncCode,paras,type(paras)))
+    params = convertParatoList(paras)  #将传入参数类型统一成List列表返回
+    # file = get_testDataFile
+    row = get_FuncRow(FuncCode)
+    dic_fileParas = {'filename':file,'params':params,'FuncRow':row}
+    return dic_fileParas # 转换成字典返回
 
 def get_FuncRow(FuncCode,filename = file):
     '''根据测试函数获取对应的行数'''
@@ -136,11 +143,28 @@ if __name__ == '__main__':
     # filename =  ReadConfig.get_data_path() + 'UITest_GrpBusiSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
     # file = create_testDataFile(paras = GrpTestData().get_GrpOfferInst(groupId= "'8712239560','8711400346'",offerId='6480',subOfferlist='100648000,100648001'),filename= filename)
     # print(file)
-    params = get_TestData(filename=file,FuncCode='ChangeSimCardTest')
-    print('params=',params)
-    print(type(params))
+    # fileparams = get_TestData(filename=file,FuncCode='SubscriberOpenTest')
+    # print(fileparams)
+    # print('转换后的参数params=',fileparams['params'])
+    # print(type(fileparams['params']))
+    # print('返回数据文件名：',fileparams['filename'])
+    # 分账
+    file = get_testDataFile()
+    params = []
+    # 分账
+    paras_sep = get_TestData(FuncCode='ChgPayRelaSeprate')['params']
+    logger.info('普通付费关系变更测试准备数据:{}'.format(paras_sep))
+    params.extend(paras_sep)
+    # 合帐
+    paras_merge = get_TestData(FuncCode='ChgPayRelaMerge')['params']
+    logger.info('普通付费关系变更测试准备数据:{}'.format(paras_merge))
+    params.extend(paras_merge)
+    params = params
+    print(params)
+    print('======合并后=====',params)
 
-    rowIndex = get_FuncRow('ChangeSimCardTest')
-    print('row=',rowIndex)
-    print(len(params))
-    paras = list(params)
+
+    # rowIndex = get_FuncRow('ChangeSimCardTest')
+    # print('row=',rowIndex)
+    # print(len(params))
+    # paras = list(params)

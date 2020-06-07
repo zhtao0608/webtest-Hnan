@@ -10,42 +10,53 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
 from Common.Assert import PageAssert
+from Common.TestDataMgnt import get_TestData,get_testDataFile
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('ChangeProdStatusTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-ora = MyOracle()
-'''
-operCode == '1' 分账
-operCode == '2' 合账
-'''
-#分账
-sql_sep = "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM ,'1' Oper_code from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
-where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS='0' and a.EXPIRE_DATE> sysdate \
-and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
-and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
-and rownum <=3 "
+# ora = MyOracle()
+# '''
+# operCode == '1' 分账
+# operCode == '2' 合账
+# '''
+# #分账
+# sql_sep = "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM ,'1' Oper_code from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
+# where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS='0' and a.EXPIRE_DATE> sysdate \
+# and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
+# and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
+# and rownum <=3 "
+#
+# # 合帐
+# sql_merg =  "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM ,'2' Oper_code from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
+# where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS='0' and a.EXPIRE_DATE> sysdate \
+# and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
+# and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
+# and rownum <=3 "
 
+# paras_sep= ora.select(sql_sep) #  分账
+# paras_merg= ora.select(sql_merg) #  分账
+#
+# paras = paras_sep
+# # paras = paras_merg
+file = get_testDataFile()
+params = []
+# 分账
+paras_sep = get_TestData(FuncCode='ChgPayRelaSeprate')['params']
+logger.info('普通付费关系变更测试准备数据:{}'.format(paras_sep))
+params.extend(paras_sep)
 # 合帐
-sql_merg =  "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM ,'2' Oper_code from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
-where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS='0' and a.EXPIRE_DATE> sysdate \
-and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
-and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
-and rownum <=3 "
-
-paras_sep= ora.select(sql_sep) #  分账
-paras_merg= ora.select(sql_merg) #  分账
-
-paras = paras_sep
-# paras = paras_merg
-
-logger.info('普通付费关系变更测试准备数据:{}'.format(paras))
-now = time.strftime("%Y%m%d%H%M%S")
-file = ReadConfig.get_data_path() + 'UITest_ChgPayRelaTest_%s.xls' % now
-#生成xls表,方便后续写入测试结果
-write_dict_xls(inputData=paras, sheetName='普通付费关系变更', outPutFile=file)
-logger.info('写入测试数据到xls.....')
+paras_merge = get_TestData(FuncCode='ChgPayRelaMerge')['params']
+logger.info('普通付费关系变更测试准备数据:{}'.format(paras_merge))
+params.extend(paras_merge)
+params = params
+print('======合并后=====', params)
+# now = time.strftime("%Y%m%d%H%M%S")
+# file = ReadConfig.get_data_path() + 'UITest_ChgPayRelaTest_%s.xls' % now
+# #生成xls表,方便后续写入测试结果
+# write_dict_xls(inputData=paras, sheetName='普通付费关系变更', outPutFile=file)
+# logger.info('写入测试数据到xls.....')
 
 @ddt.ddt
 class ChgPayRelaTest(unittest.TestCase):
@@ -57,15 +68,15 @@ class ChgPayRelaTest(unittest.TestCase):
         self.driver.maximize_window()
         #self.driver.implicitly_wait(40)    #暂时设置40s，隐式等待
 
-    @ddt.data(*paras)
+    @ddt.data(*params)
+    # @ddt.unpack
     def test_accept_chgPayRela(self,dic):
         """普通付费关系变更受理"""
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))   #标识行号，后续写入xls使用
-        print('开始执行第{}个用例,测试数据：{}'.format(row,dic))
+        print('开始执行用例,测试数据：{}'.format(dic))
         accessNum = str(dic.get('ACCESS_NUM'))
         operCode = str(dic.get('OPER_CODE'))  #SQL读入
-        logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
+        logger.info('开始执行用例，测试数据：{}'.format(dic))
         ####测试用例步骤
         test = ChangePayRelaNor(self.driver)
         title = '普通付费关系变更测试记录'
@@ -81,10 +92,12 @@ class ChgPayRelaTest(unittest.TestCase):
         time.sleep(3)
         #业务办理
         if operCode == '1' :  #分账
+            row = get_TestData('ChgPayRelaSeprate')['FuncRow']
             logger.info('选择的是分账操作')
             test.find_element_click(loc_separater)
         elif operCode == '2': #合账
             logger.info('选择的是合帐操作')
+            row = get_TestData('ChgPayRelaMerge')['FuncRow']
             SerialNum = str(dic.get('SERIAL_NUM'))
             test.set_mergeSerialNum(SerialNum)
             vaildMsg = PageAssert(self.driver).assert_error()
@@ -102,6 +115,7 @@ class ChgPayRelaTest(unittest.TestCase):
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
+        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
         self.driver.close()
 
 if __name__ == '__main__':

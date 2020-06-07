@@ -20,7 +20,6 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('ChangeSimCardTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-
 # ora = MyOracle()
 # #取换卡号码
 # sql_accessNum = "select rownum No ,'' flowid , '' result_info ,t.access_number,t.icc_id oldSimID  from uop_res.res_num_used t  \
@@ -41,11 +40,9 @@ logger = LogManager('ChangeSimCardTest').get_logger_and_add_handlers(1, log_path
 # write_dict_xls(inputData=paras, sheetName='换卡测试', outPutFile=file)
 # logger.info('写入测试数据到xls.....')
 
-paras = get_TestData(FuncCode='ChangeSimCardTest')
-print(paras)
-print(type(paras))
-file = get_testDataFile()
-row = get_FuncRow(FuncCode='ChangeSimCardTest')
+paras = get_TestData(FuncCode='ChangeSimCardTest')['params']
+file = get_TestData(FuncCode='ChangeSimCardTest')['filename']
+row = get_TestData(FuncCode='ChangeSimCardTest')['FuncRow']
 
 @ddt.ddt
 class ChangeSimCardTest(unittest.TestCase):

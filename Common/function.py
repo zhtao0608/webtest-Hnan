@@ -110,7 +110,6 @@ def convert_ListToDic(Keylist,Valuelist):
 		print('传入的不是list类型，不能转换！')
 	return dic
 
-
 def convert_enurlToDic(enurl_str):
 	'''enUrl转换成Dict字典类型'''
 	print('传入的enUrl:',enurl_str)
@@ -131,6 +130,23 @@ def convert_enurlToDic(enurl_str):
 	# print('dict_value',dict_value)
 	return convert_ListToDic(dict_key,dict_value)
 
+def convertParatoList(paras):
+	'''
+	:param paras: 传入的参数值，可能是list、tuple、Str、Dict等各种数据类型
+	:return: Paras转换成List数据类型返回
+	'''
+	print('传入的Paras的参数类型:{}'.format(type(paras)))
+	print('原始参数:{}'.format(paras))
+	paras = eval(paras)  #用eval函数处理转换
+	if isinstance(paras, tuple):
+		params = list(paras)
+	elif isinstance(paras, dict):
+		dicList = []
+		dicList.append(paras)
+		params = dicList
+	elif isinstance(paras, list):
+		params = paras
+	return params  # 转换成字典返回
 
 # if __name__ == '__main__':
 #     print("项目路径"+project_path())
@@ -398,3 +414,8 @@ if __name__ == '__main__':
 
 	# print(lista + listb)
 
+
+	paras = "{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'}"
+	params = convertParatoList(paras)
+	print('转换后Params=',params)
+	print('转换后Params类型:',type(params))
