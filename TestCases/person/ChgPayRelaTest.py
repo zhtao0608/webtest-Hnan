@@ -117,6 +117,10 @@ class ChgPayRelaTest(unittest.TestCase):
         PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
         self.driver.close()
 
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
+        self.driver.close()
+
 if __name__ == '__main__':
     report_title = u'普通付费关系变更自动化测试报告'
     desc = u'普通付费关系测试详情：'

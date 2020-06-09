@@ -11,22 +11,26 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
 from Common.Assert import PageAssert
+from Common.TestDataMgnt import get_TestData
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('DestroyUserTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-ora = MyOracle()
-sql = "SELECT rownum No ,t.access_num,to_char(t.subscriber_ins_id) subscriber_ins_id ,'' flowid , '' result_info \
-    FROM  uop_file4.um_subscriber  T where t.access_num in ('18887010689','18887029851','18887032321') "
-paras = ora.select(sql)
-
-logger.info('测试准备数据:{}'.format(paras))
-now = time.strftime("%Y%m%d%H%M%S")
-file = ReadConfig.get_data_path() + 'UITest_DestroyUser_%s.xls' % now
-#生成xls表,方便后续写入测试结果
-write_dict_xls(inputData=paras, sheetName='销户测试', outPutFile=file)
-logger.info('写入测试数据到xls.....')
+# ora = MyOracle()
+# sql = "SELECT rownum No ,t.access_num,to_char(t.subscriber_ins_id) subscriber_ins_id ,'' flowid , '' result_info \
+#     FROM  uop_file4.um_subscriber  T where t.access_num in ('18887010689','18887029851','18887032321') "
+# paras = ora.select(sql)
+#
+# logger.info('测试准备数据:{}'.format(paras))
+# now = time.strftime("%Y%m%d%H%M%S")
+# file = ReadConfig.get_data_path() + 'UITest_DestroyUser_%s.xls' % now
+# #生成xls表,方便后续写入测试结果
+# write_dict_xls(inputData=paras, sheetName='销户测试', outPutFile=file)
+# logger.info('写入测试数据到xls.....')
+file = get_TestData('DestroyUserTest')['filename']
+row = get_TestData('DestroyUserTest')['FuncRow']
+paras = get_TestData('DestroyUserTest')['params']
 
 @ddt.ddt
 class DestroyUserTest(unittest.TestCase):
@@ -41,7 +45,7 @@ class DestroyUserTest(unittest.TestCase):
     def test_destroyUser(self,dic):
         """销户"""
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))   #标识行号，后续写入xls使用
+        # row = int(dic.get('NO'))   #标识行号，后续写入xls使用
         print('开始执行第{}个用例,测试数据：{}'.format(row,dic))
         accessNum = str(dic.get('ACCESS_NUM'))
         logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
@@ -77,6 +81,10 @@ class DestroyUserTest(unittest.TestCase):
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
         PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        self.driver.close()
+
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
         self.driver.close()
 
 if __name__ == '__main__':

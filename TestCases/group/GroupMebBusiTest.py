@@ -12,16 +12,19 @@ from Base.OracleOper import MyOracle
 # from Common.function import join_dictlists
 # from Common.TestDataMgnt import GrpTestData
 # from Common.TestDataMgnt import create_testDataFile
-from Common.TestDataMgnt import get_TestData
+from Common.TestDataMgnt import get_TestData,get_testDataFile
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-GrpMebsubList = []
-file = get_TestData('SubGrpVpmnMeb')['filename']
+# file = get_TestData('SubGrpVpmnMeb')['filename']
+file = get_testDataFile()
+
 AdcMebsubList = get_TestData('SubGrpAdcMeb')['params'] # ADC集团管家成员订购
 # GrpMebsubList.extend(AdcMebsubList)
+
+GrpMebsubList = []
 VpmnMebsubList = get_TestData('SubGrpVpmnMeb')['params'] #Vpmn成员订购
 GrpMebsubList.extend(VpmnMebsubList)
 ImsMebsubList = get_TestData('SubGrpImsMeb')['params'] #多媒体桌面电话成员订购
@@ -201,6 +204,10 @@ class GroupMebBusi(unittest.TestCase):
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
         PageAssert(self.driver).write_testResult(file=file,row=get_TestData('DelGrpMebOffer')['FuncRow'],index=0) #写入结果到xls
+        self.driver.close()
+
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
         self.driver.close()
 
 if __name__ == '__main__':

@@ -9,14 +9,16 @@ from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import GrpTestData
-from Common.TestDataMgnt import get_TestData
+from Common.TestDataMgnt import get_TestData,get_testDataFile
 
 logger = LogManager('GroupBusiTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 
 AdminNum = '15240837862'
-file = get_TestData('OpenGrpAdc')['filename']
+# file = get_TestData('OpenGrpAdc')['filename']
+file = get_testDataFile()
+
 paras_GrpADCSub = get_TestData('OpenGrpAdc')['params']   # ADC受理参数
 paras_GrpVpmnSub = get_TestData('OpenGrpVpmn')['params']  #VPMN集团订购受理参数
 paras_GrpImsSub = get_TestData('OpenGrpIms')['params']    #IMS多媒体电话集团订购受理参数
@@ -33,8 +35,6 @@ paras_GrpBusiCancel = get_TestData('CanelGrpIms')['params']
 # file_grpBusiCancel = ReadConfig.get_data_path() + 'UITest_GrpBusiCancelTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
 # paras_GrpBusiCancel = GrpTestData().get_GrpOfferInst(groupId="'8711440277'",offerId='8000')
 # create_testDataFile(paras=paras_GrpBusiCancel,filename=file_grpBusiCancel)
-
-
 
 @ddt.ddt
 class GroupBusi(unittest.TestCase):
@@ -159,6 +159,9 @@ class GroupBusi(unittest.TestCase):
         PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
+        self.driver.close()
 if __name__ == '__main__':
     report_title = u'集团商品业务受理自动化测试报告'
     desc = u'集团商品受理测试详情'

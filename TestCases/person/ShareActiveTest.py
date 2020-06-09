@@ -19,7 +19,7 @@ logger = LogManager('OfferOperTest').get_logger_and_add_handlers(1, log_path=Rea
 # paras = get_exceldata(file,0)
 # logger.info('测试案例执行数据准备：{}'.format(paras))
 file = get_testDataFile()
-paras = get_TestData('ShareActiveTest')
+paras = get_TestData('ShareActiveTest')['params']
 row = get_FuncRow('ShareActiveTest')
 
 @ddt.ddt
@@ -82,6 +82,10 @@ class ShareActiveTest(unittest.TestCase):
         test.save_docreport(title)
         time.sleep(3)
         test.driver.close()
+
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
+        self.driver.close()
 
 if __name__ == '__main__':
     report_title = u'家庭畅享活动办理自动化测试报告'

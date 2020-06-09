@@ -140,6 +140,9 @@ class MenuTest(unittest.TestCase):
         self.assertIn('客户关系管理系统CRM', self.driver.title)
         self.driver.close()
 
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
+        self.driver.close()
 
 if __name__ == '__main__':
     report_title = u'菜单自动化测试报告自动化测试报告'

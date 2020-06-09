@@ -62,6 +62,10 @@ class EcCampnOperTest(unittest.TestCase):
         self.driver.close()
         time.sleep(3)
 
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
+        self.driver.close()
+
 if __name__ == '__main__':
     report_title = u'集团营销活动受理自动化测试报告'
     desc = u'集团营销活动受理测试详情'

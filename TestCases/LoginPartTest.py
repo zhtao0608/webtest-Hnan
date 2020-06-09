@@ -53,6 +53,9 @@ class LoginTest(unittest.TestCase):
         self.assertIn("8721420859", res)
         self.driver.close()
 
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
+        self.driver.close()
 
 if __name__ == '__main__':
     report_title = u'号码登录自动化测试报告'

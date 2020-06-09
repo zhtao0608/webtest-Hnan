@@ -16,10 +16,10 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('SubscriberOpenTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-paras = get_TestData('SubscriberOpenTest')
-file = get_testDataFile()
-logger.info('测试案例执行数据准备：{}'.format(paras))
+paras = get_TestData('SubscriberOpenTest')['params']
+file = get_TestData('SubscriberOpenTest')['filename']
 row = get_FuncRow('SubscriberOpenTest')
+logger.info('测试案例执行数据准备：{}'.format(paras))
 # create_testDataFile(paras=paras,filename=file)
 
 @ddt.ddt
@@ -73,6 +73,10 @@ class SubscriberOpenTest(unittest.TestCase):
         PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
         logger.info('写入测试结果到xls成功.....')
         test.save_docreport(title)
+        self.driver.close()
+
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
         self.driver.close()
 
 if __name__ == '__main__':
