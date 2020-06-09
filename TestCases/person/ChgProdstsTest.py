@@ -11,12 +11,13 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
 from Common.Assert import PageAssert
+from Common.TestDataMgnt import get_TestData
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('ChangeProdStatusTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-ora = MyOracle()
+# ora = MyOracle()
 #取停开机业务受理号码
 '''
 :param busiCode: 传入停开机业务受理类型
@@ -26,30 +27,42 @@ ora = MyOracle()
 138 特殊停机
 496 担保开机 497 紧急开机
 '''
+params = []
+file = get_TestData('SubscriberStop')['filename']
+# 报停
+paras_stop = get_TestData(FuncCode='SubscriberStop')['params']
+logger.info('停开机业务受理-报停测试准备数据:{}'.format(paras_stop))
+params.extend(paras_stop)
+# 合帐
+paras_open = get_TestData(FuncCode='SubscriberOpen')['params']
+logger.info('停开机业务受理-报停测试准备数据:{}'.format(paras_open))
+params.extend(paras_open)
+print('======合并后=====', params)
 
-sql_StopMobile = "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM,'131' BUSI_CODE from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
-where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS='0' and a.EXPIRE_DATE> sysdate \
-and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
-and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
-and rownum <=3 "
 
-sql_OpenMobile = "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM,'133' BUSI_CODE,a.PROD_STATUS from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
-    where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS = '1' and a.EXPIRE_DATE> sysdate \
-    and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
-    and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
-    and rownum <=3"
-
-paras_stopMobile = ora.select(sql_StopMobile) # 报停
-paras_OpenMobile = ora.select(sql_OpenMobile) # 报开
-
-paras = paras_OpenMobile
-
-logger.info('停开机测试准备数据:{}'.format(paras))
-now = time.strftime("%Y%m%d%H%M%S")
-file = ReadConfig.get_data_path() + 'UITest_ChangeProdstsTest_%s.xls' % now
-#生成xls表,方便后续写入测试结果
-write_dict_xls(inputData=paras, sheetName='停开机', outPutFile=file)
-logger.info('写入测试数据到xls.....')
+# sql_StopMobile = "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM,'131' BUSI_CODE from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
+# where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS='0' and a.EXPIRE_DATE> sysdate \
+# and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
+# and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
+# and rownum <=3 "
+#
+# sql_OpenMobile = "select rownum No ,'' result_info ,'' flowid,T.ACCESS_NUM,'133' BUSI_CODE,a.PROD_STATUS from uop_file4.um_subscriber t ,uop_file4.um_prod_sta a \
+#     where t.remove_tag = '0' and  a.IS_MAIN ='1' and a.PROD_STATUS = '1' and a.EXPIRE_DATE> sysdate \
+#     and  a.PARTITION_ID = t.partition_id and a.SUBSCRIBER_INS_ID = t.subscriber_ins_id \
+#     and  t.access_num LIKE '187%'  and t.mgmt_district ='0872' \
+#     and rownum <=3"
+#
+# paras_stopMobile = ora.select(sql_StopMobile) # 报停
+# paras_OpenMobile = ora.select(sql_OpenMobile) # 报开
+#
+# paras = paras_OpenMobile
+#
+# logger.info('停开机测试准备数据:{}'.format(paras))
+# now = time.strftime("%Y%m%d%H%M%S")
+# file = ReadConfig.get_data_path() + 'UITest_ChangeProdstsTest_%s.xls' % now
+# #生成xls表,方便后续写入测试结果
+# write_dict_xls(inputData=paras, sheetName='停开机', outPutFile=file)
+# logger.info('写入测试数据到xls.....')
 
 @ddt.ddt
 class ChangeProdStsTest(unittest.TestCase):
@@ -60,15 +73,14 @@ class ChangeProdStsTest(unittest.TestCase):
         self.driver.maximize_window()
         #self.driver.implicitly_wait(40)    #暂时设置40s，隐式等待
 
-    @ddt.data(*paras)
+    @ddt.data(*params)
     def test_acceptStopOrOpen(self,dic):
         """停开机业务受理"""
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))   #标识行号，后续写入xls使用
-        print('开始执行第{}个用例,测试数据：{}'.format(row,dic))
+        # row = int(dic.get('NO'))   #标识行号，后续写入xls使用
+        print('开始执行用例,测试数据：{}'.format(dic))
         accessNum = str(dic.get('ACCESS_NUM'))
         busicode = str(dic.get('BUSI_CODE'))  #SQL读入
-        logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
         ####测试用例步骤
         test = ChangeProdStatus(self.driver)
         title = '停开机业务受理测试'
@@ -83,8 +95,12 @@ class ChangeProdStsTest(unittest.TestCase):
             print('业务规则校验结果：{}'.format(RuleMsg))
             logger.info('业务规则校验结果：{}'.format(RuleMsg))
             test.screen_step('业务规则校验')
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
-            test.quit_browse()
+            if busicode == '131': #报停
+                write_xlsBycolName_append(file=file,row=get_TestData('SubscriberStop')['FuncRow'],colName='RESULT_INFO',value=RuleMsg)
+                test.quit_browse()
+            elif busicode == '133': #报开
+                write_xlsBycolName_append(file=file,row=get_TestData('SubscriberOpen')['FuncRow'],colName='RESULT_INFO',value=RuleMsg)
+                test.quit_browse()
         else:
             print('业务规则校验通过')
             test.find_element_click(loc_submit)
@@ -93,7 +109,10 @@ class ChangeProdStsTest(unittest.TestCase):
             test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
             test.save_docreport(title)
             logger.info('写入测试结果到xls.....')
-            PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+            if busicode == '131': #报停
+                PageAssert(self.driver).write_testResult(file=file, row=get_TestData('SubscriberStop')['FuncRow'], index=0)  # 写入结果到xls
+            elif busicode == '133':  # 报开
+                PageAssert(self.driver).write_testResult(file=file, row=get_TestData('SubscriberOpen')['FuncRow'], index=0)  # 写入结果到xls
             self.driver.close()
 
 if __name__ == '__main__':

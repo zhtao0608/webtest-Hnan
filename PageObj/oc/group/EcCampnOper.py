@@ -78,10 +78,18 @@ class EcCampnOper(BasePage):
         loc_contractId = (By.ID,'CONTRACT_ID_name') #合同附件
         loc_browseCampn_approver = (By.CSS_SELECTOR,'#commonPart > ul > li:nth-child(8) > div.value > span > span:nth-child(1) > span') #活动办理审批要件上传按钮
         loc_browseContractId = (By.CSS_SELECTOR,'#commonPart > ul > li:nth-child(9) > div.value > span > span:nth-child(1) > span') #合同附件上传
+        loc_approverBrowse = (By.ID,'CAMPN_APPROVER_btn_browser')
+        loc_ContractIdBrowse = (By.ID,'CONTRACT_ID_btn_browser')
+
         # self.js_removeNullable(idElement ='CONTRACT_ID')  #删除合同附件必填属性
         # self.js_removeNullable(idElement ='CAMPN_APPROVER') #活动办理审批要件删除必填
-        self.uploadFile(locator=loc_browseCampn_approver,filename=r"F:\Downloads\EC_GROUPVALUE_IMPORT.xls")
-        self.uploadFile(locator=loc_browseContractId,filename=r"F:\Downloads\EC_GROUPVALUE_IMPORT.xls")
+        '''做兼容处理'''
+        try:
+            self.uploadFile(locator=loc_browseCampn_approver,filename=r"F:\Downloads\EC_GROUPVALUE_IMPORT.xls")
+            self.uploadFile(locator=loc_browseContractId,filename=r"F:\Downloads\EC_GROUPVALUE_IMPORT.xls")
+        except:
+            self.uploadFile(locator=loc_approverBrowse,filename=r"F:\Downloads\EC_GROUPVALUE_IMPORT.xls")
+            self.uploadFile(locator=loc_ContractIdBrowse,filename=r"F:\Downloads\EC_GROUPVALUE_IMPORT.xls")
 
     def accept_SubEcCampn(self,groupId,CampnOfferId,OfferKey,prePrice,AcctId,month):
         '''订购集团营销活动'''

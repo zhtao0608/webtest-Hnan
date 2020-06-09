@@ -172,7 +172,7 @@ if __name__ == '__main__':
 
     # test.Open_GrpADC('8763809359','6480',['100648000','100648001'],'13908880079','中文签名')
     # test.Cancel_GrpOrder('8713161291','6480','7220051300188177','自动化测试')
-    test.Open_GrpVpmn('8763809359','2222',[])
+    test.Open_GrpVpmn('8721420879','8000',[])
 
     driver.close()
     print("用例执行结束时间：" + time.strftime("%Y%m%d%H%M%S"))

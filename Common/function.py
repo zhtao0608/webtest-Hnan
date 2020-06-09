@@ -6,6 +6,7 @@ import hashlib
 import types
 from urllib import parse
 import json
+import ast
 
 def project_path():
     return os.path.dirname(os.path.dirname(__file__))
@@ -90,6 +91,15 @@ def join_dictlists(list1,list2):
 		print('合并后的list:',newlist)
 		return newlist
 
+def get_listdictData(list_data):
+	'''将字典列表合并为一个字典'''
+	dict_data = {}
+	for i in list_data:
+		key, = i
+		value, = i.values()
+		dict_data[key] = value
+	return dict_data
+
 def convert_dicValueToList(dic):
 	'''传入字典，将字典value转换成List'''
 	if isinstance(dic,dict):
@@ -135,16 +145,21 @@ def convertParatoList(paras):
 	:param paras: 传入的参数值，可能是list、tuple、Str、Dict等各种数据类型
 	:return: Paras转换成List数据类型返回
 	'''
+	paras.replace("\n","").replace("\r","").replace(" ","") #把空格和换行去掉
 	print('传入的Paras的参数类型:{}'.format(type(paras)))
 	print('原始参数:{}'.format(paras))
 	paras = eval(paras)  #用eval函数处理转换
+	# paras = ast.literal_eval(paras)  # 用eval函数处理转换
 	if isinstance(paras, tuple):
+		print('eval(paras) 转换后是tuple类型')
 		params = list(paras)
 	elif isinstance(paras, dict):
+		print('eval(paras) 转换后是dict类型')
 		dicList = []
 		dicList.append(paras)
 		params = dicList
 	elif isinstance(paras, list):
+		print('eval(paras) 转换后是list类型')
 		params = paras
 	return params  # 转换成字典返回
 
@@ -157,7 +172,7 @@ def convertParatoList(paras):
 
 if __name__ == '__main__':
 	dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
-	str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"
+	str = "PAY_WAY=CM&ORDER_ID=1020060801016011&ORDER_FEE=0.01&STAFF_ID=&TRADE_FEE_AMOUNT=&TRADE_SCORE_AMOUNT=&TRADE_FLOW_AMOUNT=&PAY_ORDER_FEE=0.01&OLD_ORDER_FEE=0.01&REMARK&OLD_ITEM_FEE=0.00&OLD_ITEM_FEE=0.01&OLD_ITEM_FEE=0.00&OLD_ITEM_FEE=0.00&OLD_ITEM_FEE=0.00&NEW_ITEM_FEE=0.00&NEW_ITEM_FEE=0.01&NEW_ITEM_FEE=0.00&NEW_ITEM_FEE=0.00&NEW_ITEM_FEE=0.00&ITEM_ID=1020060800115792&ITEM_ID=1020060800115793&ITEM_ID=1020060800115794&ITEM_ID=1020060800115795&ITEM_ID=1020060800115791&MODIFY_PRIV=&MODIFY_PRIV=&MODIFY_PRIV=&MODIFY_PRIV=&MODIFY_PRIV=&PAY_TYPE=SCAN&MAC_VAL=&POS_TYPE=05&STA_VAL=&FILE_FIELD1&ACCT_PAY_TYPE&&condback_USER_INFO_MAP&ACCESS_NO=13987214662&_NGBOSS_STAFF_ID=TESTKM06"
 	dict_enUrl = convert_enurlToDic(str)
 	print('=====',dict_enUrl)
 	# print(get_enurl(dic_1))
@@ -414,8 +429,14 @@ if __name__ == '__main__':
 
 	# print(lista + listb)
 
-
-	paras = "{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'}"
+	paras = "[[1,2], [3,4], [5,6], [7,8], [9,0]]"
+	# paras = "{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'}"
 	params = convertParatoList(paras)
 	print('转换后Params=',params)
 	print('转换后Params类型:',type(params))
+
+	listDatas = list_data = [{'ACCESS_NUMBER':'11122233333'},
+							 {'ICC_ID2': '898600D0242447530068'},
+							 {'ICC_ID3': '898600D0242447530068'}
+							]
+	print(get_listdictData(listDatas))

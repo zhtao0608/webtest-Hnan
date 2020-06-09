@@ -44,11 +44,11 @@ file = get_testDataFile()
 params = []
 # 分账
 paras_sep = get_TestData(FuncCode='ChgPayRelaSeprate')['params']
-logger.info('普通付费关系变更测试准备数据:{}'.format(paras_sep))
+logger.info('普通付费关系变更-分账测试准备数据:{}'.format(paras_sep))
 params.extend(paras_sep)
 # 合帐
 paras_merge = get_TestData(FuncCode='ChgPayRelaMerge')['params']
-logger.info('普通付费关系变更测试准备数据:{}'.format(paras_merge))
+logger.info('普通付费关系变更-合帐测试准备数据:{}'.format(paras_merge))
 params.extend(paras_merge)
 params = params
 print('======合并后=====', params)
@@ -69,7 +69,6 @@ class ChgPayRelaTest(unittest.TestCase):
         #self.driver.implicitly_wait(40)    #暂时设置40s，隐式等待
 
     @ddt.data(*params)
-    # @ddt.unpack
     def test_accept_chgPayRela(self,dic):
         """普通付费关系变更受理"""
         logger.info("开始参数化......")

@@ -1,5 +1,6 @@
 import os,time
 import xlrd
+import json
 from Base.GenTestData import GenTestData
 from Base.OperExcel import write_dict_xls,getColumnIndex,getRowIndex
 from Base.Mylog import LogManager
@@ -150,21 +151,46 @@ if __name__ == '__main__':
     # print('返回数据文件名：',fileparams['filename'])
     # 分账
     file = get_testDataFile()
-    params = []
     # 分账
-    paras_sep = get_TestData(FuncCode='ChgPayRelaSeprate')['params']
-    logger.info('普通付费关系变更测试准备数据:{}'.format(paras_sep))
-    params.extend(paras_sep)
-    # 合帐
-    paras_merge = get_TestData(FuncCode='ChgPayRelaMerge')['params']
-    logger.info('普通付费关系变更测试准备数据:{}'.format(paras_merge))
-    params.extend(paras_merge)
-    params = params
-    print(params)
-    print('======合并后=====',params)
+    paras = get_TestData('OpenGrpAdc')['params']
+    print(paras)
+    print(type(paras))
+    print(len(paras))
+    for i in range(0,len(paras)):
+        print(paras[i])
+        print(type(paras[i]))
+        subOfferList = paras[i]['SUBOFFERLIST']
+        print(subOfferList)
+        print(type(subOfferList))
+
+    # print('=====',subOfferList)
+    # print('=====',type(subOfferList))
+
+    # paras_sep = get_TestData(FuncCode='ChgPayRelaSeprate')['params']
+    # logger.info('普通付费关系变更测试准备数据:{}'.format(paras_sep))
+    # params.extend(paras_sep)
+    # # 合帐
+    # paras_merge = get_TestData(FuncCode='ChgPayRelaMerge')['params']
+    # logger.info('普通付费关系变更测试准备数据:{}'.format(paras_merge))
+    # params.extend(paras_merge)
+    # params = params
+    # print(params)
+    # print('======合并后=====',params)
 
 
     # rowIndex = get_FuncRow('ChangeSimCardTest')
     # print('row=',rowIndex)
     # print(len(params))
     # paras = list(params)
+    GrpMebsubList = []
+    file = get_TestData('SubGrpVpmnMeb')['filename']
+    AdcMebsubList = get_TestData('SubGrpAdcMeb')['params']  # ADC集团管家成员订购
+    # GrpMebsubList.extend(AdcMebsubList)
+    VpmnMebsubList = get_TestData('SubGrpVpmnMeb')['params']  # Vpmn成员订购
+    GrpMebsubList.extend(VpmnMebsubList)
+    ImsMebsubList = get_TestData('SubGrpImsMeb')['params']  # 多媒体桌面电话成员订购
+    GrpMebsubList.extend(ImsMebsubList)
+    print('集团成员订购参数:{}'.format(GrpMebsubList))
+    DelVpmnMebOfferList = get_TestData('DelGrpMebOffer')['params']  # 成员商品注销
+    print('成员商品注销参数:{}'.format(DelVpmnMebOfferList))
+

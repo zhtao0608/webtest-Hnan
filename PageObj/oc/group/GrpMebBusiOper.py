@@ -143,7 +143,8 @@ class GroupMebBusiOper(BasePage):
             self.close()
         return self.driver
 
-    def confirm_vpmnMebsubOfferSpec(self):
+    def confirm_MebsubMainOfferSpec(self):
+        '''成员主商品设置完成'''
         confirm_btn = (By.ID,'pam_Button')
         confirm_btn2 = (By.ID,'pam_COMMITID')
         try:
@@ -156,6 +157,13 @@ class GroupMebBusiOper(BasePage):
                 time.sleep(2)
         except:
             logger.info('Vpmn成员规格特征发生异常')
+
+    def confirm_AdcMebsubOfferSpec(self):
+        '''ADC子商品点击确认按钮'''
+        confirm_btn = (By.ID, 'pam_BUTTON_SRV_PLAT')
+        self.find_element_click(confirm_btn)
+        time.sleep(1)
+
 
     def Oper_grpMemDel(self,groupId,accessNum,mainOffer,OfferInstId):
         '''
@@ -222,7 +230,7 @@ class GroupMebBusiOper(BasePage):
                 self.set_vpmnMebshortCode()
                 self.screen_step("步骤5：设置成员短号")
                 self.set_DispMode()
-            self.confirm_vpmnMebsubOfferSpec()#确认VPMN子商品规格设置
+            self.confirm_MebsubMainOfferSpec()#确认VPMN子商品规格设置
             self.confirm_OfferSpec() #最后确认商品设置
         self.screen_step("步骤6：确认商品配置，点击提交")
         self.Open_SubmitAll()  #订购主页，点击提交

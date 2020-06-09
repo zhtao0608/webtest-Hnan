@@ -9,23 +9,30 @@ from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import GrpTestData
-from Common.TestDataMgnt import create_testDataFile
+from Common.TestDataMgnt import get_TestData
 
 logger = LogManager('GroupBusiTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
+
 AdminNum = '15240837862'
-paras_GrpBusiSub = GrpTestData().get_GrpOffer(groupId= "'8712239560'",offerId='6480',subOfferlist='100648000,100648001')
-file_GrpBusiSub = ReadConfig.get_data_path() + 'UITest_GrpBusiSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
-create_testDataFile(paras=paras_GrpBusiSub,filename=file_GrpBusiSub)
+file = get_TestData('OpenGrpAdc')['filename']
+paras_GrpADCSub = get_TestData('OpenGrpAdc')['params']   # ADC受理参数
+paras_GrpVpmnSub = get_TestData('OpenGrpVpmn')['params']  #VPMN集团订购受理参数
+paras_GrpImsSub = get_TestData('OpenGrpIms')['params']    #IMS多媒体电话集团订购受理参数
+paras_GrpBusiCancel = get_TestData('CanelGrpIms')['params']
 
-paras_GrpVpmnSub = GrpTestData().get_GrpOffer(groupId= "'8721420598'",offerId='2222',subOfferlist='')
-file_GrpVpmnSub = ReadConfig.get_data_path() + 'UITest_GrpVpmnSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
-create_testDataFile(paras=paras_GrpVpmnSub,filename=file_GrpVpmnSub)
-
-file_grpBusiCancel = ReadConfig.get_data_path() + 'UITest_GrpBusiCancelTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
-paras_GrpBusiCancel = GrpTestData().get_GrpOfferInst(groupId="'8711440277'",offerId='8000')
-create_testDataFile(paras=paras_GrpBusiCancel,filename=file_grpBusiCancel)
+# paras_GrpBusiSub = GrpTestData().get_GrpOffer(groupId= "'8712239560'",offerId='6480',subOfferlist='100648000,100648001')
+# file_GrpBusiSub = ReadConfig.get_data_path() + 'UITest_GrpBusiSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
+# create_testDataFile(paras=paras_GrpBusiSub,filename=file_GrpBusiSub)
+#
+# paras_GrpVpmnSub = GrpTestData().get_GrpOffer(groupId= "'8721420598'",offerId='2222',subOfferlist='')
+# file_GrpVpmnSub = ReadConfig.get_data_path() + 'UITest_GrpVpmnSubTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
+# create_testDataFile(paras=paras_GrpVpmnSub,filename=file_GrpVpmnSub)
+#
+# file_grpBusiCancel = ReadConfig.get_data_path() + 'UITest_GrpBusiCancelTest_' + time.strftime("%Y%m%d%H%M%S") + '.xls'
+# paras_GrpBusiCancel = GrpTestData().get_GrpOfferInst(groupId="'8711440277'",offerId='8000')
+# create_testDataFile(paras=paras_GrpBusiCancel,filename=file_grpBusiCancel)
 
 
 
@@ -37,12 +44,11 @@ class GroupBusi(unittest.TestCase):
         self.driver.get(rc.get_ngboss('url'))     #这里可以切换环境，去ngboss_config.ini配置
         self.driver.maximize_window()
 
-    @ddt.data(*paras_GrpBusiSub)
+    @ddt.data(*paras_GrpADCSub)
     def test01_OpenGrpAdc(self,dic):
         '''订购ADC集团管家'''
-        # offers_para = offers_paras[0]
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
+        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = dic.get('OFFER_ID') #集团主商品ID
         if not dic.get('SUBOFFERLIST') == None:
@@ -53,12 +59,16 @@ class GroupBusi(unittest.TestCase):
         accessNum = AdminNum    #管理员电话号码（在网号码即可）
         singname = '中文签名'
         print("子商品列表：%s",str(subOfferList))
-        logger.info('开始执行第{}个用例,测试数据：{}'.format(row, dic))
+        logger.info('开始执行ADC集团商品订购用例,测试数据：{}'.format( dic))
         test = GroupBusiOper(self.driver)
         title = '集团商品业务订购测试记录'
         test.add_dochead(title)
         test.Open_GrpBusiOrd(groupId)
         test.search_grpOffer(offerid)
+        #这里加个校验，判断集团商品是否允许订购
+        busiRuleMsg = test.vaild_GroupBusiRule()
+        if '校验失败' in busiRuleMsg:
+            PageAssert(self.driver).write_vaildErrResult(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'])
         test.screen_step("点击集团商品待设置按钮")
         test.set_mainOffer(offerid) #商品订购主页点击待设置
         logger.info("商品设置开始......")
@@ -88,30 +98,30 @@ class GroupBusi(unittest.TestCase):
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        PageAssert(self.driver).write_testResult(file=file_GrpBusiSub,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
     @ddt.data(*paras_GrpBusiCancel)
-    def test01_Cancel_GrpOrder(self,dic):
+    def test02_Cancel_GrpOrder(self,dic):
         '''集团商品注销'''
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
+        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = str(dic.get('OFFER_ID')) #集团主商品ID
         offerInsId = dic.get('GRP_OFFER_INS_ID')
         remark = '自动化测试'
         print("集团商品实例：%s",str(offerInsId))
-        logger.info('开始执行第{}个用例,测试数据：{}'.format(row, dic))
+        logger.info('开始集团用户用例,测试数据：{}'.format( dic))
         test = GroupBusiOper(self.driver)
         test.Cancel_GrpOrder(groupId,offerid,offerInsId,remark)
-        PageAssert(self.driver).write_testResult(file=file_grpBusiCancel,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('CanelGrpIms')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
     @ddt.data(*paras_GrpVpmnSub)
-    def test02_OpenGrpVpmn(self,dic):
+    def test03_OpenGrpVpmn(self,dic):
         '''订购短号集群网8000'''
         logger.info("开始参数化......")
-        row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
+        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = dic.get('OFFER_ID') #集团主商品ID
         if not dic.get('SUBOFFERLIST') == None:
@@ -121,10 +131,32 @@ class GroupBusi(unittest.TestCase):
             subOfferList = []
         logger.info('订购的子商品列表:{}'.format(subOfferList))
         print("子商品列表：%s",str(subOfferList))
-        logger.info('开始执行第{}个用例,测试数据：{}'.format(row, dic))
+        logger.info('开始执行集团短号集群网商品订购用例,测试数据：{}'.format(dic))
+        print('开始执行集团短号集群网商品订购用例,测试数据：{}'.format(dic))
         test = GroupBusiOper(self.driver)
         test.Open_GrpVpmn(groupId,offerid,subOfferList)
-        PageAssert(self.driver).write_testResult(file=file_GrpVpmnSub,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpVpmn')['FuncRow'],index=0) #写入结果到xls
+        self.driver.close()
+
+    @ddt.data(*paras_GrpImsSub)
+    def test04_OpenGrpIMS(self,dic):
+        '''订购多媒体桌面电话2222'''
+        logger.info("开始参数化......")
+        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
+        groupId = dic.get('GROUP_ID')
+        offerid = dic.get('OFFER_ID') #集团主商品ID
+        if not dic.get('SUBOFFERLIST') == None:
+            subOfferList = dic.get('SUBOFFERLIST').replace(' ', '').split(',') #集团子商品ID,读入的都是str，通过split转成List
+            logger.info('订购的子商品列表:{}'.format(subOfferList))
+        else:
+            subOfferList = []
+        logger.info('订购的子商品列表:{}'.format(subOfferList))
+        print("子商品列表：%s",str(subOfferList))
+        logger.info('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
+        print('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
+        test = GroupBusiOper(self.driver)
+        test.Open_GrpVpmn(groupId,offerid,subOfferList)
+        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
 if __name__ == '__main__':
@@ -135,4 +167,4 @@ if __name__ == '__main__':
     print("开始执行testSuite......")
     with open(ReadConfig.get_reportPath() + report_title + nowtime + ".html", 'wb') as fp:
         runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2)
-        runner.run(mySuitePrefixAdd(GroupBusi,"test"))
+        runner.run(mySuitePrefixAdd(GroupBusi,"test01_OpenGrpAdc"))

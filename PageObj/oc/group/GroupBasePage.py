@@ -165,7 +165,6 @@ class BasePage(Base):
         # self.find((By.ID,'searchkeyWord')).send_keys(mainOffer)
         self.sendkey((By.ID,'searchkeyWord'),mainOffer)
         self.screen_step("搜索集团商品")
-        # self.find((By.ID,'searchsearchButton')).click()
         self.find_element_click((By.ID,'searchsearchButton'))
         time.sleep(2)
         self.find((By.XPATH,'//*[@id="searchOfferResultsearchResult"]/li')).click()
