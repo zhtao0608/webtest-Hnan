@@ -116,7 +116,8 @@ if __name__ == '__main__':
     print("用例开始执行时间：" + time.strftime("%Y%m%d%H%M%S"))
     driver = webdriver.Chrome()
     test = FamilyNetPage(driver)
-    test.accept_MultiOffer(AccessNum='15808720006',mutiAccessNumList=['18787295285','18787289368'])
+    # test.accept_MultiOffer(AccessNum='15808720006',mutiAccessNumList=['18787295285','18787289368'])
+    test.accept_MultiOffer(AccessNum='13908720018',mutiAccessNumList=['13908720019','13908720043'])
 
     # driver.close()
     print("用例执行结束时间：" + time.strftime("%Y%m%d%H%M%S"))

@@ -18,7 +18,7 @@ sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_i
       to_char(a.iden_id) iden_id,'' NEW_IDENID ,a.iden_type_id,a.iden_nr,b.party_name,\
       to_char(t.cust_id) cust_id ,'' flowid , '' result_info  ,'' NEWCUSTNAME \
      FROM  uop_file4.um_subscriber T ,uop_cp.cb_identification a,uop_cp.cb_party b  \
-      where t.remove_tag = '0' and t.access_num LIKE '188%' and t.mgmt_district = '0872'\
+      where t.remove_tag = '0' and t.access_num LIKE '1390872%' and t.mgmt_district = '0872'\
      and a.party_id = t.cust_id \
      and a.party_id = b.party_id \
      and rownum <=100"

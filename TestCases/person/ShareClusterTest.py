@@ -197,9 +197,7 @@ class ShareClusterTest(unittest.TestCase):
         PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
         self.driver.close()
 
-    def tearDown(self):
-        print('测试结束，关闭浏览器器!')
-        self.driver.close()
+
 
 if __name__ == '__main__':
     report_title = u'4G家庭共享套餐业务测试'
@@ -209,4 +207,4 @@ if __name__ == '__main__':
     print("开始执行testSuite......")
     with open(ReadConfig.get_reportPath() + report_title +  nowtime + ".html", 'wb') as fp:
         runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2,retry=1)
-        runner.run(mySuitePrefixAdd(ShareClusterTest,"test"))
+        runner.run(mySuitePrefixAdd(ShareClusterTest,"test02_acceptDelMember"))

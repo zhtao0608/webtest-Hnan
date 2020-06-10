@@ -46,10 +46,16 @@ class ShareCluster(PersonBase):
         删除成员
         :param serialNum: 成员手机号码
         '''
-        xpath_str = '//div[contains(@member_sn,"%s")]' % serialNum
-        print('删除成员按钮：{}'.format(xpath_str))
-        loc_del = (By.XPATH,xpath_str)
-        self.find_element_click(loc_del)
+        xpath_str = '//li[@accessnum="%s"]' % serialNum
+        ele_member = self.find((By.XPATH,xpath_str))
+        time.sleep(1)
+        ele_MebDel = ele_member.find_element_by_xpath("./div[1]/div[3]/span") #根据父元素来找到删除按钮
+        # xpath_str = '//div[contains(@member_sn,"%s") and contains(@onclick,"MainDeleteMember")]' % serialNum
+        # print('删除成员按钮：{}'.format(xpath_str))
+        # loc_del = (By.XPATH,xpath_str)
+        # self.find_element_click(loc_del)
+        self.click_on_element(ele_MebDel)  #点击元素
+        # ele_MebDel.click()
         time.sleep(2)
 
     def cancel_ShareCluster(self):

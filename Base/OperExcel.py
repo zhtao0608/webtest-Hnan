@@ -246,7 +246,6 @@ def write_xlsBycolName_append(file,row,colName,value,index=0):
         workbook = xlrd.open_workbook(filename,formatting_info=True)  # 打开工作簿
     except:
         workbook = xlrd.open_workbook(filename)  # 打开工作簿
-
     # workbook = xlrd.open_workbook(filename)  # 打开工作簿
     worksheet = workbook.sheet_by_index(index)  # 获取工作簿中所有表格中的的第一个表格
     # rows_old = worksheet.nrows  # 获取表格中已存在的数据的行数

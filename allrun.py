@@ -81,9 +81,11 @@ class RunTest:
                 # runner = HTMLTestRunner_PY3.HTMLTestRunner(stream=fp, title='WEB-UI自动化测试报告', description="测试报告")
                 # f = open(self.resultPath, 'wb')
                 # 使用HTMLTestRunner输出html报告
-                runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='Test Report',
-                                                           description='Test Description', verbosity=2,retry=1,save_last_try=False)
+                # runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='Test Report',
+                #                 #                           description='Test Description', verbosity=2,retry=1,save_last_try=False)
                 # 运行测试用例
+                runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='Test Report',
+                                                           description='Test Description', verbosity=2)
                 runner.run(suite)
             else:
                 log.info("Have no case to test.")

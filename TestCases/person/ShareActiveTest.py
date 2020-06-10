@@ -13,7 +13,7 @@ from Common.TestDataMgnt import get_testDataFile,get_FuncRow,get_TestData
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
-logger = LogManager('OfferOperTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+logger = LogManager('ShareActiveTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
 # file = ReadConfig.data_path + 'UITest_ShareActive.xls'
 # paras = get_exceldata(file,0)
@@ -31,7 +31,7 @@ class ShareActiveTest(unittest.TestCase):
         self.driver.maximize_window()
         # self.driver.implicitly_wait(20)    #暂时设置40s，隐式等待
 
-    @ddt.data(paras)
+    @ddt.data(*paras)
     def test_acceptShareActive(self,dic):
         """家庭畅享活动办理"""
         logger.info("开始参数化......")
@@ -43,7 +43,7 @@ class ShareActiveTest(unittest.TestCase):
         phoneNum = dic.get('副号')
         logger.info("副号码:{}" .format(phoneNum))
         Idencode = dic.get('副号密码')
-        logger.info("副号密码:{}".format(Idencode) )
+        logger.info("副号密码:{}".format(Idencode))
         logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
         print('开始执行第{}个用例,测试数据：{}'.format(row,dic))
         test = ShareActive(self.driver)
@@ -61,31 +61,26 @@ class ShareActiveTest(unittest.TestCase):
         test.set_ShareActiveInfo(phoneNum,Idencode)
         logger.info('副号校验....')
         vaildMsg = test.vaild_BusiRule()
-        logger.info('写入副号校验结果到xls.....')
-        write_xlsBycolName_append(file=file, row=row, colName='检查点', value=vaildMsg)
+        print('副号校验结果:{}'.format(vaildMsg))
+        logger.info('副号校验结果:{}'.format(vaildMsg))
         test.screen_step('验证副号')
-        if '出现警告信息' in vaildMsg:
-            test.quit_browse()
+        if '校验失败' in vaildMsg:
+            # PageAssert(self.driver).write_vaildErrResult(file=file,row=row)
+            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=vaildMsg)
+            logger.info('写入副号校验结果到xls成功.....')
             time.sleep(2)
+            test.quit_browse()
         time.sleep(2)
         test.find_element_click(loc_commit) #点击办理
         time.sleep(10)
         submitMsg = PageAssert(self.driver).assert_SubmitPage()
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
-        if '业务受理成功' in submitMsg :
-            logger.info('写入受理成功结果到xls.....')
-            write_xlsBycolName_append(file=file ,row=row,colName='FLOWID',value=submitMsg)
-        else:
-            logger.info('写入受理失败结果到xls....')
-            write_xlsBycolName_append(file=file ,row=row,colName='RESULT_INFO',value=submitMsg)
+        PageAssert(self.driver).write_testResult(file=file,row=row)
         test.save_docreport(title)
         time.sleep(3)
         test.driver.close()
 
-    def tearDown(self):
-        print('测试结束，关闭浏览器器!')
-        self.driver.close()
 
 if __name__ == '__main__':
     report_title = u'家庭畅享活动办理自动化测试报告'
@@ -94,6 +89,6 @@ if __name__ == '__main__':
     logger.info("开始执行testSuite......")
     print("开始执行testSuite......")
     with open(ReadConfig.get_reportPath() + report_title + nowtime + ".html", 'wb') as fp:
-        runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2,retry=1)
+        runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2)
         runner.run(mySuitePrefixAdd(ShareActiveTest,"test_acceptShareActive"))
 

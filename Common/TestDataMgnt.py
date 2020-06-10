@@ -194,3 +194,7 @@ if __name__ == '__main__':
     DelVpmnMebOfferList = get_TestData('DelGrpMebOffer')['params']  # 成员商品注销
     print('成员商品注销参数:{}'.format(DelVpmnMebOfferList))
 
+    paras = get_TestData('FamilyNetTest')['params']
+    row = get_FuncRow('FamilyNetTest')
+    print('亲情网受理参数:{}'.format(paras))
+

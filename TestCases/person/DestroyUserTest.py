@@ -85,7 +85,6 @@ class DestroyUserTest(unittest.TestCase):
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')
-        self.driver.close()
 
 if __name__ == '__main__':
     report_title = u'个人销户自动化测试报告'
