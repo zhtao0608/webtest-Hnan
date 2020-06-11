@@ -60,6 +60,7 @@ class CancelTrade(PersonBase):
         time.sleep(5)
         self.open_CancelTradeFrame() #进入iframe
         self.query_CancelTradeByAccessNum(AccessNum,Busi_item_code) #查询业务返销信息
+        self.screen_step('选择要返销的业务类型')
         errMsg = PageAssert(self.driver).assert_error()
         if '业务校验失败' in errMsg:
             self.quit_browse() #查询返销信息失败，直接终止程序
