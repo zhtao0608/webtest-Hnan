@@ -21,7 +21,7 @@ sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_i
       where t.remove_tag = '0' and t.access_num LIKE '1390872%' and t.mgmt_district = '0872'\
      and a.party_id = t.cust_id \
      and a.party_id = b.party_id \
-     and rownum <=100"
+     and rownum <=5"
 
 paras = ora.select(sql)
 logger.info('测试准备数据:{}'.format(paras))

@@ -17,13 +17,13 @@ ora = MyOracle()
 '''主卡号码'''
 sql_accessNum = "select rownum No ,'' flowid , '' result_info ,t.access_num , to_char(t.subscriber_ins_id) subscriber_ins_id \
     from  uop_file4.um_subscriber t \
-    where t.access_num like '1380872%' and t.mgmt_district = '0872' \
+    where t.access_num like '1830872%' and t.mgmt_district = '0872' \
     and t.remove_tag = '0' and rownum <=5"
 
 '''副卡号码'''
 sql_ViceaccessNum = "select t.access_num VICE_ACCESS_NUM , to_char(t.subscriber_ins_id) rel_subscriber_insid \
     from  uop_file4.um_subscriber t \
-    where t.access_num like '183%' and t.mgmt_district = '0872' \
+    where t.access_num like '135%' and t.mgmt_district = '0872' \
     and t.remove_tag = '0' and rownum <=5"
 
 AccessNumList = ora.select(sql_accessNum)

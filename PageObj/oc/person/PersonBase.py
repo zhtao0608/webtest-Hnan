@@ -19,7 +19,7 @@ class PersonBase(Base):
         self.driver.maximize_window()
         #self.driver.implicitly_wait(30)
 
-    def Open_PersonMenu(self,accessNum,password,cataMenuId,menuId):
+    def Open_PersonMenu(self,accessNum,cataMenuId,menuId,password='123123'):
         '''
         :param accessNum: 认证号码
         :param password: 号码服务密码
@@ -81,6 +81,13 @@ class PersonBase(Base):
                 Msg = PageAssert(self.driver).assert_WarnPage() #警告信息
                 if '警告校验通过' in Msg:
                     Msg = PageAssert(self.driver).assert_HelpPage() #帮助信息
+        return Msg
+
+    def check_ResCode(self):
+        '''校验资源信息，号卡'''
+        Msg = PageAssert(self.driver).assert_WarnPage()
+        if '校验通过' in Msg:
+            Msg = PageAssert(self.driver).assert_SucPage() #帮助信息
         return Msg
 
     def close_UIstep(self):
