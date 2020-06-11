@@ -4,7 +4,7 @@ import ddt
 import time,unittest,HTMLTestRunner,HTMLTestRunnerCN
 from Common.excel_data import get_exceldata,read_xls_by_row
 
-from PageObj.search_page import SearchPage
+from PageObj.ngboss.search_page import SearchPage
 from selenium import webdriver
 from Common.function import project_path
 

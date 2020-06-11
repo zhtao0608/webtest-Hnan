@@ -1,7 +1,7 @@
 import unittest,os
 import time,ddt
-from PageObj.login_page import LoginPage
-from PageObj.mainpage import MainPage
+from PageObj.ngboss.login_page import LoginPage
+from PageObj.ngboss.mainpage import MainPage
 from PageObj.oc.person.PersonBase import PersonBase
 from PageObj.oc.group.GroupBasePage import BasePage
 from selenium import webdriver

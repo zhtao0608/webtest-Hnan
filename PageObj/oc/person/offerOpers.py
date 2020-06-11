@@ -3,9 +3,9 @@ from Base.base import Base
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from Base import ReadConfig
-from PageObj.mainpage import MainPage
-from PageObj.login_page import LoginPage
-from PageObj.loginPart import LoginPart
+from PageObj.ngboss.mainpage import MainPage
+from PageObj.ngboss.login_page import LoginPage
+from PageObj.ngboss.loginPart import LoginPart
 from PageObj.oc.person.PersonBase import PersonBase
 from Base.Mylog import LogManager
 from Common.Assert import PageAssert

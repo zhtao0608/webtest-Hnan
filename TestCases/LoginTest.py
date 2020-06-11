@@ -1,7 +1,7 @@
 import unittest,os
 import time
 from Base import HTMLTestRunnerCNNew
-from PageObj.login_page import LoginPage
+from PageObj.ngboss.login_page import LoginPage
 from selenium import webdriver
 from Common.function import project_path
 from Base import ReadConfig

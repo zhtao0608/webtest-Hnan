@@ -69,7 +69,7 @@ if __name__ == '__main__':
     test =RestoreSubscriber(driver)
     # test.accept_chgPayRela(AccessNum ='18725337983',operCode='1',SerialNum='18787295285')
     test.accept_RestoreSubscriber(AccessNum ='18724999835',simId='89860032241642474775')
-    # driver.close()
+    driver.close()
     print("用例执行结束时间：" + time.strftime("%Y%m%d%H%M%S"))
 
 
