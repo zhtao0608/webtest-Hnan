@@ -30,23 +30,29 @@ class CancelTrade(PersonBase):
         text_accessNum = (By.ID,'ACCESS_NUM')
         loc_selBusi = (By.ID,'BUSI_ITEM_CODE_span')
         xpath_str = '//*[@id="BUSI_ITEM_CODE_list_ul"]/li[contains(@val,"%s")]'  % Busi_item_code  #业务类型
-        loc_busiName = (By.XPATH,xpath_str)
+        xpath_busicode ='//*[@id="BUSI_ITEM_CODE_float"]/div[2]/div/div/ul/li[contains(@val,"%s")]'  % Busi_item_code
         loc_qryButton = (By.ID,'qryButton')
         btn_confirm = (By.ID,'sureBtn')
         self.find_element_click(btn_qry) #点击查询
         time.sleep(2)
         self.sendkey(text_accessNum,AccessNum)
         self.find_element_click(loc_selBusi) #点击业务类型
-        time.sleep(1)
-        self.find_element_click(loc_busiName) #选择一个业务类型
-        time.sleep(1)
+        time.sleep(2)
+        loc_busicode = (By.XPATH,xpath_str)
+        loc_busiType = (By.XPATH,xpath_busicode)
+        '''兼容下扩容环境和测试环境'''
+        try:
+            self.find_element_click(loc_busiType) #选择一个业务类型
+            time.sleep(1)
+        except:
+            self.find_element_click(loc_busicode)  # 选择一个业务类型
         self.find_element_click(loc_qryButton) #点击查询
         time.sleep(2)
         self.find_element_click(btn_confirm) #点击确定
 
 
     def accept_CancelTrade(self,AccessNum,Busi_item_code,password='123123'):
-        '''受理亲情网省内版'''
+        '''业务返销测试'''
         title = '业务返销测试记录'
         self.add_dochead(title)
         Btn_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
