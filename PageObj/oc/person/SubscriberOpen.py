@@ -176,7 +176,7 @@ class SubscriberOpen(PersonBase):
         self.find_element_click(loc_commitAll)
         self.find_element_click(loc_commitAll)
         time.sleep(10)
-        msg = PageAssert(self.driver).assert_ErrPage() #提交后校验异常
+        msg = PageAssert(self.driver).assert_error() #提交后校验异常
         print('业务受理信息:',msg)
         self.confirm_Payinfo()
         submitMsg = PageAssert(self.driver).assert_Submit()  #提交后返回信息，flowId或者报错

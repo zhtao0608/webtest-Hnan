@@ -488,7 +488,8 @@ class Base():
     def screenshot_SaveAsDoc(self,stepName):
         self.screen_step(stepName)
         self.save_docreport(stepName)
-        """================处理Docx测试记录==============="""
+
+    """================处理Docx测试记录==============="""
 
     def uploadFile(self,locator,filename):
         '''上传组件-上传完整文件

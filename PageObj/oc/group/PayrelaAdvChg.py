@@ -69,16 +69,25 @@ class GrouprelaAdv(BasePage):
         @operCode = 1 删除
         @operCode = 2 修改
         '''
-        loc_select = (By.CSS_SELECTOR,'#operActionPart > span') #选择按钮
-        li_add = (By.XPATH,'//*[@id="cond_ACTION_float"]/div[2]/div/div/ul/li[2]') #选择新增link
+        loc_select = (By.ID,'operActionPart') #选择按钮 (扩容环境)
+        loc_OperSel = (By.ID,'cond_ACTION_span')
+        li_add = (By.XPATH,'//*[@id="cond_ACTION_float"]/div[2]/div/div/ul/li[2]') #选择新增link(扩容环境)
+        li_addOper = (By.XPATH,'//*[@id="cond_ACTION_list_ul"]/li[2]') #选择新增link（现场环境）
+
         li_modify = (By.CSS_SELECTOR,'#cond_ACTION_float > div.content > div > div > ul > li:nth-child(4)') #修改
         li_del = (By.CSS_SELECTOR,'#cond_ACTION_float > div.content > div > div > ul > li:nth-child(3)')
         try:
             if operCode == '0':
-                self.isElementDisplay(loc_select, 'click')  # 点击选择
-                time.sleep(2)
-                # self.isElementDisplay(li_add, 'click')  # 新增操作
-                self.find_element_click(li_add)
+                try:
+                    self.find_element_click(loc_select)  #扩容环境
+                    time.sleep(2)
+                    self.find_element_click(li_add)
+                    time.sleep(1)
+                except:
+                    self.find_element_click(loc_OperSel) #现场环境
+                    time.sleep(2)
+                    self.find_element_click(li_addOper)
+                    time.sleep(1)
             elif operCode == '1':
                 self.isElementDisplay(loc_select, 'click')  # 点击选择
                 time.sleep(2)

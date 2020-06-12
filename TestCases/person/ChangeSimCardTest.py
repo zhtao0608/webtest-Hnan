@@ -83,6 +83,11 @@ class ChangeSimCardTest(unittest.TestCase):
         test.screen_step('进入换卡菜单')
         test.check_CustInfoByIdcard(custName,IdenNr) #客户名称
         Vaild_custMsg = PageAssert(self.driver).assert_WarnPage()
+        if '出现警告信息' in Vaild_custMsg:
+            print('客户验证信息:{}'.format(Vaild_custMsg))
+            test.quit_browse()
+        elif '校验通过' in Vaild_custMsg:
+            Vaild_custMsg = PageAssert(self.driver).assert_TipMsg()
         print('客户验证信息:{}'.format(Vaild_custMsg))
         logger.info('客户验证信息:{}'.format(Vaild_custMsg))
         time.sleep(2)

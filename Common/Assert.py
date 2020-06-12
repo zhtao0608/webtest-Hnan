@@ -45,10 +45,8 @@ class PageAssert(Base):
             logger.info('业务受理提示信息：{}'.format(msg))
             ele_btn = ele_help.find_element_by_xpath('./div/div[2]/div[2]/button[1]')
             self.click_on_element(ele_btn)
-            # self.click_on_element(ele_btn) #我也不知道怎么点2次
             self.sendEnter()
             time.sleep(3)
-            # return msg
         except :
             logger.info('没有弹出校验窗口默认校验通过，或者执行出现异常')
             msg = '校验通过'
@@ -70,6 +68,24 @@ class PageAssert(Base):
         except :
             logger.info('没有弹出告警！')
             msg = '警告校验通过'
+        return msg
+
+    def assert_TipMsg(self):
+        """获取WarnPage页面返回的公共信息,使用模糊匹配找出显示在当前页面上的warn提示并关闭"""
+        loc_msg = (By.XPATH,"//div[@class='c_msg c_msg-h c_msg-phone-v c_msg-full' and not(contains(@style,'display: none'))]")
+        try:
+            ele_msg = self.find(loc_msg)
+            msg = ele_msg.find_element_by_xpath('./div/div[2]/div[1]/div[2]').text
+            step_str = "业务受理提示信息"
+            logger.info('业务受理提示信息{}'.format(msg))
+            self.screenshot_SaveAsDoc(step_str)
+            ele_msg.find_element_by_xpath('./div/div[2]/div[2]/button[1]').click() #关闭提示窗口
+            self.sendEnter()
+            time.sleep(2)
+            msg = '出现提示信息' + msg
+        except :
+            logger.info('没有提示信息！')
+            msg = '校验通过'
         return msg
 
     def assert_SucPage(self):
@@ -106,8 +122,6 @@ class PageAssert(Base):
             logger.info("业务校验失败:{}".format(msg))
             step_str = "业务校验失败"
             self.screenshot_SaveAsDoc(step_str)
-            # ele_err.find_element_by_xpath('./div/div[2]/div[4]/button[1]').click()
-            # self.sendEnter()
             time.sleep(2)
             msg = '业务校验失败' + msg
             return msg

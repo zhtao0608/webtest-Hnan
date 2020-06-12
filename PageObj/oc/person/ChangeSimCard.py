@@ -76,8 +76,6 @@ class ChangeSimCard(PersonBase):
         time.sleep(2)
         self.find_element_click(li_iden)
         time.sleep(1)
-        # custName = GenTestData().create_CustName()
-        # idCard = GenTestData().Create_Idcard()
         self.sendkey(text_custName,custName) #输入客户姓名
         self.sendkey(text_pwd,IdenNr) #输入密码
         self.screen_step('输入客户名称和服务密码，点击提交')
@@ -124,6 +122,8 @@ class ChangeSimCard(PersonBase):
         self.screen_step('进入换卡菜单')
         self.check_CustInfoByIdcard(custName,IdenNr)
         Vaild_custMsg = PageAssert(self.driver).assert_WarnPage()
+        if '校验通过' in Vaild_custMsg:
+            Vaild_custMsg = PageAssert(self.driver).assert_TipMsg()
         print('客户验证信息:{}'.format(Vaild_custMsg))
         logger.info('客户验证信息:{}'.format(Vaild_custMsg))
         time.sleep(2)

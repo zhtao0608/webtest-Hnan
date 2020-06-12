@@ -4,11 +4,9 @@ import time,ddt
 from PageObj.oc.group.GrpBusiOper import GroupBusiOper
 from selenium import webdriver
 from Base import ReadConfig
-from Base.GenTestData import GenTestData
 from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
-from Common.TestDataMgnt import GrpTestData
 from Common.TestDataMgnt import get_TestData,get_testDataFile
 
 logger = LogManager('GroupBusiTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -105,7 +103,6 @@ class GroupBusi(unittest.TestCase):
     def test02_Cancel_GrpOrder(self,dic):
         '''集团商品注销'''
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = str(dic.get('OFFER_ID')) #集团主商品ID
         offerInsId = dic.get('GRP_OFFER_INS_ID')
@@ -124,17 +121,10 @@ class GroupBusi(unittest.TestCase):
         # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = dic.get('OFFER_ID') #集团主商品ID
-        if not dic.get('SUBOFFERLIST') == None:
-            subOfferList = dic.get('SUBOFFERLIST').replace(' ', '').split(',') #集团子商品ID,读入的都是str，通过split转成List
-            logger.info('订购的子商品列表:{}'.format(subOfferList))
-        else:
-            subOfferList = []
-        logger.info('订购的子商品列表:{}'.format(subOfferList))
-        print("子商品列表：%s",str(subOfferList))
         logger.info('开始执行集团短号集群网商品订购用例,测试数据：{}'.format(dic))
         print('开始执行集团短号集群网商品订购用例,测试数据：{}'.format(dic))
         test = GroupBusiOper(self.driver)
-        test.Open_GrpVpmn(groupId,offerid,subOfferList)
+        test.Open_GrpVpmn(groupId,offerid)
         PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpVpmn')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
@@ -142,20 +132,19 @@ class GroupBusi(unittest.TestCase):
     def test04_OpenGrpIMS(self,dic):
         '''订购多媒体桌面电话2222'''
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = dic.get('OFFER_ID') #集团主商品ID
-        if not dic.get('SUBOFFERLIST') == None:
-            subOfferList = dic.get('SUBOFFERLIST').replace(' ', '').split(',') #集团子商品ID,读入的都是str，通过split转成List
-            logger.info('订购的子商品列表:{}'.format(subOfferList))
-        else:
-            subOfferList = []
-        logger.info('订购的子商品列表:{}'.format(subOfferList))
-        print("子商品列表：%s",str(subOfferList))
+        # if not dic.get('SUBOFFERLIST') == None:
+        #     subOfferList = dic.get('SUBOFFERLIST').replace(' ', '').split(',') #集团子商品ID,读入的都是str，通过split转成List
+        #     logger.info('订购的子商品列表:{}'.format(subOfferList))
+        # else:
+        #     subOfferList = []
+        # logger.info('订购的子商品列表:{}'.format(subOfferList))
+        # print("子商品列表：%s",str(subOfferList))
         logger.info('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
         print('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
         test = GroupBusiOper(self.driver)
-        test.Open_GrpVpmn(groupId,offerid,subOfferList)
+        test.Open_GrpVpmn(groupId,offerid)
         PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 

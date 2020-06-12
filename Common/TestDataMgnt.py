@@ -198,3 +198,7 @@ if __name__ == '__main__':
     row = get_FuncRow('FamilyNetTest')
     print('亲情网受理参数:{}'.format(paras))
 
+    paras = get_TestData(FuncCode='OpenGrpVpmn')['params']
+    # file = get_TestData(FuncCode='ChangeSimCardTest')['filename']
+    # row = get_TestData(FuncCode='ChangeSimCardTest')['FuncRow']
+    print('换卡参数:{}'.format(paras))

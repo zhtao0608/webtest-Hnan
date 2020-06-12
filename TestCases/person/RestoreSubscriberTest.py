@@ -30,7 +30,7 @@ class RestoreSubscriberTest(unittest.TestCase):
 
     @ddt.data(*paras)
     def test_acceptRestoreUser(self,dic):
-        """换卡"""
+        """复机"""
         logger.info("开始参数化......")
         accessNum = str(dic.get('ACCESS_NUM'))
         simId = str(dic.get('SIMID')) #SIM卡号参数化
@@ -38,7 +38,7 @@ class RestoreSubscriberTest(unittest.TestCase):
         ####测试用例步骤
         test = RestoreSubscriber(self.driver)
         title = '个人业务复机测试记录'
-        self.add_dochead(title)
+        test.add_dochead(title)
         test.Open_PersonMenu(accessNum,cataMenuId='crm9300',menuId='crm9313') #登录并进入普通付费关系变更菜单
         time.sleep(2)
         test.open_RestoreSubscriberFrame() #进入iframe
@@ -51,8 +51,8 @@ class RestoreSubscriberTest(unittest.TestCase):
         test.InputSimAndVaild(simId)
         test.screen_step('复机时输入SIM卡并校验')
         test.submit() #提交
-        time.sleep(12)
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        time.sleep(15) #复机提交后时间长，延长强制等待
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)

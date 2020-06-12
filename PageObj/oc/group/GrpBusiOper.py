@@ -45,8 +45,13 @@ class GroupBusiOper(BasePage):
         '''集团商品销户元素'''
         loc_reason = (By.CSS_SELECTOR,'#cond_REMOVE_REASON_span > span')
         self.find(loc_reason).click()
+        time.sleep(1)
         loc_idx5 = (By.CSS_SELECTOR,'#cond_REMOVE_REASON_float > div.content > div > div > ul > li:nth-child(6)')
-        self.find(loc_idx5).click() #选择不必要使用该产品
+        loc_idx = (By.CSS_SELECTOR,'#cond_REMOVE_REASON_list_ul > li:nth-child(6)') ##现场测试环境
+        try:
+            self.find_element_click(loc_idx5) #选择不必要使用该产品
+        except:
+            self.find_element_click(loc_idx) #选择不必要使用该产品
         return self.driver
 
     def input_CancelRemark(self,remark):
@@ -125,7 +130,7 @@ class GroupBusiOper(BasePage):
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)
 
-    def Open_GrpVpmn(self,groupId,offerid,subOfferList):
+    def Open_GrpVpmn(self,groupId,offerid):
         '''
         :param groupId: 集团编码
         :param offerid: 集团主商品Offer_id
@@ -141,20 +146,20 @@ class GroupBusiOper(BasePage):
         self.set_mainOffer(offerid) #商品订购主页点击待设置
         self.screen_step('设置集团VPMN商品')
         logger.info("商品设置开始")
-        self.set_OfferSpec(subOfferList) #商品设置下点击确定,判断是否需要点击商品待设置
-        print("设置子商品......")
-        logger.info("设置子商品")
-        for i in range(len(subOfferList)):
-            print("子商品编码subofferId=" + subOfferList[i])
-            print("先选择子商品，再设置子商品......")
-            logger.info("开始设置子商品产品规格特征" + subOfferList[i])
-            self.screen_step('设置子商品产品规格特征_%s' %subOfferList[i])
-            self.set_subOffer(subOfferList[i]) #子商品点击设置
-            self.set_prodSpec()  #产品规格点击待设置
-            self.submit_prodSpec()
-            logger.info("子商品产品规格特征设置结束" + subOfferList[i])
-            self.screen_step('商品设置完成')
-            self.confirm_OfferSpec() #商品设置再确认
+        self.set_OfferSpec(subOfferList = []) #VPMN和多媒体桌面电话子商品都为空，传空列表
+        # print("设置子商品......")
+        # logger.info("设置子商品")
+        # for i in range(len(subOfferList)):
+        #     print("子商品编码subofferId=" + subOfferList[i])
+        #     print("先选择子商品，再设置子商品......")
+        #     logger.info("开始设置子商品产品规格特征" + subOfferList[i])
+        #     self.screen_step('设置子商品产品规格特征_%s' %subOfferList[i])
+        #     self.set_subOffer(subOfferList[i]) #子商品点击设置
+        #     self.set_prodSpec()  #产品规格点击待设置
+        #     self.submit_prodSpec()
+        #     logger.info("子商品产品规格特征设置结束" + subOfferList[i])
+        self.screen_step('商品设置完成')
+        self.confirm_OfferSpec() #商品设置再确认
         self.screen_step('点击提交按钮')
         self.Open_SubmitAll()#商品订购提交
         print("处理页面返回信息.....")
@@ -172,7 +177,11 @@ if __name__ == '__main__':
 
     # test.Open_GrpADC('8763809359','6480',['100648000','100648001'],'13908880079','中文签名')
     # test.Cancel_GrpOrder('8713161291','6480','7220051300188177','自动化测试')
-    test.Open_GrpVpmn('8721420879','8000',[])
+    # test.Open_GrpVpmn('8711400872','8000')
+    # test.Open_GrpVpmn('8711437002','2222')
+    test.Open_GrpADC('8711401185','6480',['100648000','100648001'],'13908880079','中文签名')
+
+
 
     driver.close()
     print("用例执行结束时间：" + time.strftime("%Y%m%d%H%M%S"))
