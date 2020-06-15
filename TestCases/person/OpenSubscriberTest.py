@@ -53,7 +53,6 @@ class SubscriberOpenTest(unittest.TestCase):
         logger.info('SIM卡校验结果:{}'.format(validMsg))
         if '业务校验失败' in validMsg:
             write_xlsBycolName_append(file = file, row=row, colName='RESULT_INFO', value=validMsg,index=0)  #向xls模板指定行列写入结果
-        # self.assertIn('校验成功',validMsg) #加个断点，验证sim是否校验通过
         self.assertNotIn('业务校验失败',validMsg) #加个断点，验证sim是否校验通过
         test.set_personMainOffer(offerId) #设置个人主套餐
         test.set_Acctinfo()  #设置账户信息
@@ -65,14 +64,10 @@ class SubscriberOpenTest(unittest.TestCase):
         vaildMsg = PageAssert(self.driver).write_vaildErrResult(file=file,row=row,index=0) #如果有错误就写入结果到xls
         self.assertNotIn('校验失败',vaildMsg)
         test.confirm_Payinfo()  # 校验通过后再支付确认
-        # if '校验通过' in vaildMsg:
-            # test.confirm_Payinfo() #校验通过后再支付确认
-            # time.sleep(5)
-        submitMsg = PageAssert(self.driver).assert_Submit()  # 提交后返回信息，flowId或者报错
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         print('===提交后页面返回信息：', submitMsg)
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         # 点击确认支付后，页面返回的信息写入xls
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('写入测试结果到xls成功.....')
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)

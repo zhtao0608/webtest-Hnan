@@ -75,12 +75,13 @@ class ChgPayRelaTest(unittest.TestCase):
         print('开始执行用例,测试数据：{}'.format(dic))
         accessNum = str(dic.get('ACCESS_NUM'))
         operCode = str(dic.get('OPER_CODE'))  #SQL读入
-        if operCode == '1' :  #分账
-           row = get_TestData('ChgPayRelaSeprate')['FuncRow']
-        elif operCode == '2':
-           row = get_TestData('ChgPayRelaMerge')['FuncRow']
-        else:
-           print('OperCode只能传入1或者2，当前传入：{}'.format(operCode))
+        row = get_TestData('ChgPayRelaSeprate')['FuncRow'] if operCode=='1' else get_TestData('ChgPayRelaMerge')['FuncRow']
+        # if operCode == '1' :  #分账
+        #    row = get_TestData('ChgPayRelaSeprate')['FuncRow']
+        # elif operCode == '2':
+        #    row = get_TestData('ChgPayRelaMerge')['FuncRow']
+        # else:
+        #    print('OperCode只能传入1或者2，当前传入：{}'.format(operCode))
         logger.info('开始执行用例，测试数据：{}'.format(dic))
         ####测试用例步骤
         test = ChangePayRelaNor(self.driver)
@@ -94,12 +95,6 @@ class ChgPayRelaTest(unittest.TestCase):
         test.open_ChangePayRelaNorFrame() #进入iframe
         ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
         self.assertIn('业务规则校验通过',ruleMsg)
-        # RuleMsg = test.vaild_BusiRule() #验证号码办理规则
-        # logger.info('普通付费关系变更规则验证结果:{}'.format(RuleMsg))
-        # if '校验失败' in RuleMsg:
-        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
-        #     logger.info('业务受理前规则校验信息写入xls成功')
-        #     test.quit_browse()
         time.sleep(3)
         #业务办理
         if operCode == '1':  # 分账
@@ -112,11 +107,8 @@ class ChgPayRelaTest(unittest.TestCase):
             vaildMsg = PageAssert(self.driver).assert_error()
             logger.info('付费号码校验结果：{}'.format(vaildMsg))
             self.assertIn('业务校验通过',vaildMsg)  #校验通过才继续执行
-            # if '业务校验失败' in vaildMsg:
-            #     test.quit_browse()  # 如果校验失败，直接跳出
         else:
             print('OperCode只能传入1或者2，当前传入：{}'.format(operCode))
-            # test.quit_browse()
         test.sendkey(loc_remark,'AutoTest')
         time.sleep(2)
         test.find_element_click(loc_commit) #点击提交

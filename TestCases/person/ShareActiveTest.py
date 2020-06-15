@@ -75,10 +75,9 @@ class ShareActiveTest(unittest.TestCase):
         time.sleep(2)
         test.find_element_click(loc_commit) #点击办理
         time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         test.save_docreport(title)
         time.sleep(3)
         self.assertIn('业务受理成功',submitMsg)

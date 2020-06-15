@@ -59,17 +59,8 @@ class DestroyUserTest(unittest.TestCase):
         PersonBase(self.driver).Open_PersonMenu(accessNum,password='123123',cataMenuId='crm9300',menuId='crm9311') #进入菜单
         test.open_DestroyUserFrame() #进入销户iframe
         ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
-        # errMsg = PersonBase(self.driver).vaild_BusiRule() #业务检查点（进入菜单时校验）
         logger.info('业务校验结果:{}'.format(ruleMsg))
         self.assertIn('业务规则校验通过',ruleMsg)
-        # if '业务校验失败' in errMsg:
-        #     # print('业务规则校验失败：{}'.format(errMsg))
-        #     #业务规则校验异常信息写入RESULT_INFO列
-        #     write_xlsBycolName_append(file=file,row =row ,colName='RESULT_INFO',value=errMsg,index=0)
-        #     logger.info('业务校验信息写入xls成功......')
-        #     print('业务校验信息写入xls成功......')
-        #     test.quit_browse() #关闭浏览器
-        # else:
         PageAssert(self.driver).assert_HelpPage() #关闭提示
         test.close_UIstep()
         test.find_element_click(loc_vaild) #移动到认证并点击
@@ -77,11 +68,10 @@ class DestroyUserTest(unittest.TestCase):
         test.set_destroyReason()
         test.find_element_click(loc_commit)  #点击提交
         time.sleep(10)  #销户业务提交比较慢
-        submitMsg = PageAssert(self.driver).assert_Submit()  #提交后返回信息，flowId或者报错
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #提交后返回信息，flowId或者报错
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 

@@ -46,11 +46,8 @@ class CancelTradeTest(unittest.TestCase):
         test.open_CancelTradeFrame() #进入iframe
         test.query_CancelTradeByAccessNum(accessNum,busicode) #查询业务返销信息
         test.screen_step('选择要返销的业务类型')
-        errMsg = PageAssert(test.driver).check_BusiRule(file,row)
-        self.assertNotIn('业务校验失败',errMsg)
-        # if '业务校验失败' in errMsg:
-        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=errMsg)
-        #     test.quit_browse() #查询返销信息失败，直接终止程序
+        RuleMsg = PageAssert(test.driver).check_BusiRule(file,row)
+        self.assertNotIn('业务校验失败',RuleMsg)
         time.sleep(3)
         test.find_element_click(Btn_commit)
         helpMsg = PageAssert(test.driver).assert_HelpPage()

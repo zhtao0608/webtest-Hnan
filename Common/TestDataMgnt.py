@@ -202,3 +202,8 @@ if __name__ == '__main__':
     # file = get_TestData(FuncCode='ChangeSimCardTest')['filename']
     # row = get_TestData(FuncCode='ChangeSimCardTest')['FuncRow']
     print('换卡参数:{}'.format(paras))
+
+    Paras = get_TestData('SubscriberOpen')['params'][0]
+    busicode = Paras['BUSI_CODE']
+    row = get_TestData('SubscriberStop')['FuncRow'] if busicode == '131' else get_TestData('SubscriberOpen')['FuncRow']
+    print('====row=：',row)

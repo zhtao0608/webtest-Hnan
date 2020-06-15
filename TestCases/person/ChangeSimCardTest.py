@@ -79,20 +79,12 @@ class ChangeSimCardTest(unittest.TestCase):
         print('换卡业务提交前规则:{}'.format(RuleMsg))
         logger.info('换卡业务提交前规则:{}'.format(RuleMsg))
         self.assertNotIn('业务校验失败',RuleMsg)
-        # if '业务校验失败' in RuleMsg:
-        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
-        #     test.quit_browse() #业务规则校验失败，直接终止程序
         test.screen_step('进入换卡菜单')
         test.check_CustInfoByIdcard(custName,IdenNr) #客户名称
         Vaild_custMsg = PageAssert(self.driver).assert_WadePage()
         print('客户验证信息:{}'.format(Vaild_custMsg))
         logger.info('客户验证信息:{}'.format(Vaild_custMsg))
         self.assertNotIn('警告信息',Vaild_custMsg)
-        # if '出现警告信息' in Vaild_custMsg:
-        #     print('客户验证信息:{}'.format(Vaild_custMsg))
-        #     test.quit_browse()
-        # elif '校验通过' in Vaild_custMsg:
-        #     Vaild_custMsg = PageAssert(self.driver).assert_TipMsg()
         time.sleep(2)
         test.Input_NewSimId(simId)
         test.sendkey(text_remark,'AntoTest') #填写备注信息
@@ -102,7 +94,6 @@ class ChangeSimCardTest(unittest.TestCase):
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 

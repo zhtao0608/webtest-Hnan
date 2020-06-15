@@ -54,12 +54,10 @@ class RestoreSubscriberTest(unittest.TestCase):
         test.screen_step('复机时输入SIM卡并校验')
         test.submit() #提交
         time.sleep(15) #复机提交后时间长，延长强制等待
-        submitMsg = PageAssert(self.driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 

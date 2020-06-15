@@ -5,8 +5,8 @@ from PageObj.oc.person.ChangeProdStatus import ChangeProdStatus
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from Base import ReadConfig
-from Common.function import join_dictlists
-from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
+# from Common.function import join_dictlists
+# from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
@@ -77,8 +77,6 @@ class ChangeProdStsTest(unittest.TestCase):
     def test_acceptStopOrOpen(self,dic):
         """停开机业务受理"""
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))   #标识行号，后续写入xls使用
-
         print('开始执行用例,测试数据：{}'.format(dic))
         accessNum = str(dic.get('ACCESS_NUM'))
         busicode = str(dic.get('BUSI_CODE'))  #SQL读入
@@ -93,31 +91,14 @@ class ChangeProdStsTest(unittest.TestCase):
         test.screen_step('进入菜单，选择停开机业务类型')
         test.select_BusiType(busicode) # 选择停开机业务受理类型 【暂时在代码里面写死，根据需要修改】
         loc_submit = (By.ID,'CSSUBMIT_BUTTON')
-        # RuleMsg = test.vaild_BusiRule() #校验号码是否满足停机受理规则
         RuleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
         self.assertNotIn('业务校验失败',RuleMsg)
-        # if '业务校验失败' in RuleMsg:
-        #     print('业务规则校验结果：{}'.format(RuleMsg))
-        #     logger.info('业务规则校验结果：{}'.format(RuleMsg))
-        #     test.screen_step('业务规则校验')
-        #     if busicode == '131': #报停
-        #         write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
-        #         test.quit_browse()
-        #     elif busicode == '133': #报开
-        #         write_xlsBycolName_append(file=file,row=get_TestData('SubscriberOpen')['FuncRow'],colName='RESULT_INFO',value=RuleMsg)
-        #         test.quit_browse()
-        # else:
         print('业务规则校验通过')
         test.find_element_click(loc_submit)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        # if busicode == '131': #报停
-        #     PageAssert(self.driver).assert_submitAfter(file=file, row=get_TestData('SubscriberStop')['FuncRow'], index=0)  # 写入结果到xls
-        # elif busicode == '133':  # 报开
-        #     PageAssert(self.driver).assert_submitAfter(file=file, row=get_TestData('SubscriberOpen')['FuncRow'], index=0)  # 写入结果到xls
         self.assertIn('业务受理成功', submitMsg)
         self.driver.close()
 
