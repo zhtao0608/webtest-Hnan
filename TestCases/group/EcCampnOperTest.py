@@ -53,12 +53,10 @@ class EcCampnOperTest(unittest.TestCase):
         time.sleep(2)
         test.sendEnter() #确认
         time.sleep(5)
-        submitMsg = PageAssert(test.driver).assert_Submit()  #提交后返回信息，flowId或者报错
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubEcCampnAdd')['FuncRow'],index=0) #写入结果到xls
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubEcCampnAdd')['FuncRow'],index=0) #写入结果到xls
-        self.assertIn('受理失败',submitMsg)
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
         time.sleep(3)
 

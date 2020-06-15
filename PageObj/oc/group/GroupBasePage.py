@@ -190,14 +190,14 @@ class BasePage(Base):
         if self.isElementExist(loc_cancel):
             self.find_element_click(loc_cancel) #点击注销按钮
             time.sleep(3)
-            vaildMsg = PageAssert(self.driver).assert_error() #校验下是否出现错误
-            if '业务校验失败' in vaildMsg:
-                logger.info('注销时报错:{}'.format(vaildMsg))
-                self.quit_browse()
+            # vaildMsg = PageAssert(self.driver).assert_WadePage() #校验下是否出现错误
+            # if '业务校验失败' in vaildMsg:
+            #     logger.info('注销时报错:{}'.format(vaildMsg))
+            #     self.quit_browse()
         else:
-            logger.info('没找到集团已订购商品，无法成员商品注销')
-            self.quit_browse()
-        return self.driver
+            logger.info('没找到集团已订购商品，无法成员商品注销,测试失败')
+
+        # return self.driver
 
     def choose_OptionalOffer(self,subofferId):
         '''页面checkBox，传入subofferId，如果可选则选择'''

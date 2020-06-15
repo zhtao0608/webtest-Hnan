@@ -104,6 +104,7 @@ class GroupBusi(unittest.TestCase):
     def test02_Cancel_GrpOrder(self,dic):
         '''集团商品注销'''
         logger.info("开始参数化......")
+        row = get_TestData('CanelGrpIms')['FuncRow']
         groupId = dic.get('GROUP_ID')
         offerid = str(dic.get('OFFER_ID')) #集团主商品ID
         offerInsId = dic.get('GRP_OFFER_INS_ID')
@@ -111,15 +112,31 @@ class GroupBusi(unittest.TestCase):
         print("集团商品实例：%s",str(offerInsId))
         logger.info('开始集团用户用例,测试数据：{}'.format( dic))
         test = GroupBusiOper(self.driver)
-        test.Cancel_GrpOrder(groupId,offerid,offerInsId,remark)
-        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('CanelGrpIms')['FuncRow'],index=0) #写入结果到xls
+        title = '集团商品业务注销测试记录'
+        test.add_dochead(title)
+        test.Open_GrpBusiOrd(groupId)
+        test.click_SelGrpOffer()
+        test.screen_step('选择要注销的集团商品实例')
+        test.choose_grpOfferandCancel(offerid,offerInsId)
+        ruleMsg = PageAssert(self.driver).check_BusiRule(file,row) #验证下规则
+        self.assertNotIn('校验失败',ruleMsg) #断点判断
+        test.screen_step('录入商品注销原因和备注')
+        test.sel_GrpRemoveReason()
+        time.sleep(2)
+        test.input_CancelRemark(remark)
+        test.screen_step('点击注销提交')
+        test.Del_SubmitAll()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
+        logger.info('业务受理信息：{}'.format(submitMsg))
+        test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
+        test.save_docreport(title)
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     @ddt.data(*paras_GrpVpmnSub)
     def test03_OpenGrpVpmn(self,dic):
         '''订购短号集群网8000'''
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
         groupId = dic.get('GROUP_ID')
         offerid = dic.get('OFFER_ID') #集团主商品ID
         logger.info('开始执行集团短号集群网商品订购用例,测试数据：{}'.format(dic))
@@ -135,17 +152,9 @@ class GroupBusi(unittest.TestCase):
         logger.info("开始参数化......")
         groupId = dic.get('GROUP_ID')
         offerid = dic.get('OFFER_ID') #集团主商品ID
-        # if not dic.get('SUBOFFERLIST') == None:
-        #     subOfferList = dic.get('SUBOFFERLIST').replace(' ', '').split(',') #集团子商品ID,读入的都是str，通过split转成List
-        #     logger.info('订购的子商品列表:{}'.format(subOfferList))
-        # else:
-        #     subOfferList = []
-        # logger.info('订购的子商品列表:{}'.format(subOfferList))
-        # print("子商品列表：%s",str(subOfferList))
         logger.info('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
         print('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
         test = GroupBusiOper(self.driver)
-        # test.Open_GrpVpmn(groupId,offerid)
         title = 'VPMN集团商品订购'
         test.add_dochead(title)
         test.Open_GrpBusiOrd(groupId)
@@ -159,18 +168,16 @@ class GroupBusi(unittest.TestCase):
         test.screen_step('点击提交按钮')
         test.Open_SubmitAll()#商品订购提交
         logger.info("处理页面返回信息......")
-        submitMsg = PageAssert(self.driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')
-        # self.driver.execute_script('window.stop()')
-        # os.system('taskkill /im chromedriver.exe /F')
+
 
 
 if __name__ == '__main__':

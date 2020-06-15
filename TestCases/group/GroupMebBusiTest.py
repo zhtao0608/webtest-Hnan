@@ -107,13 +107,11 @@ class GroupMebBusi(unittest.TestCase):
             test.confirm_OfferSpec() #最后确认商品设置
         test.screen_step("步骤6：确认商品配置，点击提交")
         test.Open_SubmitAll()  #订购主页，点击提交
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        time.sleep(10)
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubGrpAdcMeb')['FuncRow'],index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        # if (subOfferList[i] == '648001'):#集团管家成员
-        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubGrpAdcMeb')['FuncRow'],index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
@@ -165,12 +163,10 @@ class GroupMebBusi(unittest.TestCase):
             test.confirm_OfferSpec() #最后确认商品设置
         test.screen_step("步骤6：确认商品配置，点击提交")
         test.Open_SubmitAll()  #订购主页，点击提交
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
@@ -178,7 +174,7 @@ class GroupMebBusi(unittest.TestCase):
     def test02_DelgrpMemOffer(self,dic):
         '''成员商品退订'''
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))  # 标识行号，后续写入xls使用
+        row = get_TestData('DelGrpMebOffer')['FuncRow']
         accessNum = str(dic.get('ACCESS_NUM'))
         groupId = str(dic.get('GROUP_ID'))
         mainOffer = str(dic.get('OFFER_ID'))
@@ -195,17 +191,17 @@ class GroupMebBusi(unittest.TestCase):
         test.input_GrpMebNum(accessNum)
         test.screen_step("选择要注销的集团产品订购实例，点击注销")
         test.choose_grpOfferandCancel(mainOffer,OfferInstId)
+        ruleMsg = PageAssert(self.driver).check_BusiRule(file,row) #验证下规则
+        self.assertNotIn('校验失败',ruleMsg) #断点判断
         test.confirm_vaildTips()  #有可能重新进行集团认证鉴权
         test.screen_step("点击注销按钮")
         test.submit_cancel()
         print("处理页面返回信息.....")
         logger.info("处理页面返回信息......")
-        submitMsg = PageAssert(self.driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('DelGrpMebOffer')['FuncRow'],index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
