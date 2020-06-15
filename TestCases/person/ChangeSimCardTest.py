@@ -74,33 +74,36 @@ class ChangeSimCardTest(unittest.TestCase):
         PersonBase(self.driver).Open_PersonMenu(accessNum,password='123123',cataMenuId='crm9400',menuId='crm9431') #登录并进入换卡菜单
         time.sleep(5)
         test.open_ChangSimCardFrame() #进入iframe
-        RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
+        # RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
+        RuleMsg = PageAssert(self.driver).check_BusiRule(file,row) #业务检查点（进入菜单时校验）
         print('换卡业务提交前规则:{}'.format(RuleMsg))
         logger.info('换卡业务提交前规则:{}'.format(RuleMsg))
-        if '业务校验失败' in RuleMsg:
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
-            test.quit_browse() #业务规则校验失败，直接终止程序
+        self.assertNotIn('业务校验失败',RuleMsg)
+        # if '业务校验失败' in RuleMsg:
+        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
+        #     test.quit_browse() #业务规则校验失败，直接终止程序
         test.screen_step('进入换卡菜单')
         test.check_CustInfoByIdcard(custName,IdenNr) #客户名称
-        Vaild_custMsg = PageAssert(self.driver).assert_WarnPage()
-        if '出现警告信息' in Vaild_custMsg:
-            print('客户验证信息:{}'.format(Vaild_custMsg))
-            test.quit_browse()
-        elif '校验通过' in Vaild_custMsg:
-            Vaild_custMsg = PageAssert(self.driver).assert_TipMsg()
+        Vaild_custMsg = PageAssert(self.driver).assert_WadePage()
         print('客户验证信息:{}'.format(Vaild_custMsg))
         logger.info('客户验证信息:{}'.format(Vaild_custMsg))
+        self.assertNotIn('警告信息',Vaild_custMsg)
+        # if '出现警告信息' in Vaild_custMsg:
+        #     print('客户验证信息:{}'.format(Vaild_custMsg))
+        #     test.quit_browse()
+        # elif '校验通过' in Vaild_custMsg:
+        #     Vaild_custMsg = PageAssert(self.driver).assert_TipMsg()
         time.sleep(2)
         test.Input_NewSimId(simId)
         test.sendkey(text_remark,'AntoTest') #填写备注信息
         test.find_element_click(loc_commit) #点击提交
         time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     def tearDown(self):
@@ -108,7 +111,7 @@ class ChangeSimCardTest(unittest.TestCase):
 
 if __name__ == '__main__':
     report_title = u'换卡自动化测试报告'
-    desc = u'换卡销户测试详情：'
+    desc = u'换卡测试详情：'
     nowtime = time.strftime("%Y%m%d%H%M%S")
     logger.info("开始执行testSuite......")
     print("开始执行testSuite......")

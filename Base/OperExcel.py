@@ -257,14 +257,14 @@ def write_xlsBycolName_append(file,row,colName,value,index=0):
     oldvalue = worksheet.cell_value(row,col)
     if not isinstance(oldvalue, str):
         oldvalue = str(oldvalue)
-    print('原来的单元格数据:',oldvalue)
+    # print('原来的单元格数据:',oldvalue)
     if not isinstance(value, str):
         value = str(value)
     values = oldvalue + '\n' + value
-    print('新写入的数据:',values)
+    # print('新写入的数据:',values)
     new_worksheet.write(row, col, values) # 像指定行列写入数据
     new_workbook.save(file)  # 保存工作簿
-    print("xls格式表格【追加】写入数据成功！")
+    print("xls表格【追加】写入数据成功！")
 
 
 if __name__ == '__main__':

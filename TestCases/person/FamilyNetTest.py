@@ -49,12 +49,14 @@ class FamilyNetTest(unittest.TestCase):
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9300',menuId='crmy165') #登录并进入菜单
         time.sleep(5)
         test.open_MultiOfferFrame() #进入iframe
-        RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
-        print('受理亲情网省内版提交前规则:{}'.format(RuleMsg))
-        logger.info('受理亲情网省内版提交前规则:{}'.format(RuleMsg))
-        if '业务校验失败' in RuleMsg:
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
-            test.quit_browse() #业务规则校验失败，直接终止程序
+        # ruleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
+        ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
+        self.assertIn('业务校验通过', ruleMsg)  # 校验通过才继续执行
+        # print('受理亲情网省内版提交前规则:{}'.format(RuleMsg))
+        # logger.info('受理亲情网省内版提交前规则:{}'.format(RuleMsg))
+        # if '业务校验失败' in RuleMsg:
+        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
+        #     test.quit_browse() #业务规则校验失败，直接终止程序
         logger.info('开始设置主号家庭短号服务')
         test.screen_step('进入亲情网办理菜单')
         test.set_mainCard(AccessNum)
@@ -66,9 +68,10 @@ class FamilyNetTest(unittest.TestCase):
         submitMsg = PageAssert(test.driver).assert_SubmitPage()
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
-        PageAssert(self.driver).write_testResult(file=file,row=row)
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         test.save_docreport(title)
         time.sleep(3)
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
 if __name__ == '__main__':

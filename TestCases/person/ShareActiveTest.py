@@ -60,25 +60,28 @@ class ShareActiveTest(unittest.TestCase):
         test.choose_ActiveOffer(offerId) #选择共享活动
         test.set_ShareActiveInfo(phoneNum,Idencode)
         logger.info('副号校验....')
-        vaildMsg = test.vaild_BusiRule()
+        # vaildMsg = test.vaild_BusiRule()
+        vaildMsg = PageAssert(self.driver).check_BusiRule(file,row)
         print('副号校验结果:{}'.format(vaildMsg))
         logger.info('副号校验结果:{}'.format(vaildMsg))
         test.screen_step('验证副号')
-        if '校验失败' in vaildMsg:
-            # PageAssert(self.driver).write_vaildErrResult(file=file,row=row)
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=vaildMsg)
-            logger.info('写入副号校验结果到xls成功.....')
-            time.sleep(2)
-            test.quit_browse()
+        self.assertNotIn('校验失败',vaildMsg)
+        # if '校验失败' in vaildMsg:
+        #     # PageAssert(self.driver).write_vaildErrResult(file=file,row=row)
+        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=vaildMsg)
+        #     logger.info('写入副号校验结果到xls成功.....')
+        #     time.sleep(2)
+        #     test.quit_browse()
         time.sleep(2)
         test.find_element_click(loc_commit) #点击办理
         time.sleep(10)
         submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
-        PageAssert(self.driver).write_testResult(file=file,row=row)
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         test.save_docreport(title)
         time.sleep(3)
+        self.assertIn('业务受理成功',submitMsg)
         test.driver.close()
 
 

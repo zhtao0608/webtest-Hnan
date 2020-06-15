@@ -42,11 +42,13 @@ class RestoreSubscriberTest(unittest.TestCase):
         test.Open_PersonMenu(accessNum,cataMenuId='crm9300',menuId='crm9313') #登录并进入普通付费关系变更菜单
         time.sleep(2)
         test.open_RestoreSubscriberFrame() #进入iframe
-        RuleMsg = test.vaild_BusiRule() #验证号码办理规则
-        logger.info('复机业务规则验证结果:{}'.format(RuleMsg))
-        if '验证失败' in RuleMsg:
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
-            test.driver.close()
+        # RuleMsg = test.vaild_BusiRule() #验证号码办理规则
+        RuleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
+        self.assertNotIn('业务校验失败',RuleMsg)
+        # logger.info('复机业务规则验证结果:{}'.format(RuleMsg))
+        # if '验证失败' in RuleMsg:
+        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg)
+        #     test.driver.close()
         time.sleep(3)
         test.InputSimAndVaild(simId)
         test.screen_step('复机时输入SIM卡并校验')
@@ -57,7 +59,8 @@ class RestoreSubscriberTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
 if __name__ == '__main__':

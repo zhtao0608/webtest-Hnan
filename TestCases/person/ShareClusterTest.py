@@ -3,14 +3,13 @@ import ddt,time
 from Base import HTMLTestRunnerCNNew
 from PageObj.oc.person.ShareCluster import ShareCluster
 from selenium.webdriver.common.by import By
-from PageObj.oc.person.PersonBase import PersonBase
 from selenium import webdriver
 from Base import ReadConfig
 from Common.function import join_dictlists
 from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
 from Base.Mylog import LogManager
-from Base.OracleOper import MyOracle
-from Base.GenTestData import GenTestData
+# from Base.OracleOper import MyOracle
+# from Base.GenTestData import GenTestData
 from TestCases.suite import mySuitePrefixAdd
 from Common.Assert import PageAssert
 from Common.TestDataMgnt import get_TestData,get_testDataFile,get_FuncRow
@@ -70,7 +69,6 @@ del_paras = get_TestData('ShareClusterDelMeb')['params']
 cancel_paras = get_TestData('cancelShareCluster')['params']
 
 
-
 @ddt.ddt
 class ShareClusterTest(unittest.TestCase):
     """[个人业务]4G家庭共享套餐业务测试"""
@@ -97,12 +95,14 @@ class ShareClusterTest(unittest.TestCase):
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9400',menuId='crm4G10') #登录并进入主卡菜单
         time.sleep(5)
         test.open_ShareClusterFrame() #进入iframe
-        RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
+        # RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
+        RuleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)  # 业务检查点（进入菜单时校验）
         print('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
         logger.info('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
-        if '业务校验失败' in RuleMsg:
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
-            test.quit_browse() #业务规则校验失败，直接终止程序
+        self.assertNotIn('业务校验失败',RuleMsg)
+        # if '业务校验失败' in RuleMsg:
+        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
+        #     test.quit_browse() #业务规则校验失败，直接终止程序
         test.screen_step('进入主卡操作菜单')
         test.add_MebAccessNum(serialNum)
         time.sleep(2)
@@ -118,7 +118,8 @@ class ShareClusterTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     @ddt.data(*del_paras)
@@ -155,7 +156,7 @@ class ShareClusterTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         self.driver.close()
 
     @ddt.data(*cancel_paras)
@@ -194,7 +195,7 @@ class ShareClusterTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         self.driver.close()
 
 

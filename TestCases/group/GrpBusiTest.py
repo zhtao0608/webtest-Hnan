@@ -5,6 +5,7 @@ from PageObj.oc.group.GrpBusiOper import GroupBusiOper
 from selenium import webdriver
 from Base import ReadConfig
 from Base.Mylog import LogManager
+from Base.OperExcel import write_xlsBycolName_append
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import get_TestData,get_testDataFile
@@ -64,9 +65,8 @@ class GroupBusi(unittest.TestCase):
         test.Open_GrpBusiOrd(groupId)
         test.search_grpOffer(offerid)
         #这里加个校验，判断集团商品是否允许订购
-        busiRuleMsg = test.vaild_GroupBusiRule()
-        if '校验失败' in busiRuleMsg:
-            PageAssert(self.driver).write_vaildErrResult(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'])
+        ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'])
+        self.assertIn('业务规则校验通过',ruleMsg)
         test.screen_step("点击集团商品待设置按钮")
         test.set_mainOffer(offerid) #商品订购主页点击待设置
         logger.info("商品设置开始......")
@@ -96,7 +96,8 @@ class GroupBusi(unittest.TestCase):
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'],index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'],index=0) #写入结果到xls
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     @ddt.data(*paras_GrpBusiCancel)
@@ -111,7 +112,7 @@ class GroupBusi(unittest.TestCase):
         logger.info('开始集团用户用例,测试数据：{}'.format( dic))
         test = GroupBusiOper(self.driver)
         test.Cancel_GrpOrder(groupId,offerid,offerInsId,remark)
-        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('CanelGrpIms')['FuncRow'],index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('CanelGrpIms')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
     @ddt.data(*paras_GrpVpmnSub)
@@ -125,7 +126,7 @@ class GroupBusi(unittest.TestCase):
         print('开始执行集团短号集群网商品订购用例,测试数据：{}'.format(dic))
         test = GroupBusiOper(self.driver)
         test.Open_GrpVpmn(groupId,offerid)
-        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpVpmn')['FuncRow'],index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpVpmn')['FuncRow'],index=0) #写入结果到xls
         self.driver.close()
 
     @ddt.data(*paras_GrpImsSub)
@@ -144,12 +145,33 @@ class GroupBusi(unittest.TestCase):
         logger.info('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
         print('开始执行集团多媒体桌面电话商品订购用例,测试数据：{}'.format(dic))
         test = GroupBusiOper(self.driver)
-        test.Open_GrpVpmn(groupId,offerid)
-        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
+        # test.Open_GrpVpmn(groupId,offerid)
+        title = 'VPMN集团商品订购'
+        test.add_dochead(title)
+        test.Open_GrpBusiOrd(groupId)
+        test.search_grpOffer(offerid)
+        test.set_mainOffer(offerid) #商品订购主页点击待设置
+        test.screen_step('设置集团VPMN商品')
+        logger.info("商品设置开始......")
+        test.set_OfferSpec(subOfferList = []) #VPMN和多媒体桌面电话子商品都为空，传空列表
+        test.screen_step('商品设置完成')
+        test.confirm_OfferSpec() #商品设置再确认
+        test.screen_step('点击提交按钮')
+        test.Open_SubmitAll()#商品订购提交
+        logger.info("处理页面返回信息......")
+        submitMsg = PageAssert(self.driver).assert_Submit()
+        logger.info('业务受理信息：{}'.format(submitMsg))
+        test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
+        test.save_docreport(title)
+        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpIms')['FuncRow'],index=0) #写入结果到xls
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')
+        # self.driver.execute_script('window.stop()')
+        # os.system('taskkill /im chromedriver.exe /F')
+
 
 if __name__ == '__main__':
     report_title = u'集团商品业务受理自动化测试报告'

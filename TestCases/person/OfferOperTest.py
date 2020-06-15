@@ -54,14 +54,14 @@ class OfferOperTest(unittest.TestCase):
         test.isElementDisplay(Loc_submit, 'click')
         time.sleep(5)
         logger.info("处理页面返回信息.....")
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
-        # submitMsg = PageAssert(self.driver).assert_Submit()  # 提交后返回信息，flowId或者报错
-        # logger.info('===提交后页面返回信息：{}'.format(submitMsg) )
-        # test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
+        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        logger.info('业务受理信息：{}'.format(submitMsg))
+        test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        # PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=row)
+        test.save_docreport(title)
         logger.info('写入测试结果到xls成功.....')
-        print('写入测试结果到xls成功')
+        self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
 
     def tearDown(self):

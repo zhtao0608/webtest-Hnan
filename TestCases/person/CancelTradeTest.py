@@ -22,7 +22,7 @@ row = get_TestData(FuncCode='CancelTradeTest')['FuncRow']
 
 @ddt.ddt
 class CancelTradeTest(unittest.TestCase):
-    """[个人业务]复机测试"""
+    """[个人业务]返销测试"""
     @classmethod
     def setUp(self):
         self.driver = webdriver.Chrome()
@@ -31,7 +31,7 @@ class CancelTradeTest(unittest.TestCase):
 
     @ddt.data(*paras)
     def test_CancelTrade(self,dic):
-        """换卡"""
+        """业务返销"""
         logger.info("开始参数化......")
         accessNum = dic.get('ACCESS_NUM')
         busicode = dic.get('BUSI_ITEM_CODE') #业务操作类型
@@ -46,21 +46,21 @@ class CancelTradeTest(unittest.TestCase):
         test.open_CancelTradeFrame() #进入iframe
         test.query_CancelTradeByAccessNum(accessNum,busicode) #查询业务返销信息
         test.screen_step('选择要返销的业务类型')
-        errMsg = PageAssert(test.driver).assert_error()
-        if '业务校验失败' in errMsg:
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=errMsg)
-            test.quit_browse() #查询返销信息失败，直接终止程序
+        errMsg = PageAssert(test.driver).check_BusiRule(file,row)
+        self.assertNotIn('业务校验失败',errMsg)
+        # if '业务校验失败' in errMsg:
+        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=errMsg)
+        #     test.quit_browse() #查询返销信息失败，直接终止程序
         time.sleep(3)
         test.find_element_click(Btn_commit)
         helpMsg = PageAssert(test.driver).assert_HelpPage()
         if '校验通过' not in helpMsg:
             logger.info('弹出帮助提示信息:{}'.format(helpMsg))
-        submitMsg = PageAssert(test.driver).assert_SubmitPage()
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0)
         logger.info('业务受理信息：{}'.format(submitMsg))
+        print('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=row,index=0) #写入结果到xls
         self.driver.close()
 
 if __name__ == '__main__':

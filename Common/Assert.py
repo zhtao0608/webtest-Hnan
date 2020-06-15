@@ -218,37 +218,64 @@ class PageAssert(Base):
     """==============================处理页面返回信息====================================="""
 
     """====================处理业务受理异常提示======================"""
-    def check_RuleAfter(self):
-        '''业务提交后校验'''
-        loc_content = (By.XPATH,"//*[starts-with(@id,'wade_messagebox') and contains(@class,'content')]")
-        flag = self.is_element_located(loc_content)
-        if not flag:
-            logger.info("未出现规则校验异常，通过")
-            pass
-            return True
-        else:
-            msg = self.isElementDisplay(loc_content, 'text')
-            print("错误提示：", msg)
-            step_str = "业务受理规则异常{}".format(msg)
-            self.screenshot_SaveAsDoc(step_str)
-            return False
 
-    def check_RuleBefore(self):
-        '''提交前校验，页面出现异常或者业务规则异常'''
-        loc_content = (By.XPATH,'//div[contains(@class,"c_msg c_msg-full c_msg-h c_msg-error c_msg-phone-v"]/div/div[2]/div[1]/div[2]')
-        flag = self.isElementDisplay(loc_content)
-        if not flag:
-            logger.info("未出现规则校验异常，通过！")
-            return
-        else:
-            msg = self.isElementDisplay(loc_content, 'text')
-            step_str = "错误提示:{}".format(msg)
-            logger.info(step_str)
-            self.screenshot_SaveAsDoc(step_str)
-            return msg
+    def assert_WadePage(self):
+        '''处理Wade弹出的各种提示窗口（Error、Success、Warn、Help、Tips）'''
+        loc_WadeMessage = (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]')
+        try:
+            ele_wadeMsg = self.find(loc_WadeMessage)
+            logger.info('找到WadeMsg弹出框:{}'.format(str(ele_wadeMsg)))
+            classname = self.get(loc_WadeMessage,Type='attribute',name='class') #取出WadeMsg的class属性值，判断是什么类型弹出
+            logger.info('wadeMsg的类型:{}'.format(classname))
+            time.sleep(2)
+            msg = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[1]/div[2]').text
+            # msg = '业务校验:' + msg
+            '''根据classname类型按钮处理'''
+            if 'c_msg-error' in classname:
+                print('弹出WadeMsg的是错误提示')
+                logger.info("业务校验失败:{}".format(msg))
+                print('业务校验信息:{}'.format(msg))
+                step_str = "业务校验"
+                self.screen_step(step_str)  # 这个保存在测试记录文档中
+                self.screenshot_SaveAsDoc(step_str)  # 截图单独保存到doc
+                time.sleep(3)
+                msg = '业务校验失败' + msg
+            elif 'c_msg-success' in classname:
+                print('弹出WadeMsg的是成功提示')
+                ele_suc = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button')
+                self.click_on_element(ele_suc)
+                self.sendEnter()
+                time.sleep(2)
+                msg = '弹出校验成功信息：' + msg
+            elif 'c_msg-warn' in classname:
+                print('弹出WadeMsg的是告警提示')
+                step_str = "业务受理提示信息"
+                self.screenshot_SaveAsDoc(step_str)
+                ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
+                self.sendEnter()
+                time.sleep(2)
+                msg = '警告信息:' + msg
+            elif 'c_msg-help' in classname:
+                print('弹出WadeMsg的是帮助提示')
+                ele_help = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]')
+                self.click_on_element(ele_help)
+                self.sendEnter()
+                time.sleep(3)
+            elif 'c_msg c_msg-h c_msg-phone-v c_msg-full' == classname:
+                print('弹出WadeMsg的是普通提示')
+                step_str = "业务受理提示信息"
+                logger.info('业务受理提示信息:{}'.format(msg))
+                self.screenshot_SaveAsDoc(step_str)
+                ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]').click()  # 关闭提示窗口
+                time.sleep(2)
+                msg = '出现提示信息:' + msg
+                self.sendEnter()
+        except:
+            msg = '没有弹出WadeMessage提示,校验通过'
+        return msg
 
 
-    def write_testResult(self,file,row,index=0):
+    def assert_submitAfter(self,file,row,index=0):
         '''
         测试结果写入xls，按xls模板已将flowId 和errmsg列指定了
         :param file: xls完整路径
@@ -266,7 +293,9 @@ class PageAssert(Base):
                 write_xlsBycolName_append(file, row, 'RESULT_INFO', Msg,index)  #向xls模板指定行列写入结果
         except :
             logger.info("测试结果写入xls发生异常！")
+            Msg = '测试异常'
             write_xlsBycolName_append(file, row, 'RESULT_INFO', '测试异常', index)  # 向xls模板指定行列写入结果
+        return Msg
 
 
     def write_vaildErrResult(self,file,row,index=0):
@@ -277,8 +306,20 @@ class PageAssert(Base):
         :param index: xls的sheet页index
         :return:
         '''
-        Msg = self.assert_error()
+        Msg = self.assert_WadePage()
         if '业务校验失败' in Msg:
             logger.info("业务校验，错误信息写入xls中RESULT_INFO列")
             write_xlsBycolName_append(file, row, 'RESULT_INFO', Msg,index)  #向xls模板指定行列写入结果
         return Msg
+
+    def check_BusiRule(self,file,row):
+        '''业务规则校验，包括Error、Success、Warn、Help、Tips等各类Wade校验'''
+        ruleMsg = self.assert_WadePage()
+        if ('校验失败' in ruleMsg) or ('警告信息' in ruleMsg):
+            write_xlsBycolName_append(file, row, 'RULE_CHECK',value=ruleMsg,index=0)
+            logger.info('规则校验信息写入RULE_CHECK字段成功')
+        else:
+            ruleMsg = '业务规则校验通过'
+        return ruleMsg
+
+

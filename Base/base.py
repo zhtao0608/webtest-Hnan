@@ -9,6 +9,7 @@ from Base import ReadConfig
 import time,os,sys
 from docx import Document
 from docx.shared import Inches
+from contextlib import contextmanager
 
 logger = LogManager('base').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log')
 
@@ -396,10 +397,22 @@ class Base():
         except:
             print("根据 {value} 获取句柄失败")
 
+
     def quit_browse(self):
         self.driver.quit()
-        time.sleep(1)
+        time.sleep(3)
+        # self.driver.execute_script('window.stop()')
         sys.exit(1)
+        # os._exit(0)
+        # try :
+        #     # os._exit(0)
+        #     sys.exit(0)
+        #     # os.system('taskkill /im chromedriver.exe /F')
+        # except SystemExit as e:
+        #     logger.info(e)
+        #     self.driver.execute_script('window.stop()')
+        #     print('测试异常!')
+
 
     def click_on_element(self, element):
         u"""鼠标悬停操作"""

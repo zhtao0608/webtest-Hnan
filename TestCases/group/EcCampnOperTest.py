@@ -57,7 +57,7 @@ class EcCampnOperTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).write_testResult(file=file,row=get_TestData('SubEcCampnAdd')['FuncRow'],index=0) #写入结果到xls
+        PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubEcCampnAdd')['FuncRow'],index=0) #写入结果到xls
         self.assertIn('受理失败',submitMsg)
         self.driver.close()
         time.sleep(3)
