@@ -21,7 +21,8 @@ class LoginPage(Base):
 
     def quit_dailog(self):
         loc_dailog = (By.CSS_SELECTOR,"#UI-release > div > div.c_header.c_header-white > div.fn > button > span")
-        self.isElementDisplay(loc_dailog,'click')
+        self.find_element_click(loc_dailog)
+        # self.isElementDisplay(loc_dailog,'click')
         return self.driver
 
 
@@ -31,9 +32,11 @@ class LoginPage(Base):
         flag = self.isElementDisplay(loc_UIstep1)
         try:
             if flag:
-                self.isElementDisplay(loc_UIstep1,'click')
+                self.find_element_click(loc_UIstep1)
+                # self.isElementDisplay(loc_UIstep1,'click')
             else:
-                self.isElementDisplay(loc_GRstep1, 'click')
+                self.find_element_click(loc_GRstep1)
+                # self.isElementDisplay(loc_GRstep1, 'click')
         except:
             pass   #跳过
             print("测试失败，关闭!")

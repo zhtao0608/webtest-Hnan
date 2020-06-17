@@ -4,8 +4,11 @@ from selenium.webdriver.common.by import By
 from Base import ReadConfig
 from selenium import webdriver
 from PageObj.ngboss.login_page import LoginPage
+from Base.Mylog import LogManager
 
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
+logger = LogManager('MainPage').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+
 
 class MainPage(Base):
     def open_base(self):
@@ -28,14 +31,60 @@ class MainPage(Base):
     # 首页->更多
     def main_menu(self):
         loc_main = (By.ID,'welTab_tab_li_6')
-        self.isElementExist(loc_main,'click')
-        return self.driver
-
+        loc_mainByGrpRole = (By.XPATH,'/html/body/div[1]/div[2]/div[3]/span') #政企角色登录
+        try:
+            print('=====普通角色登录=====')
+            self.find_element_click(loc_main)
+        except:
+            print('=====政企角色登录=====')
+            self.find_element_click(loc_mainByGrpRole)
     #更多-订单中心
     def menu_order(self):
         Loc_oc = (By.CSS_SELECTOR,'#menus_tab_li_1')
         self.isElementExist(Loc_oc,'click')
         return self.driver
+
+    def OpenDomain(self,DomainId):
+        '''选择中心点击
+        :param DomainId: 0-客户中心
+        1-订单中心，2-产品商品中心，3-零库存管理中心 4-营销中心 5-基础管理中心
+        6-销售中心 7-账务中心 8-渠道中心 9-票据中心 10-统计分析
+        11-代理商 12-产品管理(计费账务) 13-计费中心 14-在线中心 15-IFRS15中心
+        16-支付中心
+        :return:
+        '''
+        if isinstance(DomainId,int):
+            DomainId = str(DomainId)
+        domainId_str = 'menus_tab_li_%s' % DomainId
+        loc_domain = (By.ID,domainId_str)
+        self.home_loc()
+        self.iframe('navframe_def')
+        self.main_menu() #点击更多
+        time.sleep(1)
+        self.find_element_click(loc_domain)
+
+    def open_CataMenu(self,domainId,catamenu,parentMenu,MenuId):
+        '''
+        :param domainId: 归属中心
+        :param catamenu: 菜单目录
+        :param parentMenu: 父菜单
+        :param MenuId: 子菜单
+        :return:
+        '''
+        '''打开菜单'''
+        self.open_base()
+        LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
+        self.OpenDomain(domainId)
+        catamenu_str  =  "//li[@menuid='%s']" % catamenu
+        self.find_element_click((By.XPATH,catamenu_str)) #菜单目录
+        parMenu = "//*[@menuid='%s']" % parentMenu # 父菜单
+        logger.info("菜单目录：{}" .format(parentMenu))
+        self.find_element_click((By.XPATH,parMenu))
+        time.sleep(1)
+        # xpath_menu = "//*[@menuid='%s']" % MenuId
+        self.Open_menu(MenuId)
+        logger.info("菜单ID：{}" .format(MenuId))
+
 
     def open_OcCataMenu(self,parentMenu,MenuId):
         '''菜单目录'''
@@ -43,7 +92,7 @@ class MainPage(Base):
         self.iframe('navframe_def')
         self.main_menu()
         time.sleep(1)
-        self.menu_order()
+        self.OpenDomain(1)
         parMenu = "//*[@menuid='%s']" %parentMenu
         print("菜单目录：" + parentMenu)
         self.find((By.XPATH,parMenu)).click()
@@ -157,7 +206,11 @@ if __name__ == '__main__':
     driver = webdriver.Chrome()
     test = MainPage(driver)
     test.open_base()
-    LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
-    # offerlist = ['99091290','99091387','99091288']
-    test.search_offerNew('99091283')
-    driver.close()
+    # LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
+    # LoginPage(driver).login('TESTKM13',rc.get_ngboss('password'))  #登录
+    # test.open_OcCataMenu('crm9000','crm9100')
+    test.open_CataMenu(1,'crm9000','crm9100','crm9130')
+
+
+    # test.open_CataMenu(0,'crm5000','crm5300','crm5217')
+    # driver.close()
