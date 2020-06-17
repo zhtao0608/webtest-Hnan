@@ -36,8 +36,12 @@ class FamilyNetPage(PersonBase):
         loc_mainComp = (By.ID,li_str)
         li_shortCodeSpan_str = 'select_%s_390018000_span'  % mainPhoneNum # 请选择
         loc_shortCodeSpan = (By.ID,li_shortCodeSpan_str)
-        li_shortCodeStr = '//*[@id="select_%s_390018000_list_ul"]/li[2]' % mainPhoneNum  #520短号
-        loc_shortcode = (By.XPATH,li_shortCodeStr)
+        li_shortCodeTestStr = '//*[@id="select_%s_390018000_list_ul"]/li[2]' % mainPhoneNum  #520短号
+        li_shortCodeKrStr = '//*[@id="select_%s_390018000_float"]/div[2]/div/div/ul/li[2]' % mainPhoneNum  #520短号
+
+        loc_shortcodeKr = (By.XPATH,li_shortCodeKrStr)
+        loc_shortcodeTest = (By.XPATH,li_shortCodeTestStr)
+
         li_open = (By.ID,'590020001')
         btn_confirm = (By.ID,'chaSpecPopOkButton_100009901')
         '''设置家庭主卡家庭短号'''
@@ -45,7 +49,10 @@ class FamilyNetPage(PersonBase):
         time.sleep(3)
         self.find_element_click(loc_shortCodeSpan) #点击选择
         time.sleep(1)
-        self.find_element_click(loc_shortcode)  # 点击520
+        try :
+            self.find_element_click(loc_shortcodeKr)  # 点击520 (扩容环境)
+        except:
+            self.find_element_click(loc_shortcodeTest)  # 点击520（测试环境）
         self.find_element_click(li_open) #短号显示，点击开通
         self.screen_step('设置主卡家庭短号')
         self.find_element_click(btn_confirm)  #点击确认
@@ -71,16 +78,21 @@ class FamilyNetPage(PersonBase):
             loc_mainComp = (By.ID, li_str)
             li_shortCodeSpan_str = 'select_%s_390018000_span' % mutiPhoneNumList[i]  # 请选择
             loc_shortCodeSpan = (By.ID, li_shortCodeSpan_str)
-            li_shortCodeStr = '//*[@id="select_%s_390018000_list_ul"]/li[%d]' % (mutiPhoneNumList[i],i+3)  # 循环短号
-            loc_shortcode = (By.XPATH, li_shortCodeStr)
+
+            li_shortCodeKrStr = '//*[@id="select_%s_390018000_float"]/div[2]/div/div/ul/li[%d]' % (mutiPhoneNumList[i],i+3)  # 循环短号
+            li_shortCodeTestStr = '//*[@id="select_%s_390018000_list_ul"]/li[%d]' % (mutiPhoneNumList[i],i+3)  # 循环短号
+            loc_shortcodeKr = (By.XPATH, li_shortCodeKrStr)
+            loc_shortCodeTest = (By.XPATH, li_shortCodeTestStr)
             li_open = (By.ID, '590020001')
             btn_confirm = (By.ID, 'chaSpecPopOkButton_100009901')
-
             self.find_element_click(loc_mainComp) #点击家庭短号
             time.sleep(3)
             self.find_element_click(loc_shortCodeSpan) #点击选择
             time.sleep(1)
-            self.find_element_click(loc_shortcode)  # 点击521
+            try:
+                self.find_element_click(loc_shortcodeKr)  # 点击521(扩容环境)
+            except:
+                self.find_element_click(loc_shortCodeTest)  # 点击521（测试环境）
             self.find_element_click(li_open) #短号显示，点击开通
             self.screen_step('设置家庭成员短号')
             self.find_element_click(btn_confirm)  #点击确认
@@ -111,6 +123,7 @@ class FamilyNetPage(PersonBase):
         logger.info('业务受理信息：{}'.format(submitMsg))
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)
+
 
 if __name__ == '__main__':
     print("用例开始执行时间：" + time.strftime("%Y%m%d%H%M%S"))

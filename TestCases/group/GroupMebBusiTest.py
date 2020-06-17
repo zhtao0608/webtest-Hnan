@@ -4,7 +4,6 @@ import time,ddt
 from PageObj.oc.group.GrpMebBusiOper import GroupMebBusiOper
 from selenium import webdriver
 from Base import ReadConfig
-from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
 from Base.Mylog import LogManager
 from Common.Assert import PageAssert
 from TestCases.suite import mySuitePrefixAdd
@@ -67,13 +66,14 @@ class GroupMebBusi(unittest.TestCase):
     def test00_subGrpAdcMeb(self,dic):
         '''ADC成员订购'''
         logger.info("开始参数化......")
+        row = get_TestData('SubGrpAdcMeb')['FuncRow']
         accessNum = str(dic.get('ACCESS_NUM'))
         groupId = str(dic.get('GROUP_ID'))  # SIM卡号参数化
         offerid = str(dic.get('OFFER_ID'))
         grp_offer_insid = str(dic.get('GRP_OFFER_INS_ID'))
         subOfferList = dic.get('SUBOFFERLIST').replace(' ','').split(',') #成员子商品列表去空格并转换成list
-        logger.info('开始执行ADC成员商品用例,测试数据：{}'.format(dic))
-        print('开始执行成员商品定否用例,测试数据：{}'.format(dic))
+        logger.info('开始执行ADC成员商品订购用例,测试数据：{}'.format(dic))
+        print('开始执行成员商品订购用例,测试数据：{}'.format(dic))
         '''开始执行案例'''
         test = GroupMebBusiOper(self.driver)
         title = u'VPMN成员商品订购测试记录'
@@ -87,6 +87,10 @@ class GroupMebBusi(unittest.TestCase):
         test.click_BtnMebSub() #点击可订购按钮
         test.screen_step("步骤3:选择集团商品并点击订购按钮")
         test.choose_grpOfferandsub(offerid,grp_offer_insid) #选择集团商品并点击订购按钮
+        #加个规则校验
+        ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
+        logger.info('成员商品订购业务规则校验结果:{}'.format(ruleMsg))
+        self.assertNotIn('校验失败',ruleMsg)
         print("直接进入子商品设置页面")
         logger.info("开始设置ADC成员子商品......")
         for i in range(len(subOfferList)):
@@ -108,12 +112,11 @@ class GroupMebBusi(unittest.TestCase):
         test.screen_step("步骤6：确认商品配置，点击提交")
         test.Open_SubmitAll()  #订购主页，点击提交
         time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubGrpAdcMeb')['FuncRow'],index=0) #写入结果到xls
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
 
     @ddt.data(*GrpMebsubList)
     def test01_subGrpVpmnMeb(self,dic):
@@ -125,8 +128,9 @@ class GroupMebBusi(unittest.TestCase):
         offerid = str(dic.get('OFFER_ID'))
         grp_offer_insid = str(dic.get('GRP_OFFER_INS_ID'))
         subOfferList = dic.get('SUBOFFERLIST').replace(' ','').split(',') #成员子商品列表去空格并转换成list
-        logger.info('开始执行成员商品定否用例,测试数据：{}'.format(dic))
-        print('开始执行成员商品定否用例,测试数据：{}'.format(dic))
+        row = get_TestData('SubGrpVpmnMeb')['FuncRow'] if offerid == '8000' else get_TestData('SubGrpImsMeb')['FuncRow']
+        logger.info('开始执行成员商品订购用例,测试数据：{}'.format(dic))
+        print('开始执行成员商品订购用例,测试数据：{}'.format(dic))
         '''开始执行案例'''
         test = GroupMebBusiOper(self.driver)
         title = u'VPMN成员商品订购测试记录'
@@ -140,6 +144,9 @@ class GroupMebBusi(unittest.TestCase):
         test.click_BtnMebSub() #点击可订购按钮
         test.screen_step("步骤3:选择集团商品并点击订购按钮")
         test.choose_grpOfferandsub(offerid,grp_offer_insid) #选择集团商品并点击订购按钮
+        ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
+        logger.info('成员商品订购业务规则校验结果:{}'.format(ruleMsg))
+        self.assertNotIn('校验失败',ruleMsg)
         print("直接进入子商品设置页面")
         logger.info("开始设置VPMN成员子商品......")
         for i in range(len(subOfferList)):
@@ -152,10 +159,10 @@ class GroupMebBusi(unittest.TestCase):
             test.set_prodSpec() #产品规格特征设置页面，点击待设置
             if (subOfferList[i] =='222201'):
                 # 如果成员商品offerid = 222201 多媒体桌面电话成员产品或者短号集群网则要设置短号
-                row = get_TestData('SubGrpImsMeb')['FuncRow']
+                # row = get_TestData('SubGrpImsMeb')['FuncRow']
                 test.set_vpmnMebshortCode()
             elif (subOfferList[i] =='800001'):  #Vpmn或者集团管家成员商品
-                row = get_TestData('SubGrpVpmnMeb')['FuncRow']
+                # row = get_TestData('SubGrpVpmnMeb')['FuncRow']
                 test.set_vpmnMebshortCode()
                 test.screen_step("步骤5：设置成员短号")
                 test.set_DispMode()
@@ -168,7 +175,6 @@ class GroupMebBusi(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
 
     @ddt.data(*DelGrpMebList)
     def test02_DelgrpMemOffer(self,dic):
@@ -203,10 +209,11 @@ class GroupMebBusi(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')
+        self.driver.close()
+
 
 if __name__ == '__main__':
     report_title = u'成员商品业务受理自动化测试报告'
@@ -218,4 +225,4 @@ if __name__ == '__main__':
         runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2,retry=1)
         runner.run(mySuitePrefixAdd(GroupMebBusi,"test00_subGrpAdcMeb"))
         runner.run(mySuitePrefixAdd(GroupMebBusi,"test01_subGrpVpmnMeb"))
-        # runner.run(mySuitePrefixAdd(GroupMebBusi,"test02_DelgrpMemOffer"))
+        runner.run(mySuitePrefixAdd(GroupMebBusi,"test02_DelgrpMemOffer"))

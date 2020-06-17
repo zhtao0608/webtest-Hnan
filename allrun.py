@@ -84,8 +84,8 @@ class RunTest:
                 # runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='Test Report',
                 #                 #                           description='Test Description', verbosity=2,retry=1,save_last_try=False)
                 # 运行测试用例
-                runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='Test Report',
-                                                           description='Test Description', verbosity=2)
+                runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='WEB-UI自动化测试报告',
+                                                           description='测试报告', verbosity=2,retry=1)
                 runner.run(suite)
             else:
                 log.info("Have no case to test.")

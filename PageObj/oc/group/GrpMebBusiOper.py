@@ -92,26 +92,16 @@ class GroupMebBusiOper(BasePage):
 
     def assert_VPMNshortCode(self):
         '''处理下短号验证提示信息'''
-        try :
-            msg = PageAssert(self.driver).assert_error()
-            if '校验通过' in msg:
-                msg = PageAssert(self.driver).assert_SucPage()
-        except:
-            logger.info('短号校验发生异常!关闭')
-            msg  = '校验失败，发生异常!'
+        msg = PageAssert(self.driver).assert_WadePage()
+        # try :
+        #     msg = PageAssert(self.driver).assert_error()
+        #     if '校验通过' in msg:
+        #         msg = PageAssert(self.driver).assert_SucPage()
+        # except:
+        #     logger.info('短号校验发生异常!关闭')
+        #     msg  = '校验失败，发生异常!'
         return msg
 
-            # print("短号验证结果：",msg)
-            # if 'ok' == self.get(btn_msg,Type='attribute',name = 'tag'):
-            #     self.screen_step("短号验证")
-            #     return True
-            # if 'cancel' == self.get(btn_msg,Type='attribute',name = 'tag'):
-            #     print("短号验证失败，直接关闭浏览器")
-            #     # self.screen_step('短号验证失败')
-            #     self.screenshot_SaveAsDoc('短号验证失败')
-            #     return False
-        # except:
-        #     pass #没有找到直接跳过
 
     def set_vpmnMebshortCode(self):
         '''设置VPMN成员短号'''
@@ -124,24 +114,27 @@ class GroupMebBusiOper(BasePage):
         flag = self.isElementDisplay(loc_pam_CHECK)
         if flag :
             self.find_element_click(loc_pam_CHECK)
-            time.sleep(2)
+            time.sleep(1)
         else:
             self.find_element_click(loc_yanzheng)
-            time.sleep(2)
+            time.sleep(1)
         validshortCodeMsg = self.assert_VPMNshortCode()
         logger.info('短号校验结果:{}'.format(validshortCodeMsg))
 
     def set_DispMode(self):
         '''设置主叫号码显示，如80001短号集群网成员产品'''
         li_DispMode = (By.ID,'pam_CALL_DISP_MODE_span')
-        li_DispMode_float = (By.CSS_SELECTOR,'#pam_CALL_DISP_MODE_float > div.content > div > div > ul > li:nth-child(2)')
+        li_DispMode_float = (By.XPATH,'//*[@id="pam_CALL_DISP_MODE_float"]/div[2]/div/div/ul/li[2]')
+        li_DisMode_list = (By.XPATH,'//*[@id="pam_CALL_DISP_MODE_list_ul"]/li[2]')
+        self.find_element_click(li_DispMode)
+        time.sleep(1)
         try:
-            self.isElementExist(li_DispMode,'click')
-            self.isElementExist(li_DispMode_float, 'click') #默认：选择显示短号
+            self.isElementExist(li_DispMode_float, 'click') #默认：选择显示短号 （扩容环境）
         except:
-            print("没有找到主叫号码显示元素，测试失败")
-            self.close()
-        return self.driver
+            self.isElementExist(li_DisMode_list,'click') #现场测试环境
+            # print("没有找到主叫号码显示元素，测试失败")
+            # self.close()
+        # return self.driver
 
     def confirm_MebsubMainOfferSpec(self):
         '''成员主商品设置完成'''

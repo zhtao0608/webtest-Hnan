@@ -19,12 +19,14 @@ class SubscriberOpen(PersonBase):
         self.driver.maximize_window()
 
     def Open_subscriberOpen(self):
-        self.open_base()
-        LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
         main = MainPage(self.driver)
-        main.open_OcCataMenu('crm9000','crm9100')
-        self.screen_step('打开个人业务-开户业务')
-        main.Open_menu('crm9130')
+        main.open_CataMenu(1,'crm9000','crm9100','crm9130')
+        # self.open_base()
+        # LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
+        # main = MainPage(self.driver)
+        # main.open_OcCataMenu('crm9000','crm9100')
+        # self.screen_step('打开个人业务-开户业务')
+        # main.Open_menu('crm9130')
         time.sleep(10)
         self.open_SubscriberOpenFrame()  # 进入个人用户开户iframe
         self.screen_step('进入个人用户开户菜单')

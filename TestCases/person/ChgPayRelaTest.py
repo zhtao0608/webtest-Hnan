@@ -118,10 +118,11 @@ class ChgPayRelaTest(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')
+        self.driver.close()
+
 
 if __name__ == '__main__':
     report_title = u'普通付费关系变更自动化测试报告'

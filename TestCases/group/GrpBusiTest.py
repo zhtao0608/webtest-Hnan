@@ -98,7 +98,7 @@ class GroupBusi(unittest.TestCase):
         test.save_docreport(title)
         PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpAdc')['FuncRow'],index=0) #写入结果到xls
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
+        # self.driver.close()
 
     @ddt.data(*paras_GrpBusiCancel)
     def test02_Cancel_GrpOrder(self,dic):
@@ -131,7 +131,7 @@ class GroupBusi(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
+        # self.driver.close()
 
     @ddt.data(*paras_GrpVpmnSub)
     def test03_OpenGrpVpmn(self,dic):
@@ -144,7 +144,6 @@ class GroupBusi(unittest.TestCase):
         test = GroupBusiOper(self.driver)
         test.Open_GrpVpmn(groupId,offerid)
         PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('OpenGrpVpmn')['FuncRow'],index=0) #写入结果到xls
-        self.driver.close()
 
     @ddt.data(*paras_GrpImsSub)
     def test04_OpenGrpIMS(self,dic):
@@ -173,10 +172,11 @@ class GroupBusi(unittest.TestCase):
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')
+        self.driver.close()
+
 
 
 
@@ -188,4 +188,4 @@ if __name__ == '__main__':
     print("开始执行testSuite......")
     with open(ReadConfig.get_reportPath() + report_title + nowtime + ".html", 'wb') as fp:
         runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2)
-        runner.run(mySuitePrefixAdd(GroupBusi,"test01_OpenGrpAdc"))
+        runner.run(mySuitePrefixAdd(GroupBusi,"test"))

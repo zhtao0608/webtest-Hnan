@@ -65,7 +65,7 @@ class ChangeProdStatus(PersonBase):
             time.sleep(2)
         else:
             logger.info('传入的busiCode不对，退出操作')
-            self.quit_browse()
+            # self.quit_browse()
 
     def accept_stopOrOpen(self,AccessNum,busiCode,password='123123'):
         '''停开机业务受理'''

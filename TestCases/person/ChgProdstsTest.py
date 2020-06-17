@@ -90,6 +90,8 @@ class ChangeProdStsTest(unittest.TestCase):
         test.open_ChangeProdStatusFrame()
         test.screen_step('进入菜单，选择停开机业务类型')
         test.select_BusiType(busicode) # 选择停开机业务受理类型 【暂时在代码里面写死，根据需要修改】
+        checkMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
+        self.assertNotIn('校验失败',checkMsg) #加个断点
         loc_submit = (By.ID,'CSSUBMIT_BUTTON')
         RuleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
         self.assertNotIn('业务校验失败',RuleMsg)

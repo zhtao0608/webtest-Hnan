@@ -68,7 +68,8 @@ class ChangeSimCard(PersonBase):
         '''
         sel_loc = (By.ID,'LEVEL_TYPE_CODE_span') #点击
         # li_pwd = (By.CSS_SELECTOR,'#LEVEL_TYPE_CODE_float > div.content > div > div > ul > li:nth-child(3)') #选择服务密码
-        li_iden = (By.XPATH,'//ul[@id="LEVEL_TYPE_CODE_list_ul"]/li[contains(@title,"二代身份证（换卡手输）")]') #选择证件
+        # li_iden = (By.XPATH,'//ul[@id="LEVEL_TYPE_CODE_list_ul"]/li[contains(@title,"二代身份证（换卡手输）")]') #选择证件
+        li_iden = (By.XPATH,'//div[@id="LEVEL_TYPE_CODE_float"]/div[2]/div/div/ul/li[contains(@title,"二代身份证（换卡手输）")]') #选择证件
         text_custName = (By.ID,'LOGIN_NAME') #客户姓名
         text_pwd = (By.ID,'LOGIN_VAL') #服务密码
         Btn_confirm = (By.ID,'BSL_SUBMIT_BTN') #确定按钮

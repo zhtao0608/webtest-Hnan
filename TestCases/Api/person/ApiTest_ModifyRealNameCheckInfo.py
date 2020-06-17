@@ -18,10 +18,10 @@ sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_i
       to_char(a.iden_id) iden_id,'' NEW_IDENID ,a.iden_type_id,a.iden_nr,b.party_name,\
       to_char(t.cust_id) cust_id ,'' flowid , '' result_info  ,'' NEWCUSTNAME \
      FROM  uop_file4.um_subscriber T ,uop_cp.cb_identification a,uop_cp.cb_party b  \
-      where t.remove_tag = '0' and t.access_num LIKE '1390872%' and t.mgmt_district = '0872'\
+      where t.remove_tag = '0' and t.access_num LIKE '188%' and t.mgmt_district = '0872'\
      and a.party_id = t.cust_id \
      and a.party_id = b.party_id \
-     and rownum <=5"
+     and rownum <=100"
 
 paras = ora.select(sql)
 logger.info('测试准备数据:{}'.format(paras))
@@ -38,11 +38,12 @@ h = {
     "Referer": rc.get_ngboss('url')
 }
 
-lo_param = {"LOGIN_MODE": "BOSS", "STAFF_ID": "TESTKM06", "IS_XACTIVE": "false", "BROWSER_VERSION": "IE-11",
+lo_param = {"LOGIN_MODE": "BOSS", "STAFF_ID": "TESTKM13", "IS_XACTIVE": "false", "BROWSER_VERSION": "IE-11",
         "PASSWORD": "e3937dc80f9bb5ab17cc016cdc612b7d", "LOGIN_FLAG": "1"}
 
 @ddt.ddt
 class ModfiyRealChkInfo(unittest.TestCase):
+    @classmethod
     def setUp(self):
         self.file = file
         self.headers = h

@@ -50,7 +50,7 @@ class FamilyNetTest(unittest.TestCase):
         time.sleep(5)
         test.open_MultiOfferFrame() #进入iframe
         ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
-        self.assertIn('业务校验通过', ruleMsg)  # 校验通过才继续执行
+        self.assertNotIn('校验失败',ruleMsg) # 校验通过才继续执行
         logger.info('开始设置主号家庭短号服务')
         test.screen_step('进入亲情网办理菜单')
         test.set_mainCard(AccessNum)
@@ -58,13 +58,16 @@ class FamilyNetTest(unittest.TestCase):
         test.set_mutiCard(mutiAccessNumList)
         time.sleep(2)
         test.find_element_click(Btn_commit)
-        time.sleep(10)
+        time.sleep(15)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         time.sleep(3)
         self.assertIn('业务受理成功',submitMsg)
+
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
         self.driver.close()
 
 if __name__ == '__main__':

@@ -2,6 +2,8 @@ import time
 from Base.base import Base
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait  # 用于处理元素等待
 from Base import ReadConfig
 from PageObj.ngboss.mainpage import MainPage
 from PageObj.ngboss.login_page import LoginPage
@@ -39,9 +41,8 @@ class OfferOperPage(PersonBase):
         self.driver.switch_to.frame(loc_frame)
         logger.info("OfferDetail:" + str(loc_frame))
         print("OfferDetail:" + str(loc_frame))
-        time.sleep(10)  #进入商品订购页面非常慢
+        # time.sleep(12)  #进入商品订购页面非常慢
         self.screen_step('进入商品订购页面')
-        return self.driver
 
     def Open_SubOffer(self,accessNum,offerId):
         '''进入商品订购Iframe'''
@@ -54,8 +55,15 @@ class OfferOperPage(PersonBase):
         self.Open_Offerframe() #进入商品订购Iframe
 
     def Btn_sub(self):
-        Loc_submit = self.find(('id', 'CSSUBMIT_BUTTON'))
-        Loc_submit.click()
+        '''用显式等待处理，最少时间90s'''
+        loc_submit = (By.ID, "CSSUBMIT_BUTTON")
+        try:
+            ele = WebDriverWait(self.driver, 30, 3).until(EC.presence_of_element_located(loc_submit))
+            if self.is_element_displayed(ele):
+                ele.click()
+        except :
+            logger.info('商品详情页面90s没加载成功，直接退出!')
+            raise
 
     def Btn_shoppingCar(self):
         return self.findele(By.ID,"ADD_SHOPPING_CART")

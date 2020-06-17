@@ -19,22 +19,32 @@ class PageAssert(Base):
         try:
             flag = self.isElementDisplay(loc_flow)
             if flag :
-                flowId = self.isElementDisplay(loc_flow,'text')
-                time.sleep(2)
+            #     flowId = self.isElementDisplay(loc_flow,'text')
+                flowId = self.get(loc_flow)
                 logger.info("业务受理成功，交互流水：" + flowId)
                 print("业务受理成功，交互流水：" + flowId)
                 self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
-                return '业务受理成功：'+ flowId
-            else:
-                errmsg = self.isElementDisplay(Loc_msg,'text')
+                submitMsg = '业务受理成功：'+ flowId
+            elif self.isElementDisplay(Loc_msg):
+                errmsg = self.get(Loc_msg)
                 time.sleep(3)
                 logger.info('提交失败，错误信息：' + errmsg)
                 print('提交失败，错误信息：' + errmsg)
                 self.screen_step('业务受理失败：{}'.format(errmsg))
-                return '业务受理失败：' + errmsg
+                submitMsg = '业务受理失败：' + errmsg
+            # return '业务受理成功：'+ flowId
+            #     errmsg = self.isElementDisplay(Loc_msg,'text')
+            #     time.sleep(3)
+            #     logger.info('提交失败，错误信息：' + errmsg)
+            #     print('提交失败，错误信息：' + errmsg)
+            #     self.screen_step('业务受理失败：{}'.format(errmsg))
+            #     return '业务受理失败：' + errmsg
         except :
-            print('提交异常！测试退出')
-            return False
+            logger.info('业务提交异常!')
+            submitMsg = '业务提交异常'
+        return submitMsg
+
+
 
     def assert_HelpPage(self):
         """获取WarnPage-help页面返回的公共信息,使用模糊匹配找出显示在当前页面上的warn提示并关闭"""
@@ -255,6 +265,14 @@ class PageAssert(Base):
                 self.sendEnter()
                 time.sleep(2)
                 msg = '警告信息:' + msg
+            elif 'c_msg-however' in classname: #客户管理界面碰到
+                print('弹出WadeMsg的是however')
+                step_str = "业务受理提示信息"
+                self.screenshot_SaveAsDoc(step_str)
+                ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
+                self.sendEnter()
+                time.sleep(2)
+                msg = '校验失败:' + msg
             elif 'c_msg-help' in classname:
                 print('弹出WadeMsg的是帮助提示')
                 ele_help = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]')

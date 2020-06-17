@@ -81,7 +81,6 @@ class ShareClusterTest(unittest.TestCase):
     def test01_acceptaddMember(self,dic):
         """新增共享成员"""
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))   #标识行号，后续写入xls使用
         row = get_FuncRow('ShareClusterAddMeb')   #标识行号，后续写入xls使用
         print('开始执行第{}个用例,测试数据：{}'.format(row,dic))
         logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
@@ -95,30 +94,20 @@ class ShareClusterTest(unittest.TestCase):
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9400',menuId='crm4G10') #登录并进入主卡菜单
         time.sleep(5)
         test.open_ShareClusterFrame() #进入iframe
-        # RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
         RuleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)  # 业务检查点（进入菜单时校验）
         print('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
         logger.info('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
         self.assertNotIn('业务校验失败',RuleMsg)
-        # if '业务校验失败' in RuleMsg:
-        #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
-        #     test.quit_browse() #业务规则校验失败，直接终止程序
         test.screen_step('进入主卡操作菜单')
         test.add_MebAccessNum(serialNum)
         time.sleep(2)
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
-        logger.info('业务受理信息：{}'.format(submitMsg))
-        test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
-        test.save_docreport(title)
-        time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
+        time.sleep(15)
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
-        self.driver.close()
 
     @ddt.data(*del_paras)
     def test02_acceptDelMember(self,dic):
@@ -149,19 +138,17 @@ class ShareClusterTest(unittest.TestCase):
         time.sleep(2)
         test.find_element_click(loc_commit) #点击提交
         time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        submitMsg =PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
-        self.driver.close()
+        self.assertIn('业务受理成功',submitMsg)
+
 
     @ddt.data(*cancel_paras)
     def test03_acceptcancelShare(self,dic):   # 只取主卡即可
         """取消群组"""
         logger.info("开始参数化......")
-        # row = int(dic.get('NO'))   #标识行号，后续写入xls使用
         row = get_FuncRow('cancelShareCluster')
         print('开始执行第{}个用例,测试数据：{}'.format(row,dic))
         logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
@@ -174,12 +161,11 @@ class ShareClusterTest(unittest.TestCase):
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9400',menuId='crm4G10') #登录并进入主卡菜单
         time.sleep(5)
         test.open_ShareClusterFrame() #进入iframe
-        RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
+        RuleMsg= PageAssert(self.driver).check_BusiRule(file,row)
+        # RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
         print('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
         logger.info('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
-        if '业务校验失败' in RuleMsg:
-            write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=RuleMsg,index=0)
-            test.quit_browse() #业务规则校验失败，直接终止程序
+        self.assertNotIn('校验失败',RuleMsg)
         test.screen_step('进入主卡操作菜单')
         test.cancel_ShareCluster() #点击取消群组按钮
         Msg = PageAssert(self.driver).assert_WarnPage()
@@ -187,16 +173,16 @@ class ShareClusterTest(unittest.TestCase):
         logger.info('取消共享群组时，提醒信息:{}'.format(Msg))
         time.sleep(2)
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(10)
-        submitMsg = PageAssert(self.driver).assert_SubmitPage()
+        time.sleep(15)
+        submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        logger.info('写入测试结果到xls.....')
-        PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
+        self.assertIn('业务受理成功',submitMsg)
+
+    def tearDown(self):
+        print('测试结束，关闭浏览器器!')
         self.driver.close()
-
-
 
 if __name__ == '__main__':
     report_title = u'4G家庭共享套餐业务测试'
