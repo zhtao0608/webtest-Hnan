@@ -1,5 +1,5 @@
 import time
-from Base.base import Base
+from Base.OperExcel import write_xlsBycolName_append
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -58,7 +58,7 @@ class OfferOperPage(PersonBase):
         '''用显式等待处理，最少时间90s'''
         loc_submit = (By.ID, "CSSUBMIT_BUTTON")
         try:
-            ele = WebDriverWait(self.driver, 30, 3).until(EC.presence_of_element_located(loc_submit))
+            ele = WebDriverWait(self.driver, 120, 3).until(EC.presence_of_element_located(loc_submit))
             if self.is_element_displayed(ele):
                 ele.click()
         except :
@@ -105,6 +105,53 @@ class OfferOperPage(PersonBase):
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)
         time.sleep(3)
+
+    def assert_OfferOperSubmit(self):
+        """针对商品订购订购页面特殊处理，显式等待时间90s"""
+        loc_flow = (By.ID, 'flowId')
+        Loc_msg = (By.XPATH,"//*[@class='c_msg c_msg-h c_msg-phone-v c_msg-full c_msg-error' and not(contains(@style,'display: none'))]/div/div[2]/div[1]/div[2]")
+        try:
+            ele = WebDriverWait(self.driver, 90, 1).until(EC.presence_of_element_located(Loc_msg))
+            flag = self.is_element_displayed(ele)
+            if flag:
+                errmsg = self.get(Loc_msg)
+                logger.info('提交失败，错误信息：' + errmsg)
+                print('提交失败，错误信息：' + errmsg)
+                self.screen_step('业务受理失败：{}'.format(errmsg))
+                submitMsg = '业务受理失败：' + errmsg
+            else:
+                ele_flowId = WebDriverWait(self.driver, 90, 2).until(EC.presence_of_element_located(loc_flow))
+                flowId = ele_flowId.text
+                logger.info("业务受理成功，交互流水：" + flowId)
+                print("业务受理成功，交互流水：" + flowId)
+                self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
+                submitMsg = '业务受理成功：' + flowId
+        except :
+            logger.info('业务提交异常!')
+            submitMsg = '业务提交异常'
+        return submitMsg
+
+    def assert_OfferOpersubmitAfter(self,file,row,index=0):
+        '''
+        测试结果写入xls，按xls模板已将flowId 和errmsg列指定了
+        :param file: xls完整路径
+        :param row: xls行号
+        :param index: xls的sheet页index
+        :return:
+        '''
+        try:
+            Msg = self.assert_OfferOperSubmit()
+            if '业务受理成功' in Msg:
+                logger.info("业务受理成功，交互流水号写入xls中FLOWID列")
+                write_xlsBycolName_append(file, row, 'FLOWID', Msg,index)  #向xls模板指定行列写入结果
+            elif '业务受理失败' in Msg:
+                logger.info("业务受理失败，错误信息写入xls中RESULT_INFO列")
+                write_xlsBycolName_append(file, row, 'RESULT_INFO', Msg,index)  #向xls模板指定行列写入结果
+        except :
+            logger.info("测试结果写入xls发生异常！")
+            Msg = '测试异常'
+            write_xlsBycolName_append(file, row, 'RESULT_INFO', '测试异常', index)  # 向xls模板指定行列写入结果
+        return Msg
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()

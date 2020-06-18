@@ -1,5 +1,7 @@
 from Base.base import Base
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait  # 用于处理元素等待
 from Base import ReadConfig
 from Base.Mylog import LogManager
 from Base.OperExcel import write_excel_append,write_xlsBycolName_append
@@ -17,28 +19,29 @@ class PageAssert(Base):
         loc_flow = (By.ID, 'flowId')
         Loc_msg = (By.XPATH,"//*[@class='c_msg c_msg-h c_msg-phone-v c_msg-full c_msg-error' and not(contains(@style,'display: none'))]/div/div[2]/div[1]/div[2]")
         try:
-            flag = self.isElementDisplay(loc_flow)
-            if flag :
-            #     flowId = self.isElementDisplay(loc_flow,'text')
-                flowId = self.get(loc_flow)
-                logger.info("业务受理成功，交互流水：" + flowId)
-                print("业务受理成功，交互流水：" + flowId)
-                self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
-                submitMsg = '业务受理成功：'+ flowId
-            elif self.isElementDisplay(Loc_msg):
+            ele = WebDriverWait(self.driver, 10, 1).until(EC.presence_of_element_located(Loc_msg))
+            flag = self.is_element_displayed(ele)
+            if flag:
                 errmsg = self.get(Loc_msg)
-                time.sleep(3)
                 logger.info('提交失败，错误信息：' + errmsg)
                 print('提交失败，错误信息：' + errmsg)
                 self.screen_step('业务受理失败：{}'.format(errmsg))
                 submitMsg = '业务受理失败：' + errmsg
-            # return '业务受理成功：'+ flowId
-            #     errmsg = self.isElementDisplay(Loc_msg,'text')
-            #     time.sleep(3)
-            #     logger.info('提交失败，错误信息：' + errmsg)
-            #     print('提交失败，错误信息：' + errmsg)
-            #     self.screen_step('业务受理失败：{}'.format(errmsg))
-            #     return '业务受理失败：' + errmsg
+            else:
+                ele_flowId = WebDriverWait(self.driver, 30, 2).until(EC.presence_of_element_located(loc_flow))
+                flowId = ele_flowId.text
+                logger.info("业务受理成功，交互流水：" + flowId)
+                print("业务受理成功，交互流水：" + flowId)
+                self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
+                submitMsg = '业务受理成功：' + flowId
+            # flag = self.isElementDisplay(loc_flow)
+            # if flag:
+            #     flowId = self.get(loc_flow)
+            #     logger.info("业务受理成功，交互流水：" + flowId)
+            #     print("业务受理成功，交互流水：" + flowId)
+            #     self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
+            #     submitMsg = '业务受理成功：' + flowId
+            # else:
         except :
             logger.info('业务提交异常!')
             submitMsg = '业务提交异常'
