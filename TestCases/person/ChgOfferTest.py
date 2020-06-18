@@ -78,7 +78,7 @@ class ChgOfferTest(unittest.TestCase):
         accessNum = str(dic.get('ACCESS_NUM'))
         logger.info("测试号码:"+accessNum)
         offerId = str(dic.get('OFFER_ID'))
-        logger.info("主套餐名称:" + offerId)
+        logger.info("服务编码:" + offerId)
         subOfferList = dic.get('subOfferList')
         logger.info("可选子商品:" + subOfferList)
         logger.info('开始执行第{}个用例,测试数据：{}'.format(row,dic))
@@ -111,8 +111,8 @@ class ChgOfferTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    report_title = u'主产品变更自动化测试报告'
-    desc = u'主产品变更测试详情：'
+    report_title = u'产品变更自动化测试报告'
+    desc = u'产品变更测试详情：'
     nowtime = time.strftime("%Y%m%d%H%M%S")
     logger.info("开始执行testSuite......")
     print("开始执行testSuite......")
