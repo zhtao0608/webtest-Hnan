@@ -19,32 +19,18 @@ class PageAssert(Base):
         loc_flow = (By.ID, 'flowId')
         Loc_msg = (By.XPATH,"//*[@class='c_msg c_msg-h c_msg-phone-v c_msg-full c_msg-error' and not(contains(@style,'display: none'))]/div/div[2]/div[1]/div[2]")
         try:
-            ele = WebDriverWait(self.driver, 10, 1).until(EC.presence_of_element_located(Loc_msg))
-            flag = self.is_element_displayed(ele)
-            if flag:
-                errmsg = self.get(Loc_msg)
-                logger.info('提交失败，错误信息：' + errmsg)
-                print('提交失败，错误信息：' + errmsg)
-                self.screen_step('业务受理失败：{}'.format(errmsg))
-                submitMsg = '业务受理失败：' + errmsg
-            else:
-                ele_flowId = WebDriverWait(self.driver, 30, 2).until(EC.presence_of_element_located(loc_flow))
-                flowId = ele_flowId.text
-                logger.info("业务受理成功，交互流水：" + flowId)
-                print("业务受理成功，交互流水：" + flowId)
-                self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
-                submitMsg = '业务受理成功：' + flowId
-            # flag = self.isElementDisplay(loc_flow)
-            # if flag:
-            #     flowId = self.get(loc_flow)
-            #     logger.info("业务受理成功，交互流水：" + flowId)
-            #     print("业务受理成功，交互流水：" + flowId)
-            #     self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
-            #     submitMsg = '业务受理成功：' + flowId
-            # else:
+            ele = WebDriverWait(self.driver, 30, 1).until(EC.presence_of_element_located(Loc_msg))
+            errmsg = ele.text
+            logger.info('提交失败，错误信息：' + errmsg)
+            print('提交失败，错误信息：' + errmsg)
+            self.screen_step('业务受理失败：{}'.format(errmsg))
+            submitMsg = '业务受理失败：' + errmsg
         except :
-            logger.info('业务提交异常!')
-            submitMsg = '业务提交异常'
+            flowId = self.get(loc_flow)
+            logger.info("业务受理成功，交互流水：" + flowId)
+            print("业务受理成功，交互流水：" + flowId)
+            self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
+            submitMsg = '业务受理成功：' + flowId
         return submitMsg
 
 
