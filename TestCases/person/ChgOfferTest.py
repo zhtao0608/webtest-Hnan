@@ -1,13 +1,12 @@
 import unittest,os
 import time,ddt
 from Base import HTMLTestRunnerCNNew
-from PageObj.oc.person.offerOpers import OfferOperPage
+from PageObj.order.person.offerOpers import OfferOperPage
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from Base import ReadConfig
 from Base.OperExcel import write_xlsBycolName_append,get_exceldata
 from Base.Mylog import LogManager
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import get_TestData,get_testDataFile
 
@@ -160,8 +159,8 @@ if __name__ == '__main__':
     print("开始执行testSuite......")
     with open(ReadConfig.get_reportPath() + report_title + nowtime + ".html", 'wb') as fp:
         runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2)
-        # runner.run(mySuitePrefixAdd(ChgOfferTest,"test_chgMainOffer"))
+        runner.run(mySuitePrefixAdd(ChgOfferTest,"test_chgMainOffer"))
         # runner.run(mySuitePrefixAdd(ChgOfferTest,"test_subActive"))
-        runner.run(mySuitePrefixAdd(ChgOfferTest,"test_chgSvc"))
+        # runner.run(mySuitePrefixAdd(ChgOfferTest,"test_chgSvc"))
 
 

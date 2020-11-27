@@ -22,7 +22,7 @@ lo_param = {"LOGIN_MODE": "BOSS", "STAFF_ID": "TESTKM06", "IS_XACTIVE": "false",
 
 logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-class GroupBusiOper():
+class GroupBusiAcceptTestOper():
     def __init__(self):
         # self.file = file
         self.headers = h
@@ -138,7 +138,7 @@ class GroupBusiOper():
 
 
 if __name__ == '__main__':
-    test = GroupBusiOper()
+    test = GroupBusiAcceptTestOper()
     cust_id = test.queryEnterpriseByGroupId('8713164024')
     test.queryOfferInstByCustIdAndOfferId(cust_id,100000950)
     print("开始执行第2个接口 \n")

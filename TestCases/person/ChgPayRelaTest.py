@@ -5,11 +5,11 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from Base import ReadConfig
 from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
-from PageObj.oc.person.ChangePayRela import ChangePayRelaNor
+from PageObj.order.person.ChangePayRela import ChangePayRelaNor
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from Common.TestDataMgnt import get_TestData,get_testDataFile
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

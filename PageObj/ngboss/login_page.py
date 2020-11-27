@@ -1,9 +1,13 @@
+from Base import ReadConfig
 from Base.base import Base
 from selenium.webdriver.common.by import By
 from Common.function import config_url
 import time
+from selenium import webdriver
+
 from Base.Mylog import LogManager
 
+rc = ReadConfig.ReadConfig("ngboss_config.ini")
 
 class LoginPage(Base):
     def open_base_url(self):
@@ -11,40 +15,22 @@ class LoginPage(Base):
         self.driver.maximize_window()
 
     def login_user(self):
-        return self.findele(By.ID , "STAFF_ID")
+        # return self.findele(By.ID , "STAFF_ID")
+        loc_userName = (By.ID,"STAFF_ID")
+        return self.find(loc_userName)
 
     def login_pwd(self):
-        return self.findele(By.ID , "PASSWORD")
+        loc_passwd = (By.ID,"PASSWORD")
+        return self.find(loc_passwd)
 
     def login_btn(self):
-        return self.findele(By.ID , "loginBtn")
-
-    def quit_dailog(self):
-        loc_dailog = (By.CSS_SELECTOR,"#UI-release > div > div.c_header.c_header-white > div.fn > button > span")
-        self.find_element_click(loc_dailog)
-        # self.isElementDisplay(loc_dailog,'click')
-        return self.driver
-
-
-    def exit_alert(self):
-        loc_UIstep1 = (By.CSS_SELECTOR,'#UI-step1 > div.tip > div > div > div.fn > button:nth-child(1)')
-        loc_GRstep1= (By.CSS_SELECTOR,'#GR-step1 > div.tip > div > div > div.fn > button:nth-child(1)')
-        flag = self.isElementDisplay(loc_UIstep1)
-        try:
-            if flag:
-                self.find_element_click(loc_UIstep1)
-                # self.isElementDisplay(loc_UIstep1,'click')
-            else:
-                self.find_element_click(loc_GRstep1)
-                # self.isElementDisplay(loc_GRstep1, 'click')
-        except:
-            pass   #跳过
-            print("测试失败，关闭!")
-        return self.driver
+        loc_btnLogin = (By.ID , "loginBtn")
+        return self.find(loc_btnLogin)
 
     ##登录操作：
     def login(self,username,password):
         '''登录'''
+        self.open_base_url()
         loc_username = (By.ID, "STAFF_ID")
         loc_password = (By.ID , "PASSWORD")
         btn_loginBtn = (By.ID , "loginBtn")
@@ -53,12 +39,14 @@ class LoginPage(Base):
         self.screen_step('登录')
         self.isElementDisplay(btn_loginBtn,'click')
         time.sleep(2)
-        #关闭不再显示
-        self.quit_dailog()
-        #关闭提示
-        self.exit_alert()
         return self.dr_url()
 
-
-
+if __name__ == '__main__':
+    print("=====测试一下登录======")
+    driver = webdriver.Chrome()
+    # driver = webdriver.Ie()
+    test = LoginPage(driver)
+    test.open_base_url()
+    test.login('SUPERUSR','lc')
+    driver.close()
 

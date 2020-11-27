@@ -15,3 +15,5 @@ print(EncryptData)
 if jpype.isJVMStarted():
     jpype.shutdownJVM() #关闭java虚拟机
 
+
+

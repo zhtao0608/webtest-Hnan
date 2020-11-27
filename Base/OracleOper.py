@@ -6,18 +6,18 @@ import json
 import cx_Oracle
 from Base import ReadConfig
 from Base.Mylog import LogManager
+from Common import function
 
-logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+logger = LogManager('MyOracle').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 
 class MyOracle:
-
     """
     oracle数据库操作
     """
-    global username, password, ip, port, service_name,cp_thin,file4_thin,param_thin
+    global username, password, ip, port, service_name,cp_thin,crm1_thin,base_thin
     username = rc.get_oracle('USERNAME')
     password = rc.get_oracle('PASSWORD')
     ip = rc.get_oracle('IP')
@@ -25,12 +25,12 @@ class MyOracle:
     service_name = rc.get_oracle('SERVICE_NAME')
     # thin = username + "/" + password + "@" + ip +":" + port+ "/" + service_name
     cp_thin = rc.get_oracle("cp_thin")
-    param_thin = rc.get_oracle("param_thin")
-    file4_thin = rc.get_oracle("file4_thin")
-    port4_thin = rc.get_oracle("port4_thin")
-    upc_thin = rc.get_oracle("upc_thin")
-    res_thin = rc.get_oracle("res_thin")
-    ec_thin = rc.get_oracle("ec_thin")
+    base_thin = rc.get_oracle("base_thin")
+    crm1_thin = rc.get_oracle("crm1_thin")
+    jour1_thin = rc.get_oracle("jour1_thin")
+    # upc_thin = rc.get_oracle("upc_thin")
+    # res_thin = rc.get_oracle("res_thin")
+    # ec_thin = rc.get_oracle("ec_thin")
 
     def __init__(self):
         """
@@ -42,7 +42,7 @@ class MyOracle:
         self.conn = None
         self.cursor = None
 
-    def ReConnect(self,conn=rc.get_oracle("file4_thin")):
+    def ReConnect(self,conn):
         """
         建立连接
         """
@@ -91,7 +91,7 @@ class MyOracle:
         value = cursor.fetchone()
         return value
 
-    def select(self,sql,conn=rc.get_oracle('file4_thin')):
+    def select(self,sql,conn=rc.get_oracle('crm1_thin')):
         """查询返回字典格式"""
         list = []
         self.ReConnect(conn)
@@ -111,8 +111,15 @@ class MyOracle:
         self.disconnect()
         return list
 
+
     def insert(self, sql, list_param):
-        """插入语句"""
+        '''
+         list_param=[('ww1','job003',1333,2),('ss1','job004',1444,2)]
+        #test_oracle.insert("insert into bonus(ENAME,JOB,SAL,COMM)values(:1,:2,:3,:4)",param)
+        #也可以下面这样解决
+        test_oracle.insert("insert into bonus(ENAME,JOB,SAL,COMM)values(:ENAME,:JOB,:SAL,:COMM)",param)
+        '''
+
         try:
             self.cursor.executemany(sql, list_param)
             self.conn.commit()
@@ -122,12 +129,49 @@ class MyOracle:
         finally:
             self.disconnect()
 
-    def update(self, sql):
+    def updateMany(self, tabName,conn,colList,valueList,expr='1=1'):
+        '''
+        数据批量更新操作
+        :param tabName: 表名
+        :param conn: 连接
+        :param colList: 表列名List，必须是list
+        :param valueList:表列对应都必须是list
+        :param expr:where条件表达式
+        :return:
+        '''
+        if not isinstance(colList,list):
+            logger.error('colList必须传入list类型')
+        if not isinstance(valueList,list):
+            logger.error('valueList必须传入list类型')
+        if (len(colList)==0 or len(valueList)==0 ):
+            logger.error('colList或者valueList不允许为空!')
+        if not len(colList) == len(valueList) :
+            logger.error('colList或者valueList长度必须一致!')
+        colValueList = [(colList[i], valueList[i]) for i in range(len(valueList))]
+        # colValueList必须是list[tuple(),tuple()...]或tuple(tuple(),tuple()...)的形式
+        logger.info(colValueList)
+        for i in range(len(colValueList)):
+            try:
+                self.ReConnect(conn)
+                sql = "UPDATE {} SET ".format(tabName) + "%s = '%s'" % colValueList[i] + " where {}".format(expr)
+                logger.info(sql)
+                self.cursor.execute(sql)
+                self.conn.commit()
+                logger.info("Update DB Complete!")
+            except Exception as e:
+                logger.info(e)
+            finally:
+                self.disconnect()
+
+
+    def updateSQL(self, sql,conn):
         """数据更新操作"""
         try:
+            self.ReConnect(conn)
             self.cursor.execute(sql)
             self.conn.commit()
-            logger.info("Insert DB Complete!")
+            # conn.commit()
+            logger.info("Update DB Complete!")
         except Exception as e:
             logger.info(e)
         finally:
@@ -144,33 +188,11 @@ class MyOracle:
         finally:
             self.disconnect()
 
+
 if __name__ == '__main__':
     test = MyOracle()
-    sql = "select t.GROUP_NAME,t.group_id from CB_ENTERPRISE t  where rownum <=3"
-    sql_groupOffers = "select b.group_id ,b.group_name,a.access_num,t.SUBSCRIBER_INS_ID,t.OFFER_ID,t.OFFER_INS_ID,t.OFFER_NAME \
-    from uop_ec.um_offer t, uop_ec.um_subscriber a ,uop_cp.cb_enterprise b \
-    where t.IS_MAIN = '1' and t.EXPIRE_DATE > sysdate and t.OFFER_TYPE = '10' and t.OFFER_ID ='2222' \
-    and a.subscriber_ins_id = t.SUBSCRIBER_INS_ID and a.remove_tag = '0' \
-    and a.cust_id = b.orga_enterprise_id  and rownum <=10"
-
-    sql_groupMebOffers = "select a.rel_access_num accessNum,a.subscriber_ins_id ,b.group_id groupId,b.group_name,t.OFFER_ID offerId,t.OFFER_INS_ID grp_offer_insId,t.OFFER_NAME  \
-    from uop_file4.um_subscriber_rel a  ,uop_ec.um_offer t, uop_ec.um_subscriber m ,uop_cp.cb_enterprise b \
-    where 1=1 and a.subscriber_ins_id = m.subscriber_ins_id \
-    and a.subscriber_ins_id = t.SUBSCRIBER_INS_ID \
-    and t.IS_MAIN = '1' and t.EXPIRE_DATE > sysdate and t.OFFER_TYPE = '10' \
-    and t.OFFER_ID ='2222' \
-    and a.subscriber_rel_type ='E1' \
-    and  m.remove_tag = 0 \
-    and  m.cust_id = b.orga_enterprise_id  and rownum <=10 "
-
-    sql_accessNum = " SELECT rownum caseNo ,t.access_num,to_char(t.subscriber_ins_id) subscriber_ins_id ,'' flow_id , '' result_info  \
-     FROM  uop_file4.um_subscriber  T where t.remove_tag = 0 and t.access_num like '187%' and rownum<=3  "
-    # ex = test.executeSQL(sql)
-    # res = json.loads(test.select(sql))
-    res = test.select(sql_accessNum)
-
     # 查询结果到列表
-    print(res)
+
     # for i in range(len(res)):
     #     logger.info('获取查询结果，打印入参：{}'.format(res[i]))
     #     print(res[i])
@@ -180,12 +202,14 @@ if __name__ == '__main__':
     # for i in range(len(res)):
     #     print (res[i]['groupId'],res[i]['accessNum'],res[i]['offerId'],res[i]['grp_offer_insId'])
     #
-
-
-
     # print(test.get_one(ex)[0])
     # print(test.get_all(ex))
     # print(test.get_all(ex)[1])
+    colList = ["cust_name", "pspt_id"]  # 存储Colname的值,对应表字段
+    valueList = ["张伶萍", "630121197704223621"]  # 存储value的值，对应表字段都值
+    expr = " SERIAL_NUMBER = '15202502265'"
+    test.updateMany(tabName='tf_f_realname_info',conn=rc.get_oracle('cp_thin'),
+                    colList=colList,valueList=valueList,expr=expr)
 
 
 

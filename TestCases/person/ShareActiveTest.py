@@ -1,13 +1,13 @@
 import unittest,os
 import time,ddt
 from Base import HTMLTestRunnerCNNew
-from PageObj.oc.person.ShareActive import ShareActive
+from PageObj.order.person.ShareActive import ShareActive
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from Base import ReadConfig
 from Base.OperExcel import get_exceldata,write_xlsBycolName_append
 from Base.Mylog import LogManager
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from TestCases.suite import mySuitePrefixAdd
 from Common.TestDataMgnt import get_testDataFile,get_FuncRow,get_TestData
 

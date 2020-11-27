@@ -6,7 +6,7 @@ from Base.Mylog import LogManager
 from PageObj.ngboss.login_page import LoginPage
 from PageObj.ngboss.mainpage import MainPage
 from PageObj.cust.CustomerBase import CustBasePage
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 
 # logger = LogManager('test').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 logger = LogManager('GroupMebAdd').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log')

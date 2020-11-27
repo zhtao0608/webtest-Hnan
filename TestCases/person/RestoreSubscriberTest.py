@@ -1,13 +1,13 @@
 import unittest,os
 import ddt,time
 from Base import HTMLTestRunnerCNNew
-from PageObj.oc.person.RestoreSubscriber import RestoreSubscriber
+from PageObj.order.person.RestoreSubscriber import RestoreSubscriber
 from selenium import webdriver
 from Base import ReadConfig
 from Base.OperExcel import write_xlsBycolName_append
 from Base.Mylog import LogManager
 from TestCases.suite import mySuitePrefixAdd
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from Common.TestDataMgnt import get_TestData
 
 

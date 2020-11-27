@@ -1,7 +1,7 @@
 import unittest,os
 import ddt,time
 from Base import HTMLTestRunnerCNNew
-from PageObj.oc.person.ChangeProdStatus import ChangeProdStatus
+from PageObj.order.person.ChangeProdStatus import ChangeProdStatus
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from Base import ReadConfig
@@ -10,7 +10,7 @@ from Base import ReadConfig
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from Common.TestDataMgnt import get_TestData
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

@@ -17,111 +17,89 @@ class MainPage(Base):
         #self.driver.implicitly_wait(30)
 
     #切换frame
-    def switch_frame(self):
+    def switch_home(self):
         self.driver.switch_to.default_content()
-        ele= self.find((By.ID,'navframe_def'))
+        loc_home = (By.ID,'navframe_def')
+        ele= self.find(loc_home)
         self.driver.switch_to.frame(ele)
         return self.driver
 
-    ##首页Home按钮
-    def home_loc(self):
-        loc_home = (By.CSS_SELECTOR,"#m_home")
-        self.isElementExist(loc_home,'click')
-
-    # 首页->更多
-    def main_menu(self):
-        loc_main = (By.ID,'welTab_tab_li_6')
-        loc_mainByGrpRole = (By.XPATH,'/html/body/div[1]/div[2]/div[3]/span') #政企角色登录
-        try:
-            print('=====普通角色登录=====')
-            self.find_element_click(loc_main)
-        except:
-            print('=====政企角色登录=====')
-            self.find_element_click(loc_mainByGrpRole)
-    #更多-订单中心
-    def menu_order(self):
-        Loc_oc = (By.CSS_SELECTOR,'#menus_tab_li_1')
-        self.isElementExist(Loc_oc,'click')
-        return self.driver
-
-    def OpenDomain(self,DomainId):
-        '''选择中心点击
-        :param DomainId: 0-客户中心
-        1-订单中心，2-产品商品中心，3-零库存管理中心 4-营销中心 5-基础管理中心
-        6-销售中心 7-账务中心 8-渠道中心 9-票据中心 10-统计分析
-        11-代理商 12-产品管理(计费账务) 13-计费中心 14-在线中心 15-IFRS15中心
-        16-支付中心
-        :return:
+    def click_HomeTab(self,index='5'):
         '''
-        if isinstance(DomainId,int):
-            DomainId = str(DomainId)
-        domainId_str = 'menus_tab_li_%s' % DomainId
-        loc_domain = (By.ID,domainId_str)
-        self.home_loc()
-        self.iframe('navframe_def')
-        self.main_menu() #点击更多
-        time.sleep(1)
-        self.find_element_click(loc_domain)
-
-    def open_CataMenu(self,domainId,catamenu,parentMenu,MenuId):
+        根据传入的主参数索引，单击进入
+        :param index: 索引号
+        0-工作台，  1-商城，   2-办活动，  3-选套餐，  4-开宽带，   5-全菜单
         '''
-        :param domainId: 归属中心
+        self.switch_home()     #先进入首页
+        strIndex = "homeTab_tab_li_%s"  % index #传入菜单索引参数
+        loc_homeTab = (By.ID,strIndex)
+        self.isElementDisplay(loc_homeTab,'click')   #找到即进入
+
+    def click_MenuTab(self,inx='0'):
+        '''
+        根据传入的主参数索引，单击进入
+        :param index: 菜单索引号
+        0-CRM   1-报表统计  2-账务管理
+        '''
+        self.click_HomeTab() #先点击全菜单
+        strIndex = "menuTab_tab_li_%s" % inx #传入菜单索引参数
+        loc_menuTab = (By.ID,strIndex)
+        self.isElementDisplay(loc_menuTab,'click')   #找到即进入
+
+
+    def open_CataMenu(self,catamenu,parentMenu,MenuId,menuPath):
+        '''
         :param catamenu: 菜单目录
         :param parentMenu: 父菜单
         :param MenuId: 子菜单
         :return:
         '''
         '''打开菜单'''
-        self.open_base()
-        LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
-        self.OpenDomain(domainId)
+        # self.open_base()
+        # LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
+        self.click_MenuTab()
         catamenu_str  =  "//li[@menuid='%s']" % catamenu
         self.find_element_click((By.XPATH,catamenu_str)) #菜单目录
-        parMenu = "//*[@menuid='%s']" % parentMenu # 父菜单
+        parMenu = "//li[@menuid='%s']" % parentMenu # 父菜单
         logger.info("菜单目录：{}" .format(parentMenu))
         self.find_element_click((By.XPATH,parMenu))
         time.sleep(1)
         # xpath_menu = "//*[@menuid='%s']" % MenuId
-        self.Open_menu(MenuId)
+        self.Open_menu(MenuId,menuPath)
         logger.info("菜单ID：{}" .format(MenuId))
 
-
-    def open_OcCataMenu(self,parentMenu,MenuId):
-        '''菜单目录'''
-        self.home_loc()
-        self.iframe('navframe_def')
-        self.main_menu()
-        time.sleep(1)
-        self.OpenDomain(1)
-        parMenu = "//*[@menuid='%s']" %parentMenu
-        print("菜单目录：" + parentMenu)
-        self.find((By.XPATH,parMenu)).click()
-        xpath_menu = "//*[@menuid='%s']" %MenuId
-        print("菜单ID：" + MenuId)
-        self.find((By.XPATH,xpath_menu)).click()
-        return self.driver
-
-    def Open_menu(self,menuId):
+    def Open_menu(self,menuId,menuPath):
         '''menuId传入参数，如果找到则打开，目前只打开订单中心菜单'''
-        menu = '#'+ menuId
-        loc_menu = (By.CSS_SELECTOR,menu)
+        menu = "//li[@menuid='%s']" %menuId
+        loc_menu = (By.XPATH,menu)
         if (self.isElementExist(loc_menu)):
             self.find(loc_menu).click()
-            time.sleep(5)
+            time.sleep(2)
             self.screen_step('进入菜单')
+            title = self.get_attribute(loc_menu,name='title')
+            logger.info("进入菜单路径 :" + title)
+            self.Open_Menuframe(menuPath)
         else:
             print('菜单未找到，不能打开')
 
 
-    #选择个人用户开户菜单：
-    def sel_person_subscriber(self):
-        self.open_OcCataMenu('crm9000','crm9100')  #个人业务-开户业务菜单目录
-        self.Open_menu('crm9130')   #打开开户菜单
-        time.sleep(5)
+    def Open_Menuframe(self,menuPath):
+        '''
+        传入菜单路径，进入对应菜单的Iframe页面
+        :param menuPath: 菜单路径
+        :return:
+        '''
+        self.driver.switch_to.default_content()
+        menuPathStr =  "//iframe[contains(@src,'%s')]" %menuPath   #传入对应的菜单路径
+        loc_menuframe = self.find((By.XPATH,menuPathStr))
+        self.driver.switch_to.frame(loc_menuframe)
+        logger.info("进入菜单Iframe:" + str(loc_menuframe))
+        time.sleep(3)   #暂定进入菜单时间3s
         return self.driver
 
+    ##搜索菜单功能
     def search_menu(self,menuname):
-        self.switch_frame()
+        self.switch_home()
         self.findele(By.ID,"menu_search").send_keys(menuname)
         self.findele(By.CSS_SELECTOR,"#button_search > span").click()
         time.sleep(2)
@@ -144,9 +122,9 @@ class MainPage(Base):
         ele.click()
 
     def search_offer(self,offer):
-        self.home_loc()
+        self.EnterCataMenu()
         self.driver.switch_to.default_content()
-        self.switch_frame()
+        self.switch_home()
         self.sendkey((By.ID,"menu_search"),offer)
         self.isElementDisplay((By.CSS_SELECTOR,"#button_search > span"),'click')
         time.sleep(10)
@@ -159,9 +137,9 @@ class MainPage(Base):
         return self.driver
 
     def search_offerNew(self,offerId):
-        self.home_loc()
+        self.EnterCataMenu()
         self.driver.switch_to.default_content()
-        self.switch_frame()
+        self.switch_home()
         loc_search = (By.ID,"menu_search")
         self.element_sendkey_click(loc_search,offerId)
         time.sleep(2)
@@ -171,7 +149,7 @@ class MainPage(Base):
         return self.driver
 
     def search_menuNew(self,menuname):
-        self.switch_frame()
+        self.switch_home()
         loc_search = (By.ID, "menu_search")
         self.element_sendkey_click(loc_search, menuname)
         time.sleep(2)
@@ -180,37 +158,13 @@ class MainPage(Base):
         self.driver.switch_to.default_content()
         return self.driver
 
-    def daily_busi(self):
-        self.open_OcCataMenu('crm9000','crm9200')
-        return self.driver
-
-    def qry_busi(self):
-        """查询业务"""
-        self.open_OcCataMenu('crm9000','crm9900')
-        time.sleep(1)
-        return self.driver
-
-    def special_busi(self):
-        """特殊业务"""
-        self.open_OcCataMenu('crm9000','crm9400')
-        time.sleep(1)
-        return self.driver
-
-    def other_busi(self):
-        """其他业务"""
-        self.open_OcCataMenu('crm9000','crm9300')
-        time.sleep(1)
-        return self.driver
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()
     test = MainPage(driver)
     test.open_base()
-    # LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
+    LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
     # LoginPage(driver).login('TESTKM13',rc.get_ngboss('password'))  #登录
-    # test.open_OcCataMenu('crm9000','crm9100')
-    test.open_CataMenu(1,'crm9000','crm9100','crm9130')
-
-
-    # test.open_CataMenu(0,'crm5000','crm5300','crm5217')
-    # driver.close()
+    # test.open_CataMenu('crm9000','crm9100','crmw908')
+    test.open_CataMenu('crm8000','crm8200','crm8207')
+    driver.close()

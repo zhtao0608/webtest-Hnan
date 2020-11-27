@@ -1,6 +1,7 @@
 # coding:utf-8
 from __future__ import print_function
 import json
+from Common.function import get_listdictData
 
 def dict_get(dict, objkey, default):
     '''
@@ -571,4 +572,34 @@ if __name__ == "__main__":
     #         "subNodes": []
     #     }]
     # }
+SJsons = {
+    "X_RESULTINFO": "ok",
+    "X_NODE_NAME": "app-node01-srv01",
+    "OUTDATA": [
+        {
+            "CUST_NAME": "勐腊县易武乡易武村委会",
+            "SHORT_CODE": "686248",
+            "GROUP_ID": "6913200649",
+            "ACCESS_NUM": "13578156248",
+            "GRP_SUBSCRIBER_INS_ID": "9199101500093507",
+            "OFFER_ID": "8000",
+            "STAFF_NAME": "杨正会",
+            "BILL_ID": "15198476046",
+            "EPARCHY_CODE": "0691",
+            "CLASS_ID": "D"
+        }
+    ],
+    "X_RESULTCODE": "0"
+	}
+print('======VPMN短号')
+print(dict_get(SJsons, 'OUTDATA', None))
+outData = dict_get(SJsons, 'OUTDATA', None)
+print('2222222')
+for i in range(len(outData)):
+	svalue = outData[i]
+	print(svalue)
+	print(type(svalue))
+	shortcode = dict_get(svalue,'SHORT_CODE',None)
+	print(shortcode)
+
 

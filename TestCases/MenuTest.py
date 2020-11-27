@@ -2,8 +2,8 @@ import unittest,os
 import time,ddt
 from PageObj.ngboss.login_page import LoginPage
 from PageObj.ngboss.mainpage import MainPage
-from PageObj.oc.person.PersonBase import PersonBase
-from PageObj.oc.group.GroupBasePage import BasePage
+from PageObj.order.person.PersonBase import PersonBase
+from PageObj.order.group.GroupBasePage import BasePage
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from Base import HTMLTestRunnerCNNew
@@ -90,7 +90,7 @@ class MenuTest(unittest.TestCase):
         test.iframe(loc_frame)
         logger.info("进入{}frame:".format(MenuName))
         # test.iframe(1) #默认进入
-        vaildMsg = test.vaild_GroupBusiRule()
+        vaildMsg = test.vaild_GroupBusiAcceptTestRule()
         logger.info('进入菜单时校验信息:{}'.format(vaildMsg))
         write_xlsBycolName_append(file=file_GroupMenu,row=row,colName='RESULT_INFO',value=vaildMsg,index=0)
         self.driver.close()

@@ -1,16 +1,16 @@
 import unittest,os
 import ddt,time
 from Base import HTMLTestRunnerCNNew
-from PageObj.oc.person.DestroyUser import DestroyUser
+from PageObj.order.person.DestroyUser import DestroyUser
 from selenium.webdriver.common.by import By
-from PageObj.oc.person.PersonBase import PersonBase
+from PageObj.order.person.PersonBase import PersonBase
 from selenium import webdriver
 from Base import ReadConfig
 from Base.OperExcel import write_dict_xls,write_xlsBycolName_append
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from TestCases.suite import mySuitePrefixAdd
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from Common.TestDataMgnt import get_TestData
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

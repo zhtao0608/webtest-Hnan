@@ -30,7 +30,7 @@ class Base():
         return self.driver.find_element_by_name(element)
     #xpath
     def byxpath(self,element):
-        return  self.driver.find_element_by_xpath(element)
+        return self.driver.find_element_by_xpath(element)
     #css
     def bycss(self,element):
         return  self.driver.find_element_by_css_selector(element)
@@ -182,6 +182,26 @@ class Base():
             logger.info("元素未定位到:"+str(locator))
             return False
 
+    def is_value_in_element(self, locator, _value):
+        '''返回bool值, value为空字符串，返回Fasle'''
+        try:
+            result = WebDriverWait(self.driver, self.timeout, self.t).until(EC.text_to_be_present_in_element_value(locator, _value))
+            return result
+        except:
+            return False
+
+    def is_value_in_text(self,locator, _value):
+        '''元素的text值是否包含_value'''
+        try:
+            value = self.get(locator,Type='text')
+            if _value in value:
+                return True
+            else:
+                return False
+        except:
+            return False
+
+
     def is_element_located(self, locator):
         u"""判断是否定位到元素"""
         try:
@@ -196,6 +216,30 @@ class Base():
         '''传入元素，判断是否显示'''
         flag = element.is_displayed()
         return flag
+
+    def is_title(self, _title):
+        '''判断标题是否一致，返回bool值'''
+        try:
+            result = WebDriverWait(self.driver, self.timeout, self.t).until(EC.title_is(_title))
+            return result
+        except:
+            return False
+
+    def is_title_contains(self, _title):
+        '''判断标题是否包含，返回bool值'''
+        try:
+            result = WebDriverWait(self.driver, self.timeout, self.t).until(EC.title_contains(_title))
+            return result
+        except:
+            return False
+
+    def is_alert(self):
+        '''是否弹出了alert窗口'''
+        try:
+            result = WebDriverWait(self.driver, self.timeout, self.t).until(EC.alert_is_present())
+            return result
+        except:
+            return False
 
     '''=======================判断元素方法收集========================'''
 
@@ -432,6 +476,16 @@ class Base():
         action.click(element)
         action.perform()
 
+    def element_sendkey_enter(self, locator,value):
+        u"""定位元素后先输入value然后直接按ENTER"""
+        element = self.find(locator)
+        action = ActionChains(self.driver)
+        action.send_keys_to_element(element,value)
+        time.sleep(2)
+        # action.click(element)
+        action.send_keys(Keys.ENTER)  #按Enter键
+        action.perform()
+
     def move_element_enter(self, locator):
         u"""鼠标悬停并键盘上输入Enter操作"""
         element = self.find(locator)
@@ -497,6 +551,7 @@ class Base():
 
     def add_dochead(self,title):
         return self.doc.add_heading(title,level=1)
+
 
     def screenshot_SaveAsDoc(self,stepName):
         self.screen_step(stepName)

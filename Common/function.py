@@ -5,8 +5,13 @@ import os,configparser
 import hashlib
 import types
 from urllib import parse
+from Base import ReadConfig
 import json
 import ast
+import re
+
+rc = ReadConfig.ReadConfig("ngboss_config.ini")
+
 
 def project_path():
     return os.path.dirname(os.path.dirname(__file__))
@@ -14,9 +19,10 @@ def project_path():
 
 #返回config_ini文件中的testUrl
 def config_url():
-    config = configparser.ConfigParser()
-    config.read(project_path()+"/config.ini")
-    return config.get('NGBOSS','url')
+    # config = configparser.ConfigParser()
+    # config.read(project_path()+"/config.ini")
+    # return config.get('NGBOSS','url')
+	return rc.get_ngboss('url')
 
 def date_n(n):
 	'''返回当前日期后n天的日期'''
@@ -61,13 +67,31 @@ def dict_get(dict, objkey, default):
 # ret3 = dict_get(dictest3, 'flowId', None)
 # print(ret)
 # print(ret3)
+
+def getDigitFromStr(String):
+	'''从String字符串中提取数字部分'''
+	return re.sub("\D","",String)
+
+def retDigitListFromStr(String):
+	'''从String字符串中提取数字部分,返回数组'''
+	return re.findall(r"\d+\.?\d*",String)
+
+def getCharacterfromStr(String):
+	'''从String字符串中提取字母字符串'''
+	return ''.join(re.findall(r'[A-Za-z]', String))
+
+def getChsfromStr(String):
+	'''从String字符串中提取中文字符串'''
+	ste = re.sub("[A-Za-z0-9\!\%\[\]\,\。]", "", String)
+	print('提取的中文字符串：' + ste)
+	return ste
+
 def md5(arg):
     '''
     用于把用户的密码加密
     '''
     md5 = hashlib.md5()
     md5.update(bytes(arg, encoding='utf-8'))
-
     return md5.hexdigest()
 
 def get_enurl(*args):
@@ -149,6 +173,9 @@ def convertParatoList(paras):
 	print('传入的Paras的参数类型:{}'.format(type(paras)))
 	print('原始参数:{}'.format(paras))
 	paras = eval(paras)  #用eval函数处理转换
+	# params = json.loads(paras)
+	# print('=================')
+	# print(params)
 	# paras = ast.literal_eval(paras)  # 用eval函数处理转换
 	if isinstance(paras, tuple):
 		print('eval(paras) 转换后是tuple类型')
@@ -175,6 +202,8 @@ if __name__ == '__main__':
 	str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"
 	dict_enUrl = convert_enurlToDic(str)
 	print('=====',dict_enUrl)
+	print('*****',config_url())
+
 	# print(get_enurl(dic_1))
 	# enurl_str = get_enurl(dic_1).replace('=',":")
 	# list_enurl = enurl_str.split('&')
@@ -216,227 +245,267 @@ if __name__ == '__main__':
 		# 	dict_value = value[1]
 		# 	print(dict_key,dict_value)
 
-	daten = date_n(10)
-	print('n天后的日期:' ,daten)
-	datetimen = datetime_n(30)
-	print('n天后的时间：',datetimen)
-    # co = "SUBSCRIBER_OPEN_COOKIE_10=3Rz6w1QsiDxyypM51REBbQ%3D%3D; CRM_ECNAVIGATION_COOKIE=bnLIzblE%2B3B1QqCj583MjVcmUOU4lV3JrAg8genK9jJABq1Y1q9XTClc7P7%2BYKsG6A3wS4NtCSKsrgayrQ7iAuNuOPtx%2Bxnrii2nv8m%2BzEAsv%2FRNXoFz5OJLs56Cxobb5a9EhkUVCmD9BDNUf0DlurzA0aMrDMrl; NGBOSS_NAVHELP_COOKIE=AokBKhs3DpmzVbmKdWoLGQ%3D%3D; STAFF_ID=TESTKM06; DEPART_ID=55913; STAFF_EPARCHY_CODE=0872; WADE_SID=2359B5A00E744C4B9B58D3EF2EBE1BE8; NGBOSS_LOGIN_COOKIE=X48c74%2FfJTxsBP5IY9m6A0%2FsS9SMWUNZtqUtYnG20bA30bCuF9z8Ow%3D%3D"
-	dictest = {
-	"context": {
-		"provinceId": "",
-		"contextRoot": "",
-		"productMode": "true",
-		"subSysCode": "",
-		"x_resultinfo": "ok",
-		"x_resultcode": "0",
-		"contextName": "",
-		"version": "0"
-	},
-	"data": {
-		"X_RESULTINFO": "ok",
-		"X_NODE_NAME": "app-node01-srv01",
-		"DATAS": [{
-			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
-			"DATA_STATUS": "1",
-			"OP_ID": "CB201014",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "移动人人通A(ADC)",
-			"MGMT_COUNTY": "C0LB",
-			"SUBSCRIBER_INS_ID": "7090120700227870",
-			"OFFER_INS_ID": "7090120743986708",
-			"ORG_ID": "41921",
-			"CREATE_ORG_ID": "41921",
-			"REGION_ID": "06",
-			"CUST_ID": "7009120710016270",
-			"CREATE_OP_ID": "CB201014",
-			"VALID_DATE": "2014-09-29 16:48:14.0",
-			"OFFER_ID": "6465",
-			"DONE_DATE": "2010-12-07 17:42:11.0",
-			"CREATE_DATE": "2010-12-07 17:42:11.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "ADCG",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0870"
-		}, {
-			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
-			"DATA_STATUS": "1",
-			"OP_ID": "CJ001166",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "企信通行业版",
-			"MGMT_COUNTY": "C0LJ",
-			"SUBSCRIBER_INS_ID": "7092112700395952",
-			"OFFER_INS_ID": "7092112792176223",
-			"ORG_ID": "41908",
-			"CREATE_ORG_ID": "41908",
-			"REGION_ID": "06",
-			"CUST_ID": "7006052300124493",
-			"CREATE_OP_ID": "CJ001166",
-			"VALID_DATE": "2012-12-07 16:15:11.0",
-			"OFFER_ID": "6415",
-			"DONE_DATE": "2012-11-27 16:14:17.0",
-			"CREATE_DATE": "2012-11-27 16:14:17.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "ADCG",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0870"
-		}, {
-			"EXPIRE_DATE": "2050-12-31 00:00:00.0",
-			"DATA_STATUS": "1",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "短号集群网",
-			"REMARKS": "NG割接导入",
-			"MGMT_COUNTY": "C0LJ",
-			"SUBSCRIBER_INS_ID": "7008082116429310",
-			"OFFER_INS_ID": "7009000416595229",
-			"REGION_ID": "06",
-			"CUST_ID": "7008082106837850",
-			"VALID_DATE": "2015-03-09 16:10:12.0",
-			"OFFER_ID": "8000",
-			"CREATE_DATE": "2008-08-21 00:00:00.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "VPMN",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0870"
-		}, {
-			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
-			"DATA_STATUS": "1",
-			"OP_ID": "CJ001065",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "移动人人通A(ADC)",
-			"MGMT_COUNTY": "C0LJ",
-			"SUBSCRIBER_INS_ID": "7090120700227982",
-			"OFFER_INS_ID": "7090120744024508",
-			"ORG_ID": "41908",
-			"CREATE_ORG_ID": "41908",
-			"REGION_ID": "06",
-			"CUST_ID": "7009120509988067",
-			"CREATE_OP_ID": "CJ001065",
-			"VALID_DATE": "2013-09-14 21:44:44.0",
-			"OFFER_ID": "6465",
-			"DONE_DATE": "2010-12-07 22:27:49.0",
-			"CREATE_DATE": "2010-12-07 22:27:49.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "ADCG",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0870"
-		}, {
-			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
-			"DATA_STATUS": "1",
-			"OP_ID": "IBOSS000",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "中央ADC业务(商品)",
-			"MGMT_COUNTY": "A0AL",
-			"SUBSCRIBER_INS_ID": "7193090800490363",
-			"OFFER_INS_ID": "7193090858365958",
-			"ORG_ID": "00309",
-			"CREATE_ORG_ID": "00309",
-			"REGION_ID": "06",
-			"CUST_ID": "7113090863032571",
-			"CREATE_OP_ID": "IBOSS000",
-			"VALID_DATE": "2014-01-20 15:41:16.0",
-			"OFFER_ID": "9945",
-			"DONE_DATE": "2013-09-08 00:09:40.0",
-			"CREATE_DATE": "2013-09-08 00:09:40.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "BOSG",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0871"
-		}, {
-			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
-			"DATA_STATUS": "1",
-			"OP_ID": "CA101028",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "集团彩铃",
-			"MGMT_COUNTY": "C0LA",
-			"SUBSCRIBER_INS_ID": "7099062600011114",
-			"OFFER_INS_ID": "7099062603769207",
-			"ORG_ID": "41886",
-			"CREATE_ORG_ID": "41886",
-			"REGION_ID": "06",
-			"CUST_ID": "7008082106837850",
-			"CREATE_OP_ID": "CA101028",
-			"VALID_DATE": "2009-06-27 18:12:05.0",
-			"OFFER_ID": "6200",
-			"DONE_DATE": "2009-06-26 11:52:10.0",
-			"CREATE_DATE": "2009-06-26 11:52:10.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "VPMR",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0870"
-		}, {
-			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
-			"DATA_STATUS": "1",
-			"OP_ID": "CJ001102",
-			"IS_MAIN": "1",
-			"OFFER_NAME": "企信通行业版",
-			"MGMT_COUNTY": "C0LJ",
-			"SUBSCRIBER_INS_ID": "7094031400600899",
-			"OFFER_INS_ID": "7094031415595663",
-			"ORG_ID": "41908",
-			"CREATE_ORG_ID": "41908",
-			"REGION_ID": "06",
-			"CUST_ID": "7014031133431322",
-			"CREATE_OP_ID": "CJ001102",
-			"VALID_DATE": "2015-11-17 17:22:30.0",
-			"OFFER_ID": "6415",
-			"DONE_DATE": "2014-03-14 10:04:59.0",
-			"CREATE_DATE": "2014-03-14 10:04:59.0",
-			"IS_BUNDLE": "1",
-			"BRAND": "ADCG",
-			"OFFER_TYPE": "10",
-			"MGMT_DISTRICT": "0870"
-		}],
-		"X_RESULTCODE": "0"
-	}
-}
-	ret1 = dict_get(dictest, 'DATAS', None)
-    # ret2 = dict_get(dictest, 'ACCESS_NUM', None)
-    # print(ret1)   #list
-	print(ret1)
-	print(type(ret1))
-	for i in range(len(ret1)):
-		print("订购的商品列表：" + json.dumps(ret1[i]))
-		# offername = ret1[i]['OFFER_NAME']
-		# grp_inst_id = ret1[i]['SUBSCRIBER_INS_ID']
-		# print("订购的集团商品名称:" + offername)
-		# print("订购的集团用户ID:" + grp_inst_id)
-	lista = [{'serialNum':'15969006462','shortCode':'681618','userId':'7008080716050718'},
-			 {'serialNum': '18787961713', 'shortCode': '681713', 'userId': '9110102326860610'},
-			 {'serialNum': '15096963621', 'shortCode': '693621', 'userId': '7208102218270765'}
-			]
-	listb = [{'groupId':8723409920,'GroupName':'大理市海东镇上和完小（校讯通）','OfferInstId':'7295021394647174'},
-			 {'groupId': 8723409625, 'GroupName': '祥云县银冠希望小学','OfferInstId': '7295012691118641'},
-			 {'groupId': 8711437379, 'GroupName': '巍山红河源初级中学','OfferInstId': '7291092369525517'}
-			]
-	listc = [{'simId':89860001240642520092},{'simId':89860076240442072049},{'simId':89860057245448890016}]
-	print(lista)
-	print(listb)
-	newlist = join_dictlists(lista,listb)
-	newlist = join_dictlists(newlist,listc)
-	print(newlist)
-	subofferList = '800001,990013,990013445,99315 '.replace(' ','').split(',')
-	print(subofferList)
+# 	daten = date_n(10)
+# 	print('n天后的日期:' ,daten)
+# 	datetimen = datetime_n(30)
+# 	print('n天后的时间：',datetimen)
+#     # co = "SUBSCRIBER_OPEN_COOKIE_10=3Rz6w1QsiDxyypM51REBbQ%3D%3D; CRM_ECNAVIGATION_COOKIE=bnLIzblE%2B3B1QqCj583MjVcmUOU4lV3JrAg8genK9jJABq1Y1q9XTClc7P7%2BYKsG6A3wS4NtCSKsrgayrQ7iAuNuOPtx%2Bxnrii2nv8m%2BzEAsv%2FRNXoFz5OJLs56Cxobb5a9EhkUVCmD9BDNUf0DlurzA0aMrDMrl; NGBOSS_NAVHELP_COOKIE=AokBKhs3DpmzVbmKdWoLGQ%3D%3D; STAFF_ID=TESTKM06; DEPART_ID=55913; STAFF_EPARCHY_CODE=0872; WADE_SID=2359B5A00E744C4B9B58D3EF2EBE1BE8; NGBOSS_LOGIN_COOKIE=X48c74%2FfJTxsBP5IY9m6A0%2FsS9SMWUNZtqUtYnG20bA30bCuF9z8Ow%3D%3D"
+# 	dictest = {
+# 	"context": {
+# 		"provinceId": "",
+# 		"contextRoot": "",
+# 		"productMode": "true",
+# 		"subSysCode": "",
+# 		"x_resultinfo": "ok",
+# 		"x_resultcode": "0",
+# 		"contextName": "",
+# 		"version": "0"
+# 	},
+# 	"data": {
+# 		"X_RESULTINFO": "ok",
+# 		"X_NODE_NAME": "app-node01-srv01",
+# 		"DATAS": [{
+# 			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
+# 			"DATA_STATUS": "1",
+# 			"OP_ID": "CB201014",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "移动人人通A(ADC)",
+# 			"MGMT_COUNTY": "C0LB",
+# 			"SUBSCRIBER_INS_ID": "7090120700227870",
+# 			"OFFER_INS_ID": "7090120743986708",
+# 			"ORG_ID": "41921",
+# 			"CREATE_ORG_ID": "41921",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7009120710016270",
+# 			"CREATE_OP_ID": "CB201014",
+# 			"VALID_DATE": "2014-09-29 16:48:14.0",
+# 			"OFFER_ID": "6465",
+# 			"DONE_DATE": "2010-12-07 17:42:11.0",
+# 			"CREATE_DATE": "2010-12-07 17:42:11.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "ADCG",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0870"
+# 		}, {
+# 			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
+# 			"DATA_STATUS": "1",
+# 			"OP_ID": "CJ001166",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "企信通行业版",
+# 			"MGMT_COUNTY": "C0LJ",
+# 			"SUBSCRIBER_INS_ID": "7092112700395952",
+# 			"OFFER_INS_ID": "7092112792176223",
+# 			"ORG_ID": "41908",
+# 			"CREATE_ORG_ID": "41908",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7006052300124493",
+# 			"CREATE_OP_ID": "CJ001166",
+# 			"VALID_DATE": "2012-12-07 16:15:11.0",
+# 			"OFFER_ID": "6415",
+# 			"DONE_DATE": "2012-11-27 16:14:17.0",
+# 			"CREATE_DATE": "2012-11-27 16:14:17.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "ADCG",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0870"
+# 		}, {
+# 			"EXPIRE_DATE": "2050-12-31 00:00:00.0",
+# 			"DATA_STATUS": "1",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "短号集群网",
+# 			"REMARKS": "NG割接导入",
+# 			"MGMT_COUNTY": "C0LJ",
+# 			"SUBSCRIBER_INS_ID": "7008082116429310",
+# 			"OFFER_INS_ID": "7009000416595229",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7008082106837850",
+# 			"VALID_DATE": "2015-03-09 16:10:12.0",
+# 			"OFFER_ID": "8000",
+# 			"CREATE_DATE": "2008-08-21 00:00:00.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "VPMN",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0870"
+# 		}, {
+# 			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
+# 			"DATA_STATUS": "1",
+# 			"OP_ID": "CJ001065",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "移动人人通A(ADC)",
+# 			"MGMT_COUNTY": "C0LJ",
+# 			"SUBSCRIBER_INS_ID": "7090120700227982",
+# 			"OFFER_INS_ID": "7090120744024508",
+# 			"ORG_ID": "41908",
+# 			"CREATE_ORG_ID": "41908",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7009120509988067",
+# 			"CREATE_OP_ID": "CJ001065",
+# 			"VALID_DATE": "2013-09-14 21:44:44.0",
+# 			"OFFER_ID": "6465",
+# 			"DONE_DATE": "2010-12-07 22:27:49.0",
+# 			"CREATE_DATE": "2010-12-07 22:27:49.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "ADCG",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0870"
+# 		}, {
+# 			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
+# 			"DATA_STATUS": "1",
+# 			"OP_ID": "IBOSS000",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "中央ADC业务(商品)",
+# 			"MGMT_COUNTY": "A0AL",
+# 			"SUBSCRIBER_INS_ID": "7193090800490363",
+# 			"OFFER_INS_ID": "7193090858365958",
+# 			"ORG_ID": "00309",
+# 			"CREATE_ORG_ID": "00309",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7113090863032571",
+# 			"CREATE_OP_ID": "IBOSS000",
+# 			"VALID_DATE": "2014-01-20 15:41:16.0",
+# 			"OFFER_ID": "9945",
+# 			"DONE_DATE": "2013-09-08 00:09:40.0",
+# 			"CREATE_DATE": "2013-09-08 00:09:40.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "BOSG",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0871"
+# 		}, {
+# 			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
+# 			"DATA_STATUS": "1",
+# 			"OP_ID": "CA101028",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "集团彩铃",
+# 			"MGMT_COUNTY": "C0LA",
+# 			"SUBSCRIBER_INS_ID": "7099062600011114",
+# 			"OFFER_INS_ID": "7099062603769207",
+# 			"ORG_ID": "41886",
+# 			"CREATE_ORG_ID": "41886",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7008082106837850",
+# 			"CREATE_OP_ID": "CA101028",
+# 			"VALID_DATE": "2009-06-27 18:12:05.0",
+# 			"OFFER_ID": "6200",
+# 			"DONE_DATE": "2009-06-26 11:52:10.0",
+# 			"CREATE_DATE": "2009-06-26 11:52:10.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "VPMR",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0870"
+# 		}, {
+# 			"EXPIRE_DATE": "2050-12-31 23:59:59.0",
+# 			"DATA_STATUS": "1",
+# 			"OP_ID": "CJ001102",
+# 			"IS_MAIN": "1",
+# 			"OFFER_NAME": "企信通行业版",
+# 			"MGMT_COUNTY": "C0LJ",
+# 			"SUBSCRIBER_INS_ID": "7094031400600899",
+# 			"OFFER_INS_ID": "7094031415595663",
+# 			"ORG_ID": "41908",
+# 			"CREATE_ORG_ID": "41908",
+# 			"REGION_ID": "06",
+# 			"CUST_ID": "7014031133431322",
+# 			"CREATE_OP_ID": "CJ001102",
+# 			"VALID_DATE": "2015-11-17 17:22:30.0",
+# 			"OFFER_ID": "6415",
+# 			"DONE_DATE": "2014-03-14 10:04:59.0",
+# 			"CREATE_DATE": "2014-03-14 10:04:59.0",
+# 			"IS_BUNDLE": "1",
+# 			"BRAND": "ADCG",
+# 			"OFFER_TYPE": "10",
+# 			"MGMT_DISTRICT": "0870"
+# 		}],
+# 		"X_RESULTCODE": "0"
+# 	}
+# }
+# 	ret1 = dict_get(dictest, 'DATAS', None)
+#     # ret2 = dict_get(dictest, 'ACCESS_NUM', None)
+#     # print(ret1)   #list
+# 	print(ret1)
+# 	print(type(ret1))
+# 	for i in range(len(ret1)):
+# 		print("订购的商品列表：" + json.dumps(ret1[i]))
+# 		# offername = ret1[i]['OFFER_NAME']
+# 		# grp_inst_id = ret1[i]['SUBSCRIBER_INS_ID']
+# 		# print("订购的集团商品名称:" + offername)
+# 		# print("订购的集团用户ID:" + grp_inst_id)
+# 	lista = [{'serialNum':'15969006462','shortCode':'681618','userId':'7008080716050718'},
+# 			 {'serialNum': '18787961713', 'shortCode': '681713', 'userId': '9110102326860610'},
+# 			 {'serialNum': '15096963621', 'shortCode': '693621', 'userId': '7208102218270765'}
+# 			]
+# 	listb = [{'groupId':8723409920,'GroupName':'大理市海东镇上和完小（校讯通）','OfferInstId':'7295021394647174'},
+# 			 {'groupId': 8723409625, 'GroupName': '祥云县银冠希望小学','OfferInstId': '7295012691118641'},
+# 			 {'groupId': 8711437379, 'GroupName': '巍山红河源初级中学','OfferInstId': '7291092369525517'}
+# 			]
+# 	listc = [{'simId':89860001240642520092},{'simId':89860076240442072049},{'simId':89860057245448890016}]
+# 	print(lista)
+# 	print(listb)
+# 	newlist = join_dictlists(lista,listb)
+# 	newlist = join_dictlists(newlist,listc)
+# 	print(newlist)
+# 	subofferList = '800001,990013,990013445,99315 '.replace(' ','').split(',')
+# 	print(subofferList)
+#
+# 	dic_1 = {'No': 1, 'CaseName': '集团商品订购，订购ADC集团管家商品', 'flowid': '7220052100507558', 'x_result_info': 'testtest', 'groupId': '8711400551', 'mainoffer': '6480', 'accessNum': '13887241120', 'subofferList': '100648000,  100648001  ', 'grp_offer_ins_id': '', 'Expect_result ': 'ok'}
+# 	list_values = [i for i in dic_1.values()]
+# 	print(list_values)
+# 	list_keys= [ i for i in dic_1.keys()]
+# 	print(list_keys)
+#
+# 	# dic_list=dict(zip(list_keys,list_values))
+# 	# print('==========',dic_list)
+#
+#
+# 	# print(lista + listb)
+#
+# 	paras = "[[1,2], [3,4], [5,6], [7,8], [9,0]]"
+# 	# paras = "{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'}"
+# 	params = convertParatoList(paras)
+# 	print('转换后Params=',params)
+# 	print('转换后Params类型:',type(params))
+#
+# 	listDatas = list_data = [{'ACCESS_NUMBER':'11122233333'},
+# 							 {'ICC_ID2': '898600D0242447530068'},
+# 							 {'ICC_ID3': '898600D0242447530068'}
+# 							]
+# 	print(get_listdictData(listDatas))
+# 	String = '尊敬的全球通白金卡用户，您好！您将办理主产品变更业务，变更前产品:5G智享套餐（个人版）128.5档~~变更后产品:飞享套餐39.00元（达量不限速），您的短信验证码为：592902。 【中国移动】'
+# 	print(String)
+# 	print(getDigitFromStr(String))
+# 	print(retDigitListFromStr(String))
+# 	# print(getCharacterfromStr(String))
+# 	# print(getChsfromStr(String))
+# 	smsCode = '9999999'
+# 	print(len(smsCode))
+# 	attrBizList = [{"ELEMENT_ID":"120010122813","OFFER_TYPE":"P","AttrBizList":[{"ATTR_VALUE": "610530","ATTR_CODE": "pam_SHORT_CODE"}]},
+#                   {"ELEMENT_ID": "120010122813", "OFFER_TYPE": "S", "AttrBizList": []},
+#                   {"ELEMENT_ID": "120000008174", "OFFER_TYPE": "S","AttrBizList": [{"ATTR_VALUE": "IMS融合通信 - @ ims.qh.chinamobile.com","ATTR_CODE": "IMPU_TYPE"}]},
+#                   {"ELEMENT_ID": "120000008172", "OFFER_TYPE": "S", "AttrBizList": []}]
+# 	for i in range(len(attrBizList)):
+# 		print('需要设置的页面属性:{}'.format(attrBizList[i]))
+# 		elementId = attrBizList[i]['ELEMENT_ID']  # 获取元素编码
+# 		OfferType = attrBizList[i]['OFFER_TYPE']  # 获取元素类型
+# 		AttrBizList = attrBizList[i]['AttrBizList']  # 获取属性列表
+# 		print("要设置属性的元素编码：" + elementId)
+# 		print(AttrBizList)
+# 	dicAttrBiz = {"ATTR_VALUE": "IMS融合通信 - @ ims.qh.chinamobile.com", "ATTR_CODE": "IMPU_TYPE"}
+# 	print('========')
+# 	print(dicAttrBiz['ATTR_VALUE'])
+#
+# 	ElementAttrBizList = [{"ELEMENT_ID":"120010122813","OFFER_TYPE":"P","AttrBizList":[{"ATTR_VALUE": "610530","ATTR_CODE": "pam_SHORT_CODE"}]},
+#                   {"ELEMENT_ID": "120010122813", "OFFER_TYPE": "S", "AttrBizList": []},
+#                   {"ELEMENT_ID": "120000008174", "OFFER_TYPE": "D","AttrBizList": [{"ATTR_VALUE": "IMS融合通信 - @ ims.qh.chinamobile.com","ATTR_CODE": "IMPU_TYPE"}]},
+#                   {"ELEMENT_ID": "120000008172", "OFFER_TYPE": "S", "AttrBizList": []}]
+# 	subOfferList = []
+# 	for i in range(len(ElementAttrBizList)):
+# 		print(ElementAttrBizList[i])
+# 		offer_type = ElementAttrBizList[i]['OFFER_TYPE']
+# 		if offer_type =='P':
+# 			subOfferList.append(ElementAttrBizList[i])
+#
+# 	print('================过滤以后===============')
+# 	print(subOfferList)
 
-	dic_1 = {'No': 1, 'CaseName': '集团商品订购，订购ADC集团管家商品', 'flowid': '7220052100507558', 'x_result_info': 'testtest', 'groupId': '8711400551', 'mainoffer': '6480', 'accessNum': '13887241120', 'subofferList': '100648000,  100648001  ', 'grp_offer_ins_id': '', 'Expect_result ': 'ok'}
-	list_values = [i for i in dic_1.values()]
-	print(list_values)
-	list_keys= [ i for i in dic_1.keys()]
-	print(list_keys)
-
-	# dic_list=dict(zip(list_keys,list_values))
-	# print('==========',dic_list)
-
-
-	# print(lista + listb)
-
-	paras = "[[1,2], [3,4], [5,6], [7,8], [9,0]]"
-	# paras = "{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'},{'ACCESS_NUMBER':'18708720668','ICC_ID':'898600D0242447530068','OFFER_ID':'99091283'}"
-	params = convertParatoList(paras)
-	print('转换后Params=',params)
-	print('转换后Params类型:',type(params))
-
-	listDatas = list_data = [{'ACCESS_NUMBER':'11122233333'},
-							 {'ICC_ID2': '898600D0242447530068'},
-							 {'ICC_ID3': '898600D0242447530068'}
-							]
-	print(get_listdictData(listDatas))
+	IdCard = '632124196502235348'
+	birthday = IdCard[6:10] + '_' + IdCard[10:12] + '_' + IdCard[12:14]
+	print(birthday)

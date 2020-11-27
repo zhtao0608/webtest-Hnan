@@ -5,7 +5,7 @@ from selenium import webdriver
 from Base import ReadConfig
 from PageObj.ngboss.login_page import LoginPage
 from Base.Mylog import LogManager
-from Common.Assert import PageAssert
+from Check.PageCheck import PageAssert
 from Base.OperExcel import write_xlsBycolName_append
 
 logger = LogManager('login').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -32,10 +32,10 @@ class LoginPart(Base):
         self.isElementExist(loc_btn,'click')
         return self.driver
 
-    def close_MyMobile(self):
-        loc_ele = (By.XPATH, "/html/body/div[2]/div[4]/ul/li/div[2]/div[2]")
-        self.isElementExist(loc_ele,'click')
-        return self.driver
+    # def close_MyMobile(self):
+    #     loc_ele = (By.XPATH, "/html/body/div[2]/div[4]/ul/li/div[2]/div[2]")
+    #     self.isElementExist(loc_ele,'click')
+    #     return self.driver
 
     def login_by_pwd(self,number,password):
         self.driver.switch_to.default_content()
@@ -43,7 +43,7 @@ class LoginPart(Base):
         self.input_pwd(password)
         self.button_login()
         time.sleep(3)
-        self.close_MyMobile()  # 关闭我的移动
+        # self.close_MyMobile()  # 关闭我的移动
         ##先屏蔽这段，加快调试！
         # try :
         #     assertMsg = PageAssert(self.driver).assert_ErrPage() #登录的时候校验下是否错误

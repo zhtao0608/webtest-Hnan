@@ -5,10 +5,10 @@ import json
 from Base import HTMLTestRunnerCNNew
 from Base import ReadConfig
 from Base.Mylog import LogManager
-from Base.OperExcel import get_exceldata,write_xlsBycolName_append,write_dict_xls
+from Base.OperExcel import write_xlsBycolName_append,write_dict_xls
 from Base.OracleOper import MyOracle
 from Common.function import dict_get
-from Base.GenTestData import GenTestData
+from Data.DataMgnt.GenTestData import GenTestData
 from TestCases.suite import mySuitePrefixAdd
 
 logger = LogManager('test').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -18,7 +18,7 @@ sql = "SELECT rownum No ,t.access_num ,to_char(t.subscriber_ins_id) subscriber_i
       to_char(a.iden_id) iden_id,'' NEW_IDENID ,a.iden_type_id,a.iden_nr,b.party_name,\
       to_char(t.cust_id) cust_id ,'' flowid , '' result_info  ,'' NEWCUSTNAME \
      FROM  uop_file4.um_subscriber T ,uop_cp.cb_identification a,uop_cp.cb_party b  \
-      where t.remove_tag = '0' and t.access_num LIKE '188%' and t.mgmt_district = '0872'\
+      where t.remove_tag = '0' and t.access_num LIKE '1880872%' and t.mgmt_district = '0872'\
      and a.party_id = t.cust_id \
      and a.party_id = b.party_id \
      and rownum <=100"
