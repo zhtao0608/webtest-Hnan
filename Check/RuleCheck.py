@@ -81,7 +81,7 @@ class RuleCheckBefore(Base):
             WadeMsg = '没有弹出WadeMessage提示,校验通过'
         logger.info('======WadeMessageBox页面返回============={}'.format(WadeMsg))
         Assertion().assertNotIn('校验失败',WadeMsg,msg='[规则校验通过]')
-
+        Assertion().assertNotIn('校验不通过',WadeMsg,msg='[规则校验通过]')
         return WadeMsg
 
     def CheckRuleBefore(self):

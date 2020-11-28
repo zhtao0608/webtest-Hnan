@@ -6,10 +6,13 @@ import hashlib
 import types
 from urllib import parse
 from Base import ReadConfig
+from Base.Mylog import LogManager
 import json
 import ast
 import re
 
+logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 
 
@@ -170,8 +173,8 @@ def convertParatoList(paras):
 	:return: Paras转换成List数据类型返回
 	'''
 	paras.replace("\n","").replace("\r","").replace(" ","") #把空格和换行去掉
-	print('传入的Paras的参数类型:{}'.format(type(paras)))
-	print('原始参数:{}'.format(paras))
+	logger.info('传入的Paras的参数类型:{}'.format(type(paras)))
+	logger.info('原始参数:{}'.format(paras))
 	paras = eval(paras)  #用eval函数处理转换
 	# params = json.loads(paras)
 	# print('=================')
@@ -190,6 +193,35 @@ def convertParatoList(paras):
 		params = paras
 	return params  # 转换成字典返回
 
+def strAppend(s, n):
+    output = ''
+    i = 0
+    while i < n:
+        output += s
+        i = i + 1
+    return output
+
+
+def sqlJoiningDic(sqlParams):
+	'''
+	SQL拼装
+	:param sqlparams: 一个字段类型｛'COLNAME':'VALUE'｝
+	:return:
+	'''
+	if not isinstance(sqlParams, dict):
+		logger.info('sqlParams入参必须是dict类型')
+	if len(sqlParams) == 0:
+		logger.info('sqlParams入参为空')
+	print (len(sqlParams))
+	Sqlexpr = ''
+	for colName,value in sqlParams.items():
+		value = "'" + value + "'"
+		string = colName +'='+ value + ','
+		print(string)
+		Sqlexpr = Sqlexpr + string
+		# print(type(expr))
+	return Sqlexpr[0:len(Sqlexpr)-1]   #注意删除最后一个字符‘,’
+
 # if __name__ == '__main__':
 #     print("项目路径"+project_path())
 #     print(project_path())
@@ -203,6 +235,12 @@ if __name__ == '__main__':
 	dict_enUrl = convert_enurlToDic(str)
 	print('=====',dict_enUrl)
 	print('*****',config_url())
+	sqlparams ={'name':'xiaoming','age':'11','school':'tsinghua'}
+	expr = sqlJoiningDic(sqlparams)
+	print(type(expr))
+	print(expr)
+
+
 
 	# print(get_enurl(dic_1))
 	# enurl_str = get_enurl(dic_1).replace('=',":")

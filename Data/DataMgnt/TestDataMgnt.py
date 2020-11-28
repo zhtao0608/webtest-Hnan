@@ -35,9 +35,8 @@ class TestDataExcel():
         row = getRowIndex(file=filename,value=FuncCode)
         col = getColumnIndex(file=filename,columnName ='PARAMS') #该列指定
         paras = sheet.cell_value(row,col)  #取出来是个字符串
-        print('测试案例编码:{},读取出来的原始参数:{},数据类型:{}'.format(FuncCode,paras,type(paras)))
+        logger.info('测试案例编码:{},读取出来的原始参数:{},数据类型:{}'.format(FuncCode,paras,type(paras)))
         params = convertParatoList(paras)  #将传入参数类型统一成List列表返回
-        # file = get_testDataFile
         row = self.get_FuncRow(FuncCode)
         dic_fileParas = {'filename':filename,'params':params,'FuncRow':row}
         return dic_fileParas # 转换成字典返回
@@ -67,7 +66,7 @@ class GrpTestData():
          '%s' subOfferList from uop_cp.cb_enterprise t \
         where group_id in (%s)"  % (offerId,subOfferlist,groupId)
         logger.info('获取集团商品订购的sql语句:{}'.format(sql_groupOffer))
-        paras = ora.select(conn=rc.get_oracle('cp_thin'),sql= sql_groupOffer)
+        paras = ora.select(conn=rc.get_oracle('cp'),sql= sql_groupOffer)
         return paras
 
     def get_GrpOfferInst(self,groupId,offerId):
@@ -103,7 +102,7 @@ class GrpTestData():
         and rownum <=3" %(grpOfferId)
 
         logger.info('获取集团成员商品订购实例sql语句:{}'.format(sql_MebOfferList))
-        paras = ora.select(conn=rc.get_oracle('crm1_thin'),sql= sql_MebOfferList)
+        paras = ora.select(conn=rc.get_oracle('crm1'),sql= sql_MebOfferList)
         return paras
 
     def get_MebAccessNumList(self,AccessNumList,subOfferList):
@@ -117,7 +116,7 @@ class GrpTestData():
         where t.access_num in (%s)  and t.remove_tag = '0' and rownum <=3 "  % (subOfferList,AccessNumList)
 
         logger.info('获取集团成员sql语句:{}'.format(sql_GrpMeb))
-        paras = ora.select(conn=rc.get_oracle('crm1_thin'),sql= sql_GrpMeb)
+        paras = ora.select(conn=rc.get_oracle('crm1'),sql= sql_GrpMeb)
         return paras
 
 
@@ -129,7 +128,7 @@ class MainPageData():
             from uop_param_c.sec_function t  where t.parent_id in ('crm9250','crm9220','crm9256','crm9260','crm9240','crm9200') \
             and t.viewname is not null and t.state ='1' "
         logger.info('获取个人业务菜单sql语句:{}'.format(sql_menu))
-        paras = ora.select(conn=rc.get_oracle('base_thin'), sql=sql_menu)
+        paras = ora.select(conn=rc.get_oracle('base'), sql=sql_menu)
         return paras
 
     def get_groupMenu(self):
@@ -138,17 +137,14 @@ class MainPageData():
             from uop_param_c.sec_function t  where t.parent_id in ('crm8100','crm8100','crm8100') \
             and t.viewname is not null and t.state ='1' "
         logger.info('获取个人业务菜单sql语句:{}'.format(sql_menu))
-        paras = ora.select(conn=rc.get_oracle('base_thin'), sql=sql_menu)
+        paras = ora.select(conn=rc.get_oracle('base'), sql=sql_menu)
         return paras
-
-
 
 if __name__ == '__main__':
     now = time.strftime("%Y%m%d%H%M%S")
     Data = TestDataExcel()
-    paras = Data.get_TestData('CrtMbColorRing')['params']
+    paras = Data.get_TestData('CrtMbColorRing')
     # paras = get_TestData('CanelGrpIms')['params']
-
     print(paras)
     print(type(paras))
     print(len(paras))

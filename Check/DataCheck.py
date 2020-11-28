@@ -3,6 +3,7 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import retDigitListFromStr
+from Data.DataMgnt.OraDataDeal import SelectOraData
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -17,13 +18,13 @@ class DataCheck():
         判断工单是否完工
         :return:返回Bool ,如果完工则为True,否则为False
         '''
-        tradeList = self.getTabColValue(thin='jour1_thin', tabName ='TF_B_TRADE',
+        tradeList = SelectOraData().getTabColValue(thin='jour1', tabName ='TF_B_TRADE',
                             ColName = 'SUBSCRIBE_STATE,TRADE_ID,TRADE_TYPE_CODE',
                             expr ="ORDER_ID='{}'".format(orderId))
         logger.info(tradeList)
         print('=========len(tradeList)',len(tradeList))
 
-        tradeHisList = self.getTabColValue(thin='jour1_thin', tabName ='TF_B_TRADE_{}'.format(time.strftime("%Y")),
+        tradeHisList = SelectOraData().getTabColValue(thin='jour1', tabName ='TF_B_TRADE_{}'.format(time.strftime("%Y")),
                             ColName = 'SUBSCRIBE_STATE,TRADE_ID,TRADE_TYPE_CODE',
                             expr ="ORDER_ID='{}'".format(orderId))
         logger.info(tradeHisList)
@@ -50,15 +51,15 @@ class DataCheck():
         :param orderId:
         :return:
         '''
-        OrderTraceList= self.getTabColValue(thin='jour1_thin', tabName ='TL_B_ORDER_TRACE_{}'.format(time.strftime("%Y")),
+        OrderTraceList= SelectOraData().getTabColValue(thin='jour1', tabName ='TL_B_ORDER_TRACE_{}'.format(time.strftime("%Y")),
                             ColName = 'ACTIVE_CODE,ACTIVE_CODE,RESULT_CODE,RESULT_INFO',
                             expr ="ORDER_ID='{}'".format(orderId))
         return OrderTraceList
 
 if __name__ == '__main__':
     data = DataCheck()
-    # res = data.getTabColValue('crm1_thin',tabName='TF_F_USER',ColName='USER_ID,CUST_ID,SERIAL_NUMBER',expr="REMOVE_TAG='0' AND SERIAL_NUMBER = '15297063111'")
-    # res = data.checkOrderFinish(orderId='7420010726686661')
+    # res = data.getTabColValue('crm1',tabName='TF_F_USER',ColName='USER_ID,CUST_ID,SERIAL_NUMBER',expr="REMOVE_TAG='0' AND SERIAL_NUMBER = '15297063111'")
+    res = data.checkOrderFinish(orderId='7420010726686661')
     # res = data.retOrderTrace(orderId='7420010726686661')
     # res = data.getSmsContent(accessNum='13997400339')
     # smsContent = data.getSmsContent(accessNum='15297063111')

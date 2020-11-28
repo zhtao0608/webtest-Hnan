@@ -56,13 +56,14 @@ class GroupOfferAccept(GroupBusiBase):
         if '2222' == offerCode :
             DealElements(self.driver).setApprovalInfo(staffId='AJF00189')
         DealElements(self.driver).submitAccept()
-        submitMsg = PageAssert(driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         orderId = getDigitFromStr(submitMsg)
         time.sleep(2)
         orderTrace = DataCheck().retOrderTrace(orderId)
         logger.info(orderTrace)
+        print(orderTrace) #输出到控制台。方便在测试报告html中查看订单轨迹
         self.save_docreport(title)
 
 
@@ -174,15 +175,18 @@ class GroupOfferAccept(GroupBusiBase):
 if __name__ == '__main__':
     driver = webdriver.Chrome()
     test = GroupOfferAccept(driver)
-    # test.accept_CrtUs(groupId='7100048602',brandCode='BZBG',offerCode='8000',
-    #                   AttrBizList=[{"ATTR_VALUE": "1-均显示短号","ATTR_CODE": "pam_CALL_DISP_MODE"}],
-    #                   elementList=[],contractId='7100048602')
+
     # test.accept_CrtUs(groupId='7100048602',brandCode='BZBG',offerCode='6200',
-    #                   AttrBizList=[],elementAttrBizList=[{'ELEMENT_ID':'3000030473','OFFER_TYPE':'D','AttrBizList':[]}],
-    #                   contractId='7100048602')  #----OK
-    # test.accept_DstUs(groupId='7100048602',offerCode='8000',userId='7120112400099106')
+    #                   elementAttrBizList=[{'ELEMENT_ID':'3000030473','OFFER_TYPE':'D','AttrBizList':[]}],
+    #                   contractId='7100048602')  # OK
+    # test.accept_CrtUs(groupId='7100048602',brandCode='BZBG',offerCode='8000',
+    #                   elementAttrBizList=[{'ELEMENT_ID':'110000008000','OFFER_TYPE':'P','AttrBizList':[{"ATTR_VALUE": "1-均显示短号","ATTR_CODE": "pam_CALL_DISP_MODE"}]},
+    #                                       {'ELEMENT_ID': '130000060000', 'OFFER_TYPE': 'D', 'AttrBizList': []}
+    #                                       ],
+    #                   contractId='7100048602')  # VPMN集团商品受理
+
+    test.accept_DstUs(groupId='7100048602',offerCode='8000',userId='7120112400099106')
     # test.accept_DstUs(groupId='7100048602',offerCode='8000',userId='7120111900088551')
-    # logger.info('业务受理信息：{}'.format(submitMsg))
     # test.accept_CrtMb(groupId='7100048602',serialNum='09717174690',offerCode='2222',grpUserId='7120112400099806',planType='G',itemId='42701',
     #                   elementAttrBizList=[{"ELEMENT_ID":"110000222201","OFFER_TYPE":"P","AttrBizList":[{"ATTR_VALUE": "610530","ATTR_CODE": "pam_SHORT_CODE"}]},
     #                                       {"ELEMENT_ID": "120010122813", "OFFER_TYPE": "S", "AttrBizList": []},
@@ -190,17 +194,23 @@ if __name__ == '__main__':
     #                                       {"ELEMENT_ID": "120000008172", "OFFER_TYPE": "S", "AttrBizList": []}
     #                                       ])
 
-    # test.accept_CrtMb(groupId='7100048602',serialNum='13897471185',offerCode='6200',grpUserId='7120112400099809',planType='G',itemId='90001',
+    # test.accept_CrtMb(groupId='7100048602',serialNum='13897471185',offerCode='6200',grpUserId='7120112700109676',planType='G',itemId='90001',
     #                   elementAttrBizList=[{"ELEMENT_ID": "3000033664", "OFFER_TYPE": "D", "AttrBizList": []}])
-    #                                        #订购两条资费一个主产品，都没有属性
+    # #                                        #订购两条资费一个主产品，都没有属性  OK
 
-    # test.accept_CrtMb(groupId='7100048602',serialNum='13709744923',grpUserId='7120111900088501',
-    #                   AttrBizList=[],elementList=[],planType='G',itemId='90002')
-    test.accept_DstMb(groupId='7100048602',serialNum='13897471185',grpUserId='7120112400099809')
+    test.accept_CrtMb(groupId='7100048602',serialNum='18797098484',offerCode='8000',grpUserId='7120112700109681',planType='G',itemId='42701',
+                      elementAttrBizList=[{"ELEMENT_ID": "110011003068", "OFFER_TYPE": "P", "AttrBizList": [{"ATTR_VALUE": "610530","ATTR_CODE": "pam_SHORT_CODE"},{"ATTR_VALUE": "1-均显示短号","ATTR_CODE": "pam_pam_CALL_DISP_MODE"}]},
+                                         {"ELEMENT_ID": "3000033663", "OFFER_TYPE": "D", "AttrBizList": []},
+                                         {"ELEMENT_ID": "120000008601", "OFFER_TYPE": "S", "AttrBizList": []}
+                                          ])
+    #                                        #订购两条资费一个主产品，都没有属性  OK
+
+
+    # test.accept_DstMb(groupId='7100048602',serialNum='13897471185',grpUserId='7120112400099809')
     # test.accept_DstMb(groupId='7100048602',serialNum='15719780530',grpUserId='7120111900088551')
     # test.accept_DstUs(groupId='7100048602',offerCode='6200')
     # test.accept_DstUs(groupId='7100048602',offerCode='8000',userId='7120111900088551')
     # test.accept_CrtUs(groupId='7100048602',brandCode='TREX',offerCode='2222',contractId='7100048602',
     #     elementAttrBizList=[{"ELEMENT_ID": "110000222201", "OFFER_TYPE": "P",
     #     "AttrBizList": [{"ATTR_VALUE": "西宁","ATTR_CODE": "pam_DIVIDE_DEPART"},{"ATTR_VALUE": "5:5分成","ATTR_CODE": "pam_DIVIDE_BELIEL"}]}
-    #     ])
+    #     ])  --OK

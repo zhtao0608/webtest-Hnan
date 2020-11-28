@@ -91,7 +91,7 @@ if __name__ == '__main__':
     co = ReadConfig("ngboss_config.ini")
     print(co.get_ngboss("url"))
     print(proDir)
-    conn = co.get_oracle("cp_thin")
+    conn = co.get_oracle("cp")
     print(conn)
     print(case_path)
     # print(get_reportPath())

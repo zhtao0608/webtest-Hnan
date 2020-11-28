@@ -3,12 +3,13 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import retDigitListFromStr
+from Common.function import sqlJoiningDic
+from .DataParser import DataCheckParser as IData
 
 logger = LogManager('OracleDataDeal').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 ora = MyOracle()
-
 
 class SelectOraData(MyOracle):
     '''从Oracle获取数据'''
@@ -37,7 +38,7 @@ class SelectOraData(MyOracle):
         :return:SmsContentList 短信内容列表
         '''
         expr = " RECV_OBJECT = '%s' order by DEAL_TIME desc"  % accessNum
-        paras= self.getTabColValue(thin='crm1_thin',tabName='TI_O_SMS',ColName='NOTICE_CONTENT',expr=expr)
+        paras= self.getTabColValue(thin='crm1',tabName='TI_O_SMS',ColName='NOTICE_CONTENT',expr=expr)
         print(len(paras))
         # Assertion().assertNotEqual(len(paras),0,msg='没有获取到短信内容')
         SmsContentList = []
@@ -73,32 +74,33 @@ class SelectOraData(MyOracle):
                             ListSmsCode.append(smsCode)
                             return ListSmsCode[0] #默认返回第一个也就是最近的一个验证码
 
+    def getRealNameInfoBySerialNum(self,serialNum):
+        '''
+        通过serialNum查询实名制信息
+        :param serialNum: 手机号码
+        :return:
+        '''
+        sqlParams = IData().retDicParserCode(tabName='TF_F_REALNAME_INFO',sqlref='SelByTransactionId')
+        sql = sqlParams['SQL'] %serialNum
+        route = sqlParams['ROUTE']
+        return self.select(sql,route)
+
 
 class UpdateOraData(MyOracle):
     '''更新Oracle数据'''
-    def updateTabColValue(self,thin,tabName,sqlParams={},expr='1=1'):
+    def updateTabColValue(self,thin,tabName,sqlParams={},cond='1=1'):
         '''
         按传入的表达式获取相应字段的值
         :param thin: 连接串
         :param tabName: 表名
-        :param ColName: 字段名，
-        :param expr:表达式，where条件
+        :param sqlParams: 一个字典，{'COLNAME':'value'} 对应要更新都字段和值
+        :param cond:表达式，where条件
         :return:
         '''
-        if not isinstance(sqlParams,dict):
-            logger.info('sqlParams入参必须是dict类型')
-        if len(sqlParams)==0:
-            logger.info('sqlParams入参为空')
-        for colName,value in sqlParams.items():
-            print(colName,value)
-            if isinstance(value,str):
-                value = "'" + value + "'"
-            UPDSQL = "UPDATE {} SET ".format(tabName) + colName + "=" + value + " WHERE " + expr
-            logger.info(UPDSQL)
-            self.updateSQL(conn=rc.get_oracle(thin),sql=UPDSQL)  #执行update
-        # return UPDSQL
-        #cur.execute('insert into SCOTT.STUDENTS (id, name, age) values (:student_id, :student_name, :student_age)',student)
-
+        updateExpr = sqlJoiningDic(sqlParams)  #先获取要更新都表达式
+        UPDSQL = "UPDATE {} SET ".format(tabName) + updateExpr + " WHERE " + cond
+        logger.info(UPDSQL)
+        self.updateSQL(conn=rc.get_oracle(thin),sql=UPDSQL)  #执行update
 
 
     def updateRealNameInfoBySerialNum(self,assessNum,IdCard,custName,custAddr='湖南省长沙市芙蓉区车站北路459号'):
@@ -128,16 +130,19 @@ class UpdateOraData(MyOracle):
                pspt_issuesnum    = '1'\
          where t.SERIAL_NUMBER = '{}'".format(custName,IdCard,custAddr,birthday,assessNum)
         logger.info(updRealNameInfoSQL)
-        self.updateSQL(sql=updRealNameInfoSQL,conn=rc.get_oracle('cp_thin'))
+        self.updateSQL(sql=updRealNameInfoSQL,conn=rc.get_oracle('cp'))
         return updRealNameInfoSQL
 
 if __name__ == '__main__':
     # data =UpdateOraData()
+    # sqlParams = {'pspt_id':'630121199311304817','cust_name':'朱丽华','verif_result':'1','pass_pspt':'123456789'}
     # sql = data.updateRealNameInfoBySerialNum(assessNum='15297156027',IdCard='630121199311304817',custName='王成林')
     # print(sql)
-    sel = SelectOraData()
-    result = sel.getSmsCode(accessNum='15809705551')
-    print('短信验证码：',result)
-    # sqlParams = {'pspt_id':'630121199311304817','cust_name':'王成林'}
-    # data.updateTabColValue(thin='cp_thin',tabName='tf_f_realname_info',sqlParams=sqlParams,expr="SERIAL_NUMBER='15297156027'")
-    # # print (result)
+    # sel = SelectOraData()
+    # result = sel.getSmsCode(accessNum='15809705551')
+    # print('短信验证码：',result)
+    # data.updateTabColValue(thin='cp',tabName='tf_f_realname_info',sqlParams=sqlParams,cond="SERIAL_NUMBER='15297156027'")
+    # print (result)
+    test = SelectOraData()
+    result = test.getRealNameInfoBySerialNum(serialNum='13897407134')
+    print(result)

@@ -17,17 +17,17 @@ class MyOracle:
     """
     oracle数据库操作
     """
-    global username, password, ip, port, service_name,cp_thin,crm1_thin,base_thin
+    global username, password, ip, port, service_name,cp,crm1,base
     username = rc.get_oracle('USERNAME')
     password = rc.get_oracle('PASSWORD')
     ip = rc.get_oracle('IP')
     port = rc.get_oracle('PORT')
     service_name = rc.get_oracle('SERVICE_NAME')
     # thin = username + "/" + password + "@" + ip +":" + port+ "/" + service_name
-    cp_thin = rc.get_oracle("cp_thin")
-    base_thin = rc.get_oracle("base_thin")
-    crm1_thin = rc.get_oracle("crm1_thin")
-    jour1_thin = rc.get_oracle("jour1_thin")
+    cp = rc.get_oracle("cp")
+    base = rc.get_oracle("base")
+    crm1 = rc.get_oracle("crm1")
+    jour1 = rc.get_oracle("jour1")
     # upc_thin = rc.get_oracle("upc_thin")
     # res_thin = rc.get_oracle("res_thin")
     # ec_thin = rc.get_oracle("ec_thin")
@@ -91,7 +91,7 @@ class MyOracle:
         value = cursor.fetchone()
         return value
 
-    def select(self,sql,conn=rc.get_oracle('crm1_thin')):
+    def select(self,sql,conn=rc.get_oracle('crm1')):
         """查询返回字典格式"""
         list = []
         self.ReConnect(conn)
@@ -208,7 +208,7 @@ if __name__ == '__main__':
     colList = ["cust_name", "pspt_id"]  # 存储Colname的值,对应表字段
     valueList = ["张伶萍", "630121197704223621"]  # 存储value的值，对应表字段都值
     expr = " SERIAL_NUMBER = '15202502265'"
-    test.updateMany(tabName='tf_f_realname_info',conn=rc.get_oracle('cp_thin'),
+    test.updateMany(tabName='tf_f_realname_info',conn=rc.get_oracle('cp'),
                     colList=colList,valueList=valueList,expr=expr)
 
 
