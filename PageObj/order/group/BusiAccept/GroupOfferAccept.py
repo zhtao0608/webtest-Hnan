@@ -23,9 +23,10 @@ class GroupOfferAccept(GroupBusiBase):
         self.driver.get(rc.get_ngboss('url'))     #这里可以切换环境，去ngboss_config.ini配置
         self.driver.maximize_window()
 
-    def accept_CrtUs(self,groupId,brandCode,offerCode,elementAttrBizList=[],contractId=''):
+    def accept_CrtUs(self,scene,groupId,brandCode,offerCode,elementAttrBizList=[],contractId=''):
         '''
         集团商品受理（开户）
+        :param groupId: 场景编码
         :param groupId: 集团编码
         :param brandCode: 商品品牌
         :param offerCode: 商品编码
@@ -42,6 +43,7 @@ class GroupOfferAccept(GroupBusiBase):
         time.sleep(2)
         self.SelOfferTypePart(brandCode)# 选择商品目录
         self.SubGrpOffer(offerCode) #选择集团商品
+        RuleCheckBefore(self.driver).checkRule(scene) #
         DealElements(self.driver).initOfferAttrInfo()  #点击商品待设置或者点击商品特征设置
         self.screen_step("进入集团商品设置页面")
         # DealElements(self.driver).setOfferAttr(AttrBizList) #传入需要设置属性列表并设置商品属性
@@ -67,7 +69,7 @@ class GroupOfferAccept(GroupBusiBase):
         self.save_docreport(title)
 
 
-    def accept_DstUs(self,groupId,offerCode,reason='不必要使用该产品'):
+    def accept_DstUs(self,groupId,offerCode,reason='不必要使用该产品',scene='DstUs'):
         '''集团商品受理（销户）'''
         title = '集团商品退订测试记录%s' % offerCode
         self.add_dochead(title)
@@ -82,10 +84,10 @@ class GroupOfferAccept(GroupBusiBase):
         self.screen_step("选择要注销的集团商品")
         # self.DstGrpOfferCode(offerCode,userId) #传入要注销的集团商品编码和用户标识点击注销
         self.DstGrpOfferCodeNew(offerCode) #传入要注销的集团商品编码和用户标识点击注销
-        RuleCheckBefore(self.driver).checkRule()   #点击注销后判断规则
+        RuleCheckBefore(self.driver).checkRule(scene)   #点击注销后判断规则
         DealElements(self.driver).selectRemoveReason(reason)  #选择注销原因
         DealElements(self.driver).submitAccept()
-        submitMsg = PageAssert(driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         orderId = getDigitFromStr(submitMsg)
@@ -133,7 +135,7 @@ class GroupOfferAccept(GroupBusiBase):
         else:
             DealMebElements(self.driver).selMebPayPlan(planType,itemId) #【可以选择个人付费或集团付费的处理】设置成员付费关系
         DealMebElements(self.driver).OpenSubmitGrpMebOffer() #点击提交
-        submitMsg = PageAssert(driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         orderId = getDigitFromStr(submitMsg)
         time.sleep(2)
@@ -162,7 +164,7 @@ class GroupOfferAccept(GroupBusiBase):
         RuleCheckBefore(self.driver).checkRule() #业务规则判断
         DealMebElements(self.driver).InputDstMbRemark() #填写备注
         DealMebElements(self.driver).DelSubmitGrpMebOffer() #注销提交按钮
-        submitMsg = PageAssert(driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         orderId = getDigitFromStr(submitMsg)
         time.sleep(2)

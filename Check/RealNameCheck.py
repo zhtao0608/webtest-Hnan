@@ -27,6 +27,7 @@ def OutputCustInfo(custinfo:str):
     return(GetCustInfo)
 
 # print(OutputCustInfo(pyperclip.paste()))
+Flow = pyperclip.paste()
 
 def GetCustIdBySerialNumber(serial_number):
     tns_crm1 = "UOP_CRM1/qh_Crmdb_1234@10.230.59.93:10909/qhcrmdb"

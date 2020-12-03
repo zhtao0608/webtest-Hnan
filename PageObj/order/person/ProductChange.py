@@ -89,7 +89,7 @@ class ProdChangePage(Base):
         self.screen_step("选择资费或者服务订购")
         SelectElements(self.driver).addElements(elementList)
         PageCommonPart(self.driver).submit() #点击提交
-        submitMsg = PageAssert(driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)
@@ -116,7 +116,7 @@ class ProdChangePage(Base):
         self.screen_step("选择资费或者服务删除")
         SelectElements(self.driver).delElements(elementList)
         PageCommonPart(self.driver).submit() #点击提交
-        submitMsg = PageAssert(driver).assert_Submit()
+        submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)

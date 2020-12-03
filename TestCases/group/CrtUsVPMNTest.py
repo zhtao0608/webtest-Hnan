@@ -9,20 +9,25 @@ from PageObj.order.group.BusiAccept.GroupOfferAccept import GroupOfferAccept
 from Base.Mylog import LogManager
 from TestCases.suite import mySuitePrefixAdd
 # from Check.PageCheck import PageAssert
-from Data.DataMgnt.TestDataMgnt import TestDataExcel
 from Check.DataCheck import DataCheck
+# from Data.DataMgnt.TestDataMgnt import TestDataExcel
+from Data.DataMgnt.DataOper import DataOper
+from Data.DataMgnt.TestResult import TestResultOper
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('CrtUsVpmnTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-params = TestDataExcel().get_TestData('CrtUsVPMN')['params']
-file = TestDataExcel().get_TestData('CrtUsVPMN')['filename']
+# params = TestDataExcel().get_TestData('CrtUsVPMN')['params']
+# file = TestDataExcel().get_TestData('CrtUsVPMN')['filename']
+params = DataOper().getCasePara('CrtUsVPMN')
+logger.info('=========================')
+logger.info(params)
 
 @ddt.ddt
 class CrtUsVpmnTest(unittest.TestCase):
     '''集团VPMN商品订购'''
-    @classmethod
+    # @classmethod
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.get(rc.get_ngboss('url'))     #这里可以切换环境，去ngboss_config.ini配置
@@ -33,7 +38,7 @@ class CrtUsVpmnTest(unittest.TestCase):
         '''集团VPMN商品订购'''
         logger.info("开始参数化......")
         logger.info('开始执行案例,案例执行参数：{}'.format(dic))
-        row = TestDataExcel().get_TestData('CrtUsVPMN')['FuncRow']
+        sceneCode = dic.get('SCENE_CODE')
         groupId = dic.get('groupId')
         brandCode = str(dic.get('brandCode')) #集团商品归属品牌
         offerCode = dic.get('offerCode')
@@ -41,8 +46,9 @@ class CrtUsVpmnTest(unittest.TestCase):
         elementAttrBizList = dic.get('elementAttrBizList')
         logger.info(elementAttrBizList)
         logger.info(type(elementAttrBizList))
-        GroupOfferAccept(self.driver).accept_CrtUs(groupId=groupId,brandCode=brandCode,offerCode=offerCode,
+        GroupOfferAccept(self.driver).accept_CrtUs(scene=sceneCode,groupId=groupId,brandCode=brandCode,offerCode=offerCode,
                                                    contractId=contractId,elementAttrBizList=elementAttrBizList)
+        TestResultOper().updateActualResult(sceneCode='CrtUsVPMN')
         logger.info('执行完成')
 
     def tearDown(self):

@@ -66,7 +66,7 @@ class GrpTestData():
          '%s' subOfferList from uop_cp.cb_enterprise t \
         where group_id in (%s)"  % (offerId,subOfferlist,groupId)
         logger.info('获取集团商品订购的sql语句:{}'.format(sql_groupOffer))
-        paras = ora.select(conn=rc.get_oracle('cp'),sql= sql_groupOffer)
+        paras = ora.select(route='crm1',sql= sql_groupOffer)
         return paras
 
     def get_GrpOfferInst(self,groupId,offerId):
@@ -84,7 +84,7 @@ class GrpTestData():
             and a.cust_id = b.orga_enterprise_id and group_id in (%s) and rownum <=3" %(offerId,groupId)
 
         logger.info('获取集团商品订购实例sql语句:{}'.format(sql_GrpOfferInst))
-        paras = ora.select(conn=rc.get_oracle('ec_thin'),sql= sql_GrpOfferInst)
+        paras = ora.select(route='ec',sql= sql_GrpOfferInst)
         return paras
 
     def get_GrpMebOfferInst(self,grpOfferId):
@@ -102,7 +102,7 @@ class GrpTestData():
         and rownum <=3" %(grpOfferId)
 
         logger.info('获取集团成员商品订购实例sql语句:{}'.format(sql_MebOfferList))
-        paras = ora.select(conn=rc.get_oracle('crm1'),sql= sql_MebOfferList)
+        paras = ora.select(route='crm1',sql= sql_MebOfferList)
         return paras
 
     def get_MebAccessNumList(self,AccessNumList,subOfferList):

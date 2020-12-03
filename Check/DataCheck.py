@@ -3,7 +3,7 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import retDigitListFromStr
-from Data.DataMgnt.OraDataDeal import SelectOraData
+from Data.DataMgnt.DataOper import DataOper
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -18,13 +18,13 @@ class DataCheck():
         判断工单是否完工
         :return:返回Bool ,如果完工则为True,否则为False
         '''
-        tradeList = SelectOraData().getTabColValue(thin='jour1', tabName ='TF_B_TRADE',
+        tradeList = DataOper().getTabColValue(thin='jour1', tabName ='TF_B_TRADE',
                             ColName = 'SUBSCRIBE_STATE,TRADE_ID,TRADE_TYPE_CODE',
                             expr ="ORDER_ID='{}'".format(orderId))
         logger.info(tradeList)
         print('=========len(tradeList)',len(tradeList))
 
-        tradeHisList = SelectOraData().getTabColValue(thin='jour1', tabName ='TF_B_TRADE_{}'.format(time.strftime("%Y")),
+        tradeHisList = DataOper().getTabColValue(thin='jour1', tabName ='TF_B_TRADE_{}'.format(time.strftime("%Y")),
                             ColName = 'SUBSCRIBE_STATE,TRADE_ID,TRADE_TYPE_CODE',
                             expr ="ORDER_ID='{}'".format(orderId))
         logger.info(tradeHisList)

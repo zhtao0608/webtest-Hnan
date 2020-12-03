@@ -23,11 +23,12 @@ class MainPlanSelectPart(Base):
         '''
         text_productSearch = (By.ID,'productSelectPRODUCT_SEARCH_TEXT')
         self.element_sendkey_enter(text_productSearch,productId) #输入产品编码按回车查询
-        time.sleep(2)
+        # time.sleep(2)
+        PageAssert(self.driver).pageLoading()
         SubproductStr = "//button[contains(@productid,'%s') and contains(@ontap,'productSelect.selectProduct')]" %productId
         btn_Subproduct = (By.XPATH,SubproductStr)  #订购按钮
         self.isElementDisplay(btn_Subproduct,'click') #点击主套餐订购
-        time.sleep(2)
+        PageAssert(self.driver).pageLoading()
 
 
     def selectProductItem(self,elementList=[]):
@@ -47,7 +48,9 @@ class MainPlanSelectPart(Base):
             self.isSelected(checkBox_selectElement,Type='click') # 选中要订购的元素（资费、服务）
         btn_confirmSelect = (By.XPATH,"//button[contains(@ontap,'productSelect.confirmAction')]")
         self.isElementDisplay(btn_confirmSelect,'click')
-        # time.sleep(2)
+        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).assert_WadePage() #做个校验
+
 
     def MainProductSel(self,productId,elementList=[]):
         '''

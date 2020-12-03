@@ -10,6 +10,7 @@ from Base.Mylog import LogManager
 import json
 import ast
 import re
+import inspect
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -30,6 +31,36 @@ def config_url():
 def date_n(n):
 	'''返回当前日期后n天的日期'''
 	return date.today()+timedelta(days=n)
+
+def parseDate(date_str):
+    try:
+        if not date_str:
+            return None
+        if "-" in date_str:
+            if date_str.count("-") == 1:
+                date = datetime.datetime.strptime(date_str, "%Y-%m")
+            elif date_str.count("-") == 2:
+                date = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+        elif "年" in date_str:
+            if "日" in date_str:
+                date = datetime.datetime.strptime(date_str, "%Y年%m月%d日")
+            elif "月" in date_str:
+                date = datetime.datetime.strptime(date_str, "%Y年%m月")
+            else:
+                date = datetime.datetime.strptime(date_str, "%Y年")
+        elif date_str.isdigit():
+            if len(date_str) == 4:
+                date = datetime.datetime.strptime(date_str, "%Y")
+            elif len(date_str) > 6:
+                date = datetime.datetime.strptime(date_str, "%Y%m%d")
+            else:
+                date = datetime.datetime.strptime(date_str, "%Y%m")
+        else:
+            date = None
+    except:
+        return None
+    return date
+
 
 def datetime_n(n):
 	'''返回当前时间n天后的时间'''
@@ -222,6 +253,47 @@ def sqlJoiningDic(sqlParams):
 		# print(type(expr))
 	return Sqlexpr[0:len(Sqlexpr)-1]   #注意删除最后一个字符‘,’
 
+def retStackFunc():
+	'''从堆栈信息中获取外层函数名'''
+	t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+	execInfoList = inspect.stack()
+	logger.info('完整堆栈信息:{}'.format(execInfoList))
+	stackInfoList = []
+	for i in range(0,len(execInfoList)):
+		exec_info = execInfoList[i]
+		logger.info('外层堆栈信息{}'.format(exec_info))
+		_function = exec_info[3]
+		# print('-----------------',_function)
+		logger.info('调用的函数：{}'.format(_function))
+		fn = exec_info[1].rsplit("/", 1)[1]
+		logger.info('调用的外层函数文件名:{}'.format(fn))
+		# 所在行
+		_line = exec_info[2]
+		# 调用的方法
+		_function = exec_info[3]
+		# 执行的命令
+		_cmd = exec_info[4][0]
+		# 执行的命令中参数的名称
+		pattern = re.compile(
+			retStackFunc.__name__ + '\((.*?)\)$',
+			re.S
+		)
+		_cmd = _cmd.strip().replace('\r', '').replace('\n', '')
+		# 变量名
+		# 变量转字符串
+		log_info = '[{time}] [{func}] [{line}] '.format(
+			time=t,
+			func=_function,
+			line=_line
+
+		)
+		logger.info(log_info)
+		dicStackInfo = {'time':t,'func':_function,'line':_line}
+		logger.info(dicStackInfo)
+		stackInfoList.append(dicStackInfo)
+
+	return stackInfoList
+
 # if __name__ == '__main__':
 #     print("项目路径"+project_path())
 #     print(project_path())
@@ -230,15 +302,26 @@ def sqlJoiningDic(sqlParams):
 #     print("被测系统Url:"+config_url())
 
 if __name__ == '__main__':
-	dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
-	str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"
-	dict_enUrl = convert_enurlToDic(str)
-	print('=====',dict_enUrl)
-	print('*****',config_url())
-	sqlparams ={'name':'xiaoming','age':'11','school':'tsinghua'}
-	expr = sqlJoiningDic(sqlparams)
-	print(type(expr))
-	print(expr)
+	# dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
+	# str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"
+	# dict_enUrl = convert_enurlToDic(str)
+	frame = "[FrameInfo(frame=<frame at 0x0000028A88C757E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', line 230, code retStackFunc>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', lineno=229, function='retStackFunc', code_context=['\texecInfoList = inspect.stack()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8A5B4C58, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', line 22, code checkRule>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', lineno=22, function='checkRule', code_context=['        stackInfo = retStackFunc()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A88C779E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', line 46, code accept_CrtUs>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', lineno=46, function='accept_CrtUs', code_context=['        RuleCheckBefore(self.driver).checkRule(scene) #\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFFC8D768, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 50, code testCrtUsVpmn>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=50, function='testCrtUsVpmn', code_context=['                                                   contractId=contractId,elementAttrBizList=elementAttrBizList)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A896D3220, file 'D:\\Program File\\python37\\lib\\site-packages\\ddt.py', line 151, code wrapper>, filename='D:\\Program File\\python37\\lib\\site-packages\\ddt.py', lineno=151, function='wrapper', code_context=['        return func(self, *args, **kwargs)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A888F36B8, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 615, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=615, function='run', code_context=['                    testMethod()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B8E0, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 663, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=663, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A89628228, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 122, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=122, function='run', code_context=['                test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B728, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 84, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=84, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A882383D8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', line 971, code run>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', lineno=971, function='run', code_context=['        test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFF9FE9F8, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 66, code <module>>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=66, function='<module>', code_context=['        runner.run(mySuitePrefixAdd(CrtUsVpmnTest,'test'))\n'], index=0)]"
+	print(type(frame))
+	# frame.replace('\\','/').replace(' ','').replace('\n','').replace('\\','\/')
+	frame=re.sub('[\r\n\t\"]', '', frame)
+	frame=re.sub('=', ':', frame)
+
+	print(frame)
+
+	# ret= retStackFunc()
+	# print('==========',ret)
+
+	# print('=====',dict_enUrl)
+	# print('*****',config_url())
+	# sqlparams ={'name':'xiaoming','age':'11','school':'tsinghua'}
+	# expr = sqlJoiningDic(sqlparams)
+	# print(type(expr))
+	# print(expr)
 
 
 
@@ -544,6 +627,14 @@ if __name__ == '__main__':
 # 	print('================过滤以后===============')
 # 	print(subOfferList)
 
-	IdCard = '632124196502235348'
-	birthday = IdCard[6:10] + '_' + IdCard[10:12] + '_' + IdCard[12:14]
-	print(birthday)
+	# IdCard = '632124196502235348'
+	# birthday = IdCard[6:10] + '_' + IdCard[10:12] + '_' + IdCard[12:14]
+	# print(birthday)
+
+	dic = {'name':'xiaoming','age':'11','school':'tsinghua'}
+	if dic:
+		print('字典不是空的')
+		print(len(dic))
+	else:
+		print('字典是空的')
+

@@ -100,5 +100,5 @@ if __name__ == '__main__':
     test.qry_GroupMebInfoByAccessNum('18808723367')
     test.set_groupMebRela('8723403452')
     test.submiyAll()
-    PageAssert(driver).assert_WadePage()
+    PageAssert(self.driver).assert_WadePage()
 

@@ -6,8 +6,9 @@ from selenium.webdriver.common.by import By
 from Check.PageCheck import PageAssert
 from Common.TestAsserts import Assertion
 from Base import ReadConfig
-from selenium import webdriver
 from Base.Mylog import LogManager
+from Data.DataMgnt.TestResult import TestResultOper as TR
+from Common.function import retStackFunc
 
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('RuleCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -16,8 +17,12 @@ logger = LogManager('RuleCheck').get_logger_and_add_handlers(1,is_add_stream_han
 
 class RuleCheckBefore(Base):
     '''公共规则检查'''
-    def checkRule(self):
+    def checkRule(self,scene='ruleCheck'):
         '''页面执行规则判断'''
+        # stackInfo = retStackFunc()
+        # # # funcCode = stackInfo['func']
+        # print('=====被调用的函数:')
+        # logger.info(stackInfo)
         '''处理Wade弹出的各种提示窗口（Error、Success、Warn、Help、Tips）'''
         loc_WadeMessage = (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]')
         try:
@@ -80,6 +85,7 @@ class RuleCheckBefore(Base):
         except:
             WadeMsg = '没有弹出WadeMessage提示,校验通过'
         logger.info('======WadeMessageBox页面返回============={}'.format(WadeMsg))
+        TR().updateRuleCheckInfo(msg=WadeMsg,sceneCode=scene)
         Assertion().assertNotIn('校验失败',WadeMsg,msg='[规则校验通过]')
         Assertion().assertNotIn('校验不通过',WadeMsg,msg='[规则校验通过]')
         return WadeMsg

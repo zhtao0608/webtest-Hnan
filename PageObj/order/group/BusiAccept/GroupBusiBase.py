@@ -114,7 +114,6 @@ class GroupBusiBase(Base):
         loc_subOfferCode = (By.XPATH,OfferCodeStr)
         self.isElementDisplay(loc_subOfferCode,'click')
         PageAssert(self.driver).pageLoading()
-        RuleCheckBefore(self.driver).checkRule()
 
     '''集团商品变更按钮'''
     def ChgGrpOfferCode(self,offerCode,userId):
