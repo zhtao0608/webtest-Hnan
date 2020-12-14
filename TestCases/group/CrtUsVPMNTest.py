@@ -12,16 +12,14 @@ from TestCases.suite import mySuitePrefixAdd
 from Check.DataCheck import DataCheck
 # from Data.DataMgnt.TestDataMgnt import TestDataExcel
 from Data.DataMgnt.DataOper import DataOper
-from Data.DataMgnt.TestResult import TestResultOper
+from Data.DataMgnt.TestResult import TestResultOper as TR
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('CrtUsVpmnTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-# params = TestDataExcel().get_TestData('CrtUsVPMN')['params']
-# file = TestDataExcel().get_TestData('CrtUsVPMN')['filename']
+
 params = DataOper().getCasePara('CrtUsVPMN')
-logger.info('=========================')
 logger.info(params)
 
 @ddt.ddt
@@ -46,9 +44,10 @@ class CrtUsVpmnTest(unittest.TestCase):
         elementAttrBizList = dic.get('elementAttrBizList')
         logger.info(elementAttrBizList)
         logger.info(type(elementAttrBizList))
-        GroupOfferAccept(self.driver).accept_CrtUs(scene=sceneCode,groupId=groupId,brandCode=brandCode,offerCode=offerCode,
+        submitMsg = GroupOfferAccept(self.driver).accept_CrtUs(scene=sceneCode,groupId=groupId,brandCode=brandCode,offerCode=offerCode,
                                                    contractId=contractId,elementAttrBizList=elementAttrBizList)
-        TestResultOper().updateActualResult(sceneCode='CrtUsVPMN')
+        TR().updateActualResult(sceneCode='CrtUsVPMN',result=submitMsg)
+
         logger.info('执行完成')
 
     def tearDown(self):

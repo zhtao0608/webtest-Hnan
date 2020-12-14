@@ -65,7 +65,8 @@ class MyOracle:
             self.cursor = self.conn.cursor()
             logger.info("Connect DB successfully!")
         except ConnectionError as e:
-            logger.error(e)
+            print('数据库连接异常',e)
+            logger.info(e)
 
     def disconnect(self):
         """关闭连接"""
@@ -258,9 +259,6 @@ class MyOracle:
         Sql = "SELECT {} FROM {}  WHERE {}" .format(ColName,tabName,expr)
         logger.info(Sql)
         result = self.select(route=thin,sql= Sql) #sql执行，返回的是字典列表
-        # if len(result) == 0:  #如果查询结果是空,则返回False
-        #     return False
-        # else:
         logger.info(result)
         return result
 
@@ -288,7 +286,8 @@ class MyOracle:
 
 if __name__ == '__main__':
     test = MyOracle()
-    print(test.toSysDate())
+    test.ReConnect(route='cen1')
+    # print(test.toSysDate())
     # 查询结果到列表
 
     # for i in range(len(res)):

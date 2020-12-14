@@ -71,19 +71,20 @@ class DealUserCommon(Base):
         '''用户鉴权'''
         text_SerialNum = (By.ID,'AUTH_SERIAL_NUMBER')
         self.element_sendkey_enter(text_SerialNum,accessNum)
-        time.sleep(3)
-        # busiVerify = RuleCheckBefore(self.driver).checkRule()
-        busiVerify = RuleCheckBefore(self.driver).checkRule()
-        print(type(busiVerify))
-        # logger.info('业务校验检查结果：'.format(busiVerify))
-        print('=============业务校验检查结果:' + busiVerify)
+        PageAssert(self.driver).pageLoading() #页面加载
+        busiVerify = PageAssert(self.driver).assert_WadePage() #这里做个规则校验
+        logger.info('业务校验检查结果：'.format(busiVerify))
+        PageAssert(self.driver).pageLoading() #加载营销推荐界面
         PageAssert(self.driver).dealDialogPage() #关闭营销推荐
+        flag = self.isAuthSuc()
+        return {'msg':busiVerify,'IsAuthSuc':flag}
+
+    def isAuthSuc(self):
+        '''判断是否鉴权成功'''
         loc_CustInfoViewPart = (By.ID,'CustInfoViewPart')
         flag = self.isElementDisplay(loc_CustInfoViewPart)
-        print(flag)
-        # Assertion().verifyassertTrue(flag,message='用户鉴权失败，终止测试')
-        Assertion().assertTrue(flag,msg='用户鉴权失败，终止测试')
-
+        # Assertion().assertTrue(flag,msg='用户鉴权失败，终止测试')
+        return Assertion().verifyassertTrue(flag,msg='用户鉴权失败，终止测试') #这里返回一个Flag,
 
 class SelectElements(Base):
     '''页面元素处理公共类'''
@@ -106,14 +107,10 @@ class SelectElements(Base):
         '''
         text_elementSearch = (By.ID,'elementListELEM_SEARCH_TEXT')
         self.element_sendkey_enter(text_elementSearch,offerCode)
-        return self.driver
-
-    def backAcceptPage(self):
-        loc_backPopup = (By.XPATH,"//*[contains(@ontap,'elementList.backPopup(this)')]")
-        self.isElementDisplay(loc_backPopup,'click')
+        PageAssert(self.driver).pageLoading()
 
 
-    def addElements(self,elementList=[]):
+    def addElements(self,scene,elementList=[]):
         '''
         传入elementList包含改笔订单要订购资费或者服务以及类型
         :param elementList: 字典数组，包含 OFFER_CODE 和 Offer_type 2个key
@@ -121,7 +118,9 @@ class SelectElements(Base):
         [{"OFFER_CODE":"120000008174","OFFER_TYPE":"S"},{"OFFER_CODE":"120010122813","OFFER_TYPE":"D"}]
         :return:
         '''
-        for i in range(len(elementList)):
+        print(type(elementList))
+        print('新增元素列表:{}'.format(elementList))
+        for i in range(0,len(elementList)):
             offerCode = elementList[i]['OFFER_CODE']
             offerType = elementList[i]['OFFER_TYPE']
             if not isinstance(offerCode,str):
@@ -132,7 +131,8 @@ class SelectElements(Base):
             btnAddElementStr = "//button[contains(@onclick,'elementList.order') and contains(@offertype,'%s') and contains(@offercode,'%s')]" %(offerType,offerCode)
             Btn_AddElement = (By.XPATH,btnAddElementStr)
             self.isElementDisplay(Btn_AddElement,'click')
-        self.backAcceptPage()  #回到受理主页面
+            PageAssert(self.driver).pageLoading()
+            RuleCheckBefore(self.driver).checkRule(scene=scene)
 
 
     def delElements(self, elementList):
@@ -174,11 +174,26 @@ class PageCommonPart(Base):
 
 class SaleActivePart(Base):
     '''营销活动办理组件'''
+
+    def addSaleActive(self,offerCode):
+        '''
+        订购营销活动包
+        :param packgeInfo:
+        :return:
+        '''
+        self.selActivePop()  #点击活动办理新增
+        self.searchSaleActive(offerCode) #按编码查询营销包
+        self.checkSaleActiveExists(offerCode) #校验是否存在，里面做了断言
+        self.selectActive() #点击订购
+        PageAssert(self.driver).pageLoading()
+
     def selActivePop(self):
         '''选择组件'''
         li_selActivePop =(By.XPATH,"//*[contains(@ontap,'SaleActiveMain.selectProductPopupAction')]")
         self.isElementDisplay(li_selActivePop,'click')
+        PageAssert(self.driver).pageLoading()
         time.sleep(1)
+
 
     def searchSaleActive(self,offerCode):
         '''
@@ -187,34 +202,27 @@ class SaleActivePart(Base):
         :return:
         '''
         text_searchContent = (By.ID,'searchContent')
-        btn_search = (By.XPATH,"//*[contains(@ontap,'SaleActivePackageSelect.query')]")
-        if (PageAssert(self.driver).pageLoading()):
-            self.sendkey(text_searchContent,offerCode)
-            self.isElementDisplay(btn_search,'click')
-            time.sleep(1)
+        btn_search = (By.XPATH,"//*[contains(@onclick,'SaleActivePackageSelect.query')]")
+        PageAssert(self.driver).pageLoading()
+        self.sendkey(text_searchContent,offerCode)
+        self.isElementDisplay(btn_search,'click')
+        PageAssert(self.driver).pageLoading()
 
-    def checkSaleActiveExists(self,OfferCode):
+    def checkSaleActiveExists(self,offerCode):
         '''检查是否传入的营销活动是否存在'''
         loc_PackageList = (By.XPATH,'//*[@id="PackageListPart"]/div/ul/li[1]/div/div')
-        packgeId = self.get(loc_PackageList,Type='text')
-        logger.info('查询结果列表展示的营销包:' + packgeId)
-        Assertion().assertIsNotNone(packgeId,msg='营销包不存在，终止执行！')   #先断言一下，如果不存在则直接终止测试
-        return self.is_value_in_text(loc_PackageList,OfferCode)
+        packgeInfo = self.get(loc_PackageList,Type='text')
+        logger.info('查询结果列表展示的营销包:' + packgeInfo)
+        Assertion().assertIn(offerCode,packgeInfo,msg='营销包不存在，终止执行！')   #先断言一下，如果不存在则直接终止测试
+        return packgeInfo
 
-    def selectActive(self,OfferCode):
+    def selectActive(self):
         '''
         检查是否传入的营销活动是否存在,存在则选择营销活动
         :param OfferCode: 营销活动编码
         :return:
         '''
-        if self.checkSaleActiveExists(OfferCode):
-            li_selectPackage = (By.XPATH,"//li[contains(@ontap,'SaleActivePackageSelect.selectPackageAction')]")
-            self.isElementDisplay(li_selectPackage,'click')
-        else:
-            logger.info('营销包不存在或者选择异常，终止！')
-
-
-
-
+        li_selectPackage = (By.XPATH,"//li[contains(@ontap,'SaleActivePackageSelect.selectPackageAction')]")
+        self.isElementDisplay(li_selectPackage,'click')
 
 

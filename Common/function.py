@@ -11,6 +11,7 @@ import json
 import ast
 import re
 import inspect
+from Base.SysPara import SysPara
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -26,7 +27,8 @@ def config_url():
     # config = configparser.ConfigParser()
     # config.read(project_path()+"/config.ini")
     # return config.get('NGBOSS','url')
-	return rc.get_ngboss('url')
+	# return rc.get_ngboss('url')
+	return SysPara().get_ngboss('url')
 
 def date_n(n):
 	'''返回当前日期后n天的日期'''

@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from Common.function import config_url
 import time
 from selenium import webdriver
-
+from Base.SysPara import SysPara
 from Base.Mylog import LogManager
 
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
@@ -28,7 +28,7 @@ class LoginPage(Base):
         return self.find(loc_btnLogin)
 
     ##登录操作：
-    def login(self,username,password):
+    def login(self,username=SysPara().get_ngboss('username'),password=SysPara().get_ngboss('password')):
         '''登录'''
         self.open_base_url()
         loc_username = (By.ID, "STAFF_ID")
@@ -47,6 +47,6 @@ if __name__ == '__main__':
     # driver = webdriver.Ie()
     test = LoginPage(driver)
     test.open_base_url()
-    test.login('SUPERUSR','lc')
+    test.login()
     driver.close()
 

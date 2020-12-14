@@ -33,12 +33,14 @@ class Assertion(unittest.TestCase):
 
         try:
             self.assertEqual(actual,expected)
+            self.setFlag(True)
         except  AssertionError as e:
             print(e)
             self.setFlag(False)  #如果断言失败则设置flag 为False
+        return self.flag
 
 
-    def verifyassertIn(self, actual, expected,message=None):
+    def verifyassertIn(self, actual, expected,msg=None):
         '''
         校验实际结果与预期结果是否一致
         :param actual:
@@ -48,12 +50,14 @@ class Assertion(unittest.TestCase):
         '''
 
         try:
-            self.assertIn(actual, expected,msg=message)
+            self.assertIn(actual, expected,msg=msg)
+            self.setFlag(True)
         except AssertionError as e:
             print(e)
             self.setFlag(False)  # 如果断言失败则设置flag 为False
+        return self.flag
 
-    def verifyassertTrue(self, flag,message=None):
+    def verifyassertTrue(self,flag,msg=None):
         '''
         校验实际结果与预期结果是否一致
         :param actual:
@@ -62,10 +66,12 @@ class Assertion(unittest.TestCase):
         :return:
         '''
         try:
-            self.assertTrue(flag,msg=message)
+            self.assertTrue(flag,msg=msg)
+            self.setFlag(True)
         except AssertionError as e:
             print(e)
             self.setFlag(False)  # 如果断言失败则设置flag 为False
+        return flag
 
 if __name__ == '__main__':
     MyAssert = Assertion()

@@ -23,7 +23,7 @@ logger = LogManager('CrtUserPage').get_logger_and_add_handlers(1,is_add_stream_h
 class CrtUserPage(Base):
     '''个人开户页面'''
     def openCrtUserPage(self):
-        LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
+        LoginPage(self.driver).login()  # 登录
         MainPage(self.driver).open_CataMenu('crm9000', 'crm9100', 'crmw908',menuPath='order.page.pc.person.createuser.CreateUser')  # 进入集团商品受理
 
 

@@ -56,7 +56,7 @@ class MainPage(Base):
         '''
         '''打开菜单'''
         # self.open_base()
-        # LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
+        # LoginPage(self.driver).login()  # 登录
         self.click_MenuTab()
         catamenu_str  =  "//li[@menuid='%s']" % catamenu
         self.find_element_click((By.XPATH,catamenu_str)) #菜单目录

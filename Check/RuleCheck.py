@@ -90,12 +90,18 @@ class RuleCheckBefore(Base):
         Assertion().assertNotIn('校验不通过',WadeMsg,msg='[规则校验通过]')
         return WadeMsg
 
-    def CheckRuleBefore(self):
+    def checkBefore(self,scene='RULE_CHECK_BEFORE'):
+        '''
+        根据场景编码校验业务受理前置规则
+        :param scene:
+        :return:
+        '''
         '''个人业务前置业务规则判断'''
-        # self.screen_step('CheckRuleBefore业务规则判断')
-        rulemsg = ''
-        # rulemsg = PageAssert(self.driver).assert_WadePage()
-        rulemsg = self.checkRule()
+        self.screen_step('CheckRuleBefore业务规则判断')
+        rulemsg = PageAssert(self.driver).assert_WadePage()
         logger.info('Wade页面返回的业务规则校验信息:'.format(rulemsg))
+        TR().updateRuleCheckInfo(msg=rulemsg,sceneCode=scene)
+        Assertion().assertNotIn('校验失败',rulemsg,msg='[规则校验通过]')
+        Assertion().assertNotIn('校验不通过',rulemsg,msg='[规则校验通过]')
         return rulemsg
 

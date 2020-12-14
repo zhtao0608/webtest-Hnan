@@ -479,6 +479,8 @@ class Base():
     def element_sendkey_enter(self, locator,value):
         u"""定位元素后先输入value然后直接按ENTER"""
         element = self.find(locator)
+        self.js_scrollIntoView(element)
+        element.clear() #先清理
         action = ActionChains(self.driver)
         action.send_keys_to_element(element,value)
         time.sleep(2)

@@ -7,6 +7,10 @@ import unittest
 from Base import ReadConfig
 from Base.Mylog import LogManager
 from Base import HTMLTestRunnerCNNew
+
+logger = LogManager('RunTest').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
+
 class RunTest:
     def __init__(self):
         """
@@ -25,6 +29,7 @@ class RunTest:
         self.caseFile = os.path.join(ReadConfig.proDir, "TestCases")
         # 定义一个空列表，用于保存类名
         self.caseList = []
+
 
     def get_case_list(self):
         """
@@ -46,6 +51,7 @@ class RunTest:
         """
         # 获取config\caselist.txt中的每一行
         self.get_case_list()
+        logger.info(self.get_case_list())
         # 定义测试集对象
         test_suite = unittest.TestSuite()
         # 初始化一个列表，存在所有的测试模块
@@ -85,7 +91,7 @@ class RunTest:
                 #                 #                           description='Test Description', verbosity=2,retry=1,save_last_try=False)
                 # 运行测试用例
                 runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='WEB-UI自动化测试报告',
-                                                           description='测试报告', verbosity=2,retry=1)
+                                                           description='测试报告', verbosity=2,retry=0)
                 runner.run(suite)
             else:
                 log.info("Have no case to test.")

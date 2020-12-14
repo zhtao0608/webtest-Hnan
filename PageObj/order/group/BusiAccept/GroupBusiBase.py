@@ -167,7 +167,6 @@ class GroupBusiBase(Base):
         loc_subMebOfferCode = (By.XPATH,subMebOfferCodeStr)
         self.isElementDisplay(loc_subMebOfferCode,'click')
         PageAssert(self.driver).pageLoading()
-        RuleCheckBefore(self.driver).checkRule()
         return self.driver
 
     '''成员商品变更按钮'''

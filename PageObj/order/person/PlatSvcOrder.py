@@ -5,8 +5,8 @@ from Base import ReadConfig
 from selenium import webdriver
 from PageObj.ngboss.login_page import LoginPage
 from PageObj.ngboss.mainpage import MainPage
-from PageObj.order.BizCommon.PersonOrder.ElementPartBase import DealUserCommon
-from PageObj.order.BizCommon.PersonOrder.ElementPartBase import SelectElements
+from PageObj.order.BizCommon.ElementPartBase import DealUserCommon
+from PageObj.order.BizCommon.ElementPartBase import SelectElements
 from Check.PageCheck import PageAssert
 from Base.Mylog import LogManager
 
@@ -21,9 +21,14 @@ class PlatServiceOrder(Base):
         #self.driver.implicitly_wait(30)
 
     def openPlatServiceOrder(self):
-        LoginPage(self.driver).login(rc.get_ngboss('username'), rc.get_ngboss('password'))  # 登录
+        LoginPage(self.driver).login()  # 登录
         MainPage(self.driver).open_CataMenu('crm9000', 'IBS1000', 'IBS9271',menuPath='page/order.page.pc.person.plat.PlatOrder')  # 进入产品变更页面
         logger.info('进入平台业务办理页面')
+
+    def backPlatOrderPage(self):
+        '''点击回到平台业务受理页面'''
+        loc_backPopup = (By.XPATH,'//*[@id="platOrderAddItem"]/div[1]/div[1]')
+        self.isElementDisplay(loc_backPopup,'click')
 
     def searchPlatSvcByOfferCode(self,OfferCode):
         '''

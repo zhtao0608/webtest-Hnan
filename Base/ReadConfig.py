@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
-# __author:Administrator
+# __author:zhoutao2
 # date: 2019/12/28
 import os,time,datetime
 import configparser
+# from Base.SysPara import SysPara
 
 # 不要使用这种获取项目根目录的方式，如果在其它类中引用，是相对其它类的目录进行。
 # proDir1 = os.path.abspath(os.path.join(os.getcwd(), ".."))
@@ -67,10 +68,12 @@ class ReadConfig:
 
     def get_ngboss(self, name):
         value = self.conf.get("NGBOSS", name)
+        # value = SysPara().get_ngboss(name)
         return value
 
     def get_oracle(self, name):
         value = self.conf.get("ORACLE", name)
+        # value = SysPara().get_oracle(name)
         return value
 
     def get_interface_url(self, name):

@@ -27,7 +27,7 @@ class TestResultOper():
         Assert().assertTrue(len(sceneCode)>0,msg='sceneCode不能为空!')
         valueDic = {'ACTUAL_RESULT':result}
         condDic  = {'SCENE_CODE':sceneCode}
-        self.ora.updateData(route='cen1',dt_update=valueDic,dt_condition=condDic,table='AUTOTEST_EXEC_PLAN')
+        self.ora.updateData(route='cen1',dt_update=valueDic,dt_condition=condDic,table='AUTOTEST_CASE')
 
     def updateOrderId(self,submitMsg,sceneCode):
         '''
@@ -41,12 +41,11 @@ class TestResultOper():
         Assert().assertIn('成功',submitMsg,msg='业务受理失败，不能写入OrderId')
         valueDic = {'ORDER_ID':getDigitFromStr(submitMsg)}
         condDic  = {'SCENE_CODE':sceneCode}
-        self.ora.updateData(route='cen1',dt_update=valueDic,dt_condition=condDic,table='AUTOTEST_EXEC_PLAN')
+        self.ora.updateData(route='cen1',dt_update=valueDic,dt_condition=condDic,table='AUTOTEST_CASE')
 
     def updateRuleCheckInfo(self,msg,sceneCode):
         '''
         根据sceneCode更新案例执行实际结果
-        :param orderId:案例执行成功后将orderId处理后写入
         :param sceneCode:
         :return:
         '''
@@ -54,7 +53,7 @@ class TestResultOper():
         Assert().assertTrue(len(sceneCode)>0,msg='sceneCode不能为空!')
         valueDic = {'RULE_CHECK_INFO':msg}
         condDic  = {'SCENE_CODE':sceneCode}
-        self.ora.updateData(route='cen1',dt_update=valueDic,dt_condition=condDic,table='AUTOTEST_EXEC_PLAN')
+        self.ora.updateData(route='cen1',dt_update=valueDic,dt_condition=condDic,table='AUTOTEST_CASE')
 
 
 if __name__ == '__main__':
