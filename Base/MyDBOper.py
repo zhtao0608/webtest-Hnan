@@ -85,7 +85,7 @@ class DbManager:
         """查询返回字典列表"""
         list = []
         result = self.queryData(sql)
-        logger.info('查询结果:{}'.format(result))
+        # logger.info('查询结果:{}'.format(result))
         col_name = self.cur.description
         for row in result:
             dict = {}

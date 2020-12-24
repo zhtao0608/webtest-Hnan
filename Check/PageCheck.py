@@ -100,6 +100,48 @@ class PageAssert(Base):
         logger.info('======WadeMessageBox页面返回============={}'.format(WadeMsg))
         return WadeMsg
 
+    def assert_WadeFullMsg(self):
+        '''处理Wade弹出的各种提示窗口（Error、Warn）'''
+        loc_WadeMessage = (By.XPATH,'//div[contains(@class,"c_msg c_msg-full") and not(contains(@style,"display: none"))]')
+        try:
+            ele_wadeMsg = self.find(loc_WadeMessage)
+            logger.info('找到WadeMsg弹出框:{}'.format(str(ele_wadeMsg)))
+            classname = self.get(loc_WadeMessage,Type='attribute',name='class') #取出WadeMsg的class属性值，判断是什么类型弹出
+            logger.info('wadeMsg的类型:{}'.format(classname))
+            time.sleep(2)
+            WadeMsg = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[1]/div[2]').text
+            logger.info('WadeMessageBox返回的信息：{}'.format(WadeMsg))
+            '''根据classname类型按钮处理'''
+            if 'c_msg-error' in classname:
+                logger.info("校验失败:{}".format(WadeMsg))
+                print('业务校验信息:{}'.format(WadeMsg))
+                step_str = "业务校验"
+                self.screen_step(step_str)  # 这个保存在测试记录文档中
+                self.screenshot_SaveAsDoc(step_str)  # 截图单独保存到doc
+                time.sleep(3)
+                WadeMsg = '校验失败' + WadeMsg
+            elif 'c_msg-success' in classname:
+                print('弹出WadeMsg的是成功提示')
+                ele_suc = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button')
+                self.click_on_element(ele_suc)
+                self.sendEnter()
+                time.sleep(2)
+                WadeMsg = '弹出校验成功信息：' + WadeMsg
+            elif 'c_msg-warn' in classname:
+                print('弹出WadeMsg的是告警提示')
+                step_str = "业务受理提示信息"
+                self.screenshot_SaveAsDoc(step_str)
+                # ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
+                # self.sendEnter()
+                # time.sleep(2)
+                WadeMsg = '警告信息:' + WadeMsg
+        except:
+            WadeMsg = '没有弹出WadeMessage提示,校验通过'
+        logger.info('======WadeMessageBox页面返回============={}'.format(WadeMsg))
+        return WadeMsg
+
+
+
     def dealDialogPage(self):
         '''个人业务在鉴权时，可能弹出比如营销鉴权等窗口，强制查看并关闭'''
         loc_Dialog = (By.XPATH, '//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]')

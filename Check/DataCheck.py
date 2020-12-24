@@ -1,11 +1,16 @@
 import os,time
+import json
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import retDigitListFromStr
+from Common.function import convertDicList
 from Data.DataMgnt.DataOper import DataOper as DTO
 from Data.DataMgnt.DataMap import DataMap
 from Data.DataMgnt.TestResult import TestResultOper as TR
+from Base.OperExcel import create_workbook
+from Base.OperExcel import write_dict_xls
+from Base.OperExcel import writeToExcel
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -79,14 +84,92 @@ class DataCheck(DataMap):
                             expr ="ORDER_ID='{}'".format(orderId))
         return OrderTraceList
 
+    def getSubTrades(self,orderId,route):
+        '''
+        根据订单号获取所有子台帐
+        :param orderId: 订单号
+        :param route: 路由
+        :return: 所有登记的子台帐列表
+        '''
+        subTradeList = []
+        tradeIntfsql = """select intf_id,trade_id,trade_type_code from tf_b_trade where order_id = {}
+                          union  all 
+                          select intf_id,trade_id,trade_type_code from tf_b_trade_{} where order_id = {}
+                        """.format(orderId,time.strftime("%Y"),orderId)
+        logger.info(tradeIntfsql)
+        try:
+            intfList = self.select(sql=tradeIntfsql,route=route)
+            if len(intfList) == 0:
+                logger.info('没有查询到子台帐列表')
+                return False
+            else:
+                return intfList
+        except:
+            logger.info('获取失败')
+            return False
+
+    def retAllSubTradeData(self,orderId,route):
+        '''
+        获取订单对应的所有子订单数据
+        :param orderId: 订单号
+        :param route: 路由
+        :return: 一个字典list
+        '''
+        SubIntfList = self.getSubTrades(orderId,route)  # 先通过主台帐或者已完工主台帐获取所有trade子表
+        logger.info('已获取的所有子表:{},返回{}条数据'.format(SubIntfList,len(SubIntfList)))
+        if len(SubIntfList) == 0:
+            logger.info('未获取子台帐列表')
+        else:
+            subTradeList = []
+            for i in range(0,len(SubIntfList)):
+                IntfList = SubIntfList[i]['INTF_ID'].split(',')
+                tradeId = SubIntfList[i]['TRADE_ID']
+                trade_type_code = SubIntfList[i]['TRADE_TYPE_CODE']
+                for j in range(0,len(IntfList)):
+                    if IntfList[j] != '':
+                        subTrade = {'TRADE_TYPE_CODE':trade_type_code,'ORDER_ID':orderId,'TRADE_ID':tradeId,'subTrade':IntfList[j]} #用字典返回
+                        subTradeList.append(subTrade)     #重新组装下数据
+            logger.info('返回的子台帐列表：{}'.format(subTradeList))
+            resultDatas = []
+            dataFile = create_workbook(fileName='subTradeDatas',value=convertDicList(subTradeList))
+            print('#####x写入的xls文件名:',dataFile)
+            for k in range(0,len(subTradeList)):
+                subTradeDataList = []
+                sqlSubTradeHis = """select * from {} where trade_id = '{}'""".format(subTradeList[k]['subTrade'] + '_' + time.strftime("%Y"),subTradeList[k]['TRADE_ID'])
+                logger.info('先查询台帐历史表:{}'.format(sqlSubTradeHis))
+                sqlSubTrade = """select * from {} where trade_id = '{}'""".format(subTradeList[k]['subTrade'],subTradeList[k]['TRADE_ID'])
+                logger.info('先查询台帐当前表:{}'.format(sqlSubTradeHis))
+                logger.info('表格sheet名:{}'.format(subTradeList[k]['subTrade']))
+                try:
+                    resTradeHis = self.select(sql=sqlSubTradeHis,route=route)
+                    if len(resTradeHis) == 0:   #如果查询His表没数据
+                        resTrade = self.select(sql=sqlSubTrade, route=route)
+                        logger.info('=====要写入的sheet:{}'.format(subTradeList[k]['subTrade']))
+                        if len(resTrade)>0:
+                            writeToExcel(data=convertDicList(resTrade), sheetName=subTradeList[k]['subTrade'], fileName=dataFile)
+                        subTradeDataList.append(resTrade)
+                    else:
+                        tabName = subTradeList[k]['subTrade'] + '_{}'.format(time.strftime("%Y"))
+                        writeToExcel(data=convertDicList(resTradeHis), sheetName=tabName, fileName=dataFile)
+                        subTradeDataList.append(resTradeHis)
+                    resultData = {'TABLE_NAME':subTradeList[k]['subTrade'],'DATAS':subTradeDataList}
+                    resultDatas.append(resultData)
+                except:
+                    logger.info('ORA-00942: 表或视图不存在!')
+            return resultDatas
+
+
+
 if __name__ == '__main__':
     data = DataCheck()
     # res = data.checkOrderFinish(orderId='7420010726686661')
     # result = test.updateRealNameInfoBySerialNum(accessNum='13639750374')
     # result = test.getCasePara(sceneCode='DstUsDeskTopTel')
-    data.dealMainOrder(orderId='7120120318684811')
-    res = data.retOrderTrace(orderId='7120120318684811')
-    print(res)
+    # data.dealMainOrder(orderId='7120120318684811')
+    # res = data.retOrderTrace(orderId='7120120318684811')
+    # print(res)
+    subTrade = data.retAllSubTradeData(orderId='3120121538644203',route='jour42')
+    print(subTrade)
 
 
 

@@ -8,6 +8,7 @@ from Base import ReadConfig
 from Base.Mylog import LogManager
 from Common import function
 from Common.function import sqlJoiningDic
+from Base.SysPara import SysPara
 
 
 logger = LogManager('MyOracle').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -39,7 +40,8 @@ class MyOracle:
         """
         self.tns = cx_Oracle.makedsn(ip, port,service_name)
         # self.in = self.username +"/"+ self.password+"@"+self.service_name
-        print(self.tns)
+        # print(self.tns)
+        logger.info('连接的数据库是:{}'.format(self.tns))
         self.conn = None
         self.cursor = None
 
@@ -49,7 +51,8 @@ class MyOracle:
         :param route: 传入cp.crm1.jour1等字符串
         :return:
         '''
-        return rc.get_oracle(route)
+        return SysPara().get_oracle(route)  #从Mysql中获取路由配置
+        # return rc.get_oracle(route)
 
 
     def ReConnect(self,route):

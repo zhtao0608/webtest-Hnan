@@ -17,7 +17,7 @@ logger = LogManager('MyDBOper').get_logger_and_add_handlers(1,is_add_stream_hand
 
 class SysPara():
     '''获取系统参数的类'''
-    def getSysParaByCode(self,paramCode,paramAttr,provCode='QHAI'):
+    def getSysParaByCode(self,paramCode,paramAttr,provCode='HNAN'):
         '''
         根据定义的编码获取系统参数
         :param paramCode: 参数编码
@@ -31,7 +31,14 @@ class SysPara():
         sql = """select param_value from autotest_sys_para where prov_Code ='{}' and  param_Attr ='{}'  and  param_Code ='{}' ;  
               """.format(provCode,paramAttr,paramCode)
         logger.info(sql)
-        return DbManager().select(sql)[0]['param_value']
+        try:
+            result = DbManager().select(sql)[0]['param_value']
+            return result
+        except:
+            logger.info('查询结果为空')
+            raise
+
+
 
     def get_ngboss(self,args):
         '''
@@ -60,11 +67,11 @@ class SysPara():
 
 if __name__ == '__main__':
     Para = SysPara()
-    url = Para.get_ngboss('url')
-    username = Para.get_ngboss('username')
-    password = Para.get_ngboss('password')
-    print(password)
+    # url = Para.get_ngboss('url')
+    # username = Para.get_ngboss('username')
+    # password = Para.get_ngboss('password')
+    # print(password)
     # passwd = Para.get_ngboss('password')
-    print('登录地址:{},用户名:{},密码:{}'.format(url,username,password))
-    cp = Para.get_oracle('cp')
-    print(cp)
+    # print('登录地址:{},用户名:{},密码:{}'.format(url,username,password))
+    jour42 = Para.get_oracle('jour42')
+    print(jour42)

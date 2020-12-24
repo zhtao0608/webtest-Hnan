@@ -12,6 +12,7 @@ import ast
 import re
 import inspect
 from Base.SysPara import SysPara
+from collections import defaultdict
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -104,6 +105,12 @@ def dict_get(dict, objkey, default):
 # print(ret)
 # print(ret3)
 
+def capital_to_lower(dict_info):
+    new_dict = {}
+    for i, j in dict_info.items():
+        new_dict[i.lower()] = j
+    return new_dict
+
 def getDigitFromStr(String):
 	'''从String字符串中提取数字部分'''
 	return re.sub("\D","",String)
@@ -160,6 +167,17 @@ def get_listdictData(list_data):
 		dict_data[key] = value
 	return dict_data
 
+def mergeDictList(lst):
+	'''
+	合并字典列表
+	合并key值相同的字典列表
+	'''
+	dic = {}
+	for _ in lst:
+		for k, v in _.items():
+			dic.setdefault(k, []).append(v)
+	return dic
+
 def convert_dicValueToList(dic):
 	'''传入字典，将字典value转换成List'''
 	if isinstance(dic,dict):
@@ -170,6 +188,39 @@ def convert_dicValueToList(dic):
 		return list_values
 	else:
 		print('传入的不是dict类型，不能转换！')
+
+
+def convertDicList(oldDataList):
+	'''
+	转换字典列表：将字典列表转换成如下list格式
+	eg :[{'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516},
+		{'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516}
+		]
+    转换成
+	[["TRADE_ID", "ACCEPT_MONTH", "USER_ID"], ##对应的key
+    ["3120082587858316", "8", "3120082500014516"], ##对应value
+    ["3120082587858316", "8", "3120082500014516"]]##value也有可能是个列表
+	:param dataList: 字典列表
+	:return: 
+	'''
+	if not isinstance(oldDataList,list):
+		print('必须传入list结构')
+	newValueList = [] #转换后的列表
+	item_0 = oldDataList[0]   # 先获取字典列表的key
+	newValueList.append(list(item_0.keys()))  #先把key全部放到list
+	for i in range(0,len(oldDataList)):
+		logger.info('处理的字典：{}'.format(oldDataList[i]))
+		itemlist = []
+		for value in oldDataList[i].values():   #在字典中循环提取vaule
+			if isinstance(value, datetime.datetime):  ##如果是时间格式要转换成字符
+				value = value.strftime("%Y-%m-%d %H:%M:%S")
+			if isinstance(value, int):
+				value = str(value)
+			itemlist.append(value)
+		logger.info('====字典对应的valuelist：{}'.format(itemlist))
+		newValueList.append(itemlist)
+	return newValueList
+
 
 def convert_ListToDic(Keylist,Valuelist):
 	'''传入字典，将字典value转换成List'''
@@ -304,16 +355,26 @@ def retStackFunc():
 #     print("被测系统Url:"+config_url())
 
 if __name__ == '__main__':
+
+	oldValue = [{'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516, 'USER_ID_A': -1, 'PACKAGE_ID': 32953733, 'PRODUCT_ID': 32811359, 'OFFER_TYPE': 'D', 'OFFER_ID': 130032532282, 'DISCNT_CODE': 32532282, 'SPEC_TAG': '0', 'RELATION_TYPE_CODE': None, 'INST_ID': 3120082500029184, 'CAMPN_ID': None, 'OLD_PRODUCT_ID': None, 'OLD_PACKAGE_ID': None, 'START_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'END_DATE': datetime.datetime(2050, 12, 31, 0, 0), 'MODIFY_TAG': '0', 'UPDATE_TIME': datetime.datetime(2020, 8, 25, 20, 0, 4), 'UPDATE_STAFF_ID': 'ITFTA114', 'UPDATE_DEPART_ID': '17EFF', 'OPER_CODE': None, 'IS_NEED_PF': None, 'CREATE_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'CREATE_STAFF_ID': 'ITFTA114', 'CREATE_DEPART_ID': '17EFF', 'DONE_CODE': 3120082587858316, 'REMARK': None, 'RSRV_DATE1': None, 'RSRV_DATE2': None, 'RSRV_DATE3': None, 'RSRV_NUM1': None, 'RSRV_NUM2': None, 'RSRV_NUM3': None, 'RSRV_NUM4': None, 'RSRV_NUM5': None, 'RSRV_STR1': None, 'RSRV_STR2': None, 'RSRV_STR3': None, 'RSRV_STR4': None, 'RSRV_STR5': None, 'RSRV_TAG1': None, 'RSRV_TAG2': None, 'RSRV_TAG3': None}, {'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516, 'USER_ID_A': -1, 'PACKAGE_ID': 99966954, 'PRODUCT_ID': 32811359, 'OFFER_TYPE': 'D', 'OFFER_ID': 130099665664, 'DISCNT_CODE': 99665664, 'SPEC_TAG': '0', 'RELATION_TYPE_CODE': None, 'INST_ID': 3120082500029185, 'CAMPN_ID': None, 'OLD_PRODUCT_ID': None, 'OLD_PACKAGE_ID': None, 'START_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'END_DATE': datetime.datetime(2022, 7, 31, 23, 59, 59), 'MODIFY_TAG': '0', 'UPDATE_TIME': datetime.datetime(2020, 8, 25, 20, 0, 4), 'UPDATE_STAFF_ID': 'ITFTA114', 'UPDATE_DEPART_ID': '17EFF', 'OPER_CODE': None, 'IS_NEED_PF': None, 'CREATE_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'CREATE_STAFF_ID': 'ITFTA114', 'CREATE_DEPART_ID': '17EFF', 'DONE_CODE': 3120082587858316, 'REMARK': None, 'RSRV_DATE1': None, 'RSRV_DATE2': None, 'RSRV_DATE3': None, 'RSRV_NUM1': None, 'RSRV_NUM2': None, 'RSRV_NUM3': None, 'RSRV_NUM4': None, 'RSRV_NUM5': None, 'RSRV_STR1': None, 'RSRV_STR2': None, 'RSRV_STR3': None, 'RSRV_STR4': None, 'RSRV_STR5': None, 'RSRV_TAG1': None, 'RSRV_TAG2': None, 'RSRV_TAG3': None}]
+	# newValue = convertDicList(oldValue)
+	# print(newValue)
+	oldlst = [{'INTF_ID': 'TF_B_TRADE,TF_B_TRADEFEE_SUB,TF_B_TRADE_PLATSVC,TF_B_TRADE_DISCNT,TF_B_TRADE_RES,TF_B_TRADE_OTHER', 'TRADE_ID': 3120121487954301, 'TRADE_TYPE_CODE': 1041}, {'INTF_ID': 'TF_B_TRADE', 'TRADE_ID': 3120121487954302, 'TRADE_TYPE_CODE': 996}]
+	dic = mergeDictList(oldValue)
+	print(dic)
+
 	# dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
 	# str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"
 	# dict_enUrl = convert_enurlToDic(str)
-	frame = "[FrameInfo(frame=<frame at 0x0000028A88C757E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', line 230, code retStackFunc>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', lineno=229, function='retStackFunc', code_context=['\texecInfoList = inspect.stack()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8A5B4C58, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', line 22, code checkRule>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', lineno=22, function='checkRule', code_context=['        stackInfo = retStackFunc()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A88C779E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', line 46, code accept_CrtUs>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', lineno=46, function='accept_CrtUs', code_context=['        RuleCheckBefore(self.driver).checkRule(scene) #\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFFC8D768, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 50, code testCrtUsVpmn>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=50, function='testCrtUsVpmn', code_context=['                                                   contractId=contractId,elementAttrBizList=elementAttrBizList)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A896D3220, file 'D:\\Program File\\python37\\lib\\site-packages\\ddt.py', line 151, code wrapper>, filename='D:\\Program File\\python37\\lib\\site-packages\\ddt.py', lineno=151, function='wrapper', code_context=['        return func(self, *args, **kwargs)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A888F36B8, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 615, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=615, function='run', code_context=['                    testMethod()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B8E0, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 663, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=663, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A89628228, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 122, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=122, function='run', code_context=['                test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B728, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 84, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=84, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A882383D8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', line 971, code run>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', lineno=971, function='run', code_context=['        test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFF9FE9F8, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 66, code <module>>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=66, function='<module>', code_context=['        runner.run(mySuitePrefixAdd(CrtUsVpmnTest,'test'))\n'], index=0)]"
-	print(type(frame))
-	# frame.replace('\\','/').replace(' ','').replace('\n','').replace('\\','\/')
-	frame=re.sub('[\r\n\t\"]', '', frame)
-	frame=re.sub('=', ':', frame)
 
-	print(frame)
+
+	# frame = "[FrameInfo(frame=<frame at 0x0000028A88C757E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', line 230, code retStackFunc>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', lineno=229, function='retStackFunc', code_context=['\texecInfoList = inspect.stack()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8A5B4C58, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', line 22, code checkRule>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', lineno=22, function='checkRule', code_context=['        stackInfo = retStackFunc()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A88C779E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', line 46, code accept_CrtUs>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', lineno=46, function='accept_CrtUs', code_context=['        RuleCheckBefore(self.driver).checkRule(scene) #\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFFC8D768, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 50, code testCrtUsVpmn>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=50, function='testCrtUsVpmn', code_context=['                                                   contractId=contractId,elementAttrBizList=elementAttrBizList)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A896D3220, file 'D:\\Program File\\python37\\lib\\site-packages\\ddt.py', line 151, code wrapper>, filename='D:\\Program File\\python37\\lib\\site-packages\\ddt.py', lineno=151, function='wrapper', code_context=['        return func(self, *args, **kwargs)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A888F36B8, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 615, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=615, function='run', code_context=['                    testMethod()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B8E0, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 663, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=663, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A89628228, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 122, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=122, function='run', code_context=['                test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B728, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 84, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=84, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A882383D8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', line 971, code run>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', lineno=971, function='run', code_context=['        test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFF9FE9F8, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 66, code <module>>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=66, function='<module>', code_context=['        runner.run(mySuitePrefixAdd(CrtUsVpmnTest,'test'))\n'], index=0)]"
+	# print(type(frame))
+	# # frame.replace('\\','/').replace(' ','').replace('\n','').replace('\\','\/')
+	# frame=re.sub('[\r\n\t\"]', '', frame)
+	# frame=re.sub('=', ':', frame)
+	#
+	# print(frame)
 
 	# ret= retStackFunc()
 	# print('==========',ret)
@@ -633,10 +694,10 @@ if __name__ == '__main__':
 	# birthday = IdCard[6:10] + '_' + IdCard[10:12] + '_' + IdCard[12:14]
 	# print(birthday)
 
-	dic = {'name':'xiaoming','age':'11','school':'tsinghua'}
-	if dic:
-		print('字典不是空的')
-		print(len(dic))
-	else:
-		print('字典是空的')
+	# dic = {'name':'xiaoming','age':'11','school':'tsinghua'}
+	# if dic:
+	# 	print('字典不是空的')
+	# 	print(len(dic))
+	# else:
+	# 	print('字典是空的')
 

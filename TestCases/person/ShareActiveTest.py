@@ -9,7 +9,7 @@ from Base.OperExcel import get_exceldata,write_xlsBycolName_append
 from Base.Mylog import LogManager
 from Check.PageCheck import PageAssert
 from TestCases.suite import mySuitePrefixAdd
-from Common.TestDataMgnt import get_testDataFile,get_FuncRow,get_TestData
+from Data.DataMgnt.TestDataMgnt import TestDataExcel as TDE
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
@@ -18,9 +18,9 @@ logger = LogManager('ShareActiveTest').get_logger_and_add_handlers(1, log_path=R
 # file = ReadConfig.data_path + 'UITest_ShareActive.xls'
 # paras = get_exceldata(file,0)
 # logger.info('测试案例执行数据准备：{}'.format(paras))
-file = get_testDataFile()
-paras = get_TestData('ShareActiveTest')['params']
-row = get_FuncRow('ShareActiveTest')
+file = TDE().get_testDataFile()
+paras = TDE().get_TestData('ShareActiveTest')['params']
+row = TDE().get_FuncRow('ShareActiveTest')
 
 @ddt.ddt
 class ShareActiveTest(unittest.TestCase):

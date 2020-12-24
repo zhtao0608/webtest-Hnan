@@ -5,6 +5,9 @@ from Base import ReadConfig
 from selenium import webdriver
 from PageObj.ngboss.login_page import LoginPage
 from Base.Mylog import LogManager
+from Data.DataMgnt.DataOper import DataOper as Dto
+from Common.TestAsserts import Assertion as Assert
+
 
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('MainPage').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -24,7 +27,7 @@ class MainPage(Base):
         self.driver.switch_to.frame(ele)
         return self.driver
 
-    def click_HomeTab(self,index='5'):
+    def click_HomeTab(self,index='6'):
         '''
         根据传入的主参数索引，单击进入
         :param index: 索引号
@@ -39,13 +42,24 @@ class MainPage(Base):
         '''
         根据传入的主参数索引，单击进入
         :param index: 菜单索引号
-        0-CRM   1-报表统计  2-账务管理
+        0-CRM   1-帐务管理  2-政企业务运营平台,
         '''
         self.click_HomeTab() #先点击全菜单
         strIndex = "menuTab_tab_li_%s" % inx #传入菜单索引参数
         loc_menuTab = (By.ID,strIndex)
         self.isElementDisplay(loc_menuTab,'click')   #找到即进入
 
+    def click_MenuGroupBusiTab(self,inx='2'):
+        '''
+        政企业务运营平台
+        根据传入的主参数索引，单击进入
+        :param index: 菜单索引号
+        0-CRM   1-帐务管理  2-政企业务运营平台,
+        '''
+        self.click_HomeTab() #先点击全菜单
+        strIndex = "menuTab_tab_li_%s" % inx #传入菜单索引参数
+        loc_menuTab = (By.ID,strIndex)
+        self.isElementDisplay(loc_menuTab,'click')   #找到即进入
 
     def open_CataMenu(self,catamenu,parentMenu,MenuId,menuPath):
         '''
@@ -55,8 +69,6 @@ class MainPage(Base):
         :return:
         '''
         '''打开菜单'''
-        # self.open_base()
-        # LoginPage(self.driver).login()  # 登录
         self.click_MenuTab()
         catamenu_str  =  "//li[@menuid='%s']" % catamenu
         self.find_element_click((By.XPATH,catamenu_str)) #菜单目录
@@ -64,9 +76,35 @@ class MainPage(Base):
         logger.info("菜单目录：{}" .format(parentMenu))
         self.find_element_click((By.XPATH,parMenu))
         time.sleep(1)
-        # xpath_menu = "//*[@menuid='%s']" % MenuId
         self.Open_menu(MenuId,menuPath)
         logger.info("菜单ID：{}" .format(MenuId))
+
+    def open_CataMenuNew(self,funcId):
+        '''
+        :param funcId: 菜单编码
+        :return:
+        '''
+        '''打开菜单'''
+        ##先根据传入的funcId获取菜单配置
+        menuConfig = Dto().getSysMenu(funcId)
+        catamenu = menuConfig['menu_cata']
+        parentMenu = menuConfig['parent_func_id']
+        MenuId = menuConfig['func_id']
+        menuPath = menuConfig['dll_path']
+        moduleName = menuConfig['module']
+        if moduleName =='集团业务' or moduleName =='ESOP业务' or moduleName=='政企平台V1':
+            self.click_MenuTab(inx=2)  #如果是集团业务、ESOP业务或者政企平台V1 则点击政企业务运营平台
+        else:
+            self.click_MenuTab()
+        catamenu_str  =  "//*li[@menuid='%s']" % catamenu
+        self.isElementDisplay((By.XPATH,catamenu_str),'click') #菜单目录
+        time.sleep(1)
+        parMenu = "//li[@menuid='%s']" % parentMenu # 父菜单
+        logger.info("菜单目录：{}" .format(parentMenu))
+        self.isElementDisplay((By.XPATH,parMenu),'click')
+        self.Open_menu(MenuId,menuPath)
+        logger.info("菜单ID：{}" .format(MenuId))
+
 
     def Open_menu(self,menuId,menuPath):
         '''menuId传入参数，如果找到则打开，目前只打开订单中心菜单'''
@@ -162,9 +200,8 @@ class MainPage(Base):
 if __name__ == '__main__':
     driver = webdriver.Chrome()
     test = MainPage(driver)
-    test.open_base()
-    LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
-    # LoginPage(driver).login('TESTKM13',rc.get_ngboss('password'))  #登录
-    # test.open_CataMenu('crm9000','crm9100','crmw908')
-    test.open_CataMenu('crm8000','crm8200','crm8207')
+    # LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
+    LoginPage(driver).login()
+    test.open_CataMenuNew(funcId='crm9111')
+    # test.open_CataMenu('crm8000','crm8200','crm8207')
     driver.close()
