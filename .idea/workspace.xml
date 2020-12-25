@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dbbb49fd-67ad-4dcf-bf93-689cf9ecb165" name="Default Changelist" comment="modify 优化冒烟测试功能">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-12-24_10_40_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-12-24_10_40__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/个人业务菜单冒烟测试_20201224153653.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/个人业务菜单冒烟测试_20201224161224.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/个人业务菜单冒烟测试_20201224214659.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/个人业务重点菜单冒烟测试_20201224214414.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/个人业务重点菜单冒烟测试_20201224214538.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/个人业务重点菜单冒烟测试_20201224220345.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224213636.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224213951.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224214048.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224214213.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224214225.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224214246.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224214325.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224214951.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224215231.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224215317.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201224/家庭业务重点菜单冒烟测试_20201224220327.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Data/20201225/家庭业务重点菜单冒烟测试_20201225104712.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225100848.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225100932.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225101501.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225101709.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225102001.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225102135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225102549.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225102759.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225102957.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104428.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104443.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104736.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104750.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104815.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104829.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104849.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104903.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104921.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104936.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104939.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104940.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225104959.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105014.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105033.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105047.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105203.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105239.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105256.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105328.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105343.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105401.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201225/20201225105415.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2020-12-24.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2020-12-25.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/20201224/个人业务重点菜单冒烟自动化测试报告自动化测试报告20201224220345.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/20201224/家庭业务重点菜单冒烟自动化测试报告自动化测试报告20201224220327.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/20201224/菜单自动化测试报告自动化测试报告20201224105228.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/20201224/菜单自动化测试报告自动化测试报告20201224153654.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/20201225/家庭业务重点菜单冒烟自动化测试报告自动化测试报告20201225104712.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20201225/业务校验_20201225104940.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/SmkTest/FamilyMenuSmkTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/SmkTest/MenuSmokeTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/SmkTest/PersonMenuSmkTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/SmkTest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Intfs_unitTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/MenuSmokeTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base/OperExcel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/OperExcel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Check/DataCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Check/DataCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Check/PageCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Check/PageCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/Common/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201216/subTradeDatas_20201216172604.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201216/subTradeDatas_20201216172724.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201216/testData_20201216115540.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201217/subTradeDatas_20201217153634.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201217/subTradeDatas_20201217154125.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201221/subTradeDatas_20201221113628.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201222/MenuSmkTest_20201222214512.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201222/MenuSmkTest_20201222215327.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223152615.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223153456.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223154004.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223155448.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223155545.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223160047.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223160233.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223160427.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223162239.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223162748.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223163522.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223165221.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223173732.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223174830.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223174900.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/EPostInfoMenuTest_20201223180643.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223095727.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223105815.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223152614.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223153456.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223154004.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223155448.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223155544.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223160047.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223160233.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223160427.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223162239.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223162748.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223163522.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223165220.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223173732.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223174830.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223174859.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/MenuSmkTest_20201223180643.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223155448.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223155545.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223160048.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223160233.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223160428.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223162239.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223162749.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223163522.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223165221.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223173733.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223174830.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223174900.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/20201223/引商入柜业务菜单冒烟_20201223180643.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/MenuSmokeTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/SmkTest/GroupMenuSmkTest.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="10069a48-fbe9-43cb-9a97-dfe4d1c63140" />
+  <component name="ProjectId" id="1m5I2QTw1Rvk1cGoXkV0yw6HTfu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TestCases/SmkTest/PersonMenuSmkTest.py" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\TestCases\SmkTest" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\TestCases\SmkTest" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.FamilyMenuSmkTest">
+    <configuration name="DataOper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Data/DataMgnt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FamilyMenuSmkTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/SmkTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/SmkTest/FamilyMenuSmkTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GroupMenuSmkTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/SmkTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/SmkTest/GroupMenuSmkTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MenuSmokeTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="E:\ProgramData\PycharmProjects\webtest_HNAN\TestCases\SmkTest\MenuSmokeTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="OperExcel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Base" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Base/OperExcel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PersonMenuSmkTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/SmkTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/SmkTest/PersonMenuSmkTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="function" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Common" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Common/function.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="mainpage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PageObj/ngboss" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for PersonMenuSmkTest.PersonMenuTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/SmkTest" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;PersonMenuSmkTest.PersonMenuTest&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.MenuSmokeTest" />
+      <item itemvalue="Python.FamilyMenuSmkTest" />
+      <item itemvalue="Python.GroupMenuSmkTest" />
+      <item itemvalue="Python.PersonMenuSmkTest" />
+      <item itemvalue="Python.OperExcel" />
+      <item itemvalue="Python.mainpage" />
+      <item itemvalue="Python.DataOper" />
+      <item itemvalue="Python.function" />
+      <item itemvalue="Python tests.MenuSmokeTest" />
+      <item itemvalue="Python tests.IntfsTest" />
+      <item itemvalue="Python tests.Unittests for PersonMenuSmkTest.PersonMenuTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.mainpage" />
+        <item itemvalue="Python tests.Unittests for PersonMenuSmkTest.PersonMenuTest" />
+        <item itemvalue="Python.function" />
+        <item itemvalue="Python.DataOper" />
+        <item itemvalue="Python.OperExcel" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dbbb49fd-67ad-4dcf-bf93-689cf9ecb165" name="Default Changelist" comment="" />
+      <created>1608776817711</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608776817711</updated>
+      <workItem from="1608776818847" duration="19969000" />
+      <workItem from="1608817729350" duration="5553000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="modify 优化冒烟测试功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify 优化冒烟测试功能" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608817785873">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.687@0.0.1366.687" timestamp="1608817785873" />
+    <state x="463" y="98" key="FileChooserDialogImpl" timestamp="1608817524750">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state x="463" y="98" key="FileChooserDialogImpl/0.0.1366.687@0.0.1366.687" timestamp="1608817524750" />
+    <state width="1323" height="233" key="GridCell.Tab.0.bottom" timestamp="1608864429177">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="233" key="GridCell.Tab.0.bottom/0.0.1366.687@0.0.1366.687" timestamp="1608864429177" />
+    <state width="1323" height="233" key="GridCell.Tab.0.center" timestamp="1608864429177">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="233" key="GridCell.Tab.0.center/0.0.1366.687@0.0.1366.687" timestamp="1608864429177" />
+    <state width="1323" height="233" key="GridCell.Tab.0.left" timestamp="1608864429176">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="233" key="GridCell.Tab.0.left/0.0.1366.687@0.0.1366.687" timestamp="1608864429176" />
+    <state width="1323" height="233" key="GridCell.Tab.0.right" timestamp="1608864429177">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="233" key="GridCell.Tab.0.right/0.0.1366.687@0.0.1366.687" timestamp="1608864429177" />
+    <state width="1323" height="213" key="GridCell.Tab.1.bottom" timestamp="1608864253796">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="213" key="GridCell.Tab.1.bottom/0.0.1366.687@0.0.1366.687" timestamp="1608864253796" />
+    <state width="1323" height="213" key="GridCell.Tab.1.center" timestamp="1608864253791">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="213" key="GridCell.Tab.1.center/0.0.1366.687@0.0.1366.687" timestamp="1608864253791" />
+    <state width="1323" height="213" key="GridCell.Tab.1.left" timestamp="1608864253790">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="213" key="GridCell.Tab.1.left/0.0.1366.687@0.0.1366.687" timestamp="1608864253790" />
+    <state width="1323" height="213" key="GridCell.Tab.1.right" timestamp="1608864253794">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="213" key="GridCell.Tab.1.right/0.0.1366.687@0.0.1366.687" timestamp="1608864253794" />
+    <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608779195399">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.687@0.0.1366.687" timestamp="1608779195399" />
+    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup" timestamp="1608801592939">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup/0.0.1366.687@0.0.1366.687" timestamp="1608801592939" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PageObj/ngboss/mainpage.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataOper.coverage" NAME="DataOper Coverage Results" MODIFIED="1608816512058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$PersonMenuSmkTest.coverage" NAME="PersonMenuSmkTest Coverage Results" MODIFIED="1608818621636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$mainpage.coverage" NAME="mainpage Coverage Results" MODIFIED="1608864253749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/ngboss" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$MyDBOper.coverage" NAME="MyDBOper Coverage Results" MODIFIED="1608778302088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$MenuSmokeTest.coverage" NAME="MenuSmokeTest Coverage Results" MODIFIED="1608817615011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$function.coverage" NAME="function Coverage Results" MODIFIED="1608816587903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$PageCheck.coverage" NAME="PageCheck Coverage Results" MODIFIED="1608795192762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$FamilyMenuSmkTest.coverage" NAME="FamilyMenuSmkTest Coverage Results" MODIFIED="1608864429157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$OperExcel.coverage" NAME="OperExcel Coverage Results" MODIFIED="1608797541024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataCheck.coverage" NAME="DataCheck Coverage Results" MODIFIED="1608781021795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_PersonMenuSmkTest_PersonMenuTest.coverage" NAME="Unittests for PersonMenuSmkTest.PersonMenuTest Coverage Results" MODIFIED="1608817449327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+  </component>
+</project>

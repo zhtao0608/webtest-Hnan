@@ -163,6 +163,27 @@ class PageAssert(Base):
                 break
         return flag
 
+    def msgLoading(self):
+        '''页面加载时间判断,目前设置最长时间为5s'''
+        loc_msgLoading = (By.XPATH,'//*[starts-with(@id,"navframe_loading")]')
+        msgLoading = WebDriverWait(self.driver, 5, 1).until(EC.presence_of_element_located(loc_msgLoading))
+        while True:
+            flag = self.is_element_displayed(msgLoading) #如果页面还显示页面加载中一直等待
+            if not flag:
+                break
+        return flag
+
+    def frameLoading(self):
+        '''frame框架加载，目前设置最长时间为10s'''
+        loc_frameLoading = (By.ID,'frameLoading')
+        frameLoading = WebDriverWait(self.driver, 10, 1).until(EC.presence_of_element_located(loc_frameLoading))
+        while True:
+            flag = self.is_element_displayed(frameLoading) #如果页面还显示页面加载中一直等待
+            if not flag:
+                break
+        return flag
+
+
 
     def assert_submitAfter(self,file,row,index=0):
         '''

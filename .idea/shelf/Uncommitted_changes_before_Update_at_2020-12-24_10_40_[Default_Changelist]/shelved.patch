@@ -1,0 +1,45 @@
+Index: .idea/sqldialects.xml
+===================================================================
+--- .idea/sqldialects.xml	(revision db9efa276ef3e759e50bec123b6e3a8be66506a8)
++++ .idea/sqldialects.xml	(revision db9efa276ef3e759e50bec123b6e3a8be66506a8)
+@@ -1,10 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="SqlDialectMappings">
+-    <file url="file://$PROJECT_DIR$/Data/Sql/AUTOTEST_CASE.sql" dialect="Oracle" />
+-    <file url="file://$PROJECT_DIR$/Data/Sql/AUTOTEST_SUITECASE_REL.SQL" dialect="Oracle" />
+-    <file url="file://$PROJECT_DIR$/Data/Sql/AUTOTEST_SUITE_DEF.sql" dialect="Oracle" />
+-    <file url="file://$PROJECT_DIR$/Data/Sql/AUTOTEST_SUITE_EXEC.sql" dialect="Exasol" />
+-    <file url="file://$PROJECT_DIR$/Data/Sql/AUTOTEST_SYS_PARA.sql" dialect="Oracle" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/runConfigurations/Intfs_unitTest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"ProjectRunConfigurationManager\">\r\n  <configuration default=\"false\" name=\"Intfs_unitTest\" type=\"tests\" factoryName=\"Unittests\">\r\n    <module name=\"webtest\" />\r\n    <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n    <option name=\"PARENT_ENVS\" value=\"true\" />\r\n    <option name=\"SDK_HOME\" value=\"D:\\Program File\\python37\\python3.exe\" />\r\n    <option name=\"WORKING_DIRECTORY\" value=\"\" />\r\n    <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n    <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n    <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n    <EXTENSION ID=\"PythonCoverageRunConfigurationExtension\" runner=\"coverage.py\" />\r\n    <option name=\"_new_pattern\" value=\"&quot;&quot;\" />\r\n    <option name=\"_new_additionalArguments\" value=\"&quot;&quot;\" />\r\n    <option name=\"_new_target\" value=\"&quot;$PROJECT_DIR$/Api/Intfs.py&quot;\" />\r\n    <option name=\"_new_targetType\" value=\"&quot;PATH&quot;\" />\r\n    <method v=\"2\" />\r\n  </configuration>\r\n</component>
+===================================================================
+--- .idea/runConfigurations/Intfs_unitTest.xml	(revision db9efa276ef3e759e50bec123b6e3a8be66506a8)
++++ .idea/runConfigurations/MenuSmokeTest.xml	(date 1608777242603)
+@@ -1,17 +1,17 @@
+ <component name="ProjectRunConfigurationManager">
+-  <configuration default="false" name="Intfs_unitTest" type="tests" factoryName="Unittests">
++  <configuration default="false" name="MenuSmokeTest" type="tests" factoryName="Unittests">
+     <module name="webtest" />
+     <option name="INTERPRETER_OPTIONS" value="" />
+     <option name="PARENT_ENVS" value="true" />
+-    <option name="SDK_HOME" value="D:\Program File\python37\python3.exe" />
++    <option name="SDK_HOME" value="" />
+     <option name="WORKING_DIRECTORY" value="" />
+-    <option name="IS_MODULE_SDK" value="false" />
++    <option name="IS_MODULE_SDK" value="true" />
+     <option name="ADD_CONTENT_ROOTS" value="true" />
+     <option name="ADD_SOURCE_ROOTS" value="true" />
+     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+     <option name="_new_pattern" value="&quot;&quot;" />
+     <option name="_new_additionalArguments" value="&quot;&quot;" />
+-    <option name="_new_target" value="&quot;$PROJECT_DIR$/Api/Intfs.py&quot;" />
++    <option name="_new_target" value="&quot;$PROJECT_DIR$/TestCases/MenuSmokeTest.py&quot;" />
+     <option name="_new_targetType" value="&quot;PATH&quot;" />
+     <method v="2" />
+   </configuration>

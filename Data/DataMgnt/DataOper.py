@@ -2,7 +2,7 @@ import os,time
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
-from Common.function import retDigitListFromStr
+from Common.function import retDigitListFromStr,convert_to_diclistUpper,capital_to_upper
 from Common.function import getDigitFromStr
 from DataMap import DataMap
 from Data.DataMgnt.GenTestData import GenTestData as Gen
@@ -176,16 +176,16 @@ class DataOper(DataMap):
         :param menuId: 菜单编码
         :return:
         '''
-        paras = self.qryDataMapExcatByCond(tabName='AUTOTEST_MENU',sqlref='SEL_BY_FUNCID',cond=menuId)
+        paras = capital_to_upper(self.qryDataMapExcatByCond(tabName='AUTOTEST_MENU',sqlref='SEL_BY_FUNCID',cond=menuId))
         # logger.info('传入的Paras参数:{}'.format(paras))
         # logger.info('传入的Paras的参数类型:{}'.format(type(paras)))
         Assert().assertIsInstance(paras,dict,msg='获取的菜单配置不是字典，请检查配置')
         Assert().assertTrue(len(paras)>0,msg='获取菜单配置为空')
-        Assert().assertIsNotNone(paras['menu_cata'],msg='菜单目录不能为空！')
-        Assert().assertIsNotNone(paras['parent_func_id'],msg='父菜单不能为空！')
-        Assert().assertIsNotNone(paras['func_id'],msg='菜单编码不能为空！')
-        Assert().assertIsNotNone(paras['dll_path'],msg='菜单路径不允许为空！')
-        Assert().assertIsNotNone(paras['module'],msg='所属模块不能为空！')
+        Assert().assertIsNotNone(paras['MENU_CATA'],msg='菜单目录不能为空！')
+        Assert().assertIsNotNone(paras['PARENT_FUNC_ID'],msg='父菜单不能为空！')
+        Assert().assertIsNotNone(paras['FUNC_ID'],msg='菜单编码不能为空！')
+        Assert().assertIsNotNone(paras['DLL_PATH'],msg='菜单路径不允许为空！')
+        Assert().assertIsNotNone(paras['MODULE'],msg='所属模块不能为空！')
         return paras
 
     def getSysMenuByParentFuncId(self,parentFuncId):
@@ -201,6 +201,16 @@ class DataOper(DataMap):
         Assert().assertTrue(len(paras) > 0, msg='获取菜单配置为空!')
         return paras
 
+    def getCoreMenuByCataId(self,cataId):
+        '''
+        根据传入的cataId菜单目录 获取重点菜单配置【目前只包括个人业务和家庭业务】
+        :param cataId: 父菜单编码
+        :return:
+        '''
+        paras = self.qryDataMapExcatByCond(tabName='AUTOTEST_MENU',sqlref='SEL_BY_CATAID',cond=cataId)
+        Assert().assertIsInstance(paras,list,msg='获取的菜单配置不是列表，请检查配置！')
+        Assert().assertTrue(len(paras) > 0, msg='获取菜单配置为空!')
+        return paras
 
 if __name__ == '__main__':
     # data =UpdateOraData()
@@ -215,9 +225,9 @@ if __name__ == '__main__':
     test = DataOper()
     # result = test.updateRealNameInfoBySerialNum(accessNum='13639750374')
     # result = test.getSysMenu(menuId='crm9115')
-
-    result = test.getSysMenuByParentFuncId(parentFuncId=('crm9A00','crm9100'))
+    result = test.getCoreMenuByCataId(cataId='crm991A')
     print(result)
+    print(len(result))
 
     # result = test.updateRealNameInfoExist(accessNum='13907491805')
     # # result = test.getSmsCode(accessNum='13897492180')

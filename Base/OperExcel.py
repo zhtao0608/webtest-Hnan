@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import xlrd,xlwt,os
 from Base import ReadConfig
+from Base.Mylog import LogManager
 from Common.function import convertDicList
 from xlutils.copy import copy
 from openpyxl import Workbook
@@ -8,6 +9,7 @@ from openpyxl import load_workbook
 import datetime
 import time
 import openpyxl
+from Data.DataMgnt.DataOper import DataOper as Dto
 
 Lable = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
          'AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK','AL','AM','AN','AO','AP','AQ','AR','AS','AT','AU','AV','AW','AX','AY','AZ',
@@ -15,6 +17,10 @@ Lable = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R'
          'CA','CB','CC','CD','CE','CF','CG','CH','CI','CJ','CK','CL','CM','CN','CO','CP','CQ','CR','CS','CT','CU','CV','CW','CX','CY','CZ'
          ]
 workbook = None
+
+logger = LogManager('OperExcel').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
+rc = ReadConfig.ReadConfig("ngboss_config.ini")
 
 class ExlOp(object):
     '''Openxls重新封装'''
@@ -62,7 +68,7 @@ class ExlOp(object):
             self.wb.save(self.file)
 
 
-def create_workbook(fileName, value = [["子台帐数据"],["tf_b_trade"],["tf_b_trade_2020"]]):
+def create_workbook(fileName,sheet='测试结果',value = [["子台帐数据"],["tf_b_trade"],["tf_b_trade_2020"]]):
     '''
     创建工作表
     :param fileName: 只是文件名，不是完整路径
@@ -70,7 +76,7 @@ def create_workbook(fileName, value = [["子台帐数据"],["tf_b_trade"],["tf_b
     '''
     dataFilePath = ReadConfig.get_data_path() + fileName + '_%s.xlsx' % time.strftime("%Y%m%d%H%M%S")
     if not os.path.exists(dataFilePath):
-        writeExcel(path=dataFilePath,value=value,sheet='说明')
+        writeExcel(path=dataFilePath,value=value,sheet=sheet)
         return dataFilePath
     else:
         return dataFilePath
@@ -110,9 +116,10 @@ def get_cell_content(sheet, row, col):
     """
     return sheet.cell_value(row, col)
 
-def getColumnIndex(file,columnName,index=0):
+def getColumnIndex(file,columnName,sheet='Sheet1'):
     xl = xlrd.open_workbook(file)
-    sheet = xl.sheet_by_index(index)
+    # sheet = xl.sheet_by_index(index)
+    sheet = xl.sheet_by_name(sheet)
     table = sheet.row_values(0)
     for i in range(len(table)):
         if table[i] == columnName:
@@ -120,10 +127,11 @@ def getColumnIndex(file,columnName,index=0):
             break
     return columnIndex
 
-def getRowIndex(file,value,index=0):
+def getRowIndex(file,value,sheet='Sheet1'):
     '''根据xls表中的内容获取所在的行'''
     xl = xlrd.open_workbook(file)
-    sheet = xl.sheet_by_index(index)
+    # sheet = xl.sheet_by_index(index)
+    sheet = xl.sheet_by_name(sheet)
     nrows = sheet.nrows
     clos = sheet.ncols
     print(nrows,clos)
@@ -258,8 +266,6 @@ def writeExcel(path, value, sheet):
     :return:
     '''
     book = openpyxl.Workbook()
-    # book.create_sheet(sheet)
-    # ws = book[sheet]
     sheet1 = book.active
     sheet1.title = sheet
     for i in range(0, len(value)):
@@ -284,6 +290,7 @@ def write_excel_xls(file, sheet_name, value):
 
 
 def writeToExcel(fileName,sheetName,data):
+    '''按数据列写入'''
     # file_name = 'test_1.xls'
     # if not os.path.exists(fileName):
     #     workbook = xlwt.Workbook(encoding='ascii')
@@ -298,7 +305,6 @@ def writeToExcel(fileName,sheetName,data):
         print('获取工作表{}存在，sheet名是:{},行数:{},列数:{}'.format(fileName,sheetName,nrows,ncols))
     wb = copy(rb)
     # 新的sheet页面
-    # print('####获取所有sheet',sheets)
     if not sheetName in sheets:
         worksheet = wb.add_sheet(sheetName,cell_overwrite_ok=True)
         for i in range(0,len(data)):
@@ -315,9 +321,39 @@ def writeToExcel(fileName,sheetName,data):
             for j in range(0, len(newData[i])):
                 ws.write(j, k, newData[i][j])  # 像表格中写入数据（对应的行和列)
                 # ws.write(k, j, newData[i][j])  # 像表格中写入数据（对应的行和列)
-
             k = k+1
         wb.save(fileName)
+
+
+def writeToExcelByRows(fileName,sheetName,data):
+    '''按行写入'''
+    rb = xlrd.open_workbook(fileName)
+    sheets = rb.sheet_names()
+    if sheetName in sheets:
+        table = rb.sheet_by_name(sheetName)
+        nrows = table.nrows
+        ncols = table.ncols
+        print('获取工作表{}存在，sheet名是:{},行数:{},列数:{}'.format(fileName,sheetName,nrows,ncols))
+    wb = copy(rb)
+    # 新的sheet页面
+    if not sheetName in sheets:
+        worksheet = wb.add_sheet(sheetName,cell_overwrite_ok=True)
+        for i in range(0,len(data)):
+            for j in range(0, len(data[i])):
+                worksheet.write(i, j, data[i][j])  # 像表格中写入数据（对应的行和列)
+        wb.save(fileName)
+    else:   #如果sheet已存在，则直接追加写入
+        ws = wb.get_sheet(sheetName)
+        newData = data[1:] #去掉字段列表()
+        k = nrows    #补充写入数据的初始行
+        # k = ncols    #补充写入数据的初始行
+        for i in range(0,len(newData)):
+            for j in range(0, len(newData[i])):
+                # ws.write(j, k, newData[i][j])  # 像表格中写入数据（对应的行和列)
+                ws.write(k, j, newData[i][j])  # 像表格中写入数据（对应的行和列)
+            k = k+1
+        wb.save(fileName)
+
 
 def writeDictToXls(fileName,sheetName,data):
     '''
@@ -329,7 +365,7 @@ def writeDictToXls(fileName,sheetName,data):
     '''
     if not os.path.exists(fileName):
         workbook = xlwt.Workbook(encoding='ascii')
-        worksheet = workbook.add_sheet('说明',cell_overwrite_ok=True)
+        worksheet = workbook.add_sheet('测试结果',cell_overwrite_ok=True)
         workbook.save(fileName)
     rb = xlrd.open_workbook(fileName)
     sheets = rb.sheet_names()
@@ -446,7 +482,7 @@ def write_xlsBycolName_append(file,row,colName,value,index=0):
     new_workbook.save(file)  # 保存工作簿
     print("xls表格【追加】写入数据成功！")
 
-def write_xlsBycolName(file,row,colName,value,index=0):
+def write_xlsBycolName(file,row,colName,value,sheet='sheet1'):
     '''追加写入xls，在xls指定行列写入数据'''
     filename = file
     '''
@@ -457,11 +493,12 @@ def write_xlsBycolName(file,row,colName,value,index=0):
         workbook = xlrd.open_workbook(filename,formatting_info=True)  # 打开工作簿
     except:
         workbook = xlrd.open_workbook(filename)  # 打开工作簿
-    worksheet = workbook.sheet_by_index(index)  # 获取工作簿中所有表格中的的第一个表格
+    # worksheet = workbook.sheet_by_index(index)  # 获取工作簿中所有表格中的的第一个表格
+    worksheet = workbook.sheet_by_name(sheet)  # 获取工作簿中所有表格中的的第一个表格
     new_workbook = copy(workbook)
-    new_worksheet = new_workbook.get_sheet(index)  # 获取转化后工作簿中的第一个表格
+    new_worksheet = new_workbook.get_sheet(sheet)  # 获取转化后工作簿中的第一个表格
     colname = colName
-    col = getColumnIndex(file,colname,index)  #根据colName获取对应的列数
+    col = getColumnIndex(file,colname,sheet)  #根据colName获取对应的列数
     # oldvalue = worksheet.cell_value(row,col)
     # if not isinstance(oldvalue, str):
     #     oldvalue = str(oldvalue)
@@ -474,9 +511,32 @@ def write_xlsBycolName(file,row,colName,value,index=0):
 
 
 if __name__ == '__main__':
-    file = ReadConfig.data_path + 'testDatas_{}.xlsx'.format(time.strftime("%Y%m%d%H%M%S"))
-    datas = {'TRADE_ID': [3120082587858316, 3120082587858316], 'ACCEPT_MONTH': [8, 8], 'USER_ID': [3120082500014516, 3120082500014516], 'USER_ID_A': [-1, -1], 'PACKAGE_ID': [32953733, 99966954], 'PRODUCT_ID': [32811359, 32811359], 'OFFER_TYPE': ['D', 'D'], 'OFFER_ID': [130032532282, 130099665664], 'DISCNT_CODE': [32532282, 99665664], 'SPEC_TAG': ['0', '0'], 'RELATION_TYPE_CODE': [None, None], 'INST_ID': [3120082500029184, 3120082500029185], 'CAMPN_ID': [None, None], 'OLD_PRODUCT_ID': [None, None], 'OLD_PACKAGE_ID': [None, None], 'START_DATE': [datetime.datetime(2020, 8, 25, 20, 0, 4), datetime.datetime(2020, 8, 25, 20, 0, 4)], 'END_DATE': [datetime.datetime(2050, 12, 31, 0, 0), datetime.datetime(2022, 7, 31, 23, 59, 59)], 'MODIFY_TAG': ['0', '0'], 'UPDATE_TIME': [datetime.datetime(2020, 8, 25, 20, 0, 4), datetime.datetime(2020, 8, 25, 20, 0, 4)], 'UPDATE_STAFF_ID': ['ITFTA114', 'ITFTA114'], 'UPDATE_DEPART_ID': ['17EFF', '17EFF'], 'OPER_CODE': [None, None], 'IS_NEED_PF': [None, None], 'CREATE_DATE': [datetime.datetime(2020, 8, 25, 20, 0, 4), datetime.datetime(2020, 8, 25, 20, 0, 4)], 'CREATE_STAFF_ID': ['ITFTA114', 'ITFTA114'], 'CREATE_DEPART_ID': ['17EFF', '17EFF'], 'DONE_CODE': [3120082587858316, 3120082587858316], 'REMARK': [None, None], 'RSRV_DATE1': [None, None], 'RSRV_DATE2': [None, None], 'RSRV_DATE3': [None, None], 'RSRV_NUM1': [None, None], 'RSRV_NUM2': [None, None], 'RSRV_NUM3': [None, None], 'RSRV_NUM4': [None, None], 'RSRV_NUM5': [None, None], 'RSRV_STR1': [None, None], 'RSRV_STR2': [None, None], 'RSRV_STR3': [None, None], 'RSRV_STR4': [None, None], 'RSRV_STR5': [None, None], 'RSRV_TAG1': [None, None], 'RSRV_TAG2': [None, None], 'RSRV_TAG3': [None, None]}
-    writeDictToXls(fileName=file,sheetName='test',data=datas)
+    CreatePersonUserMenu = Dto().getSysMenuByParentFuncId(parentFuncId='crm9100')
+    logger.info('========个人开户菜单列表：{}'.format(CreatePersonUserMenu))
+    dataFile = create_workbook(fileName='个人业务菜单冒烟测试', value=convertDicList(CreatePersonUserMenu), sheet='开户业务')
+    print('#####x写入的xls文件名:', dataFile)
+
+    EPostInfoMenu = Dto().getSysMenuByParentFuncId(parentFuncId='crm9A00')
+    logger.info('========个人电子发票菜单列表：{}'.format(EPostInfoMenu))
+    writeToExcelByRows(fileName=dataFile, sheetName='电子发票', data=convertDicList(EPostInfoMenu))
+    print('#####写入的xls文件名:', dataFile)
+
+    ArticMenu = Dto().getSysMenuByParentFuncId(parentFuncId='crm9830')
+    logger.info('========引商入柜业务菜单列表：{}'.format(ArticMenu))
+    writeToExcelByRows(fileName=dataFile, sheetName='引商入柜业务', data=convertDicList(ArticMenu))
+    print('#####写入的xls文件名:', dataFile)
+
+    PersonDailyMenu = Dto().getSysMenuByParentFuncId(parentFuncId='crm9200')
+    logger.info('========引商入柜业务菜单列表：{}'.format(PersonDailyMenu))
+    writeToExcelByRows(fileName=dataFile, sheetName='日常业务', data=convertDicList(ArticMenu))
+    print('#####写入的xls文件名:', dataFile)
+    write_xlsBycolName(file=dataFile, row=getRowIndex(file=dataFile, value='crm9113',sheet='开户业务'), colName='TEST_RESULT',
+                       value='Pass',sheet='开户业务')
+    write_xlsBycolName(file=dataFile, row=getRowIndex(file=dataFile, value='crm9835',sheet='日常业务'), colName='TEST_RESULT',
+                       value='Fail',sheet='日常业务')
+    # file = ReadConfig.data_path + 'testDatas_{}.xlsx'.format(time.strftime("%Y%m%d%H%M%S"))
+    # datas = {'TRADE_ID': [3120082587858316, 3120082587858316], 'ACCEPT_MONTH': [8, 8], 'USER_ID': [3120082500014516, 3120082500014516], 'USER_ID_A': [-1, -1], 'PACKAGE_ID': [32953733, 99966954], 'PRODUCT_ID': [32811359, 32811359], 'OFFER_TYPE': ['D', 'D'], 'OFFER_ID': [130032532282, 130099665664], 'DISCNT_CODE': [32532282, 99665664], 'SPEC_TAG': ['0', '0'], 'RELATION_TYPE_CODE': [None, None], 'INST_ID': [3120082500029184, 3120082500029185], 'CAMPN_ID': [None, None], 'OLD_PRODUCT_ID': [None, None], 'OLD_PACKAGE_ID': [None, None], 'START_DATE': [datetime.datetime(2020, 8, 25, 20, 0, 4), datetime.datetime(2020, 8, 25, 20, 0, 4)], 'END_DATE': [datetime.datetime(2050, 12, 31, 0, 0), datetime.datetime(2022, 7, 31, 23, 59, 59)], 'MODIFY_TAG': ['0', '0'], 'UPDATE_TIME': [datetime.datetime(2020, 8, 25, 20, 0, 4), datetime.datetime(2020, 8, 25, 20, 0, 4)], 'UPDATE_STAFF_ID': ['ITFTA114', 'ITFTA114'], 'UPDATE_DEPART_ID': ['17EFF', '17EFF'], 'OPER_CODE': [None, None], 'IS_NEED_PF': [None, None], 'CREATE_DATE': [datetime.datetime(2020, 8, 25, 20, 0, 4), datetime.datetime(2020, 8, 25, 20, 0, 4)], 'CREATE_STAFF_ID': ['ITFTA114', 'ITFTA114'], 'CREATE_DEPART_ID': ['17EFF', '17EFF'], 'DONE_CODE': [3120082587858316, 3120082587858316], 'REMARK': [None, None], 'RSRV_DATE1': [None, None], 'RSRV_DATE2': [None, None], 'RSRV_DATE3': [None, None], 'RSRV_NUM1': [None, None], 'RSRV_NUM2': [None, None], 'RSRV_NUM3': [None, None], 'RSRV_NUM4': [None, None], 'RSRV_NUM5': [None, None], 'RSRV_STR1': [None, None], 'RSRV_STR2': [None, None], 'RSRV_STR3': [None, None], 'RSRV_STR4': [None, None], 'RSRV_STR5': [None, None], 'RSRV_TAG1': [None, None], 'RSRV_TAG2': [None, None], 'RSRV_TAG3': [None, None]}
+    # writeDictToXls(fileName=file,sheetName='test',data=datas)
     # wb = open_excel(ReadConfig.data_path+"TestCase.xls")
     # ws = get_sheet_by_index(0)
     # row = get_row(ws)

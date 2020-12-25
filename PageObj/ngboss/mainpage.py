@@ -7,6 +7,8 @@ from PageObj.ngboss.login_page import LoginPage
 from Base.Mylog import LogManager
 from Data.DataMgnt.DataOper import DataOper as Dto
 from Common.TestAsserts import Assertion as Assert
+from Common.function import convert_to_diclistLower,capital_to_lower
+from Check.PageCheck import PageAssert
 
 
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
@@ -87,6 +89,12 @@ class MainPage(Base):
         '''打开菜单'''
         ##先根据传入的funcId获取菜单配置
         menuConfig = Dto().getSysMenu(funcId)
+        logger.info('读取的菜单配置:{}'.format(menuConfig))
+        if isinstance(menuConfig,dict):
+            menuConfig = capital_to_lower(menuConfig)  #先将字典转换成小写
+        elif isinstance(menuConfig,list):
+            menuConfig = convert_to_diclistLower(menuConfig) #先将字典list转换成小写
+        logger.info('转换后菜单配置:{}'.format(menuConfig))
         catamenu = menuConfig['menu_cata']
         parentMenu = menuConfig['parent_func_id']
         MenuId = menuConfig['func_id']
@@ -96,7 +104,7 @@ class MainPage(Base):
             self.click_MenuTab(inx=2)  #如果是集团业务、ESOP业务或者政企平台V1 则点击政企业务运营平台
         else:
             self.click_MenuTab()
-        catamenu_str  =  "//*li[@menuid='%s']" % catamenu
+        catamenu_str  =  "//li[@menuid='%s']" % catamenu
         self.isElementDisplay((By.XPATH,catamenu_str),'click') #菜单目录
         time.sleep(1)
         parMenu = "//li[@menuid='%s']" % parentMenu # 父菜单
@@ -112,7 +120,7 @@ class MainPage(Base):
         loc_menu = (By.XPATH,menu)
         if (self.isElementExist(loc_menu)):
             self.find(loc_menu).click()
-            time.sleep(2)
+            # time.sleep(1)
             self.screen_step('进入菜单')
             title = self.get_attribute(loc_menu,name='title')
             logger.info("进入菜单路径 :" + title)
@@ -132,7 +140,7 @@ class MainPage(Base):
         loc_menuframe = self.find((By.XPATH,menuPathStr))
         self.driver.switch_to.frame(loc_menuframe)
         logger.info("进入菜单Iframe:" + str(loc_menuframe))
-        time.sleep(3)   #暂定进入菜单时间3s
+        time.sleep(1)   #暂定进入菜单时间1s
         return self.driver
 
     ##搜索菜单功能
@@ -202,6 +210,6 @@ if __name__ == '__main__':
     test = MainPage(driver)
     # LoginPage(driver).login(rc.get_ngboss('username'),rc.get_ngboss('password'))  #登录
     LoginPage(driver).login()
-    test.open_CataMenuNew(funcId='crm9111')
+    test.open_CataMenuNew(funcId='crm9731')
     # test.open_CataMenu('crm8000','crm8200','crm8207')
     driver.close()

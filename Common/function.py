@@ -106,10 +106,51 @@ def dict_get(dict, objkey, default):
 # print(ret3)
 
 def capital_to_lower(dict_info):
-    new_dict = {}
-    for i, j in dict_info.items():
-        new_dict[i.lower()] = j
-    return new_dict
+	'''
+	传入字典，将字典key转换成小写
+	:param dict_info:
+	:return:
+	'''
+	new_dict = {}
+	for i, j in dict_info.items():
+		new_dict[i.lower()] = j
+	return new_dict
+
+
+def capital_to_upper(dict_info):
+	'''
+	传入字典，将字典key转换成大写
+	:param dict_info:
+	:return:
+	'''
+	new_dict = {}
+	for i, j in dict_info.items():
+		new_dict[i.upper()] = j
+	return new_dict
+
+def convert_to_diclistLower(oldlist):
+	'''
+	传入一个字典列表，将所有的key都转换成小写
+	:param oldlist: 字典列表
+	:return: newlist
+	'''
+	new_list = []
+	for i in range(0,len(oldlist)):
+		new_list.append(capital_to_lower(oldlist[i]))
+	return new_list
+
+def convert_to_diclistUpper(oldlist):
+	'''
+	传入一个字典列表，将所有的key都转换成大写
+	:param oldlist: 字典列表
+	:return: newlist
+	'''
+	new_list = []
+	for i in range(0,len(oldlist)):
+		new_list.append(capital_to_upper(oldlist[i]))
+	return new_list
+
+
 
 def getDigitFromStr(String):
 	'''从String字符串中提取数字部分'''
@@ -355,13 +396,28 @@ def retStackFunc():
 #     print("被测系统Url:"+config_url())
 
 if __name__ == '__main__':
+	oldDict = {'FUNC_ID': 'crm3480',
+			   'MENU_CATA': 'crm991A',
+			   'PARENT_FUNC_ID': 'crm9700',
+			   'MENU_PATH': '家庭业务->宽带业务->宽带开户->新宽带一单清-重复保留',
+			   'dll_path': '/web-order/order?service=page/order.page.pc.broadband.NewFusionBroadBand&listener=onInitBusi',
+			   'module': '家庭业务', 'iscore': '1'}
+	newDict = capital_to_lower(dict_info=oldDict)
+	print(newDict)
 
-	oldValue = [{'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516, 'USER_ID_A': -1, 'PACKAGE_ID': 32953733, 'PRODUCT_ID': 32811359, 'OFFER_TYPE': 'D', 'OFFER_ID': 130032532282, 'DISCNT_CODE': 32532282, 'SPEC_TAG': '0', 'RELATION_TYPE_CODE': None, 'INST_ID': 3120082500029184, 'CAMPN_ID': None, 'OLD_PRODUCT_ID': None, 'OLD_PACKAGE_ID': None, 'START_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'END_DATE': datetime.datetime(2050, 12, 31, 0, 0), 'MODIFY_TAG': '0', 'UPDATE_TIME': datetime.datetime(2020, 8, 25, 20, 0, 4), 'UPDATE_STAFF_ID': 'ITFTA114', 'UPDATE_DEPART_ID': '17EFF', 'OPER_CODE': None, 'IS_NEED_PF': None, 'CREATE_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'CREATE_STAFF_ID': 'ITFTA114', 'CREATE_DEPART_ID': '17EFF', 'DONE_CODE': 3120082587858316, 'REMARK': None, 'RSRV_DATE1': None, 'RSRV_DATE2': None, 'RSRV_DATE3': None, 'RSRV_NUM1': None, 'RSRV_NUM2': None, 'RSRV_NUM3': None, 'RSRV_NUM4': None, 'RSRV_NUM5': None, 'RSRV_STR1': None, 'RSRV_STR2': None, 'RSRV_STR3': None, 'RSRV_STR4': None, 'RSRV_STR5': None, 'RSRV_TAG1': None, 'RSRV_TAG2': None, 'RSRV_TAG3': None}, {'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516, 'USER_ID_A': -1, 'PACKAGE_ID': 99966954, 'PRODUCT_ID': 32811359, 'OFFER_TYPE': 'D', 'OFFER_ID': 130099665664, 'DISCNT_CODE': 99665664, 'SPEC_TAG': '0', 'RELATION_TYPE_CODE': None, 'INST_ID': 3120082500029185, 'CAMPN_ID': None, 'OLD_PRODUCT_ID': None, 'OLD_PACKAGE_ID': None, 'START_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'END_DATE': datetime.datetime(2022, 7, 31, 23, 59, 59), 'MODIFY_TAG': '0', 'UPDATE_TIME': datetime.datetime(2020, 8, 25, 20, 0, 4), 'UPDATE_STAFF_ID': 'ITFTA114', 'UPDATE_DEPART_ID': '17EFF', 'OPER_CODE': None, 'IS_NEED_PF': None, 'CREATE_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'CREATE_STAFF_ID': 'ITFTA114', 'CREATE_DEPART_ID': '17EFF', 'DONE_CODE': 3120082587858316, 'REMARK': None, 'RSRV_DATE1': None, 'RSRV_DATE2': None, 'RSRV_DATE3': None, 'RSRV_NUM1': None, 'RSRV_NUM2': None, 'RSRV_NUM3': None, 'RSRV_NUM4': None, 'RSRV_NUM5': None, 'RSRV_STR1': None, 'RSRV_STR2': None, 'RSRV_STR3': None, 'RSRV_STR4': None, 'RSRV_STR5': None, 'RSRV_TAG1': None, 'RSRV_TAG2': None, 'RSRV_TAG3': None}]
+	oldList = [{'func_id': 'crm3480', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带开户->新宽带一单清-重复保留', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.NewFusionBroadBand&listener=onInitBusi', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9731', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带开户->宽带开户', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.BroadbandCreate&listener=onInitBusi&cond_CREATE_TYPE=PERSONSERV', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm97A0', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带开户->IMS单用户开户', 'dll_path': '/web-order/order?service=page/broadband.PersonIMSCreate&listener=onInitTrade', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm972E', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带业务变更->互联网电视', 'dll_path': '/web-order/order?service=page/broadband.InteractiveTV&listener=getProductList&TYPE_TAG=3', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9750', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带业务变更->宽带提速', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.BroadbandChangeSpeed', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm972F', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带续费->互联网电视续费', 'dll_path': '/web-order/order?service=page/broadband.InteractiveTVContinuePay', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm975D', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带续费->家宽续费', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.NewBroadBandContinuePay', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm94BE', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带状态变更->废电视客服界面', 'dll_path': '/web-order/order?service=page/broadband.BroadBandTvInfoQuery', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9723', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带状态变更->宽带移机', 'dll_path': '/web-order/order?service=page/broadband.MoveBroadBand', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm97B6', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带状态变更->家宽拆机', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.BroadBandDestroyNew', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm97B7', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带状态变更->家宽产品增值业务变更', 'dll_path': '/web-order/order?service=page/plat.BroadBandBusiAddNew', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9728', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->资料变更类->宽带密码变更-重复保留', 'dll_path': '/web-order/order?service=page/order.page.pc.person.broadband.passwdchg.BroadBandPassWDCHG&listener=initPage', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9730', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带客服类->宽带移机(客服)', 'dll_path': '/web-order/order?service=page/broadband.MoveBroadBand&listener=initPage', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9748', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带客服类->10086宽带开户-重复保留', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.BroadbandCreate&listener=onInitBusi&cond_CREATE_TYPE=PERSONSERV&strtest=testa', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9768', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->宽带客服类->宽带密码变更(客服)-重复保留', 'dll_path': '/web-order/order?service=page/order.page.pc.person.broadband.passwdchg.BroadBandPassWDCHG&listener=initPage&REAL_TAG=true', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm972H', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->后台管理->互联网电视变更牌照', 'dll_path': '/web-order/order?service=page/order.page.pc.person.broadband.InteractiveTVChange&listener=init&FLAG=0', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9734', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->后台管理->宽带端口解绑', 'dll_path': '/web-order/order?service=page/order.page.pc.person.broadband.BroadBandUnBind', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9772', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->后台管理->宽带业务返销', 'dll_path': '/web-order/order?service=page/order.page.pc.broadband.CancelTrades&listener=onInitTrade', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9775', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->后台管理->宽带卡单重新派单', 'dll_path': '/web-order/order?service=page/order.page.pc.person.broadband.BroadBandReSend&listener=initPage', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm939F', 'menu_cata': 'crm991A', 'parent_func_id': 'crm9700', 'menu_path': '家庭业务->宽带业务->其它类->全业务捆绑营销注销(新)', 'dll_path': '/web-order/order?service=page/broadband.BundleChargesDestroy', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9941', 'menu_cata': 'crm991A', 'parent_func_id': 'crm992B', 'menu_path': '家庭业务->家庭通信->共享业务->4G套餐共享->4G流量共享主卡业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.shareClusterFlow.ShareClusterFlow', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9942', 'menu_cata': 'crm991A', 'parent_func_id': 'crm992B', 'menu_path': '家庭业务->家庭通信->共享业务->4G套餐共享->4G流量共享副卡业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.shareClusterFlow.MemberShareCluster', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9948', 'menu_cata': 'crm991A', 'parent_func_id': 'crm992B', 'menu_path': '家庭业务->家庭通信->共享业务->4G套餐共享->共享类业务', 'dll_path': '/web-order/order?service=page/order.page.pc.tariffshare.TariffShare', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}, {'func_id': 'crm9275', 'menu_cata': 'crm991A', 'parent_func_id': 'crm992D', 'menu_path': '家庭业务->智慧家庭->智慧家庭->腕表付费关系变更', 'dll_path': '/web-order/order?service=page/order.page.pc.person.changepayrelation.PayRelaNorChg&listener=init&PAYTYPE=KIDSWATCH', 'module': '家庭业务', 'iscore': '1', 'test_result': ''}]
+	print(convert_to_diclistLower(oldList))
+
+
+
+
+
+	# oldValue = [{'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516, 'USER_ID_A': -1, 'PACKAGE_ID': 32953733, 'PRODUCT_ID': 32811359, 'OFFER_TYPE': 'D', 'OFFER_ID': 130032532282, 'DISCNT_CODE': 32532282, 'SPEC_TAG': '0', 'RELATION_TYPE_CODE': None, 'INST_ID': 3120082500029184, 'CAMPN_ID': None, 'OLD_PRODUCT_ID': None, 'OLD_PACKAGE_ID': None, 'START_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'END_DATE': datetime.datetime(2050, 12, 31, 0, 0), 'MODIFY_TAG': '0', 'UPDATE_TIME': datetime.datetime(2020, 8, 25, 20, 0, 4), 'UPDATE_STAFF_ID': 'ITFTA114', 'UPDATE_DEPART_ID': '17EFF', 'OPER_CODE': None, 'IS_NEED_PF': None, 'CREATE_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'CREATE_STAFF_ID': 'ITFTA114', 'CREATE_DEPART_ID': '17EFF', 'DONE_CODE': 3120082587858316, 'REMARK': None, 'RSRV_DATE1': None, 'RSRV_DATE2': None, 'RSRV_DATE3': None, 'RSRV_NUM1': None, 'RSRV_NUM2': None, 'RSRV_NUM3': None, 'RSRV_NUM4': None, 'RSRV_NUM5': None, 'RSRV_STR1': None, 'RSRV_STR2': None, 'RSRV_STR3': None, 'RSRV_STR4': None, 'RSRV_STR5': None, 'RSRV_TAG1': None, 'RSRV_TAG2': None, 'RSRV_TAG3': None}, {'TRADE_ID': 3120082587858316, 'ACCEPT_MONTH': 8, 'USER_ID': 3120082500014516, 'USER_ID_A': -1, 'PACKAGE_ID': 99966954, 'PRODUCT_ID': 32811359, 'OFFER_TYPE': 'D', 'OFFER_ID': 130099665664, 'DISCNT_CODE': 99665664, 'SPEC_TAG': '0', 'RELATION_TYPE_CODE': None, 'INST_ID': 3120082500029185, 'CAMPN_ID': None, 'OLD_PRODUCT_ID': None, 'OLD_PACKAGE_ID': None, 'START_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'END_DATE': datetime.datetime(2022, 7, 31, 23, 59, 59), 'MODIFY_TAG': '0', 'UPDATE_TIME': datetime.datetime(2020, 8, 25, 20, 0, 4), 'UPDATE_STAFF_ID': 'ITFTA114', 'UPDATE_DEPART_ID': '17EFF', 'OPER_CODE': None, 'IS_NEED_PF': None, 'CREATE_DATE': datetime.datetime(2020, 8, 25, 20, 0, 4), 'CREATE_STAFF_ID': 'ITFTA114', 'CREATE_DEPART_ID': '17EFF', 'DONE_CODE': 3120082587858316, 'REMARK': None, 'RSRV_DATE1': None, 'RSRV_DATE2': None, 'RSRV_DATE3': None, 'RSRV_NUM1': None, 'RSRV_NUM2': None, 'RSRV_NUM3': None, 'RSRV_NUM4': None, 'RSRV_NUM5': None, 'RSRV_STR1': None, 'RSRV_STR2': None, 'RSRV_STR3': None, 'RSRV_STR4': None, 'RSRV_STR5': None, 'RSRV_TAG1': None, 'RSRV_TAG2': None, 'RSRV_TAG3': None}]
 	# newValue = convertDicList(oldValue)
 	# print(newValue)
-	oldlst = [{'INTF_ID': 'TF_B_TRADE,TF_B_TRADEFEE_SUB,TF_B_TRADE_PLATSVC,TF_B_TRADE_DISCNT,TF_B_TRADE_RES,TF_B_TRADE_OTHER', 'TRADE_ID': 3120121487954301, 'TRADE_TYPE_CODE': 1041}, {'INTF_ID': 'TF_B_TRADE', 'TRADE_ID': 3120121487954302, 'TRADE_TYPE_CODE': 996}]
-	dic = mergeDictList(oldValue)
-	print(dic)
+	# oldlst = [{'INTF_ID': 'TF_B_TRADE,TF_B_TRADEFEE_SUB,TF_B_TRADE_PLATSVC,TF_B_TRADE_DISCNT,TF_B_TRADE_RES,TF_B_TRADE_OTHER', 'TRADE_ID': 3120121487954301, 'TRADE_TYPE_CODE': 1041}, {'INTF_ID': 'TF_B_TRADE', 'TRADE_ID': 3120121487954302, 'TRADE_TYPE_CODE': 996}]
+	# dic = mergeDictList(oldValue)
+	# print(dic)
 
 	# dic_1 = {"REMARKS":"test_by_api","BUSI_ITEM_CODE":"131","SUBMIT_TYPE":"0","ACCESS_NUM":"18213349760","LOGIN_TYPE_CODE":"|P"}
 	# str = "LOGIN_MODE=BOSS&STAFF_ID=TESTKM06&IS_XACTIVE=false&IP_DATA=&MAC_DATA=&BROWSER_VERSION=&PASSWORD=e3937dc80f9bb5ab17cc016cdc612b7d&FOURA_CODE=&UNIFIED_CODE=&LOGIN_FLAG=1"

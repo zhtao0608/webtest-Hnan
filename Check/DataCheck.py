@@ -9,8 +9,7 @@ from Data.DataMgnt.DataOper import DataOper as DTO
 from Data.DataMgnt.DataMap import DataMap
 from Data.DataMgnt.TestResult import TestResultOper as TR
 from Base.OperExcel import create_workbook
-from Base.OperExcel import write_dict_xls
-from Base.OperExcel import writeToExcel
+from Base.OperExcel import write_dict_xls,writeToExcelByRows,writeToExcel
 
 logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
