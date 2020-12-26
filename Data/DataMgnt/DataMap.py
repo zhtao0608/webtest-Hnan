@@ -14,7 +14,7 @@ ora = MyOracle()
 
 class DataMap(MyOracle):
     '''从Oracle获取数据'''
-    def getDataMapSql(self,tabName,sqlref):
+    def getDataMapSql(self,tabName,sqlref,conn=''):
         '''
         准备将DATA_MAPPING表迁移到本地Mysql数据库
         :param tabName: 表名
@@ -23,8 +23,15 @@ class DataMap(MyOracle):
         '''
         if tabName == '' or sqlref == '':
             raise RuntimeError('必须传入tabName和sqlref入参!')
-        Sqlexpr = """SELECT SQL_STMT,EXPR_COND,ROUTE FROM data_mapping  WHERE TAB_NAME = '{}' AND SQL_REF = '{}';""".format(tabName,sqlref)
-        # logger.info('查询DATAMAPPING的sql语句：'.format(Sqlexpr))
+
+        Sqlexpr = """SELECT SQL_STMT,EXPR_COND,ROUTE FROM data_mapping  WHERE TAB_NAME = '{}' 
+                     AND SQL_REF = '{}';""".format(tabName, sqlref)
+
+        # if conn =='':
+        #     Sqlexpr = """SELECT SQL_STMT,EXPR_COND,ROUTE FROM data_mapping  WHERE TAB_NAME = '{}' AND SQL_REF = '{}';""".format(tabName,sqlref)
+        # else:
+        #     Sqlexpr = """SELECT SQL_STMT,EXPR_COND,ROUTE FROM data_mapping  WHERE TAB_NAME = '{}' AND SQL_REF = '{}' AND ROUTE ='{}';""".format(tabName, sqlref,conn)
+        # # logger.info('查询DATAMAPPING的sql语句：'.format(Sqlexpr))
         try:
             result = DbManager().select(Sqlexpr)
             logger.info('查询DATA_MAPPING结果:{}'.format(result))
@@ -33,13 +40,15 @@ class DataMap(MyOracle):
             else:
                 listResult = []
                 for i in range(0, len(result)):
-                    route = result[i]['ROUTE']
+                    if not conn =='':
+                        route=conn   #如果传入了conn则按传入的查询
+                    else:
+                        route = result[i]['ROUTE']
                     logger.info(result[i])
                     logger.info(result[i]['EXPR_COND'])
                     if result[i]['EXPR_COND'] == None or result[i]['EXPR_COND'] == '':
                         sql = result[i]['SQL_STMT']
                     else:
-                        # sql = result[i]['SQL_STMT'] + ' WHERE '
                         sql = result[i]['SQL_STMT'] + ' WHERE ' + result[i]['EXPR_COND']
                         print(sql)
                     sqlDictRet = {'ROUTE': route, 'SQL': sql.replace('\n',' ').replace('\r',' ')} #可能存在多条记录，用listDict返回
@@ -160,7 +169,7 @@ class DataMap(MyOracle):
             logger.info('查询异常!')
         return result
 
-    def qryDataMapExcatByCond(self,tabName,sqlref,cond):
+    def qryDataMapExcatByCond(self,tabName,sqlref,cond,route=''):
         '''
         通过tabName和sqlref和cond组合条件查询DATA_MAPPING并执行sql
         :param tabName: 表名
@@ -168,7 +177,7 @@ class DataMap(MyOracle):
         :param cond: 查询条件参数化
         :return:返回一个list
         '''
-        retDict = self.getDataMapSql(tabName, sqlref) #迁移到本地Mysql库，从本地库读取
+        retDict = self.getDataMapSql(tabName, sqlref,conn=route) #迁移到本地Mysql库，从本地库读取
         if len(retDict) == '0':
             logger.info('dataMapping返回结果为空!')
         else:
