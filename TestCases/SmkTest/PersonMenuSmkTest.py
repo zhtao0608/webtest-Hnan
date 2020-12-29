@@ -7,7 +7,7 @@ from selenium import webdriver
 from Base import HTMLTestRunnerCNNew
 from Base import HwTestReport
 from Base import ReadConfig
-from Common.function import convertDicList,convert_to_diclistUpper
+from Common.dealParas import convertDicList,convert_to_diclistUpper
 from Base.Mylog import LogManager
 from TestCases.suite import mySuitePrefixAdd
 from Check.PageCheck import PageAssert

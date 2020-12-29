@@ -65,6 +65,16 @@ class SysPara():
         paras = self.getSysParaByCode(paramAttr='DBRoute',paramCode=route)
         return paras
 
+    def get_IntfUrl(self,center):
+        '''
+        center 模块
+        :return:
+        '''
+        return self.getSysParaByCode(paramAttr='IntfUrl',paramCode=center)
+
+
+
+
 if __name__ == '__main__':
     Para = SysPara()
     # url = Para.get_ngboss('url')
@@ -75,3 +85,5 @@ if __name__ == '__main__':
     # print('登录地址:{},用户名:{},密码:{}'.format(url,username,password))
     jour42 = Para.get_oracle('jour42')
     print(jour42)
+    orderIntfUrl = Para.get_IntfUrl('order')
+    print(orderIntfUrl)

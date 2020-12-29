@@ -4,7 +4,7 @@ from Base.OperExcel import write_dict_xls,getColumnIndex,getRowIndex
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
-from Common.function import convertParatoList
+from Common.dealParas import convertParatoList
 
 logger = LogManager('TestDataMgnt').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'

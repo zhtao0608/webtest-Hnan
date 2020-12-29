@@ -7,7 +7,7 @@ from PageObj.ngboss.login_page import LoginPage
 from Base.Mylog import LogManager
 from Data.DataMgnt.DataOper import DataOper as Dto
 from Common.TestAsserts import Assertion as Assert
-from Common.function import convert_to_diclistLower,capital_to_lower
+from Common.dealParas import convert_to_diclistLower,capital_to_lower
 from Check.PageCheck import PageAssert
 
 
@@ -102,6 +102,7 @@ class MainPage(Base):
         moduleName = menuConfig['module']
         if moduleName =='集团业务' or moduleName =='ESOP业务' or moduleName=='政企平台V1':
             self.click_MenuTab(inx=2)  #如果是集团业务、ESOP业务或者政企平台V1 则点击政企业务运营平台
+            time.sleep(1)
         else:
             self.click_MenuTab()
         catamenu_str  =  "//li[@menuid='%s']" % catamenu

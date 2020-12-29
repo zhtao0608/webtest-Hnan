@@ -5,6 +5,8 @@ from Base import ReadConfig
 from Common.function import retDigitListFromStr
 from Common.function import sqlJoiningDic
 from Base.MyDBOper import DbManager
+from Common.TestAsserts import Assertion as alert
+
 
 
 logger = LogManager('DataMap').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
@@ -206,6 +208,45 @@ class DataMap(MyOracle):
                     result = res
         return result
 
+    def retDataMapListByCond(self,tabName,sqlref,cond,route=''):
+        '''
+        通过tabName和sqlref和cond组合条件查询DATA_MAPPING并执行sql
+        :param tabName: 表名
+        :param sqlref: 语句标识
+        :param cond: 查询条件参数化
+        :return:返回一个list,不判断都返回list
+        '''
+        retDict = self.getDataMapSql(tabName, sqlref,conn=route) #迁移到本地Mysql库，从本地库读取
+        if len(retDict) == '0':
+            logger.info('dataMapping返回结果为空!')
+        else:
+            for i in range(0,len(retDict)):
+                sql = retDict[i]['SQL'].replace('\n',' ')
+                route = retDict[i]['ROUTE']
+                if isinstance(cond,tuple) or isinstance(cond,str):
+                    sql = sql % cond    #如果传入都条件是字符串或者数组
+                    logger.info('======查询sql语句:{}'.format(sql))
+                elif isinstance(cond,dict):#如果传入字典
+                    sql = sql + ' AND '.join('%s=%r' % (k, cond[k]) for k in cond) #查询条件，通过字典传入
+                    logger.info('======查询sql语句:{}'.format(sql))
+                ##注意如果route=-1则表示要在mysql查询
+                if route == '-1':
+                    result = DbManager().select(sql=sql)
+                else:
+                    result = self.select(sql=sql,route=route)
+                logger.info('======查询sql语句数据库返回结果:{}'.format(result))
+                alert().assertFalse(len(result) == 0,msg='查询结果为空')
+                # if len(result) == 0:
+                #
+                #     logger.info('查询结果为空')
+                # elif len(res) == 1:
+                #     logger.info('返回当前查询结果:{}'.format(res[0]))
+                #     result = res[0]  #如果查询出来的结果集只有一条数据，则直接取出来当做dict返回
+                # elif len(res)>1:   #查询数据库返回结果多条的话返回list
+                #     logger.info('返回当前查询结果:{}'.format(res))
+                #     result = res
+        return result
+
 
     def retDataMapList(self,tabName,sqlref,cond):
         '''
@@ -240,7 +281,7 @@ if __name__ == '__main__':
     # res = test.qryDataMapExcatByCond(tabName='TF_B_TRADE',sqlref='SelByOrderID',cond='7119013105881916')
     # res2 = test.qryDataMapExcatByCond(tabName='TF_B_TRADE_BROADBAND',sqlref='SELECT_ALL_BY_TRADEID',cond=('3120121187922472',time.strftime('%Y'),'3120121187922472'))
     # res2 = test.qryDataMapExcatByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=('ChgMainProduct'))
-    res2 = test.qryDataMapExcatByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=('ChgMainProduct'))
+    res2 = test.retDataMapListByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=('ChgMainProduct'))
 
     print(res2)
 

@@ -2,7 +2,7 @@
 import xlrd,xlwt,os
 from Base import ReadConfig
 from Base.Mylog import LogManager
-from Common.function import convertDicList
+from Common.dealParas import convertDicList
 from xlutils.copy import copy
 from openpyxl import Workbook
 from openpyxl import load_workbook

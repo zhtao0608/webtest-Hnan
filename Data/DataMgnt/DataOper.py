@@ -2,11 +2,12 @@ import os,time
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
-from Common.function import retDigitListFromStr,convert_to_diclistUpper,capital_to_upper
-from Common.function import getDigitFromStr
+from Common.function import retDigitListFromStr,getDigitFromStr
+from Common.dealParas import convert_to_diclistUpper,capital_to_upper
 from DataMap import DataMap
 from Data.DataMgnt.GenTestData import GenTestData as Gen
 from Common.TestAsserts import Assertion as Assert
+from Common.dealParas import ConvertParas
 # from Check.DataCheck import DataCheck as DC
 import datetime
 import json
@@ -134,41 +135,14 @@ class DataOper(DataMap):
     def getCasePara(self,sceneCode):
         '''
         根据场景编码获取案例执行参数
+        为了实现TestCase执行时使用DDT驱动，这里使用retDataMapListByCond，将结果务必转换成list
         :param sceneCode: 场景编码
         :return: list列表
         '''
-        # paras = self.retDataMapList(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=sceneCode)
-        paras = self.qryDataMapExcatByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=sceneCode)
-        logger.info('传入的Paras参数:{}'.format(paras))
-        logger.info('传入的Paras的参数类型:{}'.format(type(paras)))
-        if isinstance(paras,dict):
-            logger.info('字典类型直接返回:{}'.format(paras))
-            return paras
-        elif isinstance(paras,list):
-            listpara = []
-            for i in range(0,len(paras)):
-                # 因为读取出来的参数list数组里的元素都是Str先转换成字典后再讲参数部分组装到list返回
-                param = {key: value for key, value in paras[i].items() if not key=='PARAMS'}
-                if isinstance(paras[i]['PARAMS'],str):
-                    paras[i]['PARAMS'].replace('\r','').replace('\n','')
-                    logger.info('PARAMS数据库读取出来都类型是Str,需要转换成Dict')
-                    inputPara = eval(paras[i]['PARAMS'])
-                    print('==============',inputPara)
-                    print('==============',type(inputPara))
-                    if isinstance(inputPara,dict):
-                        inputPara.update(param)
-                        logger.info('转换后都Dict参数:{}'.format(inputPara))
-                        listpara.append(inputPara)
-                    if isinstance(inputPara,tuple):
-                        print('转换都InPutPara都数据类型是tuple')
-                        inputPara = list(inputPara)
-                        for i in range(len(inputPara)):
-                            Para = inputPara[i]
-                            Para.update(param)
-                            print('******再次转换成员dict后{}'.format(inputPara))
-                            listpara.append(inputPara)
-            logger.info('读取出来的原始参数:{}'.format(listpara))
-            return listpara
+        #为了实现TestCase执行时使用DDT驱动，这里使用retDataMapListByCond，将结果务必转换成list
+        paras = self.retDataMapListByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=sceneCode)
+        return ConvertParas(paras)
+
 
     def getSysMenu(self,menuId):
         '''
@@ -213,6 +187,12 @@ class DataOper(DataMap):
         return paras
 
 if __name__ == '__main__':
+    test = DataOper()
+    params = test.getCasePara('CrtUsVPMN')
+    print(params)
+    print(type(params))
+
+
     # data =UpdateOraData()
     # sqlParams = {'pspt_id':'630121199311304817','cust_name':'朱丽华','verif_result':'1','pass_pspt':'123456789'}
     # sql = data.updateRealNameInfoBySerialNum(assessNum='15297156027',IdCard='630121199311304817',custName='王成林')
@@ -222,12 +202,11 @@ if __name__ == '__main__':
     # print('短信验证码：',result)
     # data.updateTabColValue(thin='cp',tabName='tf_f_realname_info',sqlParams=sqlParams,cond="SERIAL_NUMBER='15297156027'")
     # print (result)
-    test = DataOper()
     # result = test.updateRealNameInfoBySerialNum(accessNum='13639750374')
     # result = test.getSysMenu(menuId='crm9115')
-    result = test.getCoreMenuByCataId(cataId='crm991A')
-    print(result)
-    print(len(result))
+    # result = test.getCoreMenuByCataId(cataId='crm991A')
+    # print(result)
+    # print(len(result))
 
     # result = test.updateRealNameInfoExist(accessNum='13907491805')
     # # result = test.getSmsCode(accessNum='13897492180')

@@ -4,7 +4,7 @@ from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import retDigitListFromStr
-from Common.function import convertDicList
+from Common.dealParas import convertDicList
 from Data.DataMgnt.DataOper import DataOper as DTO
 from Data.DataMgnt.DataMap import DataMap
 from Data.DataMgnt.TestResult import TestResultOper as TR

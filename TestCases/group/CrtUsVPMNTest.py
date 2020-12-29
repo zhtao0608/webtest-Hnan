@@ -28,7 +28,6 @@ class CrtUsVpmnTest(unittest.TestCase):
     # @classmethod
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get(rc.get_ngboss('url'))     #这里可以切换环境，去ngboss_config.ini配置
         self.driver.maximize_window()
 
     @ddt.data(*params)

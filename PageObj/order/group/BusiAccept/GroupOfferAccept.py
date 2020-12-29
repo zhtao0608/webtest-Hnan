@@ -39,7 +39,7 @@ class GroupOfferAccept(GroupBusiBase):
         title = '集团商品受理测试记录%s' % offerCode
         self.add_dochead(title)
         LoginPage(self.driver).login()  # 登录
-        MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8207',menuPath='order.page.pc.enterprise.operenterprisesubscriber.OperEnterpriseSubscriber')  # 进入集团商品受理
+        MainPage(self.driver).open_CataMenuNew(funcId='crm8110')
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
         time.sleep(2)
         self.SelOfferTypePart(brandCode)# 选择商品目录
@@ -75,7 +75,8 @@ class GroupOfferAccept(GroupBusiBase):
         title = '集团商品退订测试记录%s' % offerCode
         self.add_dochead(title)
         LoginPage(self.driver).login()  # 登录
-        MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8207',menuPath='order.page.pc.enterprise.operenterprisesubscriber.OperEnterpriseSubscriber')  # 进入集团商品受理
+        # MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8207',menuPath='order.page.pc.enterprise.operenterprisesubscriber.OperEnterpriseSubscriber')  # 进入集团商品受理
+        MainPage(self.driver).open_CataMenuNew(funcId='crm8110')
         self.screen_step("进入集团商品受理菜单")
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
         time.sleep(2)
@@ -112,7 +113,8 @@ class GroupOfferAccept(GroupBusiBase):
         title = '成员商品受理测试记录%s' % serialNum
         self.add_dochead(title)
         LoginPage(self.driver).login()  # 登录
-        MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8206',menuPath='page/order.page.pc.enterprise.operenterprisemember')  # 进入成员商品受理
+        # MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8206',menuPath='page/order.page.pc.enterprise.operenterprisemember')  # 进入成员商品受理
+        MainPage(self.driver).open_CataMenuNew(funcId='crm8160')
         self.screen_step("进入成员商品受理菜单")
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
         time.sleep(1)
@@ -154,7 +156,8 @@ class GroupOfferAccept(GroupBusiBase):
         :return:
         '''
         LoginPage(self.driver).login()  # 登录
-        MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8206',menuPath='page/order.page.pc.enterprise.operenterprisemember')  # 进入成员商品受理
+        # MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8206',menuPath='page/order.page.pc.enterprise.operenterprisemember')  # 进入成员商品受理
+        MainPage(self.driver).open_CataMenuNew(funcId='crm8160')
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
         time.sleep(1)
         DealMebElements(self.driver).QryMebInfo(serialNum) #查询成员用户信息
