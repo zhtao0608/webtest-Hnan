@@ -71,6 +71,48 @@ def datetime_n(n):
 	start_time = datetime.datetime.strptime(nowtime,'%Y-%m-%d %H:%M:%S')
 	return start_time + timedelta(days=n)
 
+def isEmpty(args):
+	'''判断入参是否为空'''
+	if not args:
+		return True
+	if isinstance(args,str):  #如果传入发的str
+		if args is None or args =='' or len(args)==0:
+			return True
+		else:
+			return False
+	elif isinstance(args,dict) or isinstance(args, list) : #如果是字典、列表、元组
+		if not args or len(args)==0:
+			return True
+		else:
+			return False
+	elif isinstance(args, tuple):
+		if not args or args ==():
+			return True
+		else:
+			return False
+
+def isNotBlank(args):
+	'''判断入参是否不为空'''
+	if args:
+		return True
+	if isinstance(args,str):  #如果传入发的str
+		if args is None or args =='' or len(args)==0:
+			return False
+		else:
+			return True
+	elif isinstance(args,dict) or isinstance(args, list) : #如果是字典、列表、元组
+		if not args or len(args)==0:
+			return False
+		else:
+			return True
+	elif isinstance(args, tuple):
+		if not args or args ==():
+			return False
+		else:
+			return True
+
+
+
 # 等式转换成字典格式
 def ret_dic(str_Val):
     co = {}
@@ -246,6 +288,8 @@ def retStackFunc():
 
 
 if __name__ == '__main__':
+	arg = ()
+	print(isNotBlank(arg))
 
 
 

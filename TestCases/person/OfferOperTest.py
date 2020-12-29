@@ -9,7 +9,7 @@ from Base.OperExcel import write_xlsBycolName_append
 from Base.Mylog import LogManager
 from Check.PageCheck import PageAssert
 from TestCases.suite import mySuitePrefixAdd
-from Common.TestDataMgnt import get_TestData,get_testDataFile
+from Data.DataMgnt.TestDataMgnt import TestDataExcel as td
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
@@ -17,9 +17,9 @@ logger = LogManager('OfferOperTest').get_logger_and_add_handlers(1, log_path=Rea
 
 # file = ReadConfig.data_path + 'UITest_OfferChg.xls'
 # offers = get_exceldata(file,0)
-file = get_TestData('OfferOperTest')['filename']
-offers = get_TestData('OfferOperTest')['params']
-row = get_TestData('OfferOperTest')['FuncRow']
+file = td().get_TestData('OfferOperTest')['filename']
+offers = td().get_TestData('OfferOperTest')['params']
+row = td().get_TestData('OfferOperTest')['FuncRow']
 logger.info('测试案例执行数据准备：{}'.format(offers))
 
 @ddt.ddt

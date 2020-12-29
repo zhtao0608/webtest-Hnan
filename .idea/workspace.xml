@@ -19,47 +19,55 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbbb49fd-67ad-4dcf-bf93-689cf9ecb165" name="Default Changelist" comment="modify 路由设置yaml">
-      <change afterPath="$PROJECT_DIR$/Api/ApiDef.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Order/OrderOpenService.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Order/QueryUserInfoOpenService.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/Order/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/dealParas.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/Sql/autotest_api_def.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229104357.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229104538.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229104743.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229104914.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229105025.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229105234.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229105313.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229105328.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Logs/2020-12-28.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Logs/2020-12-29.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PageObj/order/BizCommon/DealGroupEleBase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229102232.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229104346.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229104527.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229104733.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229104904.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229105015.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229105302.html" afterDir="false" />
+    <list default="true" id="dbbb49fd-67ad-4dcf-bf93-689cf9ecb165" name="Default Changelist" comment="modify 抽象参数转换处理">
+      <change afterPath="$PROJECT_DIR$/Common/SuiteExec.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229205835.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229205851.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229210039.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229210213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229210228.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211017.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211032.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211236.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211252.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211309.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211836.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211920.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211942.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212018.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212052.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212102.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212126.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_20_58_24.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_00_28.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_02_02.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_10_06.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_12_15.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_18_25.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_19_54.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229211309.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229212052.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229212126.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Run/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Run/confRun.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Run/suiteCase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/group/CrtUsDeskTopTelTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/group/GrpBusiAcceptTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/group/GrpMebBusiTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base/OperExcel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/OperExcel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base/SysPara.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/SysPara.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Check/DataCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Check/DataCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/ApiDef.py" beforeDir="false" afterPath="$PROJECT_DIR$/Api/ApiDef.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api/Order/QueryUserInfoOpenService.py" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Order/QueryUserInfoOpenService.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base/MyDBOper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/MyDBOper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/dealParas.py" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dealParas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/Common/function.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/DataMgnt/DataMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/DataMgnt/DataMap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PageObj/order/group/BusiAccept/GroupOfferAccept.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/group/BusiAccept/GroupOfferAccept.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestCases/SmkTest/FamilyMenuSmkTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/SmkTest/FamilyMenuSmkTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Logs/2020-12-29.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/2020-12-29.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TestCases/SmkTest/GroupMenuSmkTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/SmkTest/GroupMenuSmkTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestCases/SmkTest/MenuSmokeTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/SmkTest/MenuSmokeTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestCases/SmkTest/PersonMenuSmkTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/SmkTest/PersonMenuSmkTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestCases/group/CrtUsVPMNTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/group/CrtUsVPMNTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/OfferOperTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/OfferOperTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allrun.py" beforeDir="false" afterPath="$PROJECT_DIR$/allrun.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,17 +112,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\TestCases\SmkTest" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN" />
+      <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\Run" />
       <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\Api\Query" />
       <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\Api" />
       <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\Common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\TestCases\SmkTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.dealParas">
+  <component name="RunManager" selected="Python.suiteCase">
     <configuration name="CrtUsVPMNTest.py" type="PythonConfigurationType" factoryName="Python">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,50 +138,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/group/CrtUsVPMNTest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DataMap" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="webtest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Data/DataMgnt" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data/DataMgnt/DataMap.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="DataOper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="webtest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Data/DataMgnt" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -269,7 +234,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dealParas" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="SuiteExec" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -282,7 +247,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Common/dealParas.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Common/SuiteExec.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -291,7 +256,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="function" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="allrun" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -299,12 +264,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Common" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Run" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Common/function.py" />
+      <option name="SCRIPT_NAME" value="E:\ProgramData\PycharmProjects\webtest_HNAN\allrun.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -313,19 +278,70 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="allrun" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/group" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/allrun.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="confRun" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Run" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Run/confRun.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="suiteCase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Run" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Run/suiteCase.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <list>
@@ -334,21 +350,20 @@
       <item itemvalue="Python.GroupMenuSmkTest" />
       <item itemvalue="Python.MenuSmokeTest" />
       <item itemvalue="Python.PersonMenuSmkTest" />
-      <item itemvalue="Python.DataOper" />
-      <item itemvalue="Python.dealParas" />
       <item itemvalue="Python tests.IntfsTest" />
       <item itemvalue="Python tests.MenuSmokeTest" />
-      <item itemvalue="Python tests.Unittests for CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn" />
-      <item itemvalue="Python.DataMap" />
-      <item itemvalue="Python.function" />
+      <item itemvalue="Python.SuiteExec" />
+      <item itemvalue="Python.suiteCase" />
+      <item itemvalue="Python.allrun" />
+      <item itemvalue="Python.confRun" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.dealParas" />
-        <item itemvalue="Python.function" />
-        <item itemvalue="Python.DataOper" />
-        <item itemvalue="Python.DataMap" />
-        <item itemvalue="Python tests.Unittests for CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn" />
+        <item itemvalue="Python.suiteCase" />
+        <item itemvalue="Python.allrun" />
+        <item itemvalue="Python.confRun" />
+        <item itemvalue="Python.allrun" />
+        <item itemvalue="Python.SuiteExec" />
       </list>
     </recent_temporary>
   </component>
@@ -373,7 +388,7 @@
       <workItem from="1608965679689" duration="543000" />
       <workItem from="1608966250425" duration="8366000" />
       <workItem from="1609138860718" duration="16403000" />
-      <workItem from="1609163261613" duration="8600000" />
+      <workItem from="1609163261613" duration="30029000" />
     </task>
     <task id="LOCAL-00001" summary="modify 优化冒烟测试功能">
       <created>1608867937877</created>
@@ -389,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608974855302</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="modify 抽象参数转换处理">
+      <created>1609213555808</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609213555808</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,61 +433,62 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="modify 优化冒烟测试功能" />
     <MESSAGE value="modify 路由设置yaml" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify 路由设置yaml" />
+    <MESSAGE value="modify 抽象参数转换处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify 抽象参数转换处理" />
   </component>
   <component name="WindowStateProjectService">
     <state x="405" y="166" key="#Notifications" timestamp="1608868019382">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
     <state x="405" y="166" key="#Notifications/0.0.1366.687@0.0.1366.687" timestamp="1608868019382" />
-    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609208314109">
+    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609248626016">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.687@0.0.1366.687" timestamp="1609208314109" />
+    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.687@0.0.1366.687" timestamp="1609248626016" />
     <state x="463" y="98" key="FileChooserDialogImpl" timestamp="1609208307405">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
     <state x="463" y="98" key="FileChooserDialogImpl/0.0.1366.687@0.0.1366.687" timestamp="1609208307405" />
-    <state width="1323" height="237" key="GridCell.Tab.0.bottom" timestamp="1609213413366">
+    <state width="1323" height="246" key="GridCell.Tab.0.bottom" timestamp="1609249081758">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.bottom/0.0.1366.687@0.0.1366.687" timestamp="1609213413366" />
-    <state width="1323" height="237" key="GridCell.Tab.0.center" timestamp="1609213413366">
+    <state width="1323" height="246" key="GridCell.Tab.0.bottom/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
+    <state width="1323" height="246" key="GridCell.Tab.0.center" timestamp="1609249081758">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.center/0.0.1366.687@0.0.1366.687" timestamp="1609213413366" />
-    <state width="1323" height="237" key="GridCell.Tab.0.left" timestamp="1609213413366">
+    <state width="1323" height="246" key="GridCell.Tab.0.center/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
+    <state width="1323" height="246" key="GridCell.Tab.0.left" timestamp="1609249081758">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.left/0.0.1366.687@0.0.1366.687" timestamp="1609213413366" />
-    <state width="1323" height="237" key="GridCell.Tab.0.right" timestamp="1609213413366">
+    <state width="1323" height="246" key="GridCell.Tab.0.left/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
+    <state width="1323" height="246" key="GridCell.Tab.0.right" timestamp="1609249081758">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="237" key="GridCell.Tab.0.right/0.0.1366.687@0.0.1366.687" timestamp="1609213413366" />
-    <state width="1323" height="209" key="GridCell.Tab.1.bottom" timestamp="1609210379887">
+    <state width="1323" height="246" key="GridCell.Tab.0.right/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
+    <state width="1323" height="270" key="GridCell.Tab.1.bottom" timestamp="1609246308194">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.1.bottom/0.0.1366.687@0.0.1366.687" timestamp="1609210379887" />
-    <state width="1323" height="209" key="GridCell.Tab.1.center" timestamp="1609210379886">
+    <state width="1323" height="270" key="GridCell.Tab.1.bottom/0.0.1366.687@0.0.1366.687" timestamp="1609246308194" />
+    <state width="1323" height="270" key="GridCell.Tab.1.center" timestamp="1609246308193">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.1.center/0.0.1366.687@0.0.1366.687" timestamp="1609210379886" />
-    <state width="1323" height="209" key="GridCell.Tab.1.left" timestamp="1609210379886">
+    <state width="1323" height="270" key="GridCell.Tab.1.center/0.0.1366.687@0.0.1366.687" timestamp="1609246308193" />
+    <state width="1323" height="270" key="GridCell.Tab.1.left" timestamp="1609246308193">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.1.left/0.0.1366.687@0.0.1366.687" timestamp="1609210379886" />
-    <state width="1323" height="209" key="GridCell.Tab.1.right" timestamp="1609210379886">
+    <state width="1323" height="270" key="GridCell.Tab.1.left/0.0.1366.687@0.0.1366.687" timestamp="1609246308193" />
+    <state width="1323" height="270" key="GridCell.Tab.1.right" timestamp="1609246308193">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="209" key="GridCell.Tab.1.right/0.0.1366.687@0.0.1366.687" timestamp="1609210379886" />
+    <state width="1323" height="270" key="GridCell.Tab.1.right/0.0.1366.687@0.0.1366.687" timestamp="1609246308193" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1608966490467">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.687@0.0.1366.687" timestamp="1608966490466" />
-    <state x="275" y="76" key="Vcs.Push.Dialog.v2" timestamp="1608974871951">
+    <state x="275" y="76" key="Vcs.Push.Dialog.v2" timestamp="1609213578481">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="275" y="76" key="Vcs.Push.Dialog.v2/0.0.1366.687@0.0.1366.687" timestamp="1608974871951" />
+    <state x="275" y="76" key="Vcs.Push.Dialog.v2/0.0.1366.687@0.0.1366.687" timestamp="1609213578481" />
     <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608779195399">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
@@ -478,34 +501,50 @@
       <screen x="0" y="0" width="1366" height="687" />
     </state>
     <state x="414" y="61" width="678" height="626" key="find.popup/0.0.1366.687@0.0.1366.687" timestamp="1609212982032" />
-    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup" timestamp="1609212652652">
+    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup" timestamp="1609247277048">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup/0.0.1366.687@0.0.1366.687" timestamp="1609212652652" />
+    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup/0.0.1366.687@0.0.1366.687" timestamp="1609247277048" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Base/MyDBOper.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataOper.coverage" NAME="DataOper Coverage Results" MODIFIED="1609209707258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataOper.coverage" NAME="DataOper Coverage Results" MODIFIED="1609233117573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$confRun.coverage" NAME="confRun Coverage Results" MODIFIED="1609246825131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Auth.coverage" NAME="Auth Coverage Results" MODIFIED="1609144385748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$QueryUserInfoOpenService.coverage" NAME="QueryUserInfoOpenService Coverage Results" MODIFIED="1609229015580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$function.coverage" NAME="function Coverage Results" MODIFIED="1609236129933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$FamilyMenuSmkTest.coverage" NAME="FamilyMenuSmkTest Coverage Results" MODIFIED="1608864429157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_PersonMenuSmkTest_PersonMenuTest.coverage" NAME="Unittests for PersonMenuSmkTest.PersonMenuTest Coverage Results" MODIFIED="1608817449327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$allrun.coverage" NAME="allrun Coverage Results" MODIFIED="1609246701391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$allrun__1_.coverage" NAME="allrun Coverage Results" MODIFIED="1609249035238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ApiDef.coverage" NAME="ApiDef Coverage Results" MODIFIED="1609213720534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$SuiteExec.coverage" NAME="SuiteExec Coverage Results" MODIFIED="1609244554392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$MenuSmokeTest.coverage" NAME="MenuSmokeTest Coverage Results" MODIFIED="1608817615011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$PageCheck.coverage" NAME="PageCheck Coverage Results" MODIFIED="1608795192762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataMap.coverage" NAME="DataMap Coverage Results" MODIFIED="1609240788724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataCheck.coverage" NAME="DataCheck Coverage Results" MODIFIED="1608897967443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$mainpage.coverage" NAME="mainpage Coverage Results" MODIFIED="1608864253749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/ngboss" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$CrtUsVPMNTest_py.coverage" NAME="CrtUsVPMNTest.py Coverage Results" MODIFIED="1609210379867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/group" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$DataFact.coverage" NAME="DataFact Coverage Results" MODIFIED="1608970498021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$MyDBOper.coverage" NAME="MyDBOper Coverage Results" MODIFIED="1608778302088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$Auth.coverage" NAME="Auth Coverage Results" MODIFIED="1609144385748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$QueryUserInfoOpenService.coverage" NAME="QueryUserInfoOpenService Coverage Results" MODIFIED="1609164402582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$MyDBOper.coverage" NAME="MyDBOper Coverage Results" MODIFIED="1609239834714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$suiteCase.coverage" NAME="suiteCase Coverage Results" MODIFIED="1609249081744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$SysPara.coverage" NAME="SysPara Coverage Results" MODIFIED="1609141368152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$function.coverage" NAME="function Coverage Results" MODIFIED="1609213282563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$FamilyMenuSmkTest.coverage" NAME="FamilyMenuSmkTest Coverage Results" MODIFIED="1608864429157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$OperExcel.coverage" NAME="OperExcel Coverage Results" MODIFIED="1608797541024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_PersonMenuSmkTest_PersonMenuTest.coverage" NAME="Unittests for PersonMenuSmkTest.PersonMenuTest Coverage Results" MODIFIED="1608817449327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$PersonMenuSmkTest.coverage" NAME="PersonMenuSmkTest Coverage Results" MODIFIED="1608818621636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$ApiDef.coverage" NAME="ApiDef Coverage Results" MODIFIED="1609165617144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$dealParas.coverage" NAME="dealParas Coverage Results" MODIFIED="1609213413355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$dealParas.coverage" NAME="dealParas Coverage Results" MODIFIED="1609230120318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$yamlAnaly.coverage" NAME="yamlAnaly Coverage Results" MODIFIED="1609138947075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$ymlAnaly.coverage" NAME="ymlAnaly Coverage Results" MODIFIED="1608974564413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$MenuSmokeTest.coverage" NAME="MenuSmokeTest Coverage Results" MODIFIED="1608817615011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$YamlTest.coverage" NAME="YamlTest Coverage Results" MODIFIED="1608973198704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_CrtUsVPMNTest_CrtUsVpmnTest_testCrtUsVpmn.coverage" NAME="Unittests for CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn Coverage Results" MODIFIED="1609208273287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/group" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$PageCheck.coverage" NAME="PageCheck Coverage Results" MODIFIED="1608795192762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataMap.coverage" NAME="DataMap Coverage Results" MODIFIED="1609209493232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataCheck.coverage" NAME="DataCheck Coverage Results" MODIFIED="1608897967443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
   </component>
 </project>

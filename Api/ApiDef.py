@@ -18,8 +18,8 @@ class ApiDefine(Dto):
     '''API定义处理类'''
     def __init__(self):
         self.url = SysPara().get_IntfUrl('order')
-        # self.token = Auth().generateByName(userName='SUPERUSR')
-        # self.h = {"Authorization":self.token}
+        self.token = Auth().generateByName(userName='SUPERUSR')
+        self.h = {"Authorization":self.token}
         self.tabName = 'AUTOTEST_API_DEF'
         self.session = requests.session()
 
@@ -52,9 +52,7 @@ class ApiDefine(Dto):
             srvCode = srvCode[1] + '/' + srvCode[2]
         logger.info('执行到接口名:{}'.format(srvCode))
         srvPara = srvDetail['SRV_PARAMS']
-        params = ConvertParas(srvPara)
-        logger.info('转换后到接口入参:{}'.format(params))
-        return {'url':self.url + srvCode,'params':params}
+        return {'url':self.url + srvCode,'params':srvPara}
 
 
 

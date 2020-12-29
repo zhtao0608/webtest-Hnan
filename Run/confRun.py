@@ -42,6 +42,7 @@ class RunTest:
             if value != '' and not value.startswith("#"):
                 self.caseList.append(value.replace("\n", ""))
         f.close()
+        logger.info('用例列表:{}'.format(self.caseList))
         return self.caseList
 
     def get_case_suite(self):
@@ -104,6 +105,5 @@ class RunTest:
 
 if __name__ == '__main__':
     testRun = RunTest()
-    suite= testRun.get_case_suite()
-    print(suite)
-    # testRun.run()
+    # testRun.get_case_suite()
+    testRun.run()

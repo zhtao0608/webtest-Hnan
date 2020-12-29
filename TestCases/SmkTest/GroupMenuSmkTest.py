@@ -5,7 +5,6 @@ from PageObj.ngboss.mainpage import MainPage
 from Data.DataMgnt.DataOper import DataOper as Dto
 from selenium import webdriver
 from Base import HTMLTestRunnerCNNew
-from Base import HwTestReport
 from Base import ReadConfig
 from Common.dealParas import convertDicList
 from Base.Mylog import LogManager

@@ -15,7 +15,7 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 
 def ConvertParas(paras):
-    '''转换入参'''
+    '''转换案例入参'''
     alert().assertIsNotNone(paras, msg='paras不允许为空！')
     logger.info('传入的Paras参数:{}'.format(paras))
     logger.info('传入的Paras的参数类型:{}'.format(type(paras)))

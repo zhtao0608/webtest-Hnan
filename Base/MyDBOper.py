@@ -1,6 +1,6 @@
 """
 @version: python3.x
-@author:曹新健
+@author:周涛
 @contact: 617349013@qq.com
 @software: PyCharm
 @file: dbSql.py
@@ -59,7 +59,7 @@ class DbManager:
         return True
 
     # 执行数据库的sq语句,主要用来做插入操作
-    def execute(self, sql, params=None, commit=False, ):
+    def execute(self, sql, params=None, commit=True):
         # 连接数据库
         res = self.connMyDB()
         if not res:
@@ -122,14 +122,15 @@ class DbManager:
 
     # 增删改数据
     def editDatas(self, sql, params=None):
-        res = self.execute(sql, params, True)
-        if not res:
-            logger.info("操作失败")
-            return False
+        # res = self.execute(sql, params, True)
+        self.execute(sql, params, True)
+        # if not res:
+        #     logger.info("操作失败")
+        #     return False
         self.conn.commit()
         self.close()
-        logger.info("操作成功" + str(res))
-        return res
+        logger.info("数据库更新操作成功" )
+        # return res
 
     def queryFormatrs(self, sql_str):
         '''查询数据，返回一个列表，里面的每一行是一个字典，带字段名
@@ -176,5 +177,6 @@ if __name__ == '__main__':
     """
     results = dbManager.select("SELECT * FROM autotest_case where scene_code = 'AddElements';")
     print(results)
+
 
 

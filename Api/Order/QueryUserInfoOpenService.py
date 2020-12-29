@@ -10,6 +10,7 @@ from Base.OperExcel import write_xlsBycolName_append,write_dict_xls
 from Base.OracleOper import MyOracle
 from Common.function import dict_get
 from Data.DataMgnt.GenTestData import GenTestData
+from Common.TestAsserts import Assertion as alert
 
 logger = LogManager('UserInfoService').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
@@ -28,9 +29,10 @@ class UserInfoService(Api):
         :param userId:
         :return:
         '''
-        intfName = 'IQueryUserInfoOpenService/getByUserId'
+        # intfName = 'IQueryUserInfoOpenService/getByUserId'
+        url = self.getApiBySrvMethod(srvCode='IQueryUserInfoOpenService',srvMethod='getByUserId')['url']
         params = {"userId": userId}
-        intf_res = self.session.post(url=self.url + intfName ,headers =self.h,data=params)
+        intf_res = self.session.post(url=url ,headers =self.h,data=params)
         logger.info("接口完整返回信息：" + intf_res.content.decode(encoding='utf-8'))
         logger.info("处理接口返回数据....")
         d_intf_res = json.loads(intf_res.content.decode(encoding='utf-8'))
@@ -43,9 +45,10 @@ class UserInfoService(Api):
         :param route:路由
         :return:
         '''
-        intfName = 'IQueryUserInfoOpenService/getByInstId'
+        # intfName = 'IQueryUserInfoOpenService/getByInstId'
+        url = self.getApiBySrvMethod(srvCode='IQueryUserInfoOpenService',srvMethod='getByInstId')['url']
         params = {"instId": instId,"route":route}
-        intf_res = self.session.post(url=self.url + intfName ,headers =self.h,data=params)
+        intf_res = self.session.post(url=url ,headers =self.h,data=params)
         logger.info("接口完整返回信息：" + intf_res.content.decode(encoding='utf-8'))
         logger.info("处理接口返回数据....")
         d_intf_res = json.loads(intf_res.content.decode(encoding='utf-8'))

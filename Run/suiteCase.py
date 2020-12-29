@@ -7,11 +7,12 @@ import unittest
 from Base import ReadConfig
 from Base.Mylog import LogManager
 from Base import HTMLTestRunnerCNNew
+from Common.SuiteExec import DealSuiteExec as se
 
 logger = LogManager('RunTest').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
-class RunTest:
+class RunSuiteTest:
     def __init__(self):
         """
         初始化需要的参数
@@ -25,44 +26,51 @@ class RunTest:
         print("log  ****"+self.resultPath)
         # 取得config\caselist.txt文件路径
         self.caseListFile = os.path.join(ReadConfig.conf_path, "caselist.txt")
-        # 取得test_case文件路径
-        self.caseFile = os.path.join(ReadConfig.proDir, "TestCases")
+        # 取得test_case文件目录
+        # self.caseFile = os.path.join(ReadConfig.proDir, "../TestCases")
+        self.caseDir = ReadConfig.case_path
+        logger.info('用例目录:{}'.format(self.caseDir))
+
         # 定义一个空列表，用于保存类名
         self.caseList = []
 
 
-    def get_case_list(self):
+    def get_caselist(self,suiteCode):
         """
-        获取config\caselist.txt中的每一行，以#号开头的除外
-        且添加到列表self.caseList进行返回
+        从本地mysql数据库中根据suiteCode获取用例执行到路径
         :return: self.caseList
         """
-        f = open(self.caseListFile)
-        for value in f.readlines():
-            if value != '' and not value.startswith("#"):
-                self.caseList.append(value.replace("\n", ""))
-        f.close()
-        return self.caseList
+        # f = open(self.caseListFile)
+        # for value in f.readlines():
+        #     if value != '' and not value.startswith("#"):
+        #         self.caseList.append(value.replace("\n", ""))
+        # f.close()
+        return se().get_execPathBySuiteCode(suiteCode=suiteCode) #返回一个用例执行到python文件列表
 
-    def get_case_suite(self):
+
+    def get_case_suite(self,suiteCode):
         """
         获取测试集
         :return:
         """
         # 获取config\caselist.txt中的每一行
-        self.get_case_list()
-        logger.info(self.get_case_list())
+        caseList=self.get_caselist(suiteCode)
+        logger.info('从数据库中获取到用例文件路径列表:{}'.format(self.get_caselist(suiteCode)))
         # 定义测试集对象
         test_suite = unittest.TestSuite()
         # 初始化一个列表，存在所有的测试模块
         suite_module = []
         # 获取className ,把所有case中测试集添加到suite_module列表中
-        for case in self.caseList:
-            case_name = case.split("/")[-1]
-            # print(case_name + ".py")
-            discover = unittest.defaultTestLoader.discover(self.caseFile, pattern=case_name + ".py", top_level_dir=None)
+        for i in range(0,len(caseList)):
+            case_name = caseList[i].split("/")[-1]
+            print('****用例名称****{}'.format(case_name))
+            discover = unittest.defaultTestLoader.discover(self.caseDir, pattern=case_name + ".py", top_level_dir=None)
             suite_module.append(discover)
 
+        # for case in caseList:
+        #     case_name = case.split("/")[-1]
+        #     discover = unittest.defaultTestLoader.discover(self.caseDir, pattern=case_name + ".py", top_level_dir=None)
+        #     suite_module.append(discover)
         # 获取列表中所有的测试模块，添加到测试集test_suite中
         if len(suite_module) > 0:
             for suite in suite_module:
@@ -72,10 +80,10 @@ class RunTest:
             return None
         return test_suite
 
-    def run(self):
+    def run(self,suite_code):
         try:
             # 获取测试集
-            suite = self.get_case_suite()
+            suite = self.get_case_suite(suite_code)
             print("suite:", suite)
             # 判断测试集是否为None
             if suite is not None:
@@ -103,7 +111,7 @@ class RunTest:
 
 
 if __name__ == '__main__':
-    testRun = RunTest()
-    suite= testRun.get_case_suite()
+    testRun = RunSuiteTest()
+    suite = testRun.get_case_suite(suiteCode='CoreBusiTest')
     print(suite)
-    # testRun.run()
+    # testRun.run(suite_code='CoreBusiTest')
