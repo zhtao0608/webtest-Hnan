@@ -197,6 +197,7 @@ class DataMap(MyOracle):
                 else:
                     res = self.select(sql=sql,route=route)
                 logger.info('======查询sql语句数据库返回结果:{}'.format(res))
+                alert().assertFalse(isEmpty(res),msg='查询dataMap数据结果为空!')
                 if len(res) == 0:
                     logger.info('查询结果为空')
                 elif len(res) == 1:

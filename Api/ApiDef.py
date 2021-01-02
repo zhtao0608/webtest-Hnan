@@ -8,6 +8,8 @@ from Common.dealParas import capital_to_upper
 from Common.dealParas import ConvertParas
 from Api.Auth import UserAuth as Auth
 import requests
+from Common.TestAsserts import Assertion as alert
+from Common.function import isEmpty
 
 
 # 加入日志
@@ -47,12 +49,14 @@ class ApiDefine(Dto):
         # cond_dict = {'SERVICE_CODE':srvCode,'SRV_METHOD':srvMethod}
         srvDetail = capital_to_upper(self.qryDataMapExcatByCond(tabName=self.tabName,sqlref='SEL_BY_SRVMETHOD',cond=(srvCode,srvMethod)))
         # srvCode = srvDetail['SERVICE_CODE'].replace('_','/')
+        alert().assertFalse(isEmpty(srvDetail),msg='查询接口配置为空!')
         srvCode = srvDetail['SERVICE_CODE'].split('_')
         if len(srvCode)==3:
             srvCode = srvCode[1] + '/' + srvCode[2]
         logger.info('执行到接口名:{}'.format(srvCode))
-        srvPara = srvDetail['SRV_PARAMS']
-        return {'url':self.url + srvCode,'params':srvPara}
+        # srvPara = srvDetail['SRV_PARAMS']
+        # return {'url':self.url + srvCode,'params':srvPara}
+        return self.url + srvCode
 
 
 
