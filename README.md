@@ -1,7 +1,7 @@
 # webtest
-云南WEBTEST自动化项目 \
-使用框架:Python + Selenium + UnitTest + DDT + Excel \
-接口：Python + Request + + UnitTest + DDT + Excel \
+湖南WEBTEST自动化项目 \
+使用框架:Python + Selenium + UnitTest + DDT + Excel + MySQL/ORACLE \
+接口：Python + Request + + UnitTest + DDT + Excel + MySQL/ORACLE\
 功能简述：
 
 1.UI自动化采用PO分层设计模式 \
