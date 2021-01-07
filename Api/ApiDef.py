@@ -50,7 +50,7 @@ class ApiDefine(Dto):
         srvDetail = capital_to_upper(self.qryDataMapExcatByCond(tabName=self.tabName,sqlref='SEL_BY_SRVMETHOD',cond=(srvCode,srvMethod)))
         # srvCode = srvDetail['SERVICE_CODE'].replace('_','/')
         alert().assertFalse(isEmpty(srvDetail),msg='查询接口配置为空!')
-        srvCode = srvDetail['SERVICE_CODE'].split('_')
+        srvCode = srvDetail['SERVICE_CODE'].replace('\r\n','').split('_')
         if len(srvCode)==3:
             srvCode = srvCode[1] + '/' + srvCode[2]
         logger.info('执行到接口名:{}'.format(srvCode))

@@ -14,7 +14,7 @@ import inspect
 from Base.SysPara import SysPara
 from collections import defaultdict
 
-logger = LogManager('DataCheck').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+logger = LogManager('function').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 rc = ReadConfig.ReadConfig("ngboss_config.ini")
 
@@ -288,8 +288,8 @@ def retStackFunc():
 
 
 if __name__ == '__main__':
-	arg = ()
-	print(isNotBlank(arg))
+	arg = ''
+	print(isEmpty(arg))
 
 
 

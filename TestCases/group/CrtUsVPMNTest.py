@@ -15,7 +15,6 @@ from Data.DataMgnt.DataOper import DataOper
 from Data.DataMgnt.TestResult import TestResultOper as TR
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
-rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('CrtUsVpmnTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
 
@@ -46,7 +45,6 @@ class CrtUsVpmnTest(unittest.TestCase):
         submitMsg = GroupOfferAccept(self.driver).accept_CrtUs(scene=sceneCode,groupId=groupId,brandCode=brandCode,offerCode=offerCode,
                                                    contractId=contractId,elementAttrBizList=elementAttrBizList)
         TR().updateActualResult(sceneCode='CrtUsVPMN',result=submitMsg)
-
         logger.info('执行完成')
 
     def tearDown(self):

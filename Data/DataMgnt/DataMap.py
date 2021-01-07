@@ -286,7 +286,6 @@ class DataMap(MyOracle):
                 # result = DbManager().select(sql=sql)
                 DbManager().editDatas(sql)
             else:
-                # result = self.select(sql=sql,route=route)
                 self.updateSQL(sql=sql,route=route)
 
 

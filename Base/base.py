@@ -95,8 +95,8 @@ class Base():
     def finds(self, locator, value=''):
         '''定位一组元素，返回元素对象list，没定位到，Timeout异常 '''
         if value == '':  #默认为此常规定位方法,只要找到一个，返回true
-            # eles = WebDriverWait(self.driver, self.timeout, self.t).until(EC.presence_of_all_elements_located(locator))
-            eles = self.find_eles(locator)
+            eles = WebDriverWait(self.driver, self.timeout, self.t).until(EC.presence_of_all_elements_located(locator))
+            # eles = self.find_eles(locator)
             if eles:
                 return eles
             else:
@@ -128,18 +128,26 @@ class Base():
         except:
             return False
 
-    def isElementExists(self, locator):
+    def isElementsDisplay(self, locator):
         ''' 判断一组元素是否在DOM里面 （是否存在），若不存在，返回一个空的list'''
-        eles = self.finds(locator)
-        n = len(eles)
-        if n == 0:
-            return False
-        elif n == 1:
-            return True
-        else:
-            print("定位到元素的个数：",n)
+        try:
+            eles = self.finds(locator)
+            n = len(eles)
+            # print("定位到元素的个数：", n)
             logger.info("定位到元素的个数:" + str(n))
-            return True
+            if n == 0:
+                return False
+            else:
+                for i in range(0,n):
+                    if self.is_element_displayed(eles[i]):
+                        return True
+                    else:
+                        return False
+        except:
+            return False
+
+
+
 
     def isElementDisplay(self, locator,action =''):
         """判断单个元素是否显示在页面上"""

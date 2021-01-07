@@ -28,14 +28,16 @@ class RealNamePart(Base):
         time.sleep(1)
         self.tradeQry()  #点击认证检索
 
-    def selectVerifyMode(self,verifyMode='在线验证'):
+    def selectVerifyMode(self,verifyMode='人证比对一体机'):
         '''
         选择认证方式
-        :param verifyMode: 选择枚举： 在线验证，二代身份证+外接摄像头 两种方式，默认在线验证
+        :param verifyMode: 选择枚举： 人证比对一体机，NFC模式,一般智能手机+二代身份证识别仪 两种方式，人证比对一体机
         :return:
         '''
-        sel_VerifyMode = (By.ID,'VERIFY_MODEL_USER_span')
-        VerifyModeFloatStr = "//*[@id='VERIFY_MODEL_USER_float']/div[2]/div/div/ul/li[contains(@title,'%s')]" %verifyMode
+        # sel_VerifyMode = (By.ID,'VERIFY_MODEL_USER_span') #VERIFY_MODEL_span
+        sel_VerifyMode = (By.ID,'VERIFY_MODEL_span') # 湖南认证组件ID修改
+        #//*[@id="VERIFY_MODEL_float"]/div[2]/div/div/ul/li[3]
+        VerifyModeFloatStr = "//*[@id='VERIFY_MODEL_float']/div[2]/div/div/ul/li[contains(@title,'%s')]" %verifyMode
         sel_VerifyModeFloat = (By.XPATH,VerifyModeFloatStr)  #当前写死是在线验证方式
         self.isElementDisplay(sel_VerifyMode,'click')
         time.sleep(1)
@@ -81,8 +83,6 @@ class RealNamePart(Base):
 
     def verifyRealNameNew(self,accessNum):
         '''自动更新存量实名信息'''
-
-
         return DTO().updateRealNameInfoNew(accessNum)
 
 

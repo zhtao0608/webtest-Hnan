@@ -23,36 +23,38 @@ class MainPlanSelectPart(Base):
         '''
         text_productSearch = (By.ID,'productSelectPRODUCT_SEARCH_TEXT')
         self.element_sendkey_enter(text_productSearch,productId) #输入产品编码按回车查询
-        # time.sleep(2)
         PageAssert(self.driver).pageLoading()
         SubproductStr = "//button[contains(@productid,'%s') and contains(@ontap,'productSelect.selectProduct')]" %productId
         btn_Subproduct = (By.XPATH,SubproductStr)  #订购按钮
+        time.sleep(1)
         self.isElementDisplay(btn_Subproduct,'click') #点击主套餐订购
         PageAssert(self.driver).pageLoading()
+        time.sleep(2)
 
 
-    def selectProductItem(self,elementList=[]):
+    def selectProductItem(self,elementList):
         '''
         组选择
         :param elementList:可选组内元素 字典数组包含元素类型和元素编码
         eg :elementList =  [{"OFFER_TYPE":"D","OFFER_CODE":"99410190"},{"OFFER_TYPE":"D","OFFER_CODE":"2285"}]
         :return:
         '''
-        for i in range(len(elementList)):
+        for i in range(0,len(elementList)):
             elementId = elementList[i]['OFFER_CODE']
             elementType = elementList[i]['OFFER_TYPE']
             if not isinstance(elementId,str):
                 elementId = str(elementId)
             selectElementStr = "//*[contains(@offercode,'%s') and contains(@offertype,'%s') and contains(@type,'checkbox')]" %(elementId,elementType)
             checkBox_selectElement = (By.XPATH,selectElementStr)
-            self.isSelected(checkBox_selectElement,Type='click') # 选中要订购的元素（资费、服务）
+            self.isElementDisplay(checkBox_selectElement,'click')# 选中要订购的元素（资费、服务）
+            # self.isSelected(checkBox_selectElement,Type='click') # 选中要订购的元素（资费、服务）
         btn_confirmSelect = (By.XPATH,"//button[contains(@ontap,'productSelect.confirmAction')]")
         self.isElementDisplay(btn_confirmSelect,'click')
         PageAssert(self.driver).pageLoading()
         PageAssert(self.driver).assert_WadePage() #做个校验
 
 
-    def MainProductSel(self,productId,elementList=[]):
+    def MainProductSel(self,productId,elementList):
         '''
         个人业务主产品选择
         :param productId: 主产品编码
@@ -62,6 +64,8 @@ class MainPlanSelectPart(Base):
         # btn_productSelect = (By.ID,'productSelectBtn')
         # self.isElementDisplay(btn_productSelect,'click') #点击选择套餐按钮
         self.searchMainPlan(productId)  #进入选择套餐界面搜索主产品
+        PageAssert(self.driver).pageLoading()
+        time.sleep(1)
         self.selectProductItem(elementList) #进入组选择，选择可选资费或者服务
         return self.driver
 
@@ -143,14 +147,15 @@ class SelectElements(Base):
         eg :        [{"OFFER_CODE":"120000008174","OFFER_TYPE":"S"},{"OFFER_CODE":"120010122813","OFFER_TYPE":"D"}]
         :return:
         '''
+        logger.info('要删除的元素列表:{}'.format(elementList))
         for i in range(len(elementList)):
             offerCode = elementList[i]['OFFER_CODE']
-            offerType = elementList[i]['OFFER_CODE']
+            offerType = elementList[i]['OFFER_TYPE']
             if not isinstance(offerCode,str):
                 offerType = str(offerCode)
             logger.info('要新增的元素类型：%s'.format(offerType))
             logger.info('要新增的元素编码：%s'.format(offerCode))
-            checkBoxDelElementStr = "//button[contains(@onclick,'selectedElements.checkBoxAction') and contains(@value,'%s')]" %offerCode
+            checkBoxDelElementStr = "//*[contains(@onclick,'selectedElements.checkBoxAction') and contains(@value,'%s')]" %offerCode
             checkBox_DelElement = (By.XPATH,checkBoxDelElementStr)
             self.isSelected(checkBox_DelElement,'click')
 
@@ -171,6 +176,7 @@ class PageCommonPart(Base):
         Btn_submit = (By.ID,'CSSUBMIT_BUTTON')
         if not PageAssert(self.driver).pageLoading():
             self.isElementDisplay(Btn_submit,'click')
+        PageAssert(self.driver).pageLoading()  #提交后页面加载
 
 class SaleActivePart(Base):
     '''营销活动办理组件'''

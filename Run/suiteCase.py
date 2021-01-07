@@ -66,6 +66,9 @@ class RunSuiteTest:
             print('****用例名称****{}'.format(case_name))
             discover = unittest.defaultTestLoader.discover(self.caseDir, pattern=case_name + ".py", top_level_dir=None)
             suite_module.append(discover)
+        # print('*****suite_module********',suite_module)
+        # print('*****suite_module的长度********',len(suite_module))
+
 
         # for case in caseList:
         #     case_name = case.split("/")[-1]
@@ -98,8 +101,7 @@ class RunSuiteTest:
                 # runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='Test Report',
                 #                 #                           description='Test Description', verbosity=2,retry=1,save_last_try=False)
                 # 运行测试用例
-                runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='WEB-UI自动化测试报告',
-                                                           description='测试报告', verbosity=2,retry=0)
+                runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title='WEB-UI自动化测试报告',description='测试报告',verbosity=2,retry=0)
                 runner.run(suite)
             else:
                 log.info("Have no case to test.")
@@ -112,6 +114,10 @@ class RunSuiteTest:
 
 if __name__ == '__main__':
     testRun = RunSuiteTest()
-    suite = testRun.get_case_suite(suiteCode='CoreBusiTest')
+    # suite = testRun.get_case_suite(suiteCode='SvcStateChgTest')
+    suite = testRun.get_case_suite(suiteCode='ProdChgTest')
     print(suite)
-    # testRun.run(suite_code='CoreBusiTest')
+    # print(type(suite))
+    # testRun.run(suite_code='SvcStateChgTest')
+    testRun.run(suite_code='ProdChgTest')
+

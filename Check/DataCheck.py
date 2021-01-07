@@ -5,6 +5,7 @@ from Base.OracleOper import MyOracle
 from Base import ReadConfig
 from Common.function import retDigitListFromStr
 from Common.dealParas import convertDicList
+from Common.function import isEmpty,isNotBlank
 from Data.DataMgnt.DataOper import DataOper as DTO
 from Data.DataMgnt.DataMap import DataMap
 from Data.DataMgnt.TestResult import TestResultOper as TR
@@ -28,30 +29,31 @@ class DataCheck(DataMap):
         :param orderId:
         :return:
         '''
-        orderInfo = self.qryDataMapExcatByCond(tabName='TF_B_ORDER',sqlref='SEL_BY_ORDERID',cond=orderId)
+        orderInfo = self.qryDataMapExcatByCond(tabName='TF_B_ORDER',sqlref='SEL_BY_ORDERID',cond=orderId,route='jour42')
         logger.info('待处理订单数据:{}'.format(orderInfo))
-        if len(orderInfo)==0:
+        if isEmpty(orderInfo):
             logger.info('没有待处理订单')
         else:
             logger.info('只匹配一条主订单')
             orderState = orderInfo['ORDER_STATE'] #获取主订单状态
             logger.info('当前订单号:{},状态是:{}'.format(orderId,orderState))
             if orderState=='Y' or orderState=='X':
-                self.updateData(route='jour1',table='TF_B_ORDER',dt_update={'ORDER_STATE':'0'},
-                                dt_condition={'ORDER_ID':orderId})
+                self.editDataMapByCond(tabName='TF_B_ORDER', sqlref='UPD_BY_ORDERID',cond=orderId,route='jour42')
 
-    def checkOrderFinish(self,orderId):
+                # self.updateData(route='jour1',table='TF_B_ORDER',dt_update={'ORDER_STATE':'0'},
+                #                 dt_condition={'ORDER_ID':orderId})
+
+    def checkOrderFinish(self,orderId,route):
         '''
         判断工单是否完工
         :return:返回Bool ,如果完工则为True,否则为False
         '''
-        tradeList = DTO().getTabColValue(thin='jour1', tabName ='TF_B_TRADE',
+        tradeList = DTO().getTabColValue(thin=route, tabName ='TF_B_TRADE',
                             ColName = 'SUBSCRIBE_STATE,TRADE_ID,TRADE_TYPE_CODE',
                             expr ="ORDER_ID='{}'".format(orderId))
         logger.info(tradeList)
         print('=========len(tradeList)',len(tradeList))
-
-        tradeHisList = DTO().getTabColValue(thin='jour1', tabName ='TF_B_TRADE_{}'.format(time.strftime("%Y")),
+        tradeHisList = DTO().getTabColValue(thin=route, tabName ='TF_B_TRADE_{}'.format(time.strftime("%Y")),
                             ColName = 'SUBSCRIBE_STATE,TRADE_ID,TRADE_TYPE_CODE',
                             expr ="ORDER_ID='{}'".format(orderId))
         logger.info(tradeHisList)
@@ -72,15 +74,21 @@ class DataCheck(DataMap):
             logger.info('获取失败')
             return False
 
-    def retOrderTrace(self,orderId):
+    def retOrderTrace(self,orderId,route=''):
         '''
         根据OrderId查询工单轨迹,返回工单执行详情
         :param orderId:
         :return:
         '''
-        OrderTraceList= self.getTabColValue(thin='jour1', tabName ='TL_B_ORDER_TRACE_{}'.format(time.strftime("%Y")),
-                            ColName = 'ACTIVE_CODE,ACTIVE_CODE,RESULT_CODE,RESULT_INFO',
-                            expr ="ORDER_ID='{}'".format(orderId))
+        # OrderTraceList= self.getTabColValue(thin='jour1', tabName ='TL_B_ORDER_TRACE_{}'.format(time.strftime("%Y")),
+        #                     ColName = 'ACTIVE_CODE,ACTIVE_CODE,RESULT_CODE,RESULT_INFO',
+        #                     expr ="ORDER_ID='{}'".format(orderId))
+        try:
+            OrderTraceList = self.qryDataMapExcatByCond(tabName='TL_B_ORDER_TRACE',sqlref='SEL_BY_ORDID',cond=(time.strftime("%Y"),orderId),route=route)
+            logger.info('业务受理订单轨迹:{}'.format(OrderTraceList))
+        except:
+            logger.info('查询结果为空')
+            OrderTraceList =[]
         return OrderTraceList
 
     def getSubTrades(self,orderId,route):
@@ -161,14 +169,18 @@ class DataCheck(DataMap):
 
 if __name__ == '__main__':
     data = DataCheck()
+    # data.dealMainOrder(orderId='3118011007183133')
+    trace=data.retOrderTrace(orderId='3121010338677527')
+    print('++++是否完工:')
+    print(trace)
     # res = data.checkOrderFinish(orderId='7420010726686661')
     # result = test.updateRealNameInfoBySerialNum(accessNum='13639750374')
     # result = test.getCasePara(sceneCode='DstUsDeskTopTel')
     # data.dealMainOrder(orderId='7120120318684811')
     # res = data.retOrderTrace(orderId='7120120318684811')
     # print(res)
-    subTrade = data.retAllSubTradeData(orderId='3120121538644203',route='jour42')
-    print(subTrade)
+    # subTrade = data.retAllSubTradeData(orderId='3120121538644203',route='jour42')
+    # print(subTrade)
 
 
 

@@ -24,11 +24,36 @@ class DealSuiteExec(Dto):
         # return self.qryDataMapExcatByCond(tabName=self.tab,sqlref='SEL_BY_SUITE_CODE',cond=suiteCode)
         return self.retDataMapListByCond(tabName=self.tab,sqlref='SEL_BY_SUITE_CODE',cond=suiteCode)
 
+    def get_ExecPlanBySuiteAndSceneCode(self,suiteCode,sceneCode):
+        '''
+        通过suiteCode和sceneCode 获取案例执行计划
+        :param suiteCode:
+        :return:
+        '''
+        # return self.qryDataMapExcatByCond(tabName=self.tab,sqlref='SEL_BY_SUITE_CODE',cond=suiteCode)
+        return self.retDataMapListByCond(tabName=self.tab,sqlref='SEL_BY_SUITE_SCENE_CODE',cond=(suiteCode,sceneCode))
+
     def get_execParaBySuiteCode(self,suiteCode):
         '''根据suiteCode先获取案例列表，并返回案例执行参数EXEC_PARAMS'''
         suite = self.get_ExecPlanBySuiteCode(suiteCode)
         logger.info('获取的套件明细数据:{}'.format(suite))
         return ConvertParas(suite)
+
+    def get_ParaBySuiteSceneCode(self,suiteCode,sceneCode):
+        '''根据suiteCode和sceneCode获取案例列表，并返回案例执行参数EXEC_PARAMS'''
+        suite = self.get_ExecPlanBySuiteAndSceneCode(suiteCode,sceneCode)
+        logger.info('获取的套件明细数据:{}'.format(suite))
+        return ConvertParas(suite)
+
+    def get_casePathBySuiteCode(self,suiteCode):
+        '''
+        通过suiteCode 获取案例执行计划
+        :param suiteCode:
+        :return:
+        '''
+        # return self.qryDataMapExcatByCond(tabName=self.tab,sqlref='SEL_BY_SUITE_CODE',cond=suiteCode)
+        return self.retDataMapListByCond(tabName=self.tab,sqlref='SEL_PATH_BY_CODE',cond=suiteCode)
+
 
     # caseParaList = []
     # for i in range(0,len(suite)):
@@ -39,7 +64,8 @@ class DealSuiteExec(Dto):
 
     def get_execPathBySuiteCode(self,suiteCode):
         '''获取测试套件下所有案例到python文件所在路径'''
-        suite = self.get_ExecPlanBySuiteCode(suiteCode)
+        # suite = self.retDataMapListByCond(tabName=self.tab,sqlref='SEL_PATH_BY_CODE',cond=suiteCode)
+        suite = self.get_casePathBySuiteCode(suiteCode)
         pathList = []
         for i in range(0,len(suite)):
             if suite[i]['PATH'] is not None:
@@ -77,13 +103,14 @@ class DealSuiteExec(Dto):
 
 if __name__ == '__main__':
     su = DealSuiteExec()
-    su.upd_resultBySuiteCaseId(suite_case_id='202012041139501068',actual_result='不通过111313')
-    su.upd_orderIdBySuiteCaseId(suite_case_id='202012041139501068',orderId='20201229003263566')
-    su.upd_RuleChkBySuiteCaseId(suite_case_id='202012041139501068',rule_chkmsg='号码错误')
+    # su.upd_resultBySuiteCaseId(suite_case_id='202012041139501068',actual_result='不通过111313')
+    # su.upd_orderIdBySuiteCaseId(suite_case_id='202012041139501068',orderId='20201229003263566')
+    # su.upd_RuleChkBySuiteCaseId(suite_case_id='202012041139501068',rule_chkmsg='号码错误')
 
-    # coreSuite = su.get_execParaBySuiteCode(suiteCode='CoreBusiTest')
-    # print("---------------------------------------")
-    # print(coreSuite)
+    # coreSuite = su.get_execPathBySuiteCode(suiteCode='SvcStateChgTest')
+    prodChg_suite = su.get_ParaBySuiteSceneCode(suiteCode='ProdChgTest',sceneCode='AddElements')
+    print("---------------------------------------")
+    print(prodChg_suite)
     # pathSuite = su.get_execPathBySuiteCode(suiteCode='CoreBusiTest')
     # print("=========================")
     # print(pathSuite)

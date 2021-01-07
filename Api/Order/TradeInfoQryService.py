@@ -151,10 +151,10 @@ if __name__ == '__main__':
     TradeQryService = TradeQryService()
 
     # trade = TradeQryService.queryTradeHisByTradeId(tradeId='3121010287959494')
-    trade = TradeQryService.queryTradeByTradeId(tradeId='3121010287959494')
-    # trade = TradeQryService.queryTradeBySnRoute(serialNum='073183914727')
-    print(trade)
-    print(type(trade))
+    # trade = TradeQryService.queryTradeByTradeId(tradeId='3121010287959494')
+    # # trade = TradeQryService.queryTradeBySnRoute(serialNum='073183914727')
+    # print(trade)
+    # print(type(trade))
     # tradeH = TradeQryService.queryHTradeByOrderIdRoute(orderId='3121010238677296')
     # print(tradeH)
     # unFinishTrade=TradeQryService.getUnfinishTradeBySerialNum(serialNum='18711041437')
@@ -162,4 +162,5 @@ if __name__ == '__main__':
     # print(len(unFinishTrade))
 
     # TradeQryService.getTradeByUserId(tradeTypeCode='90',userId='3106022702310071')
-    # TradeQryService.queryTradeByOrderIdRoute(orderId='3120123138677092')
+    tradeInfos = TradeQryService.queryTradeByOrderIdRoute(orderId='3121010338677527')
+    print(tradeInfos)
