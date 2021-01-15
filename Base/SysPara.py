@@ -28,7 +28,7 @@ class SysPara():
         if paramCode == '' or paramAttr=='':
             raise RuntimeError('paramCode和paramAttr入参不允许空')
 
-        sql = """select param_value from autotest_sys_para where prov_Code ='{}' and  param_Attr ='{}'  and  param_Code ='{}' ;  
+        sql = """select param_value from autotest_sys_para where prov_Code ='{}' and  param_Attr ='{}'  and  param_Code ='{}' AND END_DATE > SYSDATE();  
               """.format(provCode,paramAttr,paramCode)
         logger.info(sql)
         try:

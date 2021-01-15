@@ -19,55 +19,428 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dbbb49fd-67ad-4dcf-bf93-689cf9ecb165" name="Default Changelist" comment="modify 抽象参数转换处理">
-      <change afterPath="$PROJECT_DIR$/Common/SuiteExec.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229205835.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229205851.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229210039.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229210213.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229210228.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211017.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211032.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211236.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211252.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211309.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211836.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211920.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229211942.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212018.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212052.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212102.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212121.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212126.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212156.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Image/20201229/20201229212217.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_20_58_24.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_00_28.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_02_02.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_10_06.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_12_15.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_18_25.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/2020-12-29_21_19_54.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229211309.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229212052.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229212126.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Run/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Run/confRun.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Run/suiteCase.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestCases/group/CrtUsDeskTopTelTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestCases/group/GrpBusiAcceptTest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestCases/group/GrpMebBusiTest.py" afterDir="false" />
+    <list default="true" id="dbbb49fd-67ad-4dcf-bf93-689cf9ecb165" name="Default Changelist" comment="湖南UI自动化业务组件以及用例开发@20210115">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Api/Order/UserProductService.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107204802.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107204816.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107204818.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107204845.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107204953.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205034.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205258.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205317.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205318.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205337.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205341.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205812.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205827.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205828.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205849.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107205929.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210045.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210103.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210414.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210416.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210437.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210517.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210530.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210545.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210547.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210611.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210651.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210706.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210708.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210726.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210730.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107210826.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213118.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213223.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213225.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213235.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213312.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213333.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213335.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213345.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213616.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213631.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213633.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213653.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213733.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213734.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213746.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213800.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213802.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213825.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213906.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213920.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213923.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213946.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107213950.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107214116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210107/20210107214117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225749.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225804.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225805.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225830.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225931.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225945.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108225946.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108230012.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108230431.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108230445.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108230447.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108230511.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231018.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231020.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231043.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231800.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231814.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231816.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231834.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108231926.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108233209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108233223.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108233225.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210108/20210108233244.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111155708.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111155718.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111155720.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111155739.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111160353.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111160403.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111160406.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111160431.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111160507.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111165900.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111165911.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111165913.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111170256.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111170306.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111170308.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193034.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193045.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193323.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193333.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193334.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193751.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193801.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193803.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193947.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193957.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111193958.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111194030.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111194541.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111194550.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111194552.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111194632.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195705.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195715.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195718.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111195802.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111203353.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111203403.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111203405.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111203423.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111203444.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111203525.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204008.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204017.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204019.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204341.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204353.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204356.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204419.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204508.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204654.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204708.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204709.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204747.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204830.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204848.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204850.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111204935.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111205016.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111205026.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111205028.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111205111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220806.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220816.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220817.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220837.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220916.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220929.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220939.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111220940.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221018.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221031.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221041.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221042.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111221228.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111224829.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111224838.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111224840.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111225554.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111225603.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111225605.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111230342.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111230352.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111230354.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210111/20210111230511.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112095906.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112095916.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112095917.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112100019.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104223.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104236.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104246.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104248.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104258.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104316.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104326.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104328.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104338.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104355.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104406.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104407.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104417.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104436.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104446.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104448.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104543.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104557.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104609.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104612.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112104728.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105048.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105156.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105212.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105315.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105359.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105430.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112105443.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112211640.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112211815.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112212145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112212150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112212528.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112212723.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112212734.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112212736.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112213057.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112213106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112213108.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112215202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112215210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/20210112/20210112215212.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-02.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-03.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-04.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-05.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-06.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-07.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-08.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-11.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Logs/2021-01-12.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PageObj/order/person/ChangeCard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2021-01-05_11_38_31.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2021-01-05_20_16_19.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2021-01-11_22_07_56.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/2021-01-12_10_39_49.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13574114343_20210105101409.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13574114343_20210105101512.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13574114343_20210105101612.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13574114343_20210105101712.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105110843.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105110936.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105111037.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105111136.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105111230.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105113927.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105114023.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105114124.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105114217.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105115545.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105115742.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105115847.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/停开机业务受理测试记录13787203037_20210105115957.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105101408.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105101512.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105101612.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105101711.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105111036.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105111136.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210105/校验失败_20210105113927.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210106/业务受理提示信息_20210106103947.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210106/主产品变更测试记录15874139293_20210106144831.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210106/主产品变更测试记录15874139293_20210106145758.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210106/校验失败_20210106144814.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210106/校验失败_20210106145757.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/业务受理提示信息_20210107213235.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/业务受理提示信息_20210107213346.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/主产品变更测试记录15111008452_20210107191717.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/主产品变更测试记录15111008452_20210107191849.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/主产品变更测试记录15111008452_20210107192133.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/主产品变更测试记录15111106843_20210107210827.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/主产品变更测试记录15243621424_20210107214117.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/删除资费_服务测试记录15111048902_20210107195259.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/新增资费_服务测试记录15111106843_20210107210018.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/新增资费_服务测试记录15111106843_20210107210518.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/新增资费_服务测试记录15243621424_20210107213734.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/校验失败_20210107192132.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/校验失败_20210107210000.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/校验失败_20210107210517.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/校验失败_20210107210826.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/校验失败_20210107213734.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210107/校验失败_20210107214117.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210108/测试号码_15874860808订购平台服务测试记录99078428_20210108231926.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/13974862507办理营销活动99967823_测试记录_20210111230529.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/业务受理提示信息_20210111203444.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945平台服务_99081371变更测试记录20210111204642_20210111204804.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945平台服务_99081371变更测试记录20210111204816_20210111205000.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945平台服务_99081371变更测试记录20210111205014_20210111205113.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945平台服务_99081371变更测试记录20210111220927_20210111221018.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945平台服务_99081371变更测试记录20210111221029_20210111221125.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945平台服务_99081371变更测试记录20210111221136_20210111221228.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945订购平台服务测试记录99081371_20210111204628.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13548966945订购平台服务测试记录99081371_20210111220916.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13787173972平台服务_99081371变更测试记录20210111193943_20210111194030.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13787173972平台服务_99081371变更测试记录20210111194537_20210111195007.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13787173972平台服务_99081371变更测试记录20210111195125_20210111195214.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13787173972平台服务_99081371变更测试记录20210111195701_20210111200918.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210111/测试号码_13787173972订购平台服务测试记录99073092_20210111160520.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/13467512224办理营销活动99967826_测试记录_20210112104544.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/13974862507办理营销活动99967823_测试记录_20210112100021.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/15274952168办理营销活动99968710_测试记录_20210112105023.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/15802621270办理营销活动99967194_测试记录_20210112104224.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/15874914951办理营销活动99967821_测试记录_20210112105346.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/业务受理提示信息_20210112104258.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/业务受理提示信息_20210112104338.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reports/document/20210112/业务受理提示信息_20210112104418.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/person/PlatSvcAddTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/person/PlatSvcModTest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestCases/person/SaleActiveTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-12-24_10_40_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2020-12-24_10_40__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/ApiDef.py" beforeDir="false" afterPath="$PROJECT_DIR$/Api/ApiDef.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Api/Order/QueryUserInfoOpenService.py" beforeDir="false" afterPath="$PROJECT_DIR$/Api/Order/QueryUserInfoOpenService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Base/MyDBOper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/MyDBOper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/dealParas.py" beforeDir="false" afterPath="$PROJECT_DIR$/Common/dealParas.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Common/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/Common/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base/Mylog.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/Mylog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Base/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/Base/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Check/PageCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Check/PageCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Check/RuleCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/Check/RuleCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/SuiteExec.py" beforeDir="false" afterPath="$PROJECT_DIR$/Common/SuiteExec.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/DataMgnt/DataMap.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/DataMgnt/DataMap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225100848.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225100932.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225101501.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225101709.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225102001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225102135.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225102549.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225102759.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225102957.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104428.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104443.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104736.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104750.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104815.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104829.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104849.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104903.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104921.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104936.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104939.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104940.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225104959.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105014.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105033.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105047.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105142.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105203.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105219.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105239.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105328.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105343.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105401.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201225/20201225105415.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229104357.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229104538.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229104743.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229104914.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229105025.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229105234.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229105313.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/20201229/20201229105328.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/2020-12-29.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/2020-12-29.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestCases/SmkTest/GroupMenuSmkTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/SmkTest/GroupMenuSmkTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestCases/person/OfferOperTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/OfferOperTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allrun.py" beforeDir="false" afterPath="$PROJECT_DIR$/allrun.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/cust/GroupMebAdd.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/cust/GroupMebAdd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/loginPart.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/loginPart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/login_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/login_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/mainpage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/search_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/search_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/ngboss/testpage.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/ngboss/testpage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/BizCommon/DealGroupEleBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/BizCommon/DealGroupEleBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/BizCommon/DealGroupMebElements.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/BizCommon/DealGroupMebElements.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/BizCommon/ElementPartBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/BizCommon/ElementPartBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/BizCommon/PayFeePart.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/BizCommon/PayFeePart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/BizCommon/RealNamePart.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/BizCommon/RealNamePart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/group/BusiAccept/GroupBusiBase.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/group/BusiAccept/GroupBusiBase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/group/BusiAccept/GroupOfferAccept.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/group/BusiAccept/GroupOfferAccept.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/person/ChgSvcState.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/person/ChgSvcState.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/person/CreateUser.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/person/CreateUser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/person/PlatSvcOrder.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/person/PlatSvcOrder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/person/ProductChange.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/person/ProductChange.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PageObj/order/person/SaleActiveAccept.py" beforeDir="false" afterPath="$PROJECT_DIR$/PageObj/order/person/SaleActiveAccept.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/20201224/个人业务重点菜单冒烟自动化测试报告自动化测试报告20201224220345.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/20201224/个人业务重点菜单冒烟自动化测试报告自动化测试报告20201224220345.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/20201229/集团VPMN商品订购自动化测试报告20201229104733.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reports/2021-01-05_11_54_54.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/document/20201225/业务校验_20201225104940.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229211309.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229212052.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reports/document/20201229/业务校验_20201229212126.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run/suiteCase.py" beforeDir="false" afterPath="$PROJECT_DIR$/Run/suiteCase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/Api/group/ApiTest_GroupMemberOpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/Api/group/ApiTest_GroupMemberOpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/LoginPartTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/LoginPartTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/group/ChgGrpPayRelaTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/group/ChgGrpPayRelaTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/group/EcCampnOperTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/group/EcCampnOperTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/group/GrpMebBusiTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/group/GrpMebBusiTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/CancelTradeTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/CancelTradeTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/ChangeSimCardTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/ChangeSimCardTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/ChgOfferTest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/ChgPayRelaTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/ChgPayRelaTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/CreateUserTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/CreateUserTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/DelElementsTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/DelElementsTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/DestroyUserTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/DestroyUserTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/FamilyNetTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/FamilyNetTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/ResumeUserTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/ResumeUserTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/ShareActiveTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/ShareActiveTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestCases/person/ShareClusterTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/TestCases/person/ShareClusterTest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +468,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="5c3f6b14-a6d3-4960-a5aa-c0d32bfa7a86" />
+  <component name="JupyterTrust" id="6342627c-3075-4abf-b225-ca7943ede59b" />
   <component name="ProjectId" id="1m5I2QTw1Rvk1cGoXkV0yw6HTfu" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -107,8 +480,9 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/TestCases/group/CrtUsVPMNTest.py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/华南中心-湖南自动化/自动化/SmokeTestingV1.0" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RecentsManager">
@@ -123,7 +497,95 @@
       <recent name="E:\ProgramData\PycharmProjects\webtest_HNAN\TestCases\SmkTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.suiteCase">
+  <component name="RunManager" selected="Python.function">
+    <configuration name="ChgProdTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/person" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/person/ChgProdTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ChgSvcStateTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases/person" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/person/ChgSvcStateTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CreateBroad" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PageObj/order/person" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PageObj/order/person/CreateBroad.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CreateUser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PageObj/order/person" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PageObj/order/person/CreateUser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="CrtUsVPMNTest.py" type="PythonConfigurationType" factoryName="Python">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,6 +600,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/group/CrtUsVPMNTest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DataOper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Data/DataMgnt" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data/DataMgnt/DataOper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,6 +696,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PageCheck" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="webtest" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Check" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Check/PageCheck.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="PersonMenuSmkTest" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -234,7 +740,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SuiteExec" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="function" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -247,7 +753,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Common/SuiteExec.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Common/function.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -256,7 +762,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="allrun" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="testDDT" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="webtest" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -264,78 +770,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Run" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TestCases" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:\ProgramData\PycharmProjects\webtest_HNAN\allrun.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="allrun" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="webtest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/allrun.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="confRun" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="webtest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Run" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Run/confRun.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="suiteCase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="webtest" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Run" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Run/suiteCase.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TestCases/testDDT.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,25 +785,29 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.FamilyMenuSmkTest" />
+      <item itemvalue="Python.ChgProdTest" />
+      <item itemvalue="Python.ChgSvcStateTest" />
       <item itemvalue="Python.CrtUsVPMNTest.py" />
+      <item itemvalue="Python.FamilyMenuSmkTest" />
       <item itemvalue="Python.GroupMenuSmkTest" />
       <item itemvalue="Python.MenuSmokeTest" />
       <item itemvalue="Python.PersonMenuSmkTest" />
+      <item itemvalue="Python.testDDT" />
+      <item itemvalue="Python.DataOper" />
       <item itemvalue="Python tests.IntfsTest" />
       <item itemvalue="Python tests.MenuSmokeTest" />
-      <item itemvalue="Python.SuiteExec" />
-      <item itemvalue="Python.suiteCase" />
-      <item itemvalue="Python.allrun" />
-      <item itemvalue="Python.confRun" />
+      <item itemvalue="Python.CreateUser" />
+      <item itemvalue="Python.CreateBroad" />
+      <item itemvalue="Python.function" />
+      <item itemvalue="Python.PageCheck" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.suiteCase" />
-        <item itemvalue="Python.allrun" />
-        <item itemvalue="Python.confRun" />
-        <item itemvalue="Python.allrun" />
-        <item itemvalue="Python.SuiteExec" />
+        <item itemvalue="Python.function" />
+        <item itemvalue="Python.CreateBroad" />
+        <item itemvalue="Python.PageCheck" />
+        <item itemvalue="Python.DataOper" />
+        <item itemvalue="Python.CreateUser" />
       </list>
     </recent_temporary>
   </component>
@@ -388,7 +832,19 @@
       <workItem from="1608965679689" duration="543000" />
       <workItem from="1608966250425" duration="8366000" />
       <workItem from="1609138860718" duration="16403000" />
-      <workItem from="1609163261613" duration="30029000" />
+      <workItem from="1609163261613" duration="31484000" />
+      <workItem from="1609556969457" duration="17000" />
+      <workItem from="1609557036795" duration="15517000" />
+      <workItem from="1609639068667" duration="75865000" />
+      <workItem from="1609924350919" duration="913000" />
+      <workItem from="1609928474866" duration="13000" />
+      <workItem from="1609928518322" duration="21000" />
+      <workItem from="1609983812294" duration="17431000" />
+      <workItem from="1610157101031" duration="11000" />
+      <workItem from="1610157170154" duration="2135000" />
+      <workItem from="1610351061126" duration="33272000" />
+      <workItem from="1610457175047" duration="4755000" />
+      <workItem from="1610589412404" duration="46824000" />
     </task>
     <task id="LOCAL-00001" summary="modify 优化冒烟测试功能">
       <created>1608867937877</created>
@@ -411,7 +867,35 @@
       <option name="project" value="LOCAL" />
       <updated>1609213555808</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modify 测试套件完善">
+      <created>1609249674873</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609249674873</updated>
+    </task>
+    <task id="LOCAL-00005" summary="接口API自动化开发@20210102">
+      <created>1609581177377</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609581177377</updated>
+    </task>
+    <task id="LOCAL-00006" summary="接口API自动化开发+优化数据检查部分@20210107">
+      <created>1610023207608</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1610023207608</updated>
+    </task>
+    <task id="LOCAL-00007" summary="湖南UI自动化业务组件以及用例开发@20210115">
+      <created>1610721645026</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1610721645026</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,117 +918,159 @@
     <MESSAGE value="modify 优化冒烟测试功能" />
     <MESSAGE value="modify 路由设置yaml" />
     <MESSAGE value="modify 抽象参数转换处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify 抽象参数转换处理" />
+    <MESSAGE value="modify 测试套件完善" />
+    <MESSAGE value="接口API自动化开发@20210102" />
+    <MESSAGE value="接口API自动化开发+优化数据检查部分@20210107" />
+    <MESSAGE value="湖南UI自动化业务组件以及用例开发@20210115" />
+    <option name="LAST_COMMIT_MESSAGE" value="湖南UI自动化业务组件以及用例开发@20210115" />
   </component>
   <component name="WindowStateProjectService">
     <state x="405" y="166" key="#Notifications" timestamp="1608868019382">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
     <state x="405" y="166" key="#Notifications/0.0.1366.687@0.0.1366.687" timestamp="1608868019382" />
-    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609248626016">
+    <state x="49" y="185" key="#SQL_Dialects" timestamp="1610441744951">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.687@0.0.1366.687" timestamp="1609248626016" />
-    <state x="463" y="98" key="FileChooserDialogImpl" timestamp="1609208307405">
+    <state x="49" y="185" key="#SQL_Dialects/0.0.1366.687@0.0.1366.687" timestamp="1610441744951" />
+    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609814279366">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="463" y="98" key="FileChooserDialogImpl/0.0.1366.687@0.0.1366.687" timestamp="1609208307405" />
-    <state width="1323" height="246" key="GridCell.Tab.0.bottom" timestamp="1609249081758">
+    <state x="137" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.687@0.0.1366.687" timestamp="1609814279366" />
+    <state x="463" y="98" key="FileChooserDialogImpl" timestamp="1610606842453">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="246" key="GridCell.Tab.0.bottom/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
-    <state width="1323" height="246" key="GridCell.Tab.0.center" timestamp="1609249081758">
+    <state x="463" y="98" key="FileChooserDialogImpl/0.0.1366.687@0.0.1366.687" timestamp="1610606842453" />
+    <state width="1323" height="123" key="GridCell.Tab.0.bottom" timestamp="1610721727283">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="246" key="GridCell.Tab.0.center/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
-    <state width="1323" height="246" key="GridCell.Tab.0.left" timestamp="1609249081758">
+    <state width="1323" height="123" key="GridCell.Tab.0.bottom/0.0.1366.687@0.0.1366.687" timestamp="1610721727283" />
+    <state width="1323" height="4" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="123" key="GridCell.Tab.0.center" timestamp="1610721727282">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="246" key="GridCell.Tab.0.left/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
-    <state width="1323" height="246" key="GridCell.Tab.0.right" timestamp="1609249081758">
+    <state width="1323" height="123" key="GridCell.Tab.0.center/0.0.1366.687@0.0.1366.687" timestamp="1610721727282" />
+    <state width="1323" height="4" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="123" key="GridCell.Tab.0.left" timestamp="1610721727282">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="246" key="GridCell.Tab.0.right/0.0.1366.687@0.0.1366.687" timestamp="1609249081758" />
-    <state width="1323" height="270" key="GridCell.Tab.1.bottom" timestamp="1609246308194">
+    <state width="1323" height="123" key="GridCell.Tab.0.left/0.0.1366.687@0.0.1366.687" timestamp="1610721727282" />
+    <state width="1323" height="4" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="123" key="GridCell.Tab.0.right" timestamp="1610721727283">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="270" key="GridCell.Tab.1.bottom/0.0.1366.687@0.0.1366.687" timestamp="1609246308194" />
-    <state width="1323" height="270" key="GridCell.Tab.1.center" timestamp="1609246308193">
+    <state width="1323" height="123" key="GridCell.Tab.0.right/0.0.1366.687@0.0.1366.687" timestamp="1610721727283" />
+    <state width="1323" height="4" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="64" key="GridCell.Tab.1.bottom" timestamp="1610674927885">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="270" key="GridCell.Tab.1.center/0.0.1366.687@0.0.1366.687" timestamp="1609246308193" />
-    <state width="1323" height="270" key="GridCell.Tab.1.left" timestamp="1609246308193">
+    <state width="1323" height="64" key="GridCell.Tab.1.bottom/0.0.1366.687@0.0.1366.687" timestamp="1610674927885" />
+    <state width="1323" height="4" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="64" key="GridCell.Tab.1.center" timestamp="1610674927885">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="270" key="GridCell.Tab.1.left/0.0.1366.687@0.0.1366.687" timestamp="1609246308193" />
-    <state width="1323" height="270" key="GridCell.Tab.1.right" timestamp="1609246308193">
+    <state width="1323" height="64" key="GridCell.Tab.1.center/0.0.1366.687@0.0.1366.687" timestamp="1610674927885" />
+    <state width="1323" height="4" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="64" key="GridCell.Tab.1.left" timestamp="1610674927884">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state width="1323" height="270" key="GridCell.Tab.1.right/0.0.1366.687@0.0.1366.687" timestamp="1609246308193" />
+    <state width="1323" height="64" key="GridCell.Tab.1.left/0.0.1366.687@0.0.1366.687" timestamp="1610674927884" />
+    <state width="1323" height="4" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
+    <state width="1323" height="64" key="GridCell.Tab.1.right" timestamp="1610674927885">
+      <screen x="0" y="0" width="1366" height="687" />
+    </state>
+    <state width="1323" height="64" key="GridCell.Tab.1.right/0.0.1366.687@0.0.1366.687" timestamp="1610674927885" />
+    <state width="1323" height="4" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1609663855309" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1608966490467">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.687@0.0.1366.687" timestamp="1608966490466" />
-    <state x="275" y="76" key="Vcs.Push.Dialog.v2" timestamp="1609213578481">
+    <state x="275" y="76" key="Vcs.Push.Dialog.v2" timestamp="1610721672647">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="275" y="76" key="Vcs.Push.Dialog.v2/0.0.1366.687@0.0.1366.687" timestamp="1609213578481" />
-    <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608779195399">
+    <state x="275" y="76" key="Vcs.Push.Dialog.v2/0.0.1366.687@0.0.1366.687" timestamp="1610721672647" />
+    <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1610722181026">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.687@0.0.1366.687" timestamp="1608779195399" />
-    <state x="225" y="72" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1609160676310">
+    <state x="486" y="256" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.687@0.0.1366.687" timestamp="1610722181026" />
+    <state x="225" y="72" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1610438581349">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="225" y="72" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.687@0.0.1366.687" timestamp="1609160676310" />
-    <state x="414" y="61" width="678" height="626" key="find.popup" timestamp="1609212982032">
+    <state x="225" y="72" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.687@0.0.1366.687" timestamp="1610438581349" />
+    <state x="414" y="61" width="678" height="626" key="find.popup" timestamp="1610628269704">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="414" y="61" width="678" height="626" key="find.popup/0.0.1366.687@0.0.1366.687" timestamp="1609212982032" />
-    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup" timestamp="1609247277048">
+    <state x="414" y="61" width="678" height="626" key="find.popup/0.0.1366.687@0.0.1366.687" timestamp="1610628269704" />
+    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup" timestamp="1610632234958">
       <screen x="0" y="0" width="1366" height="687" />
     </state>
-    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup/0.0.1366.687@0.0.1366.687" timestamp="1609247277048" />
+    <state x="346" y="8" width="672" height="678" key="search.everywhere.popup/0.0.1366.687@0.0.1366.687" timestamp="1610632234958" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Base/MyDBOper.py</url>
+          <url>file://$PROJECT_DIR$/TestCases/person/SaleActiveTest.py</url>
           <line>63</line>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/PageObj/order/BizCommon/RealNamePart.py</url>
+          <line>85</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataOper.coverage" NAME="DataOper Coverage Results" MODIFIED="1609233117573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$confRun.coverage" NAME="confRun Coverage Results" MODIFIED="1609246825131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$Auth.coverage" NAME="Auth Coverage Results" MODIFIED="1609144385748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$QueryUserInfoOpenService.coverage" NAME="QueryUserInfoOpenService Coverage Results" MODIFIED="1609229015580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$function.coverage" NAME="function Coverage Results" MODIFIED="1609236129933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$CreateUser.coverage" NAME="CreateUser Coverage Results" MODIFIED="1610617482209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$QueryUserInfoOpenService.coverage" NAME="QueryUserInfoOpenService Coverage Results" MODIFIED="1609580593468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_ChgSvcStateTest_ChangeSvcStsTest_test_acceptStopOrOpen.coverage" NAME="Unittests for ChgSvcStateTest.ChangeSvcStsTest.test_acceptStopOrOpen Coverage Results" MODIFIED="1609763119410" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/person" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$FamilyMenuSmkTest.coverage" NAME="FamilyMenuSmkTest Coverage Results" MODIFIED="1608864429157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ApiDef.coverage" NAME="ApiDef Coverage Results" MODIFIED="1609213720534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$SuiteExec.coverage" NAME="SuiteExec Coverage Results" MODIFIED="1610456396530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$MenuSmokeTest.coverage" NAME="MenuSmokeTest Coverage Results" MODIFIED="1608817615011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$OrderOpenService.coverage" NAME="OrderOpenService Coverage Results" MODIFIED="1609646158226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$SubmitMsg.coverage" NAME="SubmitMsg Coverage Results" MODIFIED="1609660675065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/BizCommon" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataMap.coverage" NAME="DataMap Coverage Results" MODIFIED="1610451935076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$UserDiscntQryService.coverage" NAME="UserDiscntQryService Coverage Results" MODIFIED="1609580957703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataCheck.coverage" NAME="DataCheck Coverage Results" MODIFIED="1610022947180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ChgSvcState.coverage" NAME="ChgSvcState Coverage Results" MODIFIED="1609770729302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataFact.coverage" NAME="DataFact Coverage Results" MODIFIED="1608970498021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ChgProdTest.coverage" NAME="ChgProdTest Coverage Results" MODIFIED="1609860415646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$SysPara.coverage" NAME="SysPara Coverage Results" MODIFIED="1609141368152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$SaleActiveAccept.coverage" NAME="SaleActiveAccept Coverage Results" MODIFIED="1610416728591" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$PersonMenuSmkTest.coverage" NAME="PersonMenuSmkTest Coverage Results" MODIFIED="1608818621636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$YamlTest.coverage" NAME="YamlTest Coverage Results" MODIFIED="1608973198704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_CrtUsVPMNTest_CrtUsVpmnTest_testCrtUsVpmn.coverage" NAME="Unittests for CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn Coverage Results" MODIFIED="1609208273287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/group" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ChangeCard.coverage" NAME="ChangeCard Coverage Results" MODIFIED="1610459506722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$TestDataMgnt.coverage" NAME="TestDataMgnt Coverage Results" MODIFIED="1609835030425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$DataOper.coverage" NAME="DataOper Coverage Results" MODIFIED="1610624211483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$testDDT.coverage" NAME="testDDT Coverage Results" MODIFIED="1609815641292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$confRun.coverage" NAME="confRun Coverage Results" MODIFIED="1609246825131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Auth.coverage" NAME="Auth Coverage Results" MODIFIED="1609557193069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$function.coverage" NAME="function Coverage Results" MODIFIED="1610682486350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_PersonMenuSmkTest_PersonMenuTest.coverage" NAME="Unittests for PersonMenuSmkTest.PersonMenuTest Coverage Results" MODIFIED="1608817449327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$allrun.coverage" NAME="allrun Coverage Results" MODIFIED="1609246701391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$UserProductService.coverage" NAME="UserProductService Coverage Results" MODIFIED="1609655518875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$allrun__1_.coverage" NAME="allrun Coverage Results" MODIFIED="1609249035238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$ApiDef.coverage" NAME="ApiDef Coverage Results" MODIFIED="1609213720534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$SuiteExec.coverage" NAME="SuiteExec Coverage Results" MODIFIED="1609244554392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$MenuSmokeTest.coverage" NAME="MenuSmokeTest Coverage Results" MODIFIED="1608817615011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$PageCheck.coverage" NAME="PageCheck Coverage Results" MODIFIED="1608795192762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataMap.coverage" NAME="DataMap Coverage Results" MODIFIED="1609240788724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataCheck.coverage" NAME="DataCheck Coverage Results" MODIFIED="1608897967443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$PlatSvcOrder.coverage" NAME="PlatSvcOrder Coverage Results" MODIFIED="1610456180112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$CreateBroad.coverage" NAME="CreateBroad Coverage Results" MODIFIED="1610681712418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$PageCheck.coverage" NAME="PageCheck Coverage Results" MODIFIED="1610679946542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Check" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_in_testDDT_py.coverage" NAME="Unittests in testDDT.py Coverage Results" MODIFIED="1609815626392" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$login_page.coverage" NAME="login_page Coverage Results" MODIFIED="1609656172164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/ngboss" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ProductChange.coverage" NAME="ProductChange Coverage Results" MODIFIED="1610020209313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/order/person" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$mainpage.coverage" NAME="mainpage Coverage Results" MODIFIED="1608864253749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PageObj/ngboss" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$CrtUsVPMNTest_py.coverage" NAME="CrtUsVPMNTest.py Coverage Results" MODIFIED="1609210379867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/group" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$DataFact.coverage" NAME="DataFact Coverage Results" MODIFIED="1608970498021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$MyDBOper.coverage" NAME="MyDBOper Coverage Results" MODIFIED="1609239834714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$suiteCase.coverage" NAME="suiteCase Coverage Results" MODIFIED="1609249081744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$SysPara.coverage" NAME="SysPara Coverage Results" MODIFIED="1609141368152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$suiteCase.coverage" NAME="suiteCase Coverage Results" MODIFIED="1610606478785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Run" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_PlatSvcModTest_ModPlatSvc_test_PlatSvcMod.coverage" NAME="Unittests for PlatSvcModTest.ModPlatSvc.test_PlatSvcMod Coverage Results" MODIFIED="1610368995209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/person" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$OperExcel.coverage" NAME="OperExcel Coverage Results" MODIFIED="1608797541024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Base" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$PersonMenuSmkTest.coverage" NAME="PersonMenuSmkTest Coverage Results" MODIFIED="1608818621636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/SmkTest" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$dealParas.coverage" NAME="dealParas Coverage Results" MODIFIED="1609230120318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$yamlAnaly.coverage" NAME="yamlAnaly Coverage Results" MODIFIED="1609138947075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
     <SUITE FILE_PATH="coverage/webtest_HNAN$ymlAnaly.coverage" NAME="ymlAnaly Coverage Results" MODIFIED="1608974564413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Common" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$YamlTest.coverage" NAME="YamlTest Coverage Results" MODIFIED="1608973198704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
-    <SUITE FILE_PATH="coverage/webtest_HNAN$Unittests_for_CrtUsVPMNTest_CrtUsVpmnTest_testCrtUsVpmn.coverage" NAME="Unittests for CrtUsVPMNTest.CrtUsVpmnTest.testCrtUsVpmn Coverage Results" MODIFIED="1609208273287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/group" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$TradeInfoQryService.coverage" NAME="TradeInfoQryService Coverage Results" MODIFIED="1610022150950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Api/Order" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$ChgSvcStateTest.coverage" NAME="ChgSvcStateTest Coverage Results" MODIFIED="1609815972939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TestCases/person" />
+    <SUITE FILE_PATH="coverage/webtest_HNAN$GenTestData.coverage" NAME="GenTestData Coverage Results" MODIFIED="1610438582122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Data/DataMgnt" />
   </component>
 </project>

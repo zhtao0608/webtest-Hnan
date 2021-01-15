@@ -13,6 +13,7 @@ import re
 import inspect
 from Base.SysPara import SysPara
 from collections import defaultdict
+from  Common.TestAsserts import Assertion as alert
 
 logger = LogManager('function').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
@@ -146,6 +147,13 @@ def dict_get(dict, objkey, default):
 # ret3 = dict_get(dictest3, 'flowId', None)
 # print(ret)
 # print(ret3)
+def getOrdIdFromStr(String):
+	'''分割字符串'''
+	print(String)
+	String.replace('\t', '').replace('\r', '').replace('\n','')
+	str_1 = String[String.rfind('客户订单标识'):]
+	return getDigitFromStr(str_1)
+
 
 def getDigitFromStr(String):
 	'''从String字符串中提取数字部分'''
@@ -288,11 +296,21 @@ def retStackFunc():
 
 
 if __name__ == '__main__':
-	arg = ''
-	print(isEmpty(arg))
+	title  = '111'
+	flag = alert().verifyassertIn('错误提示', title) if alert().verifyassertIn('错误提示', title) else alert().verifyassertIn('业务受理失败', title)
+	print('*****',flag)
 
+	# lst_1=['错误提示', '业务受理失败']
+	# print(str(lst_1))
+	# print(type(str(lst_1)))
+	string_1 = "宽带账号：731X17663601 \
+				客户订单标识：3121011538739298 \
+				点【确定】继续业务受理。"
+	vaule_list = getOrdIdFromStr(string_1)
+	print('====',vaule_list)
 
-
+	# arg = ''
+	# print(isEmpty(arg))
 
 	# frame = "[FrameInfo(frame=<frame at 0x0000028A88C757E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', line 230, code retStackFunc>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Common\\function.py', lineno=229, function='retStackFunc', code_context=['\texecInfoList = inspect.stack()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8A5B4C58, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', line 22, code checkRule>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Check\\RuleCheck.py', lineno=22, function='checkRule', code_context=['        stackInfo = retStackFunc()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A88C779E8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', line 46, code accept_CrtUs>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\PageObj\\order\\group\\BusiAccept\\GroupOfferAccept.py', lineno=46, function='accept_CrtUs', code_context=['        RuleCheckBefore(self.driver).checkRule(scene) #\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFFC8D768, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 50, code testCrtUsVpmn>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=50, function='testCrtUsVpmn', code_context=['                                                   contractId=contractId,elementAttrBizList=elementAttrBizList)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A896D3220, file 'D:\\Program File\\python37\\lib\\site-packages\\ddt.py', line 151, code wrapper>, filename='D:\\Program File\\python37\\lib\\site-packages\\ddt.py', lineno=151, function='wrapper', code_context=['        return func(self, *args, **kwargs)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A888F36B8, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 615, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=615, function='run', code_context=['                    testMethod()\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B8E0, file 'D:\\Program File\\python37\\lib\\unittest\\case.py', line 663, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\case.py', lineno=663, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A89628228, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 122, code run>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=122, function='run', code_context=['                test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A8969B728, file 'D:\\Program File\\python37\\lib\\unittest\\suite.py', line 84, code __call__>, filename='D:\\Program File\\python37\\lib\\unittest\\suite.py', lineno=84, function='__call__', code_context=['        return self.run(*args, **kwds)\n'], index=0), FrameInfo(frame=<frame at 0x0000028A882383D8, file 'E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', line 971, code run>, filename='E:\\ProgramData\\PycharmProjects\\webtest-Qhai\\Base\\HTMLTestRunnerCNNew.py', lineno=971, function='run', code_context=['        test(result)\n'], index=0), FrameInfo(frame=<frame at 0x0000028AFF9FE9F8, file 'E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', line 66, code <module>>, filename='E:/ProgramData/PycharmProjects/webtest-Qhai/TestCases/group/CrtUsVPMNTest.py', lineno=66, function='<module>', code_context=['        runner.run(mySuitePrefixAdd(CrtUsVpmnTest,'test'))\n'], index=0)]"
 	# print(type(frame))
@@ -539,20 +557,20 @@ if __name__ == '__main__':
 # 		# grp_inst_id = ret1[i]['SUBSCRIBER_INS_ID']
 # 		# print("订购的集团商品名称:" + offername)
 # 		# print("订购的集团用户ID:" + grp_inst_id)
-	lista = [{'serialNum':'15969006462','shortCode':'681618','userId':'7008080716050718'},
-			 {'serialNum': '18787961713', 'shortCode': '681713', 'userId': '9110102326860610'},
-			 {'serialNum': '15096963621', 'shortCode': '693621', 'userId': '7208102218270765'}
-			]
-	listb = [{'groupId':8723409920,'GroupName':'大理市海东镇上和完小（校讯通）','OfferInstId':'7295021394647174'},
-			 {'groupId': 8723409625, 'GroupName': '祥云县银冠希望小学','OfferInstId': '7295012691118641'},
-			 {'groupId': 8711437379, 'GroupName': '巍山红河源初级中学','OfferInstId': '7291092369525517'}
-			]
-	listc = [{'simId':89860001240642520092},{'simId':89860076240442072049},{'simId':89860057245448890016}]
-	print(lista)
-	print(listb)
-	newlist = join_dictlists(lista,listb)
-	newlist = join_dictlists(newlist,listc)
-	print(newlist)
+# 	lista = [{'serialNum':'15969006462','shortCode':'681618','userId':'7008080716050718'},
+# 			 {'serialNum': '18787961713', 'shortCode': '681713', 'userId': '9110102326860610'},
+# 			 {'serialNum': '15096963621', 'shortCode': '693621', 'userId': '7208102218270765'}
+# 			]
+# 	listb = [{'groupId':8723409920,'GroupName':'大理市海东镇上和完小（校讯通）','OfferInstId':'7295021394647174'},
+# 			 {'groupId': 8723409625, 'GroupName': '祥云县银冠希望小学','OfferInstId': '7295012691118641'},
+# 			 {'groupId': 8711437379, 'GroupName': '巍山红河源初级中学','OfferInstId': '7291092369525517'}
+# 			]
+# 	listc = [{'simId':89860001240642520092},{'simId':89860076240442072049},{'simId':89860057245448890016}]
+# 	print(lista)
+# 	print(listb)
+# 	newlist = join_dictlists(lista,listb)
+# 	newlist = join_dictlists(newlist,listc)
+# 	print(newlist)
 # 	subofferList = '800001,990013,990013445,99315 '.replace(' ','').split(',')
 # 	print(subofferList)
 #

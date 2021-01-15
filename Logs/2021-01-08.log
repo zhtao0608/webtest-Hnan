@@ -1,0 +1,671 @@
+【INFO】-【2021-01-08 22:56:41】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 22:56:41】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 22:56:41】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 22:56:41】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 22:56:41】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:56:41】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:57:35】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 22:57:35】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 22:57:35】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 22:57:35】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 22:57:35】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:57:35】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:57:45】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.Url' ;  
+              
+【INFO】-【2021-01-08 22:57:45】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数http://10.230.81.150:8080/portal
+【INFO】-【2021-01-08 22:57:48】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->STAFF_ID，value值->
+【INFO】-【2021-01-08 22:57:48】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.8862053972664947-1")>
+【INFO】-【2021-01-08 22:57:49】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->PASSWORD，value值->
+【INFO】-【2021-01-08 22:57:49】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.8862053972664947-2")>
+【INFO】-【2021-01-08 22:57:50】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->loginBtn，value值->
+【INFO】-【2021-01-08 22:57:50】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.8862053972664947-3")>
+【INFO】-【2021-01-08 22:57:54】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【40】行 >> 查询DATA_MAPPING结果:[{'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}]
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【48】行 >> {'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【49】行 >> 
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【56】行 >> 查询返回的字典结果:{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【58】行 >> 查询DataMapping结果返回:[{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}]
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【190】行 >> ======查询sql语句:SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='crm9431'
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【199】行 >> ======查询sql语句数据库返回结果:[{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}]
+【INFO】-【2021-01-08 22:57:54】 - 【DataMap】 - 【DataMap.py】 - 第【205】行 >> 返回当前查询结果:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 22:57:54】 - 【MainPage】 - 【mainpage.py】 - 第【92】行 >> 读取的菜单配置:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 22:57:54】 - 【MainPage】 - 【mainpage.py】 - 第【97】行 >> 转换后菜单配置:{'func_id': 'crm9431', 'menu_cata': 'crm9000', 'parent_func_id': 'crm9400', 'menu_path': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'module': '个人业务', 'iscore': '1', 'is_leaf': '1', 'test_result': ''}
+【INFO】-【2021-01-08 22:57:54】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->navframe_def，value值->
+【INFO】-【2021-01-08 22:57:54】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.5637851765127881-1")>
+【INFO】-【2021-01-08 22:57:54】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->homeTab_tab_li_6，value值->
+【INFO】-【2021-01-08 22:57:54】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-1")>
+【INFO】-【2021-01-08 22:57:56】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->menuTab_tab_li_0，value值->
+【INFO】-【2021-01-08 22:57:56】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-2")>
+【INFO】-【2021-01-08 22:57:58】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9000']，value值->
+【INFO】-【2021-01-08 22:57:58】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-3")>
+【INFO】-【2021-01-08 22:58:01】 - 【MainPage】 - 【mainpage.py】 - 第【112】行 >> 菜单目录：crm9400
+【INFO】-【2021-01-08 22:58:01】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9400']，value值->
+【INFO】-【2021-01-08 22:58:01】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-4")>
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-5")>
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-5")>
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.3613487225439225-5")>
+【INFO】-【2021-01-08 22:58:04】 - 【MainPage】 - 【mainpage.py】 - 第【127】行 >> 进入菜单路径 :个人业务 > 特殊业务类 > 平台业务 > 重复菜单-废平台业务办理
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//iframe[contains(@src,'/web-order/order?service=page/order.page.pc.person.plat.PlatOrder')]，value值->
+【INFO】-【2021-01-08 22:58:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.5637851765127881-2")>
+【INFO】-【2021-01-08 22:58:04】 - 【MainPage】 - 【mainpage.py】 - 第【143】行 >> 进入菜单Iframe:<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.5637851765127881-2")>
+【INFO】-【2021-01-08 22:58:05】 - 【MainPage】 - 【mainpage.py】 - 第【115】行 >> 菜单ID：crm9431
+【INFO】-【2021-01-08 22:58:05】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【27】行 >> 进入平台业务办理页面
+【INFO】-【2021-01-08 22:58:06】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->AUTH_SERIAL_NUMBER，value值->
+【INFO】-【2021-01-08 22:58:06】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-1")>
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:08】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:09】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:58:09】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:58:14】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 22:58:14】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 22:58:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 22:58:19】 - 【MainPlanSelectPart】 - 【ElementPartBase.py】 - 第【80】行 >> 业务校验检查结果：
+【INFO】-【2021-01-08 22:58:24】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 22:58:24】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 22:58:30】 - 【PageAssert】 - 【PageCheck.py】 - 第【235】行 >> 没有弹出DialogPage提示,跳出
+【INFO】-【2021-01-08 22:58:30】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CustInfoViewPart，value值->
+【INFO】-【2021-01-08 22:58:30】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-3")>
+【INFO】-【2021-01-08 22:58:32】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[contains(@ontap,'platOrderAddItem')]，value值->
+【INFO】-【2021-01-08 22:58:32】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-4")>
+【INFO】-【2021-01-08 22:58:34】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->myplatform_tab_li_2，value值->
+【INFO】-【2021-01-08 22:58:34】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-5")>
+【INFO】-【2021-01-08 22:58:37】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->COND，value值->
+【INFO】-【2021-01-08 22:58:37】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-6")>
+【INFO】-【2021-01-08 22:58:38】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.searchOffer')]，value值->
+【INFO】-【2021-01-08 22:58:38】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-7")>
+【INFO】-【2021-01-08 22:58:45】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 22:58:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.do_subPlatOffer')]，value值->
+【INFO】-【2021-01-08 22:58:50】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//*[@id="CondPart"]/div[1]，value值->
+【INFO】-【2021-01-08 22:58:50】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-8")>
+【INFO】-【2021-01-08 22:58:56】 - 【base】 - 【base.py】 - 第【77】行 >> locator参数类型错误，必须传元祖类型：loc = ("id", "value1")
+【INFO】-【2021-01-08 22:58:56】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【67】行 >> 平台服务%s未订购成功
+【INFO】-【2021-01-08 22:59:02】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 22:59:02】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CSSUBMIT_BUTTON，value值->
+【INFO】-【2021-01-08 22:59:02】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="3b962aa9dbbbcc0019ddcd399d9072fb", element="0.009818599389970206-9")>
+【INFO】-【2021-01-08 22:59:18】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 22:59:18】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 22:59:18】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 22:59:18】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 22:59:18】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:59:18】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:59:26】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.Url' ;  
+              
+【INFO】-【2021-01-08 22:59:26】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数http://10.230.81.150:8080/portal
+【INFO】-【2021-01-08 22:59:30】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->STAFF_ID，value值->
+【INFO】-【2021-01-08 22:59:30】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.21398598480210196-1")>
+【INFO】-【2021-01-08 22:59:30】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->PASSWORD，value值->
+【INFO】-【2021-01-08 22:59:30】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.21398598480210196-2")>
+【INFO】-【2021-01-08 22:59:31】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->loginBtn，value值->
+【INFO】-【2021-01-08 22:59:31】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.21398598480210196-3")>
+【INFO】-【2021-01-08 22:59:35】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【40】行 >> 查询DATA_MAPPING结果:[{'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}]
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【48】行 >> {'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【49】行 >> 
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【56】行 >> 查询返回的字典结果:{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【58】行 >> 查询DataMapping结果返回:[{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}]
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【190】行 >> ======查询sql语句:SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='crm9431'
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【199】行 >> ======查询sql语句数据库返回结果:[{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}]
+【INFO】-【2021-01-08 22:59:35】 - 【DataMap】 - 【DataMap.py】 - 第【205】行 >> 返回当前查询结果:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 22:59:35】 - 【MainPage】 - 【mainpage.py】 - 第【92】行 >> 读取的菜单配置:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 22:59:35】 - 【MainPage】 - 【mainpage.py】 - 第【97】行 >> 转换后菜单配置:{'func_id': 'crm9431', 'menu_cata': 'crm9000', 'parent_func_id': 'crm9400', 'menu_path': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'module': '个人业务', 'iscore': '1', 'is_leaf': '1', 'test_result': ''}
+【INFO】-【2021-01-08 22:59:35】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->navframe_def，value值->
+【INFO】-【2021-01-08 22:59:35】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.39018298370881066-1")>
+【INFO】-【2021-01-08 22:59:35】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->homeTab_tab_li_6，value值->
+【INFO】-【2021-01-08 22:59:35】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-1")>
+【INFO】-【2021-01-08 22:59:37】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->menuTab_tab_li_0，value值->
+【INFO】-【2021-01-08 22:59:37】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-2")>
+【INFO】-【2021-01-08 22:59:40】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9000']，value值->
+【INFO】-【2021-01-08 22:59:40】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-3")>
+【INFO】-【2021-01-08 22:59:43】 - 【MainPage】 - 【mainpage.py】 - 第【112】行 >> 菜单目录：crm9400
+【INFO】-【2021-01-08 22:59:43】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9400']，value值->
+【INFO】-【2021-01-08 22:59:43】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-4")>
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-5")>
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-5")>
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7447895284615735-5")>
+【INFO】-【2021-01-08 22:59:45】 - 【MainPage】 - 【mainpage.py】 - 第【127】行 >> 进入菜单路径 :个人业务 > 特殊业务类 > 平台业务 > 重复菜单-废平台业务办理
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//iframe[contains(@src,'/web-order/order?service=page/order.page.pc.person.plat.PlatOrder')]，value值->
+【INFO】-【2021-01-08 22:59:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.39018298370881066-2")>
+【INFO】-【2021-01-08 22:59:45】 - 【MainPage】 - 【mainpage.py】 - 第【143】行 >> 进入菜单Iframe:<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.39018298370881066-2")>
+【INFO】-【2021-01-08 22:59:46】 - 【MainPage】 - 【mainpage.py】 - 第【115】行 >> 菜单ID：crm9431
+【INFO】-【2021-01-08 22:59:46】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【27】行 >> 进入平台业务办理页面
+【INFO】-【2021-01-08 22:59:47】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->AUTH_SERIAL_NUMBER，value值->
+【INFO】-【2021-01-08 22:59:47】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7837136440117869-1")>
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:49】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:49】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:52】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 22:59:52】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 22:59:57】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 22:59:57】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:00:02】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:00:02】 - 【MainPlanSelectPart】 - 【ElementPartBase.py】 - 第【80】行 >> 业务校验检查结果：
+【INFO】-【2021-01-08 23:00:07】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:00:07】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:00:12】 - 【PageAssert】 - 【PageCheck.py】 - 第【235】行 >> 没有弹出DialogPage提示,跳出
+【INFO】-【2021-01-08 23:00:12】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CustInfoViewPart，value值->
+【INFO】-【2021-01-08 23:00:12】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7837136440117869-3")>
+【INFO】-【2021-01-08 23:00:15】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[contains(@ontap,'platOrderAddItem')]，value值->
+【INFO】-【2021-01-08 23:00:15】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7837136440117869-4")>
+【INFO】-【2021-01-08 23:00:17】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->myplatform_tab_li_2，value值->
+【INFO】-【2021-01-08 23:00:17】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7837136440117869-5")>
+【INFO】-【2021-01-08 23:00:20】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->COND，value值->
+【INFO】-【2021-01-08 23:00:20】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7837136440117869-6")>
+【INFO】-【2021-01-08 23:00:20】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.searchOffer')]，value值->
+【INFO】-【2021-01-08 23:00:20】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="a359d52b25f350ef503215120c04712d", element="0.7837136440117869-7")>
+【INFO】-【2021-01-08 23:00:27】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:00:27】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.do_subPlatOffer')]，value值->
+【INFO】-【2021-01-08 23:00:33】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//*[@id="CondPart"]/div[1]，value值->
+【INFO】-【2021-01-08 23:00:38】 - 【base】 - 【base.py】 - 第【77】行 >> locator参数类型错误，必须传元祖类型：loc = ("id", "value1")
+【INFO】-【2021-01-08 23:00:38】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【67】行 >> 平台服务%s未订购成功
+【INFO】-【2021-01-08 23:04:17】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 23:04:17】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 23:04:17】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 23:04:17】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 23:04:17】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:04:17】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:04:27】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.Url' ;  
+              
+【INFO】-【2021-01-08 23:04:27】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数http://10.230.81.150:8080/portal
+【INFO】-【2021-01-08 23:04:30】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->STAFF_ID，value值->
+【INFO】-【2021-01-08 23:04:30】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.991417409175323-1")>
+【INFO】-【2021-01-08 23:04:31】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->PASSWORD，value值->
+【INFO】-【2021-01-08 23:04:31】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.991417409175323-2")>
+【INFO】-【2021-01-08 23:04:31】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->loginBtn，value值->
+【INFO】-【2021-01-08 23:04:31】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.991417409175323-3")>
+【INFO】-【2021-01-08 23:04:35】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【40】行 >> 查询DATA_MAPPING结果:[{'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}]
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【48】行 >> {'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【49】行 >> 
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【56】行 >> 查询返回的字典结果:{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【58】行 >> 查询DataMapping结果返回:[{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}]
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【190】行 >> ======查询sql语句:SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='crm9431'
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【199】行 >> ======查询sql语句数据库返回结果:[{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}]
+【INFO】-【2021-01-08 23:04:35】 - 【DataMap】 - 【DataMap.py】 - 第【205】行 >> 返回当前查询结果:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:04:35】 - 【MainPage】 - 【mainpage.py】 - 第【92】行 >> 读取的菜单配置:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:04:35】 - 【MainPage】 - 【mainpage.py】 - 第【97】行 >> 转换后菜单配置:{'func_id': 'crm9431', 'menu_cata': 'crm9000', 'parent_func_id': 'crm9400', 'menu_path': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'module': '个人业务', 'iscore': '1', 'is_leaf': '1', 'test_result': ''}
+【INFO】-【2021-01-08 23:04:35】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->navframe_def，value值->
+【INFO】-【2021-01-08 23:04:35】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.8887860655185305-1")>
+【INFO】-【2021-01-08 23:04:35】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->homeTab_tab_li_6，value值->
+【INFO】-【2021-01-08 23:04:36】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-1")>
+【INFO】-【2021-01-08 23:04:38】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->menuTab_tab_li_0，value值->
+【INFO】-【2021-01-08 23:04:38】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-2")>
+【INFO】-【2021-01-08 23:04:40】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9000']，value值->
+【INFO】-【2021-01-08 23:04:40】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-3")>
+【INFO】-【2021-01-08 23:04:43】 - 【MainPage】 - 【mainpage.py】 - 第【112】行 >> 菜单目录：crm9400
+【INFO】-【2021-01-08 23:04:43】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9400']，value值->
+【INFO】-【2021-01-08 23:04:43】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-4")>
+【INFO】-【2021-01-08 23:04:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:04:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-5")>
+【INFO】-【2021-01-08 23:04:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:04:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-5")>
+【INFO】-【2021-01-08 23:04:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:04:46】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.7089572064614382-5")>
+【INFO】-【2021-01-08 23:04:46】 - 【MainPage】 - 【mainpage.py】 - 第【127】行 >> 进入菜单路径 :个人业务 > 特殊业务类 > 平台业务 > 重复菜单-废平台业务办理
+【INFO】-【2021-01-08 23:04:46】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//iframe[contains(@src,'/web-order/order?service=page/order.page.pc.person.plat.PlatOrder')]，value值->
+【INFO】-【2021-01-08 23:04:46】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.8887860655185305-2")>
+【INFO】-【2021-01-08 23:04:46】 - 【MainPage】 - 【mainpage.py】 - 第【143】行 >> 进入菜单Iframe:<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.8887860655185305-2")>
+【INFO】-【2021-01-08 23:04:47】 - 【MainPage】 - 【mainpage.py】 - 第【115】行 >> 菜单ID：crm9431
+【INFO】-【2021-01-08 23:04:47】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【27】行 >> 进入平台业务办理页面
+【INFO】-【2021-01-08 23:04:47】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->AUTH_SERIAL_NUMBER，value值->
+【INFO】-【2021-01-08 23:04:47】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.3577887805719473-1")>
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:50】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:04:50】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:04:55】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:04:55】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:05:00】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:05:00】 - 【MainPlanSelectPart】 - 【ElementPartBase.py】 - 第【80】行 >> 业务校验检查结果：
+【INFO】-【2021-01-08 23:05:05】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:05:05】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:05:10】 - 【PageAssert】 - 【PageCheck.py】 - 第【235】行 >> 没有弹出DialogPage提示,跳出
+【INFO】-【2021-01-08 23:05:10】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CustInfoViewPart，value值->
+【INFO】-【2021-01-08 23:05:10】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.3577887805719473-3")>
+【INFO】-【2021-01-08 23:05:11】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[contains(@ontap,'platOrderAddItem')]，value值->
+【INFO】-【2021-01-08 23:05:11】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.3577887805719473-4")>
+【INFO】-【2021-01-08 23:05:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:05:19】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->myplatform_tab_li_2，value值->
+【INFO】-【2021-01-08 23:05:19】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.3577887805719473-5")>
+【INFO】-【2021-01-08 23:05:21】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->COND，value值->
+【INFO】-【2021-01-08 23:05:21】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.3577887805719473-6")>
+【INFO】-【2021-01-08 23:05:22】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.searchOffer')]，value值->
+【INFO】-【2021-01-08 23:05:22】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="cb98a46c64ba0ea2bce1e1c07ba58cb0", element="0.3577887805719473-7")>
+【INFO】-【2021-01-08 23:05:29】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:05:29】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.do_subPlatOffer')]，value值->
+【INFO】-【2021-01-08 23:09:51】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 23:09:51】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 23:09:51】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 23:09:51】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 23:09:51】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:09:51】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:10:00】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.Url' ;  
+              
+【INFO】-【2021-01-08 23:10:00】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数http://10.230.81.150:8080/portal
+【INFO】-【2021-01-08 23:10:03】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->STAFF_ID，value值->
+【INFO】-【2021-01-08 23:10:03】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.4148993015864726-1")>
+【INFO】-【2021-01-08 23:10:03】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->PASSWORD，value值->
+【INFO】-【2021-01-08 23:10:03】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.4148993015864726-2")>
+【INFO】-【2021-01-08 23:10:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->loginBtn，value值->
+【INFO】-【2021-01-08 23:10:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.4148993015864726-3")>
+【INFO】-【2021-01-08 23:10:08】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【40】行 >> 查询DATA_MAPPING结果:[{'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}]
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【48】行 >> {'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【49】行 >> 
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【56】行 >> 查询返回的字典结果:{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【58】行 >> 查询DataMapping结果返回:[{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}]
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【190】行 >> ======查询sql语句:SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='crm9431'
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【199】行 >> ======查询sql语句数据库返回结果:[{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}]
+【INFO】-【2021-01-08 23:10:08】 - 【DataMap】 - 【DataMap.py】 - 第【205】行 >> 返回当前查询结果:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:10:08】 - 【MainPage】 - 【mainpage.py】 - 第【92】行 >> 读取的菜单配置:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:10:08】 - 【MainPage】 - 【mainpage.py】 - 第【97】行 >> 转换后菜单配置:{'func_id': 'crm9431', 'menu_cata': 'crm9000', 'parent_func_id': 'crm9400', 'menu_path': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'module': '个人业务', 'iscore': '1', 'is_leaf': '1', 'test_result': ''}
+【INFO】-【2021-01-08 23:10:08】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->navframe_def，value值->
+【INFO】-【2021-01-08 23:10:08】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.9528221052199939-1")>
+【INFO】-【2021-01-08 23:10:08】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->homeTab_tab_li_6，value值->
+【INFO】-【2021-01-08 23:10:08】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-1")>
+【INFO】-【2021-01-08 23:10:11】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->menuTab_tab_li_0，value值->
+【INFO】-【2021-01-08 23:10:11】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-2")>
+【INFO】-【2021-01-08 23:10:13】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9000']，value值->
+【INFO】-【2021-01-08 23:10:13】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-3")>
+【INFO】-【2021-01-08 23:10:16】 - 【MainPage】 - 【mainpage.py】 - 第【112】行 >> 菜单目录：crm9400
+【INFO】-【2021-01-08 23:10:16】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9400']，value值->
+【INFO】-【2021-01-08 23:10:16】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-4")>
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-5")>
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-5")>
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.14809213255750464-5")>
+【INFO】-【2021-01-08 23:10:18】 - 【MainPage】 - 【mainpage.py】 - 第【127】行 >> 进入菜单路径 :个人业务 > 特殊业务类 > 平台业务 > 重复菜单-废平台业务办理
+【INFO】-【2021-01-08 23:10:18】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//iframe[contains(@src,'/web-order/order?service=page/order.page.pc.person.plat.PlatOrder')]，value值->
+【INFO】-【2021-01-08 23:10:19】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.9528221052199939-2")>
+【INFO】-【2021-01-08 23:10:19】 - 【MainPage】 - 【mainpage.py】 - 第【143】行 >> 进入菜单Iframe:<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.9528221052199939-2")>
+【INFO】-【2021-01-08 23:10:20】 - 【MainPage】 - 【mainpage.py】 - 第【115】行 >> 菜单ID：crm9431
+【INFO】-【2021-01-08 23:10:20】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【27】行 >> 进入平台业务办理页面
+【INFO】-【2021-01-08 23:10:20】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->AUTH_SERIAL_NUMBER，value值->
+【INFO】-【2021-01-08 23:10:20】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-1")>
+【INFO】-【2021-01-08 23:10:22】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:22】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:23】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:10:23】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:10:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:10:28】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:10:33】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:10:33】 - 【MainPlanSelectPart】 - 【ElementPartBase.py】 - 第【80】行 >> 业务校验检查结果：
+【INFO】-【2021-01-08 23:10:38】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:10:38】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:10:43】 - 【PageAssert】 - 【PageCheck.py】 - 第【235】行 >> 没有弹出DialogPage提示,跳出
+【INFO】-【2021-01-08 23:10:43】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CustInfoViewPart，value值->
+【INFO】-【2021-01-08 23:10:43】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-3")>
+【INFO】-【2021-01-08 23:10:44】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[contains(@ontap,'platOrderAddItem')]，value值->
+【INFO】-【2021-01-08 23:10:44】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-4")>
+【INFO】-【2021-01-08 23:10:51】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:10:52】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->myplatform_tab_li_2，value值->
+【INFO】-【2021-01-08 23:10:52】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-5")>
+【INFO】-【2021-01-08 23:10:54】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->COND，value值->
+【INFO】-【2021-01-08 23:10:54】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-6")>
+【INFO】-【2021-01-08 23:10:54】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.searchOffer')]，value值->
+【INFO】-【2021-01-08 23:10:54】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-7")>
+【INFO】-【2021-01-08 23:11:02】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:11:02】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.do_subPlatOffer')]，value值->
+【INFO】-【2021-01-08 23:11:07】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//*[@id="CondPart"]/div[1]，value值->
+【INFO】-【2021-01-08 23:11:07】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-8")>
+【INFO】-【2021-01-08 23:11:14】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:11:20】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:11:20】 - 【base】 - 【base.py】 - 第【77】行 >> locator参数类型错误，必须传元祖类型：loc = ("id", "value1")
+【INFO】-【2021-01-08 23:11:20】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【70】行 >> 平台服务%s未订购成功
+【INFO】-【2021-01-08 23:11:25】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:11:25】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CSSUBMIT_BUTTON，value值->
+【INFO】-【2021-01-08 23:11:25】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="42c5f4f7192567360f320e488643ace3", element="0.16255895969620715-9")>
+【INFO】-【2021-01-08 23:11:30】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:11:30】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->SUBMIT_MSG_TITLE，value值->
+【INFO】-【2021-01-08 23:11:35】 - 【PageAssert】 - 【PageCheck.py】 - 第【60】行 >> 
+【INFO】-【2021-01-08 23:11:35】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:17:46】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 23:17:46】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 23:17:46】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 23:17:46】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 23:17:46】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:17:46】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:17:56】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.Url' ;  
+              
+【INFO】-【2021-01-08 23:17:56】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数http://10.230.81.150:8080/portal
+【INFO】-【2021-01-08 23:17:59】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->STAFF_ID，value值->
+【INFO】-【2021-01-08 23:17:59】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.4451868305335842-1")>
+【INFO】-【2021-01-08 23:17:59】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->PASSWORD，value值->
+【INFO】-【2021-01-08 23:17:59】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.4451868305335842-2")>
+【INFO】-【2021-01-08 23:18:00】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->loginBtn，value值->
+【INFO】-【2021-01-08 23:18:00】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.4451868305335842-3")>
+【INFO】-【2021-01-08 23:18:04】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【40】行 >> 查询DATA_MAPPING结果:[{'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}]
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【48】行 >> {'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【49】行 >> 
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【56】行 >> 查询返回的字典结果:{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【58】行 >> 查询DataMapping结果返回:[{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}]
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【190】行 >> ======查询sql语句:SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='crm9431'
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【199】行 >> ======查询sql语句数据库返回结果:[{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}]
+【INFO】-【2021-01-08 23:18:04】 - 【DataMap】 - 【DataMap.py】 - 第【205】行 >> 返回当前查询结果:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:18:04】 - 【MainPage】 - 【mainpage.py】 - 第【92】行 >> 读取的菜单配置:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:18:04】 - 【MainPage】 - 【mainpage.py】 - 第【97】行 >> 转换后菜单配置:{'func_id': 'crm9431', 'menu_cata': 'crm9000', 'parent_func_id': 'crm9400', 'menu_path': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'module': '个人业务', 'iscore': '1', 'is_leaf': '1', 'test_result': ''}
+【INFO】-【2021-01-08 23:18:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->navframe_def，value值->
+【INFO】-【2021-01-08 23:18:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.5860472703855955-1")>
+【INFO】-【2021-01-08 23:18:04】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->homeTab_tab_li_6，value值->
+【INFO】-【2021-01-08 23:18:04】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-1")>
+【INFO】-【2021-01-08 23:18:06】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->menuTab_tab_li_0，value值->
+【INFO】-【2021-01-08 23:18:06】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-2")>
+【INFO】-【2021-01-08 23:18:09】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9000']，value值->
+【INFO】-【2021-01-08 23:18:09】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-3")>
+【INFO】-【2021-01-08 23:18:12】 - 【MainPage】 - 【mainpage.py】 - 第【112】行 >> 菜单目录：crm9400
+【INFO】-【2021-01-08 23:18:12】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9400']，value值->
+【INFO】-【2021-01-08 23:18:12】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-4")>
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-5")>
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-5")>
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.9440460625947187-5")>
+【INFO】-【2021-01-08 23:18:14】 - 【MainPage】 - 【mainpage.py】 - 第【127】行 >> 进入菜单路径 :个人业务 > 特殊业务类 > 平台业务 > 重复菜单-废平台业务办理
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//iframe[contains(@src,'/web-order/order?service=page/order.page.pc.person.plat.PlatOrder')]，value值->
+【INFO】-【2021-01-08 23:18:14】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.5860472703855955-2")>
+【INFO】-【2021-01-08 23:18:15】 - 【MainPage】 - 【mainpage.py】 - 第【143】行 >> 进入菜单Iframe:<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.5860472703855955-2")>
+【INFO】-【2021-01-08 23:18:16】 - 【MainPage】 - 【mainpage.py】 - 第【115】行 >> 菜单ID：crm9431
+【INFO】-【2021-01-08 23:18:16】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【27】行 >> 进入平台业务办理页面
+【INFO】-【2021-01-08 23:18:16】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->AUTH_SERIAL_NUMBER，value值->
+【INFO】-【2021-01-08 23:18:16】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-1")>
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:18】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:18】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:18:19】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:18:19】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:18:24】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:18:24】 - 【MainPlanSelectPart】 - 【ElementPartBase.py】 - 第【80】行 >> 业务校验检查结果：
+【INFO】-【2021-01-08 23:18:29】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:18:29】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:18:34】 - 【PageAssert】 - 【PageCheck.py】 - 第【235】行 >> 没有弹出DialogPage提示,跳出
+【INFO】-【2021-01-08 23:18:34】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CustInfoViewPart，value值->
+【INFO】-【2021-01-08 23:18:34】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-3")>
+【INFO】-【2021-01-08 23:18:35】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[contains(@ontap,'platOrderAddItem')]，value值->
+【INFO】-【2021-01-08 23:18:35】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-4")>
+【INFO】-【2021-01-08 23:18:42】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:18:43】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->myplatform_tab_li_2，value值->
+【INFO】-【2021-01-08 23:18:43】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-5")>
+【INFO】-【2021-01-08 23:18:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->COND，value值->
+【INFO】-【2021-01-08 23:18:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-6")>
+【INFO】-【2021-01-08 23:18:45】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.searchOffer')]，value值->
+【INFO】-【2021-01-08 23:18:45】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-7")>
+【INFO】-【2021-01-08 23:18:53】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:18:53】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.do_subPlatOffer')]，value值->
+【INFO】-【2021-01-08 23:18:58】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//*[@id="CondPart"]/div[1]，value值->
+【INFO】-【2021-01-08 23:18:58】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-8")>
+【INFO】-【2021-01-08 23:18:58】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:19:03】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:19:03】 - 【base】 - 【base.py】 - 第【77】行 >> locator参数类型错误，必须传元祖类型：loc = ("id", "value1")
+【INFO】-【2021-01-08 23:19:03】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【70】行 >> 平台服务%s未订购成功
+【INFO】-【2021-01-08 23:19:08】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:19:08】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CSSUBMIT_BUTTON，value值->
+【INFO】-【2021-01-08 23:19:08】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-9")>
+【INFO】-【2021-01-08 23:19:15】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:19:16】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->SUBMIT_MSG_TITLE，value值->
+【INFO】-【2021-01-08 23:19:21】 - 【PageAssert】 - 【PageCheck.py】 - 第【60】行 >> 
+【INFO】-【2021-01-08 23:19:21】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:19:21】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="ace76a519d59eef7a8a5103986da0172", element="0.19526487466485554-10")>
+【INFO】-【2021-01-08 23:19:21】 - 【PageAssert】 - 【PageCheck.py】 - 第【30】行 >> 页面返回的提示信息内容:提示
+【INFO】-【2021-01-08 23:19:21】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->SUBMIT_MSG_CONTENT，value值->
+【INFO】-【2021-01-08 23:19:26】 - 【PageAssert】 - 【PageCheck.py】 - 第【67】行 >> 
+【INFO】-【2021-01-08 23:19:26】 - 【PageAssert】 - 【PageCheck.py】 - 第【96】行 >> messageBox返回的信息:业务受理成功,订单号:
+【INFO】-【2021-01-08 23:19:26】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【73】行 >> 业务受理信息：业务受理成功,订单号:
+【INFO】-【2021-01-08 23:31:55】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginName' ;  
+              
+【INFO】-【2021-01-08 23:31:55】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数ABOSS_68
+【INFO】-【2021-01-08 23:31:55】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.LoginPwd' ;  
+              
+【INFO】-【2021-01-08 23:31:55】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数lc
+【INFO】-【2021-01-08 23:31:55】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:31:55】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:32:05】 - 【MyDBOper】 - 【SysPara.py】 - 第【33】行 >> select param_value from autotest_sys_para where prov_Code ='HNAN' and  param_Attr ='NGBOSS'  and  param_Code ='env.Url' ;  
+              
+【INFO】-【2021-01-08 23:32:05】 - 【MyDBOper】 - 【SysPara.py】 - 第【55】行 >> 登录参数http://10.230.81.150:8080/portal
+【INFO】-【2021-01-08 23:32:08】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->STAFF_ID，value值->
+【INFO】-【2021-01-08 23:32:08】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.9855395391502786-1")>
+【INFO】-【2021-01-08 23:32:08】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->PASSWORD，value值->
+【INFO】-【2021-01-08 23:32:08】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.9855395391502786-2")>
+【INFO】-【2021-01-08 23:32:09】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->loginBtn，value值->
+【INFO】-【2021-01-08 23:32:09】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.9855395391502786-3")>
+【INFO】-【2021-01-08 23:32:13】 - 【MyOracle】 - 【OracleOper.py】 - 第【44】行 >> 连接的数据库是:(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=10.230.59.93)(PORT=10909))(CONNECT_DATA=(SID=qhcrmdb)))
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【40】行 >> 查询DATA_MAPPING结果:[{'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}]
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【48】行 >> {'SQL_STMT': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT\r\nFROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL\r\nAND  IS_LEAF = '1' AND FUNC_ID ='%s'", 'EXPR_COND': '', 'ROUTE': '-1'}
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【49】行 >> 
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【56】行 >> 查询返回的字典结果:{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【58】行 >> 查询DataMapping结果返回:[{'ROUTE': '-1', 'SQL': "SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='%s'"}]
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【190】行 >> ======查询sql语句:SELECT FUNC_ID,MENU_CATA,PARENT_FUNC_ID,MENU_PATH,DLL_PATH,MODULE,ISCORE,IS_LEAF,'' TEST_RESULT  FROM AUTOTEST_MENU WHERE STATE = '1' AND PROV_CODE = 'HNAN'  AND  DLL_PATH IS NOT NULL  AND  IS_LEAF = '1' AND FUNC_ID ='crm9431'
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【199】行 >> ======查询sql语句数据库返回结果:[{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}]
+【INFO】-【2021-01-08 23:32:13】 - 【DataMap】 - 【DataMap.py】 - 第【205】行 >> 返回当前查询结果:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:32:13】 - 【MainPage】 - 【mainpage.py】 - 第【92】行 >> 读取的菜单配置:{'FUNC_ID': 'crm9431', 'MENU_CATA': 'crm9000', 'PARENT_FUNC_ID': 'crm9400', 'MENU_PATH': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'DLL_PATH': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'MODULE': '个人业务', 'ISCORE': '1', 'IS_LEAF': '1', 'TEST_RESULT': ''}
+【INFO】-【2021-01-08 23:32:13】 - 【MainPage】 - 【mainpage.py】 - 第【97】行 >> 转换后菜单配置:{'func_id': 'crm9431', 'menu_cata': 'crm9000', 'parent_func_id': 'crm9400', 'menu_path': '个人业务->特殊业务类->平台业务->重复菜单-废平台业务办理', 'dll_path': '/web-order/order?service=page/order.page.pc.person.plat.PlatOrder', 'module': '个人业务', 'iscore': '1', 'is_leaf': '1', 'test_result': ''}
+【INFO】-【2021-01-08 23:32:13】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->navframe_def，value值->
+【INFO】-【2021-01-08 23:32:13】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.995223353568228-1")>
+【INFO】-【2021-01-08 23:32:13】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->homeTab_tab_li_6，value值->
+【INFO】-【2021-01-08 23:32:13】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-1")>
+【INFO】-【2021-01-08 23:32:15】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->menuTab_tab_li_0，value值->
+【INFO】-【2021-01-08 23:32:15】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-2")>
+【INFO】-【2021-01-08 23:32:18】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9000']，value值->
+【INFO】-【2021-01-08 23:32:18】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-3")>
+【INFO】-【2021-01-08 23:32:21】 - 【MainPage】 - 【mainpage.py】 - 第【112】行 >> 菜单目录：crm9400
+【INFO】-【2021-01-08 23:32:21】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9400']，value值->
+【INFO】-【2021-01-08 23:32:21】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-4")>
+【INFO】-【2021-01-08 23:32:23】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:32:23】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-5")>
+【INFO】-【2021-01-08 23:32:23】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:32:23】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-5")>
+【INFO】-【2021-01-08 23:32:23】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[@menuid='crm9431']，value值->
+【INFO】-【2021-01-08 23:32:24】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.4844829344208612-5")>
+【INFO】-【2021-01-08 23:32:24】 - 【MainPage】 - 【mainpage.py】 - 第【127】行 >> 进入菜单路径 :个人业务 > 特殊业务类 > 平台业务 > 重复菜单-废平台业务办理
+【INFO】-【2021-01-08 23:32:24】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//iframe[contains(@src,'/web-order/order?service=page/order.page.pc.person.plat.PlatOrder')]，value值->
+【INFO】-【2021-01-08 23:32:24】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.995223353568228-2")>
+【INFO】-【2021-01-08 23:32:24】 - 【MainPage】 - 【mainpage.py】 - 第【143】行 >> 进入菜单Iframe:<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.995223353568228-2")>
+【INFO】-【2021-01-08 23:32:25】 - 【MainPage】 - 【mainpage.py】 - 第【115】行 >> 菜单ID：crm9431
+【INFO】-【2021-01-08 23:32:25】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【27】行 >> 进入平台业务办理页面
+【INFO】-【2021-01-08 23:32:25】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->AUTH_SERIAL_NUMBER，value值->
+【INFO】-【2021-01-08 23:32:25】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-1")>
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:True****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【137】行 >> 定位到元素的个数:1
+【INFO】-【2021-01-08 23:32:28】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:32:28】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:32:33】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:32:33】 - 【MainPlanSelectPart】 - 【ElementPartBase.py】 - 第【80】行 >> 业务校验检查结果：
+【INFO】-【2021-01-08 23:32:39】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:32:39】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"dialog") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:32:44】 - 【PageAssert】 - 【PageCheck.py】 - 第【235】行 >> 没有弹出DialogPage提示,跳出
+【INFO】-【2021-01-08 23:32:44】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CustInfoViewPart，value值->
+【INFO】-【2021-01-08 23:32:44】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-3")>
+【INFO】-【2021-01-08 23:32:44】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//li[contains(@ontap,'platOrderAddItem')]，value值->
+【INFO】-【2021-01-08 23:32:44】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-4")>
+【INFO】-【2021-01-08 23:32:51】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:32:52】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->myplatform_tab_li_2，value值->
+【INFO】-【2021-01-08 23:32:52】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-5")>
+【INFO】-【2021-01-08 23:32:54】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->COND，value值->
+【INFO】-【2021-01-08 23:32:54】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-6")>
+【INFO】-【2021-01-08 23:32:55】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.searchOffer')]，value值->
+【INFO】-【2021-01-08 23:32:55】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-7")>
+【INFO】-【2021-01-08 23:33:02】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:33:02】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//span[contains(@ontap,'platOrderAdd.do_subPlatOffer')]，value值->
+【INFO】-【2021-01-08 23:33:07】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//*[@id="CondPart"]/div[1]，value值->
+【INFO】-【2021-01-08 23:33:07】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-8")>
+【INFO】-【2021-01-08 23:33:09】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]，value值->
+【INFO】-【2021-01-08 23:33:14】 - 【PageAssert】 - 【PageCheck.py】 - 第【183】行 >> ======WadeMessageBox页面返回=============没有弹出WadeMessage提示,校验通过
+【INFO】-【2021-01-08 23:33:14】 - 【base】 - 【base.py】 - 第【77】行 >> locator参数类型错误，必须传元祖类型：loc = ("id", "value1")
+【INFO】-【2021-01-08 23:33:14】 - 【PlatServiceOrder】 - 【PlatSvcOrder.py】 - 第【70】行 >> 平台服务%s未订购成功
+【INFO】-【2021-01-08 23:33:21】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:33:21】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->CSSUBMIT_BUTTON，value值->
+【INFO】-【2021-01-08 23:33:21】 - 【base】 - 【base.py】 - 第【83】行 >> 定位到该元素<selenium.webdriver.remote.webelement.WebElement (session="e7c22f7531c671cd674b66880275432e", element="0.054677526317556735-9")>
+【INFO】-【2021-01-08 23:33:26】 - 【PageAssert】 - 【PageCheck.py】 - 第【244】行 >> ****是否找到x-wade-loading-global:False****
+【INFO】-【2021-01-08 23:33:26】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式id  元素值->SUBMIT_MSG_TITLE，value值->
+【INFO】-【2021-01-08 23:33:31】 - 【PageAssert】 - 【PageCheck.py】 - 第【60】行 >> 
+【INFO】-【2021-01-08 23:33:31】 - 【base】 - 【base.py】 - 第【79】行 >> 正在定位元素信息：定位方式xpath  元素值->//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]，value值->
