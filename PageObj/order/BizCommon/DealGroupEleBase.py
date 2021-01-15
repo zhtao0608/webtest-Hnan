@@ -23,8 +23,8 @@ class DealElements(Base):
         '''初始化商品设置按钮'''
         loc_initOfferAttr = (By.XPATH,"//button[contains(@ontap,'EnterpriseOfferObj.initOfferAttrInfo')]")
         self.isElementDisplay(loc_initOfferAttr,'click')
-        time.sleep(1)   #初始化页面属性
-        PageAssert(self.driver).pageLoading()
+        self.sleep(1)   #初始化页面属性
+        PageAssert(self.driver).wait_for_load()
         return self.driver
 
 
@@ -214,7 +214,7 @@ class DealElements(Base):
         logger.info("设置的业务参数值：" + AttrValue)
         loc_AttrCode = (By.ID,AttrCode)
         if ('textfield'==self.getAttrElementType(AttrCode)):
-            self.sendkey(loc_AttrCode,AttrValue)
+            self.input(loc_AttrCode,AttrValue)
             if AttrCode == 'pam_SHORT_CODE':
                 DealMebElements(self.driver).verifyShortNum()   #如果是短号属性，加个校验
 
@@ -236,13 +236,13 @@ class DealElements(Base):
             selAttrCodeStr = AttrCode + '_span'
             loc_selAttrCode = (By.ID,selAttrCodeStr)
             self.isElementDisplay(loc_selAttrCode,'click')
-            time.sleep(1)
+            self.sleep(1)
             selAttrFloatStr = AttrCode + '_float'  #pam_DIVIDE_DEPART_float
             ele_selAttrFloat = self.find((By.ID,selAttrFloatStr))
             floatStr = "./div[2]/div/div/ul/li[contains(@title,'%s')]" % AttrValue   #用AttrValue匹配元素title的属性值
             ele_AttrFloat = ele_selAttrFloat.find_element_by_xpath(floatStr)
             self.click_on_element(ele_AttrFloat)
-            time.sleep(1)
+            self.sleep(1)
 
 
     def getAttrElementType(self,attrcode):
@@ -267,7 +267,7 @@ class DealElements(Base):
         selcontractStr = "//button[contains(@contractid,'%s')]" %contractId
         loc_selcontract = (By.XPATH,selcontractStr)
         self.isElementDisplay(span_QryContract,'click')
-        time.sleep(2)
+        self.sleep(2)
         self.isElementDisplay(loc_selcontract,'click')
 
     def submitAccept(self):
@@ -284,7 +284,7 @@ class DealElements(Base):
         '''
         loc_selRemoveReason = (By.ID,'REMOVE_REASON_span')
         self.isElementDisplay(loc_selRemoveReason,'click')
-        time.sleep(1)
+        self.sleep(1)
         reasonfloatStr = '//*[@id="REMOVE_REASON_float"]/div[2]/div/div/ul/li[contains(@title,"%s")]' % reason  # 用reason匹配元素title的属性值
         loc_reasonfloat = (By.XPATH,reasonfloatStr)
         self.isElementDisplay(loc_reasonfloat,'click')

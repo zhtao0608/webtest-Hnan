@@ -85,6 +85,8 @@ class RunSuiteTest:
 
     def run(self,suite_code):
         try:
+            # 每次执行套件前将上次执行执行结果全部清空
+            se().initSuiteExecData(suite_code)
             # 获取测试集
             suite = self.get_case_suite(suite_code)
             print("suite:", suite)
@@ -115,9 +117,13 @@ class RunSuiteTest:
 if __name__ == '__main__':
     testRun = RunSuiteTest()
     # suite = testRun.get_case_suite(suiteCode='SvcStateChgTest')
-    suite = testRun.get_case_suite(suiteCode='ProdChgTest')
+    suite = testRun.get_case_suite(suiteCode='SaleActive')
     print(suite)
     # print(type(suite))
     # testRun.run(suite_code='SvcStateChgTest')
-    testRun.run(suite_code='ProdChgTest')
+    # testRun.run(suite_code='ProdChgTest')
+    # testRun.run(suite_code='PlatSvcTest')
+    # testRun.run(suite_code='SaleActive')
+
+
 

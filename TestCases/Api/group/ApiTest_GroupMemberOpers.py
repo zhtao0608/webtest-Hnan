@@ -163,7 +163,7 @@ if __name__ == '__main__':
     # test.querySubscriberRel('08753033636','E1')
     print("开始执行第4个接口 \n")
     test.ImsMebStopOrOpen('08753033500','02')
-    time.sleep(10)
+    self.sleep(10)
     test.ImsMebStopOrOpen('08753033500','01')
 
 

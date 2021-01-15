@@ -25,7 +25,7 @@ class RuleCheckBefore(Base):
             logger.info('找到WadeMsg弹出框:{}'.format(str(ele_wadeMsg)))
             classname = self.get(loc_WadeMessage,Type='attribute',name='class') #取出WadeMsg的class属性值，判断是什么类型弹出
             logger.info('wadeMsg的类型:{}'.format(classname))
-            time.sleep(2)
+            self.sleep(2)
             WadeMsg = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[1]/div[2]').text
             logger.info('WadeMessageBox返回的信息：{}'.format(WadeMsg))
             '''根据classname类型按钮处理'''
@@ -36,14 +36,14 @@ class RuleCheckBefore(Base):
                 step_str = "业务校验"
                 self.screen_step(step_str)  # 这个保存在测试记录文档中
                 self.screenshot_SaveAsDoc(step_str)  # 截图单独保存到doc
-                time.sleep(3)
+                self.sleep(3)
                 WadeMsg = '业务校验失败' + WadeMsg
             elif 'c_msg-success' in classname:
                 print('弹出WadeMsg的是成功提示')
                 ele_suc = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button')
                 self.click_on_element(ele_suc)
                 self.sendEnter()
-                time.sleep(2)
+                self.sleep(2)
                 WadeMsg = '弹出校验成功信息：' + WadeMsg
             elif 'c_msg-warn' in classname:
                 print('弹出WadeMsg的是告警提示')
@@ -51,7 +51,7 @@ class RuleCheckBefore(Base):
                 self.screenshot_SaveAsDoc(step_str)
                 ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
                 self.sendEnter()
-                time.sleep(2)
+                self.sleep(2)
                 WadeMsg = '警告信息:' + WadeMsg
             elif 'c_msg-however' in classname:
                 print('弹出WadeMsg的是however')
@@ -59,7 +59,7 @@ class RuleCheckBefore(Base):
                 self.screenshot_SaveAsDoc(step_str)
                 ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
                 self.sendEnter()
-                time.sleep(2)
+                self.sleep(2)
                 WadeMsg = '业务校验:' + WadeMsg
                 logger.info(WadeMsg)
             elif 'c_msg-help' in classname:
@@ -67,14 +67,14 @@ class RuleCheckBefore(Base):
                 ele_help = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]')
                 self.click_on_element(ele_help)
                 self.sendEnter()
-                time.sleep(3)
+                self.sleep(3)
             elif 'c_msg c_msg-h c_msg-phone-v c_msg-full' == classname:
                 print('弹出WadeMsg的是普通提示')
                 step_str = "业务受理提示信息"
                 logger.info('业务受理提示信息:{}'.format(WadeMsg))
                 self.screenshot_SaveAsDoc(step_str)
                 ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]').click()  # 关闭提示窗口
-                time.sleep(2)
+                self.sleep(2)
                 WadeMsg = '出现提示信息:' + WadeMsg
                 self.sendEnter()
         except:

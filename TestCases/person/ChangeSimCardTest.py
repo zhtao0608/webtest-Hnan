@@ -67,7 +67,7 @@ class ChangeSimCardTest(unittest.TestCase):
         text_remark = (By.ID,'REMARKS')  #备注
         loc_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         PersonBase(self.driver).Open_PersonMenu(accessNum,password='123123',cataMenuId='crm9400',menuId='crm9431') #登录并进入换卡菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_ChangSimCardFrame() #进入iframe
         # RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
         RuleMsg = PageAssert(self.driver).check_BusiRule(file,row) #业务检查点（进入菜单时校验）
@@ -80,11 +80,11 @@ class ChangeSimCardTest(unittest.TestCase):
         print('客户验证信息:{}'.format(Vaild_custMsg))
         logger.info('客户验证信息:{}'.format(Vaild_custMsg))
         self.assertNotIn('警告信息',Vaild_custMsg)
-        time.sleep(2)
+        self.sleep(2)
         test.Input_NewSimId(simId)
         test.sendkey(text_remark,'AntoTest') #填写备注信息
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(10)
+        self.sleep(10)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))

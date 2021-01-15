@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait  # 用于处理元素等
 from Base import ReadConfig
 from Base.Mylog import LogManager
 from Base.OperExcel import write_excel_append,write_xlsBycolName_append
-from Common.function import getDigitFromStr,isEmpty
+from Common.function import getOrdIdFromStr,isEmpty
 from Common.TestAsserts import Assertion as alert
 import time,sys
 
@@ -24,7 +24,7 @@ class PageAssert(Base):
     def get_wadeMsgTitle(self):
         '''获取wade_messagebox的提示信息Title'''
         # loc_wadeMsgTitle=(By.XPATH,"//div[starts-with(@id,'wade_messagebox') and endswith(@id,'title')]")
-        loc_wadeMsg= (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]')
+        loc_wadeMsg= (By.XPATH,'//*[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]')
         ele_msgBox = self.find(loc_wadeMsg)
         msgTitle = ele_msgBox.find_element_by_xpath('./div/div[2]/div[1]/div[1]').text
         logger.info('页面返回的提示信息内容:{}'.format(msgTitle))
@@ -44,14 +44,14 @@ class PageAssert(Base):
         # loc_confirmBtn = (By.XPATH,"//div[starts-with(@id,'wade_messagebox') and endswith(@id,'btns')]/button[@tag='ok']")
         loc_wadeMsg= (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]')
         ele_msgBox = self.find(loc_wadeMsg)
-        ele_msgBox.find_element_by_xpath("//button[contains(@tag,'ok')]").click() #点击确定
+        ele_msgBox.find_element_by_xpath("./div/div[2]/div[3]/button[contains(@tag,'ok')]").click() #点击确定
         # self.isElementDisplay(loc_confirmBtn,'click')
 
     def click_cancelBtn(self):
         '''点击确认按钮'''
         loc_wadeMsg= (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]')
         ele_msgBox = self.find(loc_wadeMsg)
-        ele_msgBox.find_element_by_xpath("//button[contains(@tag,'cancel')]").click() #点击取消
+        ele_msgBox.find_element_by_xpath("./div/div[2]/div[3]/button[contains(@tag,'cancel')]").click() #点击取消
 
     def get_SucTitle(self):
         '''提交成功时获取提示TITLE'''
@@ -77,7 +77,8 @@ class PageAssert(Base):
         #     title = self.get_SucTitle()
         # except:
         #     title = self.get_wadeMsgTitle()
-        flag = alert().verifyassertIn('错误提示',title)
+        flag = alert().verifyassertIn('错误提示', title) if alert().verifyassertIn('错误提示',title) else alert().verifyassertIn('业务受理失败', title)
+
         if flag:
             loc_msgBox =(By.XPATH, '//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]')
             className = self.get_attribute(loc_msgBox,'class')
@@ -92,7 +93,7 @@ class PageAssert(Base):
                 msg = self.get_wadeMsgDetail()
                 self.click_confirmBtn()
         else:
-            msg = '业务受理成功,订单号:' + getDigitFromStr(self.get_SucCt())
+            msg = '业务受理成功,订单号:' + getOrdIdFromStr(self.get_SucCt())
         logger.info('messageBox返回的信息:{}'.format(msg))
         return msg
 
@@ -113,69 +114,86 @@ class PageAssert(Base):
             logger.info("业务受理成功，交互流水：" + flowId)
             print("业务受理成功，交互流水：" + flowId)
             self.screen_step('业务受理成功，交互流水：{}'.format(flowId))
-            submitMsg = '业务受理成功,订单号:' + getDigitFromStr(flowId)
+            submitMsg = '业务受理成功,订单号:' + getOrdIdFromStr(flowId)
         return submitMsg
 
     """==============================处理页面返回信息====================================="""
     """====================处理WadeMessageBox受理异常提示======================"""
     def assert_WadePage(self):
         '''处理Wade弹出的各种提示窗口（Error、Success、Warn、Help、Tips）'''
-        loc_WadeMessage = (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and not(contains(@style,"display: none"))]')
+        loc_WadeMessage = (By.XPATH,'//div[starts-with(@id,"wade_messagebox") and contains(@x-wade-uicomponent,"messagebox") and not(contains(@style,"display: none"))]')
         try:
             ele_wadeMsg = self.find(loc_WadeMessage)
             logger.info('找到WadeMsg弹出框:{}'.format(str(ele_wadeMsg)))
             classname = self.get(loc_WadeMessage,Type='attribute',name='class') #取出WadeMsg的class属性值，判断是什么类型弹出
             logger.info('wadeMsg的类型:{}'.format(classname))
-            time.sleep(2)
+            self.sleep(2)
+            try:
+                msgTitle = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[1]/div[1]').text
+                logger.info('msg提示标题:{}'.format(msgTitle))
+            except:
+                logger.info('wadeMsg没有title')
+                msgTitle= ''
             WadeMsg = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[1]/div[2]').text
             logger.info('WadeMessageBox返回的信息：{}'.format(WadeMsg))
-            '''根据classname类型按钮处理'''
-            if 'c_msg-error' in classname:
+            if '错误' in msgTitle or '失败' in msgTitle or '报错' in msgTitle:  #如果是错误提示则直接跳出
+                self.screen_step('业务校验失败')  # 这个保存在测试记录文档中
+                self.screenshot_SaveAsDoc('业务校验失败')  # 截图单独保存到doc
+                return WadeMsg
+            ###'''根据classname类型按钮处理'''
+            elif 'c_msg-error' in classname:
                 print('弹出WadeMsg的是错误提示')
                 logger.info("业务校验失败:{}".format(WadeMsg))
                 print('业务校验信息:{}'.format(WadeMsg))
                 step_str = "业务校验"
                 self.screen_step(step_str)  # 这个保存在测试记录文档中
                 self.screenshot_SaveAsDoc(step_str)  # 截图单独保存到doc
-                time.sleep(3)
+                self.sleep(3)
                 WadeMsg = '业务校验失败' + WadeMsg
             elif 'c_msg-success' in classname:
                 print('弹出WadeMsg的是成功提示')
+                msgTitle = self.get_wadeMsgTitle()
                 ele_suc = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button')
                 self.click_on_element(ele_suc)
                 self.sendEnter()
-                time.sleep(2)
-                WadeMsg = '弹出校验成功信息：' + WadeMsg
+                self.sleep(2)
+                WadeMsg = '弹出校验通过信息：' + msgTitle
             elif 'c_msg-warn' in classname:
                 print('弹出WadeMsg的是告警提示')
                 step_str = "业务受理提示信息"
                 self.screenshot_SaveAsDoc(step_str)
                 ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
+                # self.click_confirmBtn()
                 self.sendEnter()
-                time.sleep(2)
+                # self.sleep(2)
                 WadeMsg = '警告信息:' + WadeMsg
             elif 'c_msg-however' in classname:
                 print('弹出WadeMsg的是however')
                 step_str = "业务受理提示信息"
                 self.screenshot_SaveAsDoc(step_str)
-                ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
+                titleMsg = ele_wadeMsg.find_element_by_xpath('/div/div[2]/div[1]/div[1]').text
+                # alert().assertNotIn('错误提示',titleMsg,msg='出现错误提示，直接关闭')
+                # self.click_confirmBtn()
+                ele_wadeMsg.find_element_by_xpath("./div/div[2]/div[3]/button[contains(@tag,'ok')]").click()  # 关闭提示窗口
                 self.sendEnter()
-                time.sleep(2)
+                self.sleep(2)
                 WadeMsg = '业务校验:' + WadeMsg
                 logger.info(WadeMsg)
-            elif 'c_msg-help' in classname:
+            elif 'c_msg-help' in classname :
                 print('弹出WadeMsg的是帮助提示')
-                ele_help = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]')
-                self.click_on_element(ele_help)
+                ele_help = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[2]')
+                self.click_on_element(ele_help)#点击确定按钮
+                # self.click_confirmBtn()
                 self.sendEnter()
-                time.sleep(3)
+                self.sleep(3)
             elif 'c_msg c_msg-h c_msg-phone-v c_msg-full' == classname:
                 print('弹出WadeMsg的是普通提示')
                 step_str = "业务受理提示信息"
                 logger.info('业务受理提示信息:{}'.format(WadeMsg))
                 self.screenshot_SaveAsDoc(step_str)
-                ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]').click()  # 关闭提示窗口
-                time.sleep(2)
+                ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[3]/button[1]').click()  # 关闭提示窗口
+                # ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button[1]').click()  # 关闭提示窗口
+                self.sleep(2)
                 WadeMsg = '出现提示信息:' + WadeMsg
                 self.sendEnter()
         except:
@@ -191,7 +209,7 @@ class PageAssert(Base):
             logger.info('找到WadeMsg弹出框:{}'.format(str(ele_wadeMsg)))
             classname = self.get(loc_WadeMessage,Type='attribute',name='class') #取出WadeMsg的class属性值，判断是什么类型弹出
             logger.info('wadeMsg的类型:{}'.format(classname))
-            time.sleep(2)
+            self.sleep(2)
             WadeMsg = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[1]/div[2]').text
             logger.info('WadeMessageBox返回的信息：{}'.format(WadeMsg))
             '''根据classname类型按钮处理'''
@@ -201,14 +219,14 @@ class PageAssert(Base):
                 step_str = "业务校验"
                 self.screen_step(step_str)  # 这个保存在测试记录文档中
                 self.screenshot_SaveAsDoc(step_str)  # 截图单独保存到doc
-                time.sleep(3)
+                self.sleep(3)
                 WadeMsg = '校验失败' + WadeMsg
             elif 'c_msg-success' in classname:
                 print('弹出WadeMsg的是成功提示')
                 ele_suc = ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button')
                 self.click_on_element(ele_suc)
                 self.sendEnter()
-                time.sleep(2)
+                self.sleep(2)
                 WadeMsg = '弹出校验成功信息：' + WadeMsg
             elif 'c_msg-warn' in classname:
                 print('弹出WadeMsg的是告警提示')
@@ -216,7 +234,7 @@ class PageAssert(Base):
                 self.screenshot_SaveAsDoc(step_str)
                 # ele_wadeMsg.find_element_by_xpath('./div/div[2]/div[2]/button').click()  # 关闭提示窗口
                 # self.sendEnter()
-                # time.sleep(2)
+                # self.sleep(2)
                 WadeMsg = '警告信息:' + WadeMsg
         except:
             WadeMsg = '没有弹出WadeMessage提示,校验通过'
@@ -229,12 +247,12 @@ class PageAssert(Base):
         try:
             ele_Dialog = self.find(loc_Dialog)
             logger.info('找到DialogPage弹出框:{}'.format(str(ele_Dialog)))
-            time.sleep(1)
+            self.sleep(1)
             ele_Dialog.find_element_by_xpath('./div/div[1]/div[2]/div').click()  #关闭DialogPage
         except:
             logger.info('没有弹出DialogPage提示,跳出')
 
-    def pageLoading(self):
+    def wait_for_load(self):
         '''页面加载时间判断,目前设置最长时间为30s'''
         # loc_wadeLoading = (By.ID,'x-wade-loading-global')
         loc_wadeLoading = (By.XPATH,'//*[contains(@id,"x-wade-loading-global") and not(contains(@style,"display: none"))]')

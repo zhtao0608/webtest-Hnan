@@ -19,12 +19,12 @@ class LoginPart(Base):
 
     def input_accessnum(self,number):
         input_accessNum = (By.ID,"LOGIN_NUM")
-        self.sendkey(input_accessNum,number)
+        self.input(input_accessNum,number)
         return self.driver
 
     def input_pwd(self,password):
         input_password = (By.ID,"LOGIN_VAL")
-        self.sendkey(input_password,password)
+        self.input(input_password,password)
         return self.driver
 
     def button_login(self):
@@ -42,7 +42,7 @@ class LoginPart(Base):
         self.input_accessnum(number)
         self.input_pwd(password)
         self.button_login()
-        time.sleep(3)
+        self.sleep(3)
         # self.close_MyMobile()  # 关闭我的移动
         ##先屏蔽这段，加快调试！
         # try :
@@ -52,7 +52,7 @@ class LoginPart(Base):
         #     else:
         #         self.screenshot_SaveAsDoc('号码登录时校验失败')
         #         logger.info('号码登录校验失败：{}'.format(assertMsg))
-        #         time.sleep(1)
+        #         self.sleep(1)
         #         # data_file = ReadConfig.find_Newfile(dir=ReadConfig.get_data_path())
         #         # PageAssert(self.driver).write_vaildErrPageResult(file=data_file,row=0)
         #         # write_xlsBycolName_append(file=data_file, row=0, colName='RESULT_INFO', value=assertMsg, index=0)
@@ -68,20 +68,20 @@ class LoginPart(Base):
         if flag:
             btn_PRI_EYE = (By.XPATH, '//button[contains(@onclick,"closePRI_EYE")]')
             self.find(btn_PRI_EYE).click()  # 如果有直接关闭页面再操作
-            time.sleep(1)
+            self.sleep(1)
         else:
             print("=========跳过=============")
             pass
 
     def login_by_groupId(self,groupid):
         self.isElementExist((By.ID,"groupFn"),'click')
-        time.sleep(2)
-        self.sendkey((By.ID,"groupQueryTypeValueInput"),groupid)
+        self.sleep(2)
+        self.input((By.ID,"groupQueryTypeValueInput"),groupid)
         Btn_qry = (By.CSS_SELECTOR,"#groupLogin > div.submit > button:nth-child(2)")
         self.isElementExist(Btn_qry,'click')
-        time.sleep(3)
+        self.sleep(3)
         self.isElementExist((By.XPATH,'//*[@id="groupList"]/div[1]/div[2]/ul/li'),'click')
-        time.sleep(5)
+        self.sleep(5)
         assertMsg = PageAssert(self.driver).assert_ErrPage() #登录的时候校验下是否错误
         if not assertMsg:
             self.deal_PRIEYE() #如果正常直接关闭我的移动

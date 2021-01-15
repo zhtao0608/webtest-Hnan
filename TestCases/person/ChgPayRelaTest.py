@@ -91,11 +91,11 @@ class ChgPayRelaTest(unittest.TestCase):
         loc_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         test.add_dochead(title)
         test.Open_PersonMenu(accessNum,password='123123',cataMenuId='crm9200',menuId='crm9257') #登录并进入普通付费关系变更菜单
-        time.sleep(2)
+        self.sleep(2)
         test.open_ChangePayRelaNorFrame() #进入iframe
         ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
         self.assertIn('业务规则校验通过',ruleMsg)
-        time.sleep(3)
+        self.sleep(3)
         #业务办理
         if operCode == '1':  # 分账
             logger.info('选择的是分账操作')
@@ -110,9 +110,9 @@ class ChgPayRelaTest(unittest.TestCase):
         else:
             print('OperCode只能传入1或者2，当前传入：{}'.format(operCode))
         test.sendkey(loc_remark,'AutoTest')
-        time.sleep(2)
+        self.sleep(2)
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(10)
+        self.sleep(10)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))

@@ -12,13 +12,13 @@ class LoginPage(Base):
     login_button = ("css selector", "input[id='proxy_login'][class='login_btn']")
 
     def input_username(self):
-        self.sendkey(self.username_loc, "********")
+        self.input(self.username_loc, "********")
 
     def input_password(self):
-        self.sendkey(self.password_loc, "********")
+        self.input(self.password_loc, "********")
 
     def input_verify_code(self):
-        self.sendkey(self.verify_code_text_loc, '877314')
+        self.input(self.verify_code_text_loc, '877314')
 
     def click_login(self):
         self.click(self.login_button)

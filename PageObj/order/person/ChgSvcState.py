@@ -12,7 +12,6 @@ from Base.Mylog import LogManager
 from Check.PageCheck import PageAssert
 from Common.TestAsserts import Assertion as alert
 from Common.function import isNotBlank,getDigitFromStr
-from Common.TestAsserts import Assertion as Assert
 from PageObj.order.BizCommon.ElementPartBase import MainPlanSelectPart
 from PageObj.order.BizCommon.ElementPartBase import DealUserCommon
 from PageObj.order.BizCommon.ElementPartBase import PageCommonPart
@@ -70,7 +69,7 @@ class SvcStateChgPage(Base):
         PageCommonPart(self.driver).submit() #点击提交
         submitMsg = PageAssert(self.driver).assertSubmit()
         logger.info('业务受理信息：{}'.format(submitMsg))
-        if Assert().verifyassertIn('业务受理成功',submitMsg):
+        if alert().verifyassertIn('业务受理成功',submitMsg):
             Dc().dealMainOrder(orderId=getDigitFromStr(submitMsg)) #处理主订单，如果状态是Y或者X 修改成0
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)

@@ -8,7 +8,6 @@ from Check.PageCheck import PageAssert
 from Common.TestAsserts import Assertion
 
 
-rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('MainPlanSelectPart').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
 #================处理页面元素公共类，包含主套餐、服务、优惠、平台服务等======================#
@@ -23,13 +22,13 @@ class MainPlanSelectPart(Base):
         '''
         text_productSearch = (By.ID,'productSelectPRODUCT_SEARCH_TEXT')
         self.element_sendkey_enter(text_productSearch,productId) #输入产品编码按回车查询
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
         SubproductStr = "//button[contains(@productid,'%s') and contains(@ontap,'productSelect.selectProduct')]" %productId
         btn_Subproduct = (By.XPATH,SubproductStr)  #订购按钮
-        time.sleep(1)
+        self.sleep(1)
         self.isElementDisplay(btn_Subproduct,'click') #点击主套餐订购
-        PageAssert(self.driver).pageLoading()
-        time.sleep(2)
+        PageAssert(self.driver).wait_for_load()
+        self.sleep(2)
 
 
     def selectProductItem(self,elementList):
@@ -50,7 +49,7 @@ class MainPlanSelectPart(Base):
             # self.isSelected(checkBox_selectElement,Type='click') # 选中要订购的元素（资费、服务）
         btn_confirmSelect = (By.XPATH,"//button[contains(@ontap,'productSelect.confirmAction')]")
         self.isElementDisplay(btn_confirmSelect,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
         PageAssert(self.driver).assert_WadePage() #做个校验
 
 
@@ -64,8 +63,8 @@ class MainPlanSelectPart(Base):
         # btn_productSelect = (By.ID,'productSelectBtn')
         # self.isElementDisplay(btn_productSelect,'click') #点击选择套餐按钮
         self.searchMainPlan(productId)  #进入选择套餐界面搜索主产品
-        PageAssert(self.driver).pageLoading()
-        time.sleep(1)
+        PageAssert(self.driver).wait_for_load()
+        self.sleep(1)
         self.selectProductItem(elementList) #进入组选择，选择可选资费或者服务
         return self.driver
 
@@ -75,13 +74,13 @@ class DealUserCommon(Base):
         '''用户鉴权'''
         text_SerialNum = (By.ID,'AUTH_SERIAL_NUMBER')
         self.element_sendkey_enter(text_SerialNum,accessNum)
-        PageAssert(self.driver).pageLoading() #页面加载
-        busiVerify = PageAssert(self.driver).assert_WadePage() #这里做个规则校验
-        logger.info('业务校验检查结果：'.format(busiVerify))
-        PageAssert(self.driver).pageLoading() #加载营销推荐界面
-        PageAssert(self.driver).dealDialogPage() #关闭营销推荐
+        PageAssert(self.driver).wait_for_load() #页面加载
+        verifyMsg = PageAssert(self.driver).assert_WadePage() #这里做个规则校验
+        logger.info('业务校验检查结果：'.format(verifyMsg))
+        PageAssert(self.driver).wait_for_load() #加载界面
+        # PageAssert(self.driver).dealDialogPage() #关闭营销推荐
         flag = self.isAuthSuc()
-        return {'msg':busiVerify,'IsAuthSuc':flag}
+        return {'msg':verifyMsg,'IsAuthSuc':flag}
 
     def isAuthSuc(self):
         '''判断是否鉴权成功'''
@@ -111,7 +110,7 @@ class SelectElements(Base):
         '''
         text_elementSearch = (By.ID,'elementListELEM_SEARCH_TEXT')
         self.element_sendkey_enter(text_elementSearch,offerCode)
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
 
 
     def addElements(self,scene,elementList=[]):
@@ -135,7 +134,7 @@ class SelectElements(Base):
             btnAddElementStr = "//button[contains(@onclick,'elementList.order') and contains(@offertype,'%s') and contains(@offercode,'%s')]" %(offerType,offerCode)
             Btn_AddElement = (By.XPATH,btnAddElementStr)
             self.isElementDisplay(Btn_AddElement,'click')
-            PageAssert(self.driver).pageLoading()
+            PageAssert(self.driver).wait_for_load()
             RuleCheckBefore(self.driver).checkRule(scene=scene)
 
 
@@ -174,9 +173,9 @@ class PageCommonPart(Base):
     def submit(self):
         '''公共提交按钮'''
         Btn_submit = (By.ID,'CSSUBMIT_BUTTON')
-        if not PageAssert(self.driver).pageLoading():
+        if not PageAssert(self.driver).wait_for_load():
             self.isElementDisplay(Btn_submit,'click')
-        PageAssert(self.driver).pageLoading()  #提交后页面加载
+        PageAssert(self.driver).wait_for_load()  #提交后页面加载
 
 class SaleActivePart(Base):
     '''营销活动办理组件'''
@@ -191,14 +190,14 @@ class SaleActivePart(Base):
         self.searchSaleActive(offerCode) #按编码查询营销包
         self.checkSaleActiveExists(offerCode) #校验是否存在，里面做了断言
         self.selectActive() #点击订购
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
 
     def selActivePop(self):
         '''选择组件'''
         li_selActivePop =(By.XPATH,"//*[contains(@ontap,'SaleActiveMain.selectProductPopupAction')]")
         self.isElementDisplay(li_selActivePop,'click')
-        PageAssert(self.driver).pageLoading()
-        time.sleep(1)
+        PageAssert(self.driver).wait_for_load()
+        self.sleep(1)
 
 
     def searchSaleActive(self,offerCode):
@@ -209,10 +208,10 @@ class SaleActivePart(Base):
         '''
         text_searchContent = (By.ID,'searchContent')
         btn_search = (By.XPATH,"//*[contains(@onclick,'SaleActivePackageSelect.query')]")
-        PageAssert(self.driver).pageLoading()
-        self.sendkey(text_searchContent,offerCode)
-        self.isElementDisplay(btn_search,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
+        self.input(text_searchContent,offerCode)
+        self.isElementDisplay(btn_search,'click',delay=1)
+        PageAssert(self.driver).wait_for_load()
 
     def checkSaleActiveExists(self,offerCode):
         '''检查是否传入的营销活动是否存在'''

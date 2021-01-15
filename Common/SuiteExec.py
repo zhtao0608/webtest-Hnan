@@ -15,6 +15,17 @@ class DealSuiteExec(Dto):
     def __init__(self):
         self.tab = 'AUTOTEST_SUITE_EXEC'
 
+    def initSuiteExecData(self,suiteCode):
+        '''测试套件执行前初始化数据'''
+        '''eg :
+        update AUTOTEST_SUITE_EXEC t set t.EXEC_TIME = null ,t.ORDER_ID = null ,
+        t.RULE_CHECK_INFO =null,t.DATA_CHECK_INFO =null,t.ACTUAL_RESULT=null
+        where t.SUITE_CODE ='ProdChgTest';
+        '''
+        return self.editDataMapByCond(tabName=self.tab,sqlref='UPD_BY_SUITE',cond=suiteCode)
+
+
+
     def get_ExecPlanBySuiteCode(self,suiteCode):
         '''
         通过suiteCode 获取案例执行计划

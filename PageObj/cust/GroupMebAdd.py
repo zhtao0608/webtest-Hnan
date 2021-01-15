@@ -27,10 +27,10 @@ class GroupMebAdd(CustBasePage):
     def qry_GroupMebInfoByAccessNum(self,AccessNum):
         '''根据服务号码查询集团成员'''
         text_accessNum = (By.ID,'cond_ACCESS_NUM')
-        self.sendkey(text_accessNum,AccessNum)
+        self.input(text_accessNum,AccessNum)
         Btn_qry = (By.CSS_SELECTOR,'#QryPart > div > div > div.info > div > div:nth-child(3) > span > button')
         self.find_element_click(Btn_qry)
-        time.sleep(2)
+        self.sleep(2)
         vaildMsg = PageAssert(self.driver).assert_WadePage() #校验
         logger.info('集团成员校验信息:{}'.format(vaildMsg))
         return vaildMsg
@@ -41,11 +41,11 @@ class GroupMebAdd(CustBasePage):
         input_groupID = (By.ID,'cond_GROUP_ID2')
         Btn_query = (By.CSS_SELECTOR,'#popupt > div.c_scroll.c_scroll-float.c_scroll-header > div > div.c_submit.c_submit-full > button')
         self.find_element_click(Btn_qry)
-        time.sleep(1)
-        self.sendkey(input_groupID,groupId)
-        time.sleep(1)
+        self.sleep(1)
+        self.input(input_groupID,groupId)
+        self.sleep(1)
         self.find_element_click(Btn_query)
-        time.sleep(5)
+        self.sleep(5)
         qryVaildMsg = PageAssert(self.driver).assert_WadePage()
         logger.info('查询校验信息:{}'.format(qryVaildMsg))
         loc_groupInfo= (By.XPATH,'//*[@id="groupinfosTable"]/div[1]/div/table/tbody/tr/td[2]/a') #找到集团编码
@@ -66,22 +66,22 @@ class GroupMebAdd(CustBasePage):
         # text_groupId = (By.ID,'GROUP_ID')
         btn_check = (By.XPATH,'//*[@id="groupRel"]/div[2]/div/div[2]/ul/li[1]/div[2]/span/span')
         self.find_element_click(li_setRela)
-        time.sleep(1)
+        self.sleep(1)
         self.find_element_click(btn_check)
-        time.sleep(2)
+        self.sleep(2)
         self.qry_GroupInfo(groupId)  #查询集团
         self.find((By.ID,'MEMBER_BELONG_span')).click()#点击成员归属
-        time.sleep(1)
+        self.sleep(1)
         self.find((By.XPATH,'//*[@id="MEMBER_BELONG_float"]/div[2]/div/div/ul/li[2]')).click() #网内成员
-        time.sleep(1)
+        self.sleep(1)
         self.find((By.ID,'MEMBER_KIND_span')).click()  #点击成员类型
-        time.sleep(1)
+        self.sleep(1)
         self.find((By.XPATH,'//*[@id="MEMBER_KIND_float"]/div[2]/div/div/ul/li[2]')).click() #一般成员
         self.find((By.ID,'MEMBER_RELA_span')).click()
-        time.sleep(1)
+        self.sleep(1)
         self.find((By.XPATH,'//*[@id="MEMBER_RELA_float"]/div[2]/div/div/ul/li[2]')).click() #成员关系->雇佣关系
         self.find((By.ID,'MEMBER_PROPERTY_span')).click()
-        time.sleep(1)
+        self.sleep(1)
         self.find((By.XPATH,'//*[@id="MEMBER_PROPERTY_float"]/div[2]/div/div/ul/li[2]')).click()
         Btn_confirm = (By.CSS_SELECTOR,'#groupRel > div.c_scroll.c_scroll-float.c_scroll-header > div > div.c_submit.c_submit-full > button')
         self.find(Btn_confirm).click() #点击确认

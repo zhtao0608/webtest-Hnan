@@ -47,7 +47,7 @@ class FamilyNetTest(unittest.TestCase):
         test.add_dochead(title)
         Btn_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9300',menuId='crmy165') #登录并进入菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_MultiOfferFrame() #进入iframe
         ruleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)
         self.assertNotIn('校验失败',ruleMsg) # 校验通过才继续执行
@@ -56,14 +56,14 @@ class FamilyNetTest(unittest.TestCase):
         test.set_mainCard(AccessNum)
         logger.info('新增家庭成员并设置家庭短号服务')
         test.set_mutiCard(mutiAccessNumList)
-        time.sleep(2)
+        self.sleep(2)
         test.find_element_click(Btn_commit)
-        time.sleep(15)
+        self.sleep(15)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        time.sleep(3)
+        self.sleep(3)
         self.assertIn('业务受理成功',submitMsg)
 
     def tearDown(self):

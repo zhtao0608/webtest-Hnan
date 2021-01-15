@@ -53,7 +53,7 @@ class ChgGrpPayRelaTest(unittest.TestCase):
         test.choose_operAction(operCode)
         test.set_Payitem(itemName)
         test.isElementDisplay((By.ID, 'submitButton'), 'click')  # 点击提交
-        time.sleep(5)
+        self.sleep(5)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('GrprelaAdvAdd')['FuncRow'],index=0) #写入结果到xls
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)

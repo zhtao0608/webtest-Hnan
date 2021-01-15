@@ -51,7 +51,7 @@ class ShareActiveTest(unittest.TestCase):
         test.add_dochead(title)
         loc_commit = (By.CSS_SELECTOR, '#winInfoPop > div.c_popupBox > div > div > div > div.c_submit.e_center > button')
         test.Open_PersonMenu(accessNum=accessNum,password='123123',cataMenuId='crm9200',menuId='crmy198') #进入菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_ShareActiveFrame() #进入iframe
         logger.info('进入家庭畅享活动菜单时验证主号')
         logger.info('暂时屏蔽主号校验')
@@ -70,16 +70,16 @@ class ShareActiveTest(unittest.TestCase):
         #     # PageAssert(self.driver).write_vaildErrResult(file=file,row=row)
         #     write_xlsBycolName_append(file=file,row=row,colName='RESULT_INFO',value=vaildMsg)
         #     logger.info('写入副号校验结果到xls成功.....')
-        #     time.sleep(2)
+        #     self.sleep(2)
         #     test.quit_browse()
-        time.sleep(2)
+        self.sleep(2)
         test.find_element_click(loc_commit) #点击办理
-        time.sleep(15)
+        self.sleep(15)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
-        time.sleep(3)
+        self.sleep(3)
         self.assertIn('业务受理成功',submitMsg)
         test.driver.close()
 

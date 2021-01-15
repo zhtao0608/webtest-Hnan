@@ -58,7 +58,7 @@ class ProdChangePage(Base):
         self.screen_step("点击变更按钮")
         Btn_changeProduct = (By.ID,'changeButton')
         self.isElementDisplay(Btn_changeProduct,'click') #点击产品变更按钮
-        time.sleep(1)
+        self.sleep(1)
         self.screen_step("选择主套餐")
         MainPlanSelectPart(self.driver).MainProductSel(productId,elementList)
         RuleCheckBefore(self.driver).checkRule(scene) #规则校验
@@ -100,7 +100,7 @@ class ProdChangePage(Base):
         logger.info('业务受理信息：{}'.format(submitMsg))
         if Assert().verifyassertIn('业务受理成功',submitMsg):
             Dc().dealMainOrder(orderId=getDigitFromStr(submitMsg)) #处理主订单，如果状态是Y或者X 修改成0
-            Dc().c
+            Dc().retOrderTrace(orderId=getDigitFromStr(submitMsg),route='jour42')
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         self.save_docreport(title)
         return submitMsg

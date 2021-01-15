@@ -162,7 +162,7 @@ class Test(unittest.TestCase):
         logger = LogManager('testn').get_logger_and_add_handlers(1,log_path=log_path,log_filename=time.strftime("%Y-%m-%d") + '.log')
 
         print('下面这一句不会重复打印四次和写入日志四次')
-        time.sleep(1)
+        self.sleep(1)
         logger.info('XXXXXXXINFOxxxxx')
 
 
@@ -170,7 +170,7 @@ class Test(unittest.TestCase):
         """测试没有handlers的日志"""
         log = LogManager('test2').get_logger_without_handlers()
         print('下面这一句不会被打印')
-        time.sleep(1)
+        self.sleep(1)
         log.info('这一句不会被打印')
 
     def test_add_handlers(self):
@@ -178,10 +178,10 @@ class Test(unittest.TestCase):
         log0 = LogManager('test3').get_logger_and_add_handlers(2)
         log1 = LogManager('test3').get_logger_without_handlers()
         print('下面这一句是info级别，可以被打印出来')
-        time.sleep(1)
+        self.sleep(1)
         log1.info('这一句是info级别，可以被打印出来')
         print('下面这一句是debug级别，不能被打印出来')
-        time.sleep(1)
+        self.sleep(1)
         log1.debug('这一句是debug级别，不能被打印出来')
 
     def test_only_write_log_to_file(self):

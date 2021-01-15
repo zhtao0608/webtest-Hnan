@@ -51,7 +51,8 @@ class DataMap(MyOracle):
                     sql = result[i]['SQL_STMT']
                 else:
                     sql = result[i]['SQL_STMT'] + ' WHERE ' + result[i]['EXPR_COND']
-                    print(sql)
+                    logger.info('从DataMap表获取的sql语句：{}'.format(sql))
+                    # print(sql)
                 sqlDictRet = {'ROUTE': route, 'SQL': sql.replace('\n',' ').replace('\r',' ')} #可能存在多条记录，用listDict返回
                 logger.info('查询返回的字典结果:{}'.format(sqlDictRet))
                 listResult.append(sqlDictRet)
@@ -185,6 +186,9 @@ class DataMap(MyOracle):
             for i in range(0,len(retDict)):
                 sql = retDict[i]['SQL'].replace('\n',' ')
                 route = retDict[i]['ROUTE']
+                if isEmpty(cond) or cond is None:
+                    sql = sql
+                    logger.info('======查询sql语句:{}'.format(sql))
                 if isinstance(cond,tuple) or isinstance(cond,str):
                     sql = sql % cond    #如果传入都条件是字符串或者数组
                     logger.info('======查询sql语句:{}'.format(sql))
@@ -197,9 +201,11 @@ class DataMap(MyOracle):
                 else:
                     res = self.select(sql=sql,route=route)
                 logger.info('======查询sql语句数据库返回结果:{}'.format(res))
-                alert().assertFalse(isEmpty(res),msg='查询dataMap数据结果为空!')
+                # alert().assertFalse(isEmpty(res),msg='查询dataMap数据结果为空!')
+                alert().verifyassertTrue(isNotBlank(res),msg='查询dataMap数据结果为空!')
                 if len(res) == 0:
                     logger.info('查询结果为空')
+                    result = {}
                 elif len(res) == 1:
                     logger.info('返回当前查询结果:{}'.format(res[0]))
                     result = res[0]  #如果查询出来的结果集只有一条数据，则直接取出来当做dict返回
@@ -297,8 +303,8 @@ if __name__ == '__main__':
     # res = test.qryDataMapExcatByCond(tabName='TF_B_TRADE',sqlref='SelByOrderID',cond='7119013105881916')
     # res2 = test.qryDataMapExcatByCond(tabName='TF_B_TRADE_BROADBAND',sqlref='SELECT_ALL_BY_TRADEID',cond=('3120121187922472',time.strftime('%Y'),'3120121187922472'))
     # res2 = test.qryDataMapExcatByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=('ChgMainProduct'))
-    res2 = test.retDataMapListByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=('ChgMainProduct'))
-
+    res2 = test.qryDataMapExcatByCond(tabName='TF_F_REALNAME_INFO', sqlref='SEL_MIN_1', cond=None)
+    # res2 = test.retDataMapListByCond(tabName='AUTOTEST_CASE',sqlref='SEL_BY_SCENE_CODE',cond=('ChgMainProduct'))
     print(res2)
 
 

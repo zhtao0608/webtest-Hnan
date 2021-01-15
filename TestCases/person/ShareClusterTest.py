@@ -92,7 +92,7 @@ class ShareClusterTest(unittest.TestCase):
         test.add_dochead(title)
         loc_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9400',menuId='crm4G10') #登录并进入主卡菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_ShareClusterFrame() #进入iframe
         RuleMsg = PageAssert(self.driver).check_BusiRule(file=file,row=row)  # 业务检查点（进入菜单时校验）
         print('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
@@ -100,9 +100,9 @@ class ShareClusterTest(unittest.TestCase):
         self.assertNotIn('业务校验失败',RuleMsg)
         test.screen_step('进入主卡操作菜单')
         test.add_MebAccessNum(serialNum)
-        time.sleep(2)
+        self.sleep(2)
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(15)
+        self.sleep(15)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0)
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
@@ -125,7 +125,7 @@ class ShareClusterTest(unittest.TestCase):
         test.add_dochead(title)
         loc_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9400',menuId='crm4G10') #登录并进入主卡菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_ShareClusterFrame() #进入iframe
         RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
         print('4G家庭共享套餐业务提交前规则:{}'.format(RuleMsg))
@@ -135,9 +135,9 @@ class ShareClusterTest(unittest.TestCase):
             test.quit_browse() #业务规则校验失败，直接终止程序
         test.screen_step('进入主卡操作菜单')
         test.del_MebAccessNum(serialNum)
-        time.sleep(2)
+        self.sleep(2)
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(10)
+        self.sleep(10)
         submitMsg =PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
@@ -159,7 +159,7 @@ class ShareClusterTest(unittest.TestCase):
         test.add_dochead(title)
         loc_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         test.Open_PersonMenu(AccessNum,password='123123',cataMenuId='crm9400',menuId='crm4G10') #登录并进入主卡菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_ShareClusterFrame() #进入iframe
         RuleMsg= PageAssert(self.driver).check_BusiRule(file,row)
         # RuleMsg = test.vaild_BusiRule() #业务检查点（进入菜单时校验）
@@ -171,9 +171,9 @@ class ShareClusterTest(unittest.TestCase):
         Msg = PageAssert(self.driver).assert_WarnPage()
         print('取消共享群组时，提醒信息:{}'.format(Msg))
         logger.info('取消共享群组时，提醒信息:{}'.format(Msg))
-        time.sleep(2)
+        self.sleep(2)
         test.find_element_click(loc_commit) #点击提交
-        time.sleep(15)
+        self.sleep(15)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))

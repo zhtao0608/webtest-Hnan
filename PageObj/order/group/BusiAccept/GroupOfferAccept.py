@@ -41,7 +41,7 @@ class GroupOfferAccept(GroupBusiBase):
         LoginPage(self.driver).login()  # 登录
         MainPage(self.driver).open_CataMenuNew(funcId='crm8110')
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
-        time.sleep(2)
+        self.sleep(2)
         self.SelOfferTypePart(brandCode)# 选择商品目录
         self.SubGrpOffer(offerCode) #选择集团商品
         msg = RuleCheckBefore(self.driver).checkRule(scene) #
@@ -54,7 +54,7 @@ class GroupOfferAccept(GroupBusiBase):
         DealElements(self.driver).selectElements(elementAttrBizList) #选择要订购的资费和服务并且设置属性
         self.screen_step("进入子商品选择页面，选择资费和服务")
         DealElements(self.driver).selectGroupContract(contractId) #选择集团对应合同
-        time.sleep(2)
+        self.sleep(2)
         if '2222' == offerCode :
             DealElements(self.driver).setApprovalInfo(staffId='AJF00189')
         DealElements(self.driver).submitAccept()
@@ -62,7 +62,7 @@ class GroupOfferAccept(GroupBusiBase):
         logger.info('业务受理信息：{}'.format(msg))
         self.screen_step('点击提交,受理信息：{}'.format(msg))
         orderId = getDigitFromStr(msg)
-        time.sleep(2)
+        self.sleep(2)
         orderTrace = DataCheck().retOrderTrace(orderId)
         logger.info(orderTrace)
         print(orderTrace) #输出到控制台。方便在测试报告html中查看订单轨迹
@@ -79,10 +79,10 @@ class GroupOfferAccept(GroupBusiBase):
         MainPage(self.driver).open_CataMenuNew(funcId='crm8110')
         self.screen_step("进入集团商品受理菜单")
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
-        time.sleep(2)
+        self.sleep(2)
         self.selectGroupOffer()# 选择集团商品按钮
         self.OfferSubCata()  #点击已订购目录
-        time.sleep(2)
+        self.sleep(2)
         self.screen_step("选择要注销的集团商品")
         self.DstGrpOfferCodeNew(offerCode) #传入要注销的集团商品编码和用户标识点击注销
         RuleCheckBefore(self.driver).checkRule(scene)   #点击注销后判断规则
@@ -92,7 +92,7 @@ class GroupOfferAccept(GroupBusiBase):
         logger.info('业务受理信息：{}'.format(msg))
         self.screen_step('点击提交,受理信息：{}'.format(msg))
         orderId = getDigitFromStr(msg)
-        time.sleep(2)
+        self.sleep(2)
         orderTrace = DataCheck().retOrderTrace(orderId)
         logger.info(orderTrace)
         self.save_docreport(title)
@@ -117,12 +117,12 @@ class GroupOfferAccept(GroupBusiBase):
         MainPage(self.driver).open_CataMenuNew(funcId='crm8160')
         self.screen_step("进入成员商品受理菜单")
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
-        time.sleep(1)
+        self.sleep(1)
         DealMebElements(self.driver).QryMebInfo(serialNum) #查询成员用户信息
-        time.sleep(2)
+        self.sleep(2)
         self.selectGroupOffer()# 选择集团商品按钮
         self.screen_step("选择集团商品")
-        time.sleep(3)
+        self.sleep(3)
         self.SubMebOffer(grpUserId) #成员商品订购按钮
         RuleCheckBefore(self.driver).checkRule(scene)
         DealElements(self.driver).initOfferAttrInfo()  #点击商品待设置或者点击商品特征设置
@@ -141,7 +141,7 @@ class GroupOfferAccept(GroupBusiBase):
         submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         orderId = getDigitFromStr(submitMsg)
-        time.sleep(2)
+        self.sleep(2)
         orderTrace = DataCheck().retOrderTrace(orderId)
         logger.info(orderTrace)
         self.screen_step('点击提交,受理信息：{}'.format(submitMsg))
@@ -159,10 +159,10 @@ class GroupOfferAccept(GroupBusiBase):
         # MainPage(self.driver).open_CataMenu('crm8000', 'crm8200', 'crm8206',menuPath='page/order.page.pc.enterprise.operenterprisemember')  # 进入成员商品受理
         MainPage(self.driver).open_CataMenuNew(funcId='crm8160')
         self.GroupQryPart(groupId)  #按集团编码查询集团客户
-        time.sleep(1)
+        self.sleep(1)
         DealMebElements(self.driver).QryMebInfo(serialNum) #查询成员用户信息
         self.OfferSubCata() #点击已订购目录
-        time.sleep(3)
+        self.sleep(3)
         self.DstMebOffer(grpUserId)
         ####这个还差一个重新认证集团客户的确认动作
         RuleCheckBefore(self.driver).checkRule() #业务规则判断
@@ -171,7 +171,7 @@ class GroupOfferAccept(GroupBusiBase):
         submitMsg = PageAssert(self.driver).assert_Submit()
         logger.info('业务受理信息：{}'.format(submitMsg))
         orderId = getDigitFromStr(submitMsg)
-        time.sleep(2)
+        self.sleep(2)
         orderTrace = DataCheck().retOrderTrace(orderId)
         logger.info('=========订单轨迹检查结果========')
         logger.info(orderTrace)

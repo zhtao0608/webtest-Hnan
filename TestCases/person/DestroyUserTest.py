@@ -64,10 +64,10 @@ class DestroyUserTest(unittest.TestCase):
         PageAssert(self.driver).assert_HelpPage() #关闭提示
         test.close_UIstep()
         test.find_element_click(loc_vaild) #移动到认证并点击
-        time.sleep(2)
+        self.sleep(2)
         test.set_destroyReason()
         test.find_element_click(loc_commit)  #点击提交
-        time.sleep(10)  #销户业务提交比较慢
+        self.sleep(10)  #销户业务提交比较慢
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #提交后返回信息，flowId或者报错
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)

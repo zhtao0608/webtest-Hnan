@@ -59,7 +59,7 @@ class SubscriberOpenTest(unittest.TestCase):
         test.set_personPwd() #设置用户服务新密码
         test.find_element_click(loc_commitAll)# 点击提交时校验服务密码
         test.find_element_click(loc_commitAll)# 再次点击提交
-        time.sleep(10)
+        self.sleep(10)
         #提交时如果发生异常，则将结果写入到xls
         vaildMsg = PageAssert(self.driver).write_vaildErrResult(file=file,row=row,index=0) #如果有错误就写入结果到xls
         self.assertNotIn('校验失败',vaildMsg)

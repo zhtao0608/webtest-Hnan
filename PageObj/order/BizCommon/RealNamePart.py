@@ -8,7 +8,6 @@ from Common.TestAsserts import Assertion as Assert
 from Data.DataMgnt.DataOper import DataOper as DTO
 
 
-rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('RealNamePart').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
 #================处理实名制认证组件=====================#
@@ -22,11 +21,24 @@ class RealNamePart(Base):
         :return:
         '''
         self.selectVerifyMode()  #选择在线认证方式
-        self.selectPsptType() #证件类型选择身份证
+        # self.selectPsptType() #证件类型选择身份证
         self.tradeSend()  #下发工单
         self.verifyRealNameNew(accessNum) #根据手机号码自动更新实名制信息
-        time.sleep(1)
+        self.sleep(1)
         self.tradeQry()  #点击认证检索
+
+    def existUserVerify(self,accessNum):
+        '''
+        存量用户实名认证
+        :param accessNum: 手机号码
+        :return:
+        '''
+        self.selectVerifyMode()  #选择在线认证方式
+        self.tradeSend()  #下发工单
+        self.verifyRealNameExist(accessNum)
+        self.sleep(1)
+        self.tradeQry()  #点击认证检索
+
 
     def selectVerifyMode(self,verifyMode='人证比对一体机'):
         '''
@@ -36,11 +48,10 @@ class RealNamePart(Base):
         '''
         # sel_VerifyMode = (By.ID,'VERIFY_MODEL_USER_span') #VERIFY_MODEL_span
         sel_VerifyMode = (By.ID,'VERIFY_MODEL_span') # 湖南认证组件ID修改
-        #//*[@id="VERIFY_MODEL_float"]/div[2]/div/div/ul/li[3]
         VerifyModeFloatStr = "//*[@id='VERIFY_MODEL_float']/div[2]/div/div/ul/li[contains(@title,'%s')]" %verifyMode
         sel_VerifyModeFloat = (By.XPATH,VerifyModeFloatStr)  #当前写死是在线验证方式
         self.isElementDisplay(sel_VerifyMode,'click')
-        time.sleep(1)
+        self.sleep(1)
         self.isElementDisplay(sel_VerifyModeFloat,'click')
 
     def selectPsptType(self,psptType='身份证'):
@@ -53,7 +64,7 @@ class RealNamePart(Base):
         PsptTypeStr = "//*[@id='SEND_PSPT_TYPE_CODE_float']/div[2]/div/div/ul/li[contains(@title,'%s')]" %psptType
         sel_PsptTypeFloat = (By.XPATH,PsptTypeStr)  #当前写死是在线验证方式
         self.isElementDisplay(sel_PsptType,'click')
-        time.sleep(1)
+        self.sleep(1)
         self.isElementDisplay(sel_PsptTypeFloat,'click')
 
     def tradeSend(self):
@@ -61,19 +72,18 @@ class RealNamePart(Base):
         工单下发
         :return:
         '''
-        btn_sendTrade = (By.ID,'TRADE_SEND_USER')
-        self.isElementDisplay(btn_sendTrade,'click')
-        PageAssert(self.driver).pageLoading()  #页面一直加载，直到页面加载结束
-        time.sleep(1)
+        btn_sendTrade = (By.ID,'tradeSendButton')
+        self.isElementDisplay(btn_sendTrade,'click',delay=2)
+        PageAssert(self.driver).wait_for_load()  #页面一直加载，直到页面加载结束
+        self.sleep(1)
 
 
     def tradeQry(self):
         '''点击认证检索'''
-        btn_tradeQry = (By.ID,'TRADE_QUERY_USER')
-        self.isElementDisplay(btn_tradeQry,'click')
-        PageAssert(self.driver).pageLoading() #处理下页面加载
-        Assert().assertIn('校验通过',PageAssert(self.driver).assert_WadePage(),msg='实名校验未通过')#先校验一下
-        PageAssert(self.driver).dealDialogPage()  #关闭Dialog
+        btn_tradeQry = (By.ID,'tradeQueryButton')
+        self.isElementDisplay(btn_tradeQry,'click',delay=2)
+        PageAssert(self.driver).wait_for_load() #处理下页面加载
+        Assert().assertIn('认证检索成功',PageAssert(self.driver).assert_WadePage(),msg='认证检索失败')#先校验一下
 
 
     def verifyRealNameExist(self,accessNum):

@@ -34,15 +34,15 @@ class SearchPage(Base):
     def search_train(self,leave,arrive,leave_date):
         self.search_leave().clear()
         self.search_leave().send_keys(leave)
-        time.sleep(3)
+        self.sleep(3)
         self.search_arrive().clear()
         self.search_arrive().send_keys(arrive)
-        time.sleep(3)
+        self.sleep(3)
         self.search_js()
         self.search_date().clear()
         self.search_date().send_keys(leave_date)
         self.search_btn().click()
-        time.sleep(3)
+        self.sleep(3)
         return self.dr_url()
 
 

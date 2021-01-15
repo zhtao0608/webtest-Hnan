@@ -9,7 +9,10 @@ from Base import ReadConfig
 import time,os,sys
 from docx import Document
 from docx.shared import Inches
+from selenium.webdriver.common.by import By
+
 from contextlib import contextmanager
+
 
 logger = LogManager('base').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log')
 
@@ -58,6 +61,10 @@ class Base():
             logger.info("页面未找到元素:"+str(locator))
             self.screen()
 
+    def sleep(self,n=1):
+        '''休眠n秒'''
+        time.sleep(n)
+
     def findeles(self,*locator):
         '''更加xpath-str获取多个元素'''
         try:
@@ -100,8 +107,8 @@ class Base():
             if eles:
                 return eles
             else:
-                print("定位失败：定位方式->{locator[0]}, value值->{locator[1]}")
-                logger.info("定位失败：定位方式->{locator[0]}, value值->{locator[1]}")
+                # print("定位失败：定位方式->{locator[0]}, value值->{locator[1]}")
+                logger.info("定位失败：定位方式->{}, value值->{}".format(locator[0],locator[1]))
                 self.screen()  #保存截图
                 return []
         else:  # value值定位
@@ -111,7 +118,7 @@ class Base():
 
 
     '''=======================判断元素方法收集========================'''
-    def isElementExist(self, locator,Type=''):
+    def isElementExist(self, locator,Type='',delay=1):
         """判断单个元素是否在DOM里面 （是否存在）"""
         try:
             ele = self.find(locator)
@@ -120,7 +127,8 @@ class Base():
                 return True
             elif Type == 'click':
                 ele.click()
-                time.sleep(2)
+                self.sleep(delay)
+                # self.sleep(2)
             elif Type == 'text':
                 return self.get(locator,Type='text')
             else:
@@ -147,9 +155,7 @@ class Base():
             return False
 
 
-
-
-    def isElementDisplay(self, locator,action =''):
+    def isElementDisplay(self, locator,action ='',delay=1):
         """判断单个元素是否显示在页面上"""
         try:
             ele = self.find(locator)
@@ -158,7 +164,8 @@ class Base():
                 return r
             elif action == 'click':  # 如果type参数为click，执行元素的点击操作
                 ele.click()
-                time.sleep(2)
+                self.sleep(delay)
+                # self.sleep(2)
             elif action == 'text':
                 return self.get(locator,Type='text')
             else:
@@ -255,7 +262,7 @@ class Base():
         self.find(loactor).click()
 
     #输入值
-    def sendkey(self,locator,value):
+    def input(self,locator,value):
         ele = self.find(locator)
         try:
             self.js_scrollIntoView(ele)
@@ -290,6 +297,39 @@ class Base():
         """
         el = self.find(locator)
         Select(el).select_by_value(value)
+
+
+    def wadeSelectByTitle(self,id_locator,title):
+        '''
+        WADE框架处理e_select
+        :param id_locator: 传入对应e_select页面元素的ID值（注意后面不带_span）
+        :param val: 选择框下拉枚举值
+        :return:
+        '''
+        id_selectLoc = id_locator+'_span'
+        id_selFloat = id_locator+'_float'
+        loc_eSelect = (By.ID,id_selectLoc)
+        eSelectFloatStr = '//*[@id="%s"]/div[2]/div/div/ul/li[contains(@title,"%s")]' %(id_selFloat,title)
+        loc_eSelectFloat = (By.XPATH,eSelectFloatStr)
+        self.isElementDisplay(loc_eSelect,'click',delay=1)
+        self.isElementDisplay(loc_eSelectFloat,'click') #按title选择
+
+
+    def wadeSelectByVal(self,id_locator,val):
+        '''
+        WADE框架处理e_select
+        :param id_locator: 传入对应e_select页面元素的ID值（注意后面不带_span）
+        :param val: 选择框下拉枚举值
+        :return:
+        '''
+        id_selectLoc = id_locator+'_span'
+        id_selFloat = id_locator+'_float'
+        loc_eSelect = (By.ID,id_selectLoc)
+        eSelectFloatStr = '//*[@id="%s"]/div[2]/div/div/ul/li[contains(@val,"%s")]' %(id_selFloat,val)
+        loc_eSelectFloat = (By.XPATH,eSelectFloatStr)
+        self.isElementDisplay(loc_eSelect,'click',delay=1)
+        self.isElementDisplay(loc_eSelectFloat,'click') #按title选择
+
 
     ##js处理
     """==============================js与jQuery相关====================================="""
@@ -419,6 +459,40 @@ class Base():
             logger.info("iframe切换异常")
             self.screen()
 
+    def switchToParFrame(self):
+        '''切换到上级Frame'''
+        self.driver.switch_to.parent_frame()
+    #===========处理弹出窗口==========#
+    # 判断是否有弹出框
+    def get_alert(self):
+
+        # wd_al=get_driver().switch_to_alert()
+        # if wd_al is not None:
+        #     return 'true'
+        # else:
+        #     return 'false'
+        try:
+            wd_al = self.driver.switch_to_alert()
+            wd_al.text
+            return wd_al
+        except NoAlertPresentException:
+            return False
+
+    # 获取弹出框内容
+    def get_text(self):
+        wd_al = self.driver.switch_to_alert()
+        return wd_al.text
+
+    # 点击确定
+    def alert_accept(self):
+        wd_al = self.driver.switch_to_alert()
+        wd_al.accept()
+
+    # 点击取消
+    def alert_dismiss(self):
+        wd_al = self.driver.switch_to_alert()
+        wd_al.dismiss()
+
     def alterMsg(self):
         """处理浏览器弹窗Alert窗口"""
         try:
@@ -434,6 +508,7 @@ class Base():
             logger.info("切换Alert异常")
             alertMsg = 'Alert窗口发生异常'
         return alertMsg
+    #===========处理弹出窗口==========#
 
 
     def handle(self, value):
@@ -452,7 +527,7 @@ class Base():
 
     def quit_browse(self):
         self.driver.quit()
-        time.sleep(3)
+        self.sleep(3)
         # self.driver.execute_script('window.stop()')
         sys.exit(1)
         # os._exit(0)
@@ -480,7 +555,7 @@ class Base():
         element = self.find(locator)
         action = ActionChains(self.driver)
         action.send_keys_to_element(element,value)
-        time.sleep(2)
+        self.sleep(2)
         action.click(element)
         action.perform()
 
@@ -491,7 +566,7 @@ class Base():
         element.clear() #先清理
         action = ActionChains(self.driver)
         action.send_keys_to_element(element,value)
-        time.sleep(2)
+        self.sleep(2)
         # action.click(element)
         action.send_keys(Keys.ENTER)  #按Enter键
         action.perform()
@@ -500,11 +575,11 @@ class Base():
         u"""鼠标悬停并键盘上输入Enter操作"""
         element = self.find(locator)
         ActionChains(self.driver).click(element).send_keys(Keys.ENTER).perform()
-        time.sleep(1)
+        self.sleep(1)
 
     def sendEnter(self):
         ActionChains(self.driver).send_keys(Keys.ENTER).perform()
-        time.sleep(1)
+        self.sleep(1)
 
     def get_text(self, locator):
         u"""获取文本内容"""
@@ -575,12 +650,12 @@ class Base():
         :param filename: 要上传的完整路径文件
         '''
         self.find_element_click(locator)
-        time.sleep(2)
+        self.sleep(2)
         args = r"E:\ProgramData\PycharmProjects\webtest\Common\upload.exe --chrome %s" % filename
         logger.info('要上传的文件路径:{}'.format(filename))
         print('执行上传的参数:{}'.format(args))
         os.system(args)
-        time.sleep(3)
+        self.sleep(3)
 
 
 if __name__ == '__main__':

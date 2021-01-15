@@ -34,11 +34,11 @@ class LoginPage(Base):
         loc_username = (By.ID, "STAFF_ID")
         loc_password = (By.ID , "PASSWORD")
         btn_loginBtn = (By.ID , "loginBtn")
-        self.sendkey(loc_username,username)
-        self.sendkey(loc_password,password)
+        self.input(loc_username,username)
+        self.input(loc_password,password)
         self.screen_step('登录')
         self.isElementDisplay(btn_loginBtn,'click')
-        time.sleep(2)
+        # self.sleep(2)
         return self.dr_url()
 
 if __name__ == '__main__':

@@ -28,7 +28,7 @@ class LoginTest(unittest.TestCase):
         loginpart = LoginPart(self.driver)
         loginpart.login_by_pwd("13808710001","123123")
         import time
-        time.sleep(3)
+        self.sleep(3)
         hander = self.driver.current_window_handle
         self.driver.switch_to.window(hander)
         res = self.driver.page_source
@@ -45,7 +45,7 @@ class LoginTest(unittest.TestCase):
         loginpart = LoginPart(self.driver)
         loginpart.login_by_groupId("8721420859")
         import time
-        time.sleep(5)
+        self.sleep(5)
         hander = self.driver.current_window_handle
         self.driver.switch_to.window(hander)
         res = self.driver.page_source

@@ -48,17 +48,17 @@ class EcCampnOperTest(unittest.TestCase):
         test.screen_step('进入集团营销活动受理')
         test.choose_EcCampnOffer(CampnOfferId,OfferKey,prePrice,AcctId,month)
         test.screen_step('选择营销活动并设置')
-        time.sleep(5)
+        self.sleep(5)
         test.find_element_click((By.ID,'submitButton')) #点击提交
-        time.sleep(2)
+        self.sleep(2)
         test.sendEnter() #确认
-        time.sleep(5)
+        self.sleep(5)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=get_TestData('SubEcCampnAdd')['FuncRow'],index=0) #写入结果到xls
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
         test.save_docreport(title)
         self.assertIn('业务受理成功',submitMsg)
         self.driver.close()
-        time.sleep(3)
+        self.sleep(3)
 
     def tearDown(self):
         print('测试结束，关闭浏览器器!')

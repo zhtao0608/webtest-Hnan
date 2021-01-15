@@ -39,19 +39,19 @@ class GroupBusiBase(Base):
         self.isElementDisplay(loc_selMode,'click') #点击
         Loc_selByNumber = (By.XPATH,'//*[@id="cond_GROUP_MODE_float"]/div[2]/div/div/ul/li[3]') #按服务号码
         self.isElementDisplay(Loc_selByNumber,'click')
-        self.sendkey((By.ID,'cond_GROUP_ID_INPUT'),accessNum) #输入集团服务服务号码
+        self.input((By.ID,'cond_GROUP_ID_INPUT'),accessNum) #输入集团服务服务号码
         Btn_showGroupUser = (By.XPATH,"//button[contains(@ontap,'queryGroupUserInfo')]")
         self.isElementDisplay(Btn_showGroupUser,'click')
         loc_TabGroupUserInfo = (By.XPATH,'//*[@id="groupUserTable"]/div[1]/div/table/tbody/tr')
         self.isElementDisplay(loc_TabGroupUserInfo,'click') #选择集团用户信息，点击选中
-        time.sleep(2)
+        self.sleep(2)
 
     '''集团商品选择组件'''
     def SelOfferTypePart(self,brandCode):
         # loc_offerSelectBox = (By.XPATH,'//*[@id="offerSelectBox"]/button')
         # self.isElementDisplay(loc_offerSelectBox,'click')
         self.selectGroupOffer()
-        time.sleep(2)
+        self.sleep(2)
         self.OfferCata()
         self.OfferTypePart(brandCode)
         return self.driver
@@ -78,7 +78,7 @@ class GroupBusiBase(Base):
         li_searchOfferResult = (By.XPATH,'//*[@id="mainProductSearch_searchResult"]/li')
         self.element_sendkey_click(text_searchOffer,offerId)
         self.isElementDisplay(li_searchOfferResult,'click')
-        time.sleep(3)
+        self.sleep(3)
 
 
     '''目录-可订购'''
@@ -101,7 +101,7 @@ class GroupBusiBase(Base):
         '''
         link_OfferType = (By.ID,brandCode)
         self.isElementDisplay(link_OfferType,'click')
-        time.sleep(2)
+        self.sleep(2)
         return self.driver
 
     '''集团商品订购按钮'''
@@ -113,7 +113,7 @@ class GroupBusiBase(Base):
         OfferCodeStr =  "//button[contains(@offer_code,'%s') and contains(@ontap,'CrtUs')]" %offerCode   #传入集团编码并通过Xpath定位
         loc_subOfferCode = (By.XPATH,OfferCodeStr)
         self.isElementDisplay(loc_subOfferCode,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
 
     '''集团商品变更按钮'''
     def ChgGrpOfferCode(self,offerCode,userId):
@@ -125,7 +125,7 @@ class GroupBusiBase(Base):
         ChgOfferCodeStr =  "//button[contains(@offer_code,'%s') and contains(@user_id,'%s') contains(@ontap,'ChgUs')]" %(offerCode,userId) #传入集团编码并通过Xpath定位
         loc_chgOfferCode = (By.XPATH,ChgOfferCodeStr)
         self.isElementDisplay(loc_chgOfferCode,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
         return self.driver
 
     '''集团商品注销按钮'''
@@ -138,7 +138,7 @@ class GroupBusiBase(Base):
         DstOfferCodeStr =  "//button[contains(@offer_code,'%s') and contains(@user_id,'%s') and contains(@ontap,'DstUs')]" %(offerCode,userId) #传入集团编码并通过Xpath定位
         loc_dstOfferCode = (By.XPATH,DstOfferCodeStr)
         self.isElementDisplay(loc_dstOfferCode,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
         RuleCheckBefore(self.driver).checkRule()
         return self.driver
 
@@ -151,7 +151,7 @@ class GroupBusiBase(Base):
         DstOfferCodeStr =  "//button[contains(@offer_code,'%s')  and contains(@ontap,'DstUs')]" %(offerCode) #传入集团编码并通过Xpath定位
         loc_dstOfferCode = (By.XPATH,DstOfferCodeStr)
         self.isElementDisplay(loc_dstOfferCode,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
         RuleCheckBefore(self.driver).checkRule()
         return self.driver
 
@@ -166,7 +166,7 @@ class GroupBusiBase(Base):
         subMebOfferCodeStr =  "//button[contains(@value,'%s') and contains(@ontap,'CrtMb')]" %grpUserId #传入集团编码并通过Xpath定位
         loc_subMebOfferCode = (By.XPATH,subMebOfferCodeStr)
         self.isElementDisplay(loc_subMebOfferCode,'click')
-        PageAssert(self.driver).pageLoading()
+        PageAssert(self.driver).wait_for_load()
         return self.driver
 
     '''成员商品变更按钮'''

@@ -42,13 +42,13 @@ class CancelTradeTest(unittest.TestCase):
         test.add_dochead(title)
         Btn_commit = (By.ID, 'CSSUBMIT_BUTTON') #提交按钮
         test.Open_PersonMenu(accessNum,cataMenuId='crm9200',menuId='crm9456') #登录并进入业务返销菜单
-        time.sleep(5)
+        self.sleep(5)
         test.open_CancelTradeFrame() #进入iframe
         test.query_CancelTradeByAccessNum(accessNum,busicode) #查询业务返销信息
         test.screen_step('选择要返销的业务类型')
         RuleMsg = PageAssert(test.driver).check_BusiRule(file,row)
         self.assertNotIn('业务校验失败',RuleMsg)
-        time.sleep(3)
+        self.sleep(3)
         test.find_element_click(Btn_commit)
         helpMsg = PageAssert(test.driver).assert_HelpPage()
         if '校验通过' not in helpMsg:

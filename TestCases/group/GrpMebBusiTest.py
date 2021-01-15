@@ -81,7 +81,7 @@ class GroupMebBusi(unittest.TestCase):
         test.screen_step('步骤1：打开成员商品受理菜单')
         test.initPage()   #初始化
         test.input_GrpMebNum(accessNum)
-        time.sleep(2)
+        self.sleep(2)
         test.screen_step("步骤2：输入成员服务号码")
         test.click_BtnMebSub() #点击可订购按钮
         test.screen_step("步骤3:选择集团商品并点击订购按钮")
@@ -98,7 +98,7 @@ class GroupMebBusi(unittest.TestCase):
             logger.info("开始设置子商品产品规格特征" + subOfferList[i])
             test.set_MebsubOffer(subOfferList[i]) #子商品点击待设置(注意这里与集团商品有点区别)
             test.screen_step("步骤4：产品规格特征设置页面，点击待设置")
-            time.sleep(8)
+            self.sleep(8)
             test.set_prodSpec() #产品规格特征设置页面，点击待设置
             if subOfferList[i] =='648001':  #集团管家成员主商品
                 test.set_vpmnMebshortCode()
@@ -110,7 +110,7 @@ class GroupMebBusi(unittest.TestCase):
             test.confirm_OfferSpec() #最后确认商品设置
         test.screen_step("步骤6：确认商品配置，点击提交")
         test.Open_SubmitAll()  #订购主页，点击提交
-        time.sleep(10)
+        self.sleep(10)
         submitMsg = PageAssert(self.driver).assert_submitAfter(file=file,row=row,index=0) #写入结果到xls
         logger.info('业务受理信息：{}'.format(submitMsg))
         test.screen_step('点击提交,受理信息：{}'.format(submitMsg))
@@ -138,7 +138,7 @@ class GroupMebBusi(unittest.TestCase):
         test.screen_step('步骤1：打开成员商品受理菜单')
         test.initPage()   #初始化
         test.input_GrpMebNum(accessNum)
-        time.sleep(2)
+        self.sleep(2)
         test.screen_step("步骤2：输入成员服务号码")
         test.click_BtnMebSub() #点击可订购按钮
         test.screen_step("步骤3:选择集团商品并点击订购按钮")
@@ -154,7 +154,7 @@ class GroupMebBusi(unittest.TestCase):
             logger.info("开始设置子商品产品规格特征" + subOfferList[i])
             test.set_MebsubOffer(subOfferList[i]) #子商品点击待设置(注意这里与集团商品有点区别)
             test.screen_step("步骤4：产品规格特征设置页面，点击待设置")
-            time.sleep(8)
+            self.sleep(8)
             test.set_prodSpec() #产品规格特征设置页面，点击待设置
             if (subOfferList[i] =='222201'):
                 # 如果成员商品offerid = 222201 多媒体桌面电话成员产品或者短号集群网则要设置短号

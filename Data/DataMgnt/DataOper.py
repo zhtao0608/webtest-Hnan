@@ -2,7 +2,7 @@ import os,time
 from Base.Mylog import LogManager
 from Base.OracleOper import MyOracle
 from Base import ReadConfig
-from Common.function import retDigitListFromStr,getDigitFromStr
+from Common.function import retDigitListFromStr,getDigitFromStr,isNotBlank,isEmpty
 from Common.dealParas import convert_to_diclistUpper,capital_to_upper
 from DataMap import DataMap
 from Data.DataMgnt.GenTestData import GenTestData as Gen
@@ -85,6 +85,7 @@ class DataOper(DataMap):
         '''
         userInfo = self.qryDataMapExcatByCond(tabName='TF_F_USER',sqlref='SEL_UserBySerialNum',cond=serialNum)
         logger.info('查询出来都用户信息：{}'.format(userInfo))
+        Assert().assertFalse(isEmpty(userInfo),msg='查询的用户信息返回空')
         custRelaInfo = self.qryDataMapExcatByCond(tabName='TF_F_CUST_PERSON_RELA',sqlref='SEL_BY_CUSTID',cond=userInfo['CUST_ID'])
         return custRelaInfo
 
@@ -98,14 +99,15 @@ class DataOper(DataMap):
         IdCard = Gen().Create_Idcard()  #随机gen一个身份证号码
         birthday = IdCard[6:10] + '-' + IdCard[10:12] + '-' + IdCard[12:14]
         cust_name = Gen().create_CustName() #随机gen一个客户姓名
-        sysDate = self.getSysDate(route='cp')
-        colValue = {'cust_name':cust_name,'pspt_id':IdCard,'verif_result':'1','pspt_addr':'湖南长沙市芙蓉区车站北路459号',
+        # sysDate = self.getSysDate(route='cp')
+        colValue = {'cust_name':cust_name,'pspt_id':IdCard,'verif_result':'1','pspt_addr':'湖南长沙市芙蓉区车站北路459号','serial_number':accessNum,
                     'sex':'1','nation':'1','birthday':birthday,'issuing_authority':'长沙市芙蓉区','cert_validdate':'2013-11-12',
                     'cert_expdate':'2033-11-12','state':'0','nationality':'1','pass_pspt':'123456789','pspt_issuesnum':'1'
                     }
-        realNameInfo = self.qryDataMapExcatByCond(tabName='TF_F_REALNAME_INFO',sqlref='SEL_TRANID_BY_SERIAL',cond=accessNum)
+        # realNameInfo = self.qryDataMapExcatByCond(tabName='TF_F_REALNAME_INFO',sqlref='SEL_TRANID_BY_SERIAL',cond=accessNum)
+        realNameInfo = self.qryDataMapExcatByCond(tabName='TF_F_REALNAME_INFO',sqlref='SEL_MIN_1',cond=None)
         logger.info('====最近实名制认证信息:{}'.format(realNameInfo))
-        Assert().assertTrue(len(realNameInfo)>0,msg='查询结果为空')
+        Assert().assertTrue(isNotBlank(realNameInfo),msg='查询结果为空')
         dt_cond = {'TRANSACTION_ID':realNameInfo['TRANSACTION_ID']}
         self.updateData(route='cp',table='tf_f_realname_info',dt_update=colValue,dt_condition=dt_cond)
 
@@ -117,7 +119,8 @@ class DataOper(DataMap):
         :return:
         '''
         IdCard = self.getCustRelaInfoBySerialNum(accessNum)['PSPT_ID']
-        birthday = IdCard[6:10] + '-' + IdCard[10:12] + '-' + IdCard[12:14]
+        # birthday = IdCard[6:10] + '-' + IdCard[10:12] + '-' + IdCard[12:14]
+        birthday = '1994-05-06'  #因湖南证件号码RELA表模糊化了，这里先写死
         cust_name = self.getCustRelaInfoBySerialNum(accessNum)['CUST_NAME']  # 取存量客户名称
         pspt_addr = self.getCustRelaInfoBySerialNum(accessNum)['PSPT_ADDR']  # 取存量证件地址
         colValue = {'cust_name': cust_name, 'pspt_id': IdCard, 'verif_result': '1', 'pspt_addr':pspt_addr ,
@@ -126,9 +129,10 @@ class DataOper(DataMap):
                     'cert_expdate': '2033-11-12', 'state': '0', 'nationality': '1', 'pass_pspt': '123456789',
                     'pspt_issuesnum': '1'
                     }
-        realNameInfo = self.qryDataMapExcatByCond(tabName='TF_F_REALNAME_INFO',sqlref='SEL_TRANID_BY_SERIAL',cond=accessNum)
+        realNameInfo = self.qryDataMapExcatByCond(tabName='TF_F_REALNAME_INFO',sqlref='SEL_MIN_1',cond=None)
         logger.info('====最近实名制认证信息:{}'.format(realNameInfo))
-        Assert().assertTrue(len(realNameInfo)>0,msg='查询结果为空')
+        # Assert().assertTrue(len(realNameInfo)>0,msg='查询结果为空')
+        Assert().assertTrue(isNotBlank(realNameInfo),msg='查询结果为空')
         dt_cond = {'TRANSACTION_ID':realNameInfo['TRANSACTION_ID']}
         self.updateData(route='cp', table='tf_f_realname_info', dt_update=colValue, dt_condition=dt_cond)
 
@@ -188,9 +192,11 @@ class DataOper(DataMap):
 
 if __name__ == '__main__':
     test = DataOper()
-    params = test.getCasePara('CrtUsVPMN')
-    print(params)
-    print(type(params))
+    # test.updateRealNameInfoNew(accessNum='15274912179')
+    test.updateRealNameInfoExist(accessNum='15274912179')
+    # # params = test.getCasePara('CrtUsVPMN')
+    # print(params)
+    # print(type(params))
 
 
     # data =UpdateOraData()

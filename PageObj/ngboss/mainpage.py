@@ -1,4 +1,4 @@
-import time
+import time,sys
 from Base.base import Base
 from selenium.webdriver.common.by import By
 from Base import ReadConfig
@@ -11,13 +11,10 @@ from Common.dealParas import convert_to_diclistLower,capital_to_lower
 from Check.PageCheck import PageAssert
 
 
-rc = ReadConfig.ReadConfig("ngboss_config.ini")
 logger = LogManager('MainPage').get_logger_and_add_handlers(1,is_add_stream_handler=True, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
-
 
 class MainPage(Base):
     def open_base(self):
-        self.driver.get(rc.get_ngboss('url'))     #这里可以切换环境，去ngboss_config.ini配置
         self.driver.maximize_window()
         #self.driver.implicitly_wait(30)
 
@@ -77,7 +74,7 @@ class MainPage(Base):
         parMenu = "//li[@menuid='%s']" % parentMenu # 父菜单
         logger.info("菜单目录：{}" .format(parentMenu))
         self.find_element_click((By.XPATH,parMenu))
-        time.sleep(1)
+        self.sleep(1)
         self.Open_menu(MenuId,menuPath)
         logger.info("菜单ID：{}" .format(MenuId))
 
@@ -102,12 +99,12 @@ class MainPage(Base):
         moduleName = menuConfig['module']
         if moduleName =='集团业务' or moduleName =='ESOP业务' or moduleName=='政企平台V1':
             self.click_MenuTab(inx=2)  #如果是集团业务、ESOP业务或者政企平台V1 则点击政企业务运营平台
-            time.sleep(1)
+            self.sleep(1)
         else:
             self.click_MenuTab()
         catamenu_str  =  "//li[@menuid='%s']" % catamenu
         self.isElementDisplay((By.XPATH,catamenu_str),'click') #菜单目录
-        time.sleep(1)
+        # self.sleep(1)
         parMenu = "//li[@menuid='%s']" % parentMenu # 父菜单
         logger.info("菜单目录：{}" .format(parentMenu))
         self.isElementDisplay((By.XPATH,parMenu),'click')
@@ -121,7 +118,7 @@ class MainPage(Base):
         loc_menu = (By.XPATH,menu)
         if (self.isElementExist(loc_menu)):
             self.find(loc_menu).click()
-            # time.sleep(1)
+            # self.sleep(1)
             self.screen_step('进入菜单')
             title = self.get_attribute(loc_menu,name='title')
             logger.info("进入菜单路径 :" + title)
@@ -141,7 +138,7 @@ class MainPage(Base):
         loc_menuframe = self.find((By.XPATH,menuPathStr))
         self.driver.switch_to.frame(loc_menuframe)
         logger.info("进入菜单Iframe:" + str(loc_menuframe))
-        time.sleep(1)   #暂定进入菜单时间1s
+        self.sleep(1)   #暂定进入菜单时间1s
         return self.driver
 
     ##搜索菜单功能
@@ -149,14 +146,14 @@ class MainPage(Base):
         self.switch_home()
         self.findele(By.ID,"menu_search").send_keys(menuname)
         self.findele(By.CSS_SELECTOR,"#button_search > span").click()
-        time.sleep(2)
+        self.sleep(2)
         self.driver.switch_to.default_content()
         #先定位到外层iframe,逐级进入
         self.driver.switch_to.frame(1)
         self.driver.switch_to.frame("main")
         ele = self.findele(By.CSS_SELECTOR,"body > div > div > div.c_list.c_list-hideFn.c_list-line.c_list-border.c_list-col-4 > ul > li > div > div > span")
         ele.click()
-        time.sleep(10)
+        self.sleep(10)
         self.driver.switch_to.default_content()
         return self.driver
 
@@ -172,9 +169,9 @@ class MainPage(Base):
         self.EnterCataMenu()
         self.driver.switch_to.default_content()
         self.switch_home()
-        self.sendkey((By.ID,"menu_search"),offer)
+        self.input((By.ID,"menu_search"),offer)
         self.isElementDisplay((By.CSS_SELECTOR,"#button_search > span"),'click')
-        time.sleep(10)
+        self.sleep(10)
         self.driver.switch_to.default_content()
         self.open_searchFrame()
         self.iframe("main")
@@ -189,9 +186,9 @@ class MainPage(Base):
         self.switch_home()
         loc_search = (By.ID,"menu_search")
         self.element_sendkey_click(loc_search,offerId)
-        time.sleep(2)
+        self.sleep(2)
         self.isElementExist((By.ID,offerId),'click')
-        time.sleep(10)
+        self.sleep(10)
         self.driver.switch_to.default_content()
         return self.driver
 
@@ -199,9 +196,9 @@ class MainPage(Base):
         self.switch_home()
         loc_search = (By.ID, "menu_search")
         self.element_sendkey_click(loc_search, menuname)
-        time.sleep(2)
+        self.sleep(2)
         self.isElementExist((By.CSS_SELECTOR, '#menu_search_list > li.link.on'), 'click')
-        time.sleep(10)
+        self.sleep(10)
         self.driver.switch_to.default_content()
         return self.driver
 

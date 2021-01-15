@@ -7,19 +7,19 @@ from selenium import webdriver
 from Common.dealParas import convert_to_diclistUpper
 from Common.SuiteExec import DealSuiteExec as dse
 from Common.function import getDigitFromStr
-from PageObj.order.person.ProductChange import ProdChangePage
+from PageObj.order.person.SaleActiveAccept import SaleActivePage as saleActive
 
 
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
-logger = LogManager('DelElementsTest').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
+logger = LogManager('AddSaleActive').get_logger_and_add_handlers(1, log_path=ReadConfig.log_path, log_filename=time.strftime("%Y-%m-%d")+'.log' )
 
-params = convert_to_diclistUpper(dse().get_ParaBySuiteSceneCode(suiteCode='ProdChgTest',sceneCode='DelElements')) #获取订购资费、服务测试套件参数
+params = convert_to_diclistUpper(dse().get_ParaBySuiteSceneCode(suiteCode='SaleActive',sceneCode='AddSaleActive'))
 logger.info('测试套件执行参数列表:{}'.format(params))
 
 
 @ddt.ddt
-class DelElementsTest(unittest.TestCase):
-    """[个人业务]产品变更测试类"""
+class AddSaleActive(unittest.TestCase):
+    """[个人业务]营销活动受理-订购"""
 
     def setUp(self):
         self.imgs = []
@@ -31,15 +31,15 @@ class DelElementsTest(unittest.TestCase):
         return True
 
     @ddt.data(*params)
-    def test_DelElements(self,dic):
-        """删除元素（服务、资费）"""
+    def test_ActiveAdd(self,dic):
+        """营销活动办理-新增"""
         logger.info("开始参数化......{}".format(dic))
         print('开始执行用例,测试数据：{}'.format(dic))
         accessNum = str(dic.get('ACCESSNUM'))
-        elementList= dic.get('ELEMENTLIST')
+        offerCode= dic.get('OFFERCODE')
         suite_case_id = str(dic.get('SUITE_CASE_ID'))
-        test = ProdChangePage(self.driver)
-        msg = test.acceptDelElements(accessNum=accessNum,elementList=elementList,scene=suite_case_id)
+        test = saleActive(self.driver)
+        msg = test.accept_addSaleActive(accessNum=accessNum,offerCode=offerCode,scene=suite_case_id)
         print(msg)
         self.get_screenshot()
         dse().upd_resultBySuiteCaseId(suite_case_id=suite_case_id,actual_result=msg)
@@ -54,11 +54,11 @@ class DelElementsTest(unittest.TestCase):
 
 if __name__ == '__main__':
     # unittest.main()
-    report_title = u'产品变更-新增资费、服务自动化测试报告'
-    desc = u'新增资费、服务测试详情：'
+    report_title = u'营销活动办理自动化测试报告'
+    desc = u'营销活动办理测试详情：'
     nowtime = time.strftime("%Y%m%d%H%M%S")
     logger.info("开始执行testSuite......")
     print("开始执行testSuite......")
     with open(ReadConfig.get_reportPath() + report_title + nowtime + ".html", 'wb') as fp:
         runner = HTMLTestRunnerCNNew.HTMLTestRunner(stream=fp, title=report_title, description=desc,verbosity=2,retry=0)
-        runner.run(mySuitePrefixAdd(DelElementsTest,"test_DelElements"))
+        runner.run(mySuitePrefixAdd(AddSaleActive,"test_ActiveAdd"))

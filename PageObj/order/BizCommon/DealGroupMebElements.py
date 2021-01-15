@@ -20,7 +20,7 @@ class DealMebElements(Base):
         '''
         text_MebAccessNum = (By.ID,'cond_SERIAL_NUMBER_INPUT')
         self.element_sendkey_enter(text_MebAccessNum,mebSerialNum)
-        time.sleep(1)
+        self.sleep(1)
 
 
     def selMebPayPlan(self,planType='P',itemId='42701'):
@@ -33,9 +33,9 @@ class DealMebElements(Base):
         btn_SelMebPayPlanType = (By.XPATH,MebPayPlanTypeStr)
         if planType == 'G':    #如果选择的是集团付费才进入，否则不进入
             self.isElementDisplay(btn_SelMebPayPlanType,'click')
-            time.sleep(1)
+            self.sleep(1)
             self.setMebGrpPayItem(itemId)
-            time.sleep(1)
+            self.sleep(1)
 
     def setGrpMebPayRela(self,planType='G',itemId='42701'):
         '''
@@ -45,7 +45,7 @@ class DealMebElements(Base):
         '''
         if planType == 'G':    #如果选择的是集团付费才进入，否则不进入
             self.setMebGrpPayItem(itemId)
-            time.sleep(1)
+            self.sleep(1)
 
     def setMebGrpPayItem(self,itemId):
         '''
@@ -62,7 +62,7 @@ class DealMebElements(Base):
         '''
         loc_PayPlanAcctInfo = (By.XPATH,'//*[contains(@ontap,"selectPayPlanAcctInfo")]')
         self.isElementDisplay(loc_PayPlanAcctInfo,'click') #点击付费账目
-        time.sleep(2)
+        self.sleep(2)
         PayItemStr = "//input[contains(@id,'noteItems') and contains(@value,'%s')]" % itemId
         loc_PayItem = (By.XPATH,PayItemStr)
         self.isElementDisplay(loc_PayItem,'click')
@@ -91,7 +91,7 @@ class DealMebElements(Base):
     def InputDstMbRemark(self):
         '''成员注销时填写备注'''
         text_DstMbRemark = (By.ID,'cond_REMARK')
-        self.sendkey(text_DstMbRemark,'自动化测试')
+        self.input(text_DstMbRemark,'自动化测试')
         return self.driver
 
     def CrtMebshortNum(self,serialNum):
